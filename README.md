@@ -18,9 +18,9 @@ The main objective of this study is to design and develop an app that helps new 
 
 Contributors names and contact info
 
-ex. Cyrex Cuizon Joshua
-ex. John Henly Montera 
-ex. John Alvin Bula
+Author. Cyrex Cuizon Joshua <br />
+Author. John Henly Montera <br />
+Author. John Alvin Bula <br />
 
 ## License
 
