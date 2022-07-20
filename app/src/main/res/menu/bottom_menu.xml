@@ -3,7 +3,7 @@
 
     <item
         android:id="@+id/firstFragment"
-        android:title="Timeline"
+        android:title="NewsFeed"
         android:icon="@drawable/ic_home"/>
     <item
         android:id="@+id/secondFragment"

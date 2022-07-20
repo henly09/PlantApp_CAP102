@@ -7,7 +7,7 @@
     <fragment
         android:id="@+id/firstFragment"
         android:name="com.henzmontera.cap102_plantapp.FirstFragment"
-        android:label="Timeline"
+        android:label="NewsFeed"
         tools:layout="@layout/fragment_first" />
     <fragment
         android:id="@+id/secondFragment"
