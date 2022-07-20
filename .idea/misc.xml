@@ -3,15 +3,21 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Henz Montera/Desktop/cap102_PlantApp/app/src/main/res/drawable/nav_item_background.xml" value="0.1775" />
         <entry key="..\:/Users/Henz Montera/Desktop/cap102_PlantApp/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/Users/Henz Montera/Desktop/cap102_PlantApp/app/src/main/res/layout/app_bar_main.xml" value="0.20606884057971014" />
         <entry key="..\:/Users/Henz Montera/Desktop/cap102_PlantApp/app/src/main/res/layout/content_main.xml" value="0.20606884057971014" />
+        <entry key="..\:/Users/Henz Montera/Desktop/cap102_PlantApp/app/src/main/res/layout/drawer_header.xml" value="0.22" />
         <entry key="..\:/Users/Henz Montera/Desktop/cap102_PlantApp/app/src/main/res/layout/fragment_first.xml" value="0.22" />
         <entry key="..\:/Users/Henz Montera/Desktop/cap102_PlantApp/app/src/main/res/layout/fragment_second.xml" value="0.25" />
         <entry key="..\:/Users/Henz Montera/Desktop/cap102_PlantApp/app/src/main/res/layout/fragment_third.xml" value="0.15760869565217392" />
         <entry key="..\:/Users/Henz Montera/Desktop/cap102_PlantApp/app/src/main/res/layout/header.xml" value="0.20606884057971014" />
+        <entry key="..\:/Users/Henz Montera/Desktop/cap102_PlantApp/app/src/main/res/layout/navheader.xml" value="0.22" />
         <entry key="..\:/Users/Henz Montera/Desktop/cap102_PlantApp/app/src/main/res/menu/bottom_menu.xml" value="0.27291666666666664" />
+        <entry key="..\:/Users/Henz Montera/Desktop/cap102_PlantApp/app/src/main/res/menu/iconmenu.xml" value="0.271875" />
+        <entry key="..\:/Users/Henz Montera/Desktop/cap102_PlantApp/app/src/main/res/menu/main_activity2.xml" value="0.27291666666666664" />
         <entry key="..\:/Users/Henz Montera/Desktop/cap102_PlantApp/app/src/main/res/menu/main_menu.xml" value="0.27291666666666664" />
+        <entry key="..\:/Users/Henz Montera/Desktop/cap102_PlantApp/app/src/main/res/menu/navigation_menu.xml" value="0.22" />
       </map>
     </option>
   </component>
