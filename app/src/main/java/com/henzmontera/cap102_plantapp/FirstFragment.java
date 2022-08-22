@@ -13,6 +13,12 @@ import android.view.ViewGroup;
  * Use the {@link FirstFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
+
+/**
+ *
+ *  THIS IS NEWSFEED
+ *  Developed by Cyrex Joshua M. Cuizon
+ */
 public class FirstFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
