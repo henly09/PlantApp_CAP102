@@ -1,4 +1,4 @@
-# 🌱🌱Crops & Go: A Fruit Farming Assistant App 🌱🌱
+# 🌱🌱 ManGo: A Mango Farming Assistant App 🌱🌱
 
 The main objective of this study is to design and develop an app that helps new farmers grow crops on their own. Specifically, it aims to:
 1.	Provide a Platform for sharing about fruit farming.
