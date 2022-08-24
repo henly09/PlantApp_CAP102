@@ -21,6 +21,8 @@ import android.view.ViewGroup;
  */
 public class FirstFragment extends Fragment {
 
+    // Kani Delete
+
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -61,10 +63,19 @@ public class FirstFragment extends Fragment {
         }
     }
 
+    // Hantod Dria
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+        View rootview = inflater.inflate(R.layout.fragment_first, container, false);
+
+        // Dria ka mag create
+
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_first, container, false);
+
+        return rootview;
     }
 }
