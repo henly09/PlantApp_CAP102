@@ -24,7 +24,7 @@ import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 
-public class AppleMangoActivity extends AppCompatActivity {
+public class CarabaoMangoActivity extends AppCompatActivity {
 
     TextView result, confidence;
     ImageView imageView;
@@ -34,12 +34,12 @@ public class AppleMangoActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_apple_mango);
+        setContentView(R.layout.activity_carabao_mango);
 
-        result = findViewById(R.id.resultAM);
-        confidence = findViewById(R.id.confidenceAM);
-        imageView = findViewById(R.id.imageViewAM);
-        picture = findViewById(R.id.buttonAM);
+        result = findViewById(R.id.resultCM);
+        confidence = findViewById(R.id.confidenceCM);
+        imageView = findViewById(R.id.imageViewCM);
+        picture = findViewById(R.id.buttonCM);
 
         picture.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -56,11 +56,12 @@ public class AppleMangoActivity extends AppCompatActivity {
         });
     }
 
-    public void classifyImage(Bitmap image){
+    public void classifyImage(Bitmap image){ // Add model and add text files
+        /*
         try {
 
             MangaApple model = MangaApple.newInstance(getApplicationContext());
-            // Creates inputs for reference.
+             Creates inputs for reference.
             TensorBuffer inputFeature0 = TensorBuffer.createFixedSize(new int[]{1, 224, 224, 3}, DataType.FLOAT32);
             ByteBuffer byteBuffer = ByteBuffer.allocateDirect(4 * imageSize * imageSize * 3);
             byteBuffer.order(ByteOrder.nativeOrder());
@@ -94,9 +95,9 @@ public class AppleMangoActivity extends AppCompatActivity {
             }
 
             String[] classes =
-                    {"Large_MA_OR", "Large_MA_R", "Large_MA_RD", "Large_MA_ROT", "Large_MA_UR",
-                            "Medium_MA_OR", "Medium_MA_R", "Medium_MA_RD", "Medium_MA_ROT", "Medium_MA_UR",
-                            "SMALL_MA_OR", "SMALL_MA_R", "SMALL_MA_RD", "SMALL_MA_ROT", "SMALL_MA_UR"};
+                    {"Large_CM_OR", "Large_CM_R", "Large_CM_RD", "Large_CM_ROT", "Large_CM_UR",
+                            "Medium_CM_OR", "Medium_CM_R", "Medium_CM_RD", "Medium_CM_ROT", "Medium_CM_UR",
+                            "SMALL_CM_OR", "SMALL_CM_R", "SMALL_CM_RD", "SMALL_CM_ROT", "SMALL_CM_UR"};
 
             result.setText(classes[maxPos]);
 
@@ -111,6 +112,7 @@ public class AppleMangoActivity extends AppCompatActivity {
         } catch (IOException e) {
             // TODO Handle the exception
         }
+     */
     }
 
     @Override

@@ -32,11 +32,15 @@ public class ThirdFragment extends Fragment {
         });
 
         mangocarabaobutton.setOnClickListener(view -> {
+            Intent intent = new Intent(getActivity(), CarabaoMangoActivity.class);
+            startActivity(intent);
             Toast.makeText(getActivity(), "Carabao Mango", Toast.LENGTH_LONG).show();
             Log.d("Carabao Mango","Carabao Mango");
         });
 
         mangoindianbutton.setOnClickListener(view -> {
+            Intent intent = new Intent(getActivity(), IndianMangoActivity.class);
+            startActivity(intent);
             Toast.makeText(getActivity(), "Indian Mango", Toast.LENGTH_LONG).show();
             Log.d("Indian Mango","Indian Mango");
         });

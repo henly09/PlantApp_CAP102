@@ -7,7 +7,7 @@
     tools:context=".MainActivity">
 
     <Button
-        android:id="@+id/buttonAM"
+        android:id="@+id/buttonCM"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -19,17 +19,17 @@
         android:textStyle="bold" />
 
     <ImageView
-        android:id="@+id/imageViewAM"
+        android:id="@+id/imageViewCM"
         android:layout_width="312dp"
         android:layout_height="362dp"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10sp" />
 
     <TextView
-        android:id="@+id/classifiedAM"
+        android:id="@+id/classifiedCM"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/imageViewAM"
+        android:layout_below="@+id/imageViewCM"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10sp"
         android:text="Classified as:"
@@ -37,10 +37,10 @@
         android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/resultAM"
+        android:id="@+id/resultCM"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/classifiedAM"
+        android:layout_below="@+id/classifiedCM"
         android:layout_centerHorizontal="true"
         android:text=""
         android:textColor="#C30000"
@@ -48,10 +48,10 @@
         android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/confidencesTextAM"
+        android:id="@+id/confidencesTextCM"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/resultAM"
+        android:layout_below="@+id/resultCM"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="30sp"
         android:text="Confidences:"
@@ -59,10 +59,10 @@
         android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/confidenceAM"
+        android:id="@+id/confidenceCM"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/confidencesTextAM"
+        android:layout_below="@+id/confidencesTextCM"
         android:layout_centerHorizontal="true"
         android:text=""
         android:textColor="#000"

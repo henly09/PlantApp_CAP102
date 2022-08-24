@@ -14,9 +14,14 @@
         android:theme="@style/Theme.Cap102_PlantApp"
         tools:targetApi="31">
         <activity
+            android:name=".IndianMangoActivity"
+            android:exported="true" />
+        <activity
+            android:name=".CarabaoMangoActivity"
+            android:exported="true" />
+        <activity
             android:name=".AppleMangoActivity"
             android:exported="true" />
-
         <activity
             android:name=".MainActivity"
             android:exported="true">
