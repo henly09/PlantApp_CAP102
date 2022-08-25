@@ -6,6 +6,28 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <TextView
+        android:id="@+id/SizesIM"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/confidenceIM"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="23dp"
+        android:gravity="center"
+        android:text="Size:"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/sizeIM"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/SizesIM"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
     <Button
         android:id="@+id/buttonIM"
         android:layout_width="match_parent"

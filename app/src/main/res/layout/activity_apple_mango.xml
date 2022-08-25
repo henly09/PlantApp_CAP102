@@ -53,7 +53,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/resultAM"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="30sp"
+        android:layout_marginTop="20sp"
         android:text="Confidences:"
         android:textSize="20sp"
         android:textStyle="bold" />
@@ -64,8 +64,31 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/confidencesTextAM"
         android:layout_centerHorizontal="true"
+        android:gravity="center"
         android:text=""
         android:textColor="#000"
         android:textSize="22sp" />
+
+    <TextView
+        android:id="@+id/SizesAM"
+        android:layout_width="147dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/confidenceAM"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp"
+        android:gravity="center"
+        android:text="Size:"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/sizeAM"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/SizesAM"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:textSize="20sp"
+        android:textStyle="bold" />
 
 </RelativeLayout>

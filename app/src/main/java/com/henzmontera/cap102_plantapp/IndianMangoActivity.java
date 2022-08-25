@@ -14,8 +14,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import com.henzmontera.cap102_plantapp.ml.MangaIndian;
+import com.henzmontera.cap102_plantapp.ml.MangoIndianRipenessSorter;
+import com.henzmontera.cap102_plantapp.ml.MangoIndianSizeSorter;
+
 import org.tensorflow.lite.DataType;
 import org.tensorflow.lite.support.tensorbuffer.TensorBuffer;
 
@@ -25,7 +28,7 @@ import java.nio.ByteOrder;
 
 public class IndianMangoActivity extends AppCompatActivity {
 
-    TextView result, confidence;
+    TextView result, confidence, size;
     ImageView imageView;
     Button picture;
     int imageSize = 224;
@@ -39,6 +42,7 @@ public class IndianMangoActivity extends AppCompatActivity {
         confidence = findViewById(R.id.confidenceIM);
         imageView = findViewById(R.id.imageViewIM);
         picture = findViewById(R.id.buttonIM);
+        size = findViewById(R.id.sizeIM);
 
         picture.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -59,7 +63,9 @@ public class IndianMangoActivity extends AppCompatActivity {
 
         try {
 
-            MangaIndian model = MangaIndian.newInstance(getApplicationContext());
+            MangoIndianRipenessSorter MiRipeness = MangoIndianRipenessSorter.newInstance(getApplicationContext());
+            MangoIndianSizeSorter MiSize = MangoIndianSizeSorter.newInstance(getApplicationContext());
+
             // Creates inputs for reference.
             TensorBuffer inputFeature0 = TensorBuffer.createFixedSize(new int[]{1, 224, 224, 3}, DataType.FLOAT32);
             ByteBuffer byteBuffer = ByteBuffer.allocateDirect(4 * imageSize * imageSize * 3);
@@ -78,38 +84,53 @@ public class IndianMangoActivity extends AppCompatActivity {
                 }
             }
             inputFeature0.loadBuffer(byteBuffer);
-            // Runs model inference and gets result.
-            MangaIndian.Outputs outputs = model.process(inputFeature0);
-            TensorBuffer outputFeature0 = outputs.getOutputFeature0AsTensorBuffer();
 
-            float[] confidences = outputFeature0.getFloatArray();
+
+            // Runs model inference and gets result.
+            MangoIndianRipenessSorter.Outputs outputsripness = MiRipeness.process(inputFeature0);
+            TensorBuffer outputFeature0ripeness = outputsripness.getOutputFeature0AsTensorBuffer();
+
+            float[] confidencesripeness = outputFeature0ripeness.getFloatArray();
             // find the index of the class with the biggest confidence.
-            int maxPos = 0;
-            float maxConfidence = 0;
-            for(int i = 0; i < confidences.length; i++){
-                if(confidences[i] > maxConfidence){
-                    maxConfidence = confidences[i];
-                    maxPos = i;
+            int maxPosRipeness = 0;
+            float maxConfidenceRipeness = 0;
+            for(int i = 0; i < confidencesripeness.length; i++){
+                if(confidencesripeness[i] > maxConfidenceRipeness){
+                    maxConfidenceRipeness = confidencesripeness[i];
+                    maxPosRipeness = i;
                 }
             }
 
-            String[] classes =
-                    { "Large_IM_R", "Large_IM_RD", "Large_IM_ROT", "Large_IM_UR",
-                             "Medium_IM_R", "Medium_IM_RD", "Medium_IM_ROT", "Medium_IM_UR",
-                             "SMALL_IM_R", "SMALL_IM_RD", "SMALL_IM_ROT", "SMALL_IM_UR"};
+            MangoIndianSizeSorter.Outputs outputssize = MiSize.process(inputFeature0);
+            TensorBuffer outputFeature0size = outputssize.getOutputFeature0AsTensorBuffer();
 
-            result.setText(classes[maxPos]);
-
-            String s = "";
-            for(int i = 0; i <= maxPos; i++){
-                s += String.format("%s: %.1f%%\n", classes[i], confidences[i] * 100);
+            float[] confidencessize = outputFeature0size.getFloatArray();
+            // find the index of the class with the biggest confidence.
+            int maxPosSize = 0;
+            float maxConfidenceSize = 0;
+            for(int i = 0; i < confidencessize.length; i++){
+                if(confidencessize[i] > maxConfidenceSize){
+                    maxConfidenceSize = confidencessize[i];
+                    maxPosSize = i;
+                }
             }
 
-            confidence.setText(confidences[maxPos] * 100 + " %");
+            String[] Mi_Ripeness = {"Ripe","Ripe W/ Defect","Rotten","Unripe"};
+            String[] Mi_Size = {"Large","Medium","Small"};
+
+            result.setText(Mi_Ripeness[maxPosRipeness]);
+            size.setText(Mi_Size[maxPosSize]);
+
+            confidence.setText(
+                    "Class Confidence: "+confidencesripeness[maxPosRipeness] * 100 + " %" +
+                            "\n" + "Size Confidence: "+confidencesripeness[maxPosRipeness] * 100 + " %");
+
             // Releases model resources if no longer used.
-            model.close();
+            MiRipeness.close();
+            MiSize.close();
+
         } catch (IOException e) {
-            // TODO Handle the exception
+            Toast.makeText(this, "Error Occured!. Please Try Again Later!", Toast.LENGTH_LONG).show();
         }
 
     }

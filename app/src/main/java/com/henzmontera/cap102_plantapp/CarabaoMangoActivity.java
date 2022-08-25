@@ -15,7 +15,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.henzmontera.cap102_plantapp.ml.MangaApple;
+// import com.henzmontera.cap102_plantapp.ml.MangaApple;
 
 import org.tensorflow.lite.DataType;
 import org.tensorflow.lite.support.tensorbuffer.TensorBuffer;

@@ -14,8 +14,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import com.henzmontera.cap102_plantapp.ml.MangaApple;
+import com.henzmontera.cap102_plantapp.ml.MaRipenessSorter;
+import com.henzmontera.cap102_plantapp.ml.MaSizeSorter;
 
 import org.tensorflow.lite.DataType;
 import org.tensorflow.lite.support.tensorbuffer.TensorBuffer;
@@ -26,7 +28,7 @@ import java.nio.ByteOrder;
 
 public class AppleMangoActivity extends AppCompatActivity {
 
-    TextView result, confidence;
+    TextView result, confidence, size;
     ImageView imageView;
     Button picture;
     int imageSize = 224;
@@ -38,6 +40,7 @@ public class AppleMangoActivity extends AppCompatActivity {
 
         result = findViewById(R.id.resultAM);
         confidence = findViewById(R.id.confidenceAM);
+        size = findViewById(R.id.sizeAM);
         imageView = findViewById(R.id.imageViewAM);
         picture = findViewById(R.id.buttonAM);
 
@@ -59,12 +62,15 @@ public class AppleMangoActivity extends AppCompatActivity {
     public void classifyImage(Bitmap image){
         try {
 
-            MangaApple model = MangaApple.newInstance(getApplicationContext());
+            MaRipenessSorter MaRipeness = MaRipenessSorter.newInstance(getApplicationContext());
+            MaSizeSorter MaSize = MaSizeSorter.newInstance(getApplicationContext());
             // Creates inputs for reference.
+
             TensorBuffer inputFeature0 = TensorBuffer.createFixedSize(new int[]{1, 224, 224, 3}, DataType.FLOAT32);
             ByteBuffer byteBuffer = ByteBuffer.allocateDirect(4 * imageSize * imageSize * 3);
             byteBuffer.order(ByteOrder.nativeOrder());
             // get 1D array of 224 * 224 pixels in image
+
             int [] intValues = new int[imageSize * imageSize];
             image.getPixels(intValues, 0, image.getWidth(), 0, 0, image.getWidth(), image.getHeight());
             // iterate over pixels and extract R, G, and B values. Add to bytebuffer.
@@ -77,39 +83,55 @@ public class AppleMangoActivity extends AppCompatActivity {
                     byteBuffer.putFloat((val & 0xFF) * (1.f / 255.f));
                 }
             }
-            inputFeature0.loadBuffer(byteBuffer);
-            // Runs model inference and gets result.
-            MangaApple.Outputs outputs = model.process(inputFeature0);
-            TensorBuffer outputFeature0 = outputs.getOutputFeature0AsTensorBuffer();
 
-            float[] confidences = outputFeature0.getFloatArray();
-            // find the index of the class with the biggest confidence.
-            int maxPos = 0;
-            float maxConfidence = 0;
-            for(int i = 0; i < confidences.length; i++){
-                if(confidences[i] > maxConfidence){
-                    maxConfidence = confidences[i];
-                    maxPos = i;
+            inputFeature0.loadBuffer(byteBuffer);
+
+            // Runs Ripeness Model inference and gets result.
+            MaRipenessSorter.Outputs outputsripeness = MaRipeness.process(inputFeature0);
+            TensorBuffer outputFeature0ripeness = outputsripeness.getOutputFeature0AsTensorBuffer();
+
+            float[] confidencesripeness = outputFeature0ripeness.getFloatArray();
+            // find the index of the class with the biggest confidence of ripeness.
+            int maxPosRipeness = 0;
+            float maxConfidenceRipeness = 0;
+            for(int i = 0; i < confidencesripeness.length; i++){
+                if(confidencesripeness[i] > maxConfidenceRipeness){
+                    maxConfidenceRipeness = confidencesripeness[i];
+                    maxPosRipeness = i;
                 }
             }
 
-            String[] classes =
-                    {"Large_MA_OR", "Large_MA_R", "Large_MA_RD", "Large_MA_ROT", "Large_MA_UR",
-                            "Medium_MA_OR", "Medium_MA_R", "Medium_MA_RD", "Medium_MA_ROT", "Medium_MA_UR",
-                            "SMALL_MA_OR", "SMALL_MA_R", "SMALL_MA_RD", "SMALL_MA_ROT", "SMALL_MA_UR"};
+            // Runs Size Model inference and gets result.
+            MaSizeSorter.Outputs outputssize = MaSize.process(inputFeature0);
+            TensorBuffer outputFeature0size = outputssize.getOutputFeature0AsTensorBuffer();
 
-            result.setText(classes[maxPos]);
-
-            String s = "";
-            for(int i = 0; i <= maxPos; i++){
-                s += String.format("%s: %.1f%%\n", classes[i], confidences[i] * 100);
+            float[] confidencessize = outputFeature0size.getFloatArray();
+            // find the index of the class with the biggest confidence of ripeness.
+            int maxPosSize= 0;
+            float maxConfidenceSize = 0;
+            for(int i = 0; i < confidencessize.length; i++){
+                if(confidencessize[i] > maxConfidenceSize){
+                    maxConfidenceSize = confidencessize[i];
+                    maxPosSize = i;
+                }
             }
 
-            confidence.setText(confidences[maxPos] * 100 + " %");
+            String[] Ma_Ripeness = {"Over-Ripe","Ripe","Ripe w/ Defects","Rotten","Unripe"};
+            String[] Ma_Size = {"Small","Medium","Large"};
+
+            result.setText(Ma_Ripeness[maxPosRipeness]);
+            size.setText(Ma_Size[maxPosSize]);
+
+            confidence.setText(
+                    "Class Confidence: "+confidencesripeness[maxPosRipeness] * 100 + " %" +
+                    "\n" + "Size Confidence: "+confidencessize[maxPosSize] * 100 + " %");
+
             // Releases model resources if no longer used.
-            model.close();
+            MaSize.close();
+            MaRipeness.close();
+
         } catch (IOException e) {
-            // TODO Handle the exception
+            Toast.makeText(this, "Error Occured!. Please Try Again Later!", Toast.LENGTH_LONG).show();
         }
     }
 
