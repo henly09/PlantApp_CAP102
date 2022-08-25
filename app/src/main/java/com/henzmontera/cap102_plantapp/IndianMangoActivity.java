@@ -1,17 +1,27 @@
 package com.henzmontera.cap102_plantapp;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.media.ThumbnailUtils;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.henzmontera.cap102_plantapp.ml.MangaIndian;
+import org.tensorflow.lite.DataType;
+import org.tensorflow.lite.support.tensorbuffer.TensorBuffer;
+
+import java.io.IOException;
+import java.nio.ByteBuffer;
+import java.nio.ByteOrder;
 
 public class IndianMangoActivity extends AppCompatActivity {
 
@@ -46,11 +56,11 @@ public class IndianMangoActivity extends AppCompatActivity {
     }
 
     public void classifyImage(Bitmap image){ // Add model and add text files
-        /*
+
         try {
 
-            MangaApple model = MangaApple.newInstance(getApplicationContext());
-             Creates inputs for reference.
+            MangaIndian model = MangaIndian.newInstance(getApplicationContext());
+            // Creates inputs for reference.
             TensorBuffer inputFeature0 = TensorBuffer.createFixedSize(new int[]{1, 224, 224, 3}, DataType.FLOAT32);
             ByteBuffer byteBuffer = ByteBuffer.allocateDirect(4 * imageSize * imageSize * 3);
             byteBuffer.order(ByteOrder.nativeOrder());
@@ -69,7 +79,7 @@ public class IndianMangoActivity extends AppCompatActivity {
             }
             inputFeature0.loadBuffer(byteBuffer);
             // Runs model inference and gets result.
-            MangaApple.Outputs outputs = model.process(inputFeature0);
+            MangaIndian.Outputs outputs = model.process(inputFeature0);
             TensorBuffer outputFeature0 = outputs.getOutputFeature0AsTensorBuffer();
 
             float[] confidences = outputFeature0.getFloatArray();
@@ -84,9 +94,9 @@ public class IndianMangoActivity extends AppCompatActivity {
             }
 
             String[] classes =
-                    {"Large_IM_OR", "Large_IM_R", "Large_IM_RD", "Large_IM_ROT", "Large_IM_UR",
-                            "Medium_IM_OR", "Medium_IM_R", "Medium_IM_RD", "Medium_IM_ROT", "Medium_IM_UR",
-                            "SMALL_IM_OR", "SMALL_IM_R", "SMALL_IM_RD", "SMALL_IM_ROT", "SMALL_IM_UR"};
+                    { "Large_IM_R", "Large_IM_RD", "Large_IM_ROT", "Large_IM_UR",
+                             "Medium_IM_R", "Medium_IM_RD", "Medium_IM_ROT", "Medium_IM_UR",
+                             "SMALL_IM_R", "SMALL_IM_RD", "SMALL_IM_ROT", "SMALL_IM_UR"};
 
             result.setText(classes[maxPos]);
 
@@ -101,6 +111,19 @@ public class IndianMangoActivity extends AppCompatActivity {
         } catch (IOException e) {
             // TODO Handle the exception
         }
-     */
+
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        if (requestCode == 1 && resultCode == RESULT_OK) {
+            Bitmap image = (Bitmap) data.getExtras().get("data");
+            int dimension = Math.min(image.getWidth(), image.getHeight());
+            image = ThumbnailUtils.extractThumbnail(image, dimension, dimension);
+            imageView.setImageBitmap(image);
+            image = Bitmap.createScaledBitmap(image, imageSize, imageSize, false);
+            classifyImage(image);
+        }
+        super.onActivityResult(requestCode, resultCode, data);
     }
 }
