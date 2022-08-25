@@ -25,6 +25,7 @@ import org.tensorflow.lite.support.tensorbuffer.TensorBuffer;
 import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
+import java.text.DecimalFormat;
 
 public class AppleMangoActivity extends AppCompatActivity {
 
@@ -122,9 +123,12 @@ public class AppleMangoActivity extends AppCompatActivity {
             result.setText(Ma_Ripeness[maxPosRipeness]);
             size.setText(Ma_Size[maxPosSize]);
 
+            DecimalFormat df = new DecimalFormat();
+            df.setMaximumFractionDigits(2);
+
             confidence.setText(
-                    "Class Confidence: "+confidencesripeness[maxPosRipeness] * 100 + " %" +
-                    "\n" + "Size Confidence: "+confidencessize[maxPosSize] * 100 + " %");
+                    "Class Confidence: "+df.format(confidencesripeness[maxPosRipeness] * 100) + "%" +
+                    "\n" + "Size Confidence: "+df.format(confidencessize[maxPosSize] * 100) + "%");
 
             // Releases model resources if no longer used.
             MaSize.close();

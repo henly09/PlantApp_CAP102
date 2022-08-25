@@ -25,6 +25,7 @@ import org.tensorflow.lite.support.tensorbuffer.TensorBuffer;
 import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
+import java.text.DecimalFormat;
 
 public class IndianMangoActivity extends AppCompatActivity {
 
@@ -121,9 +122,12 @@ public class IndianMangoActivity extends AppCompatActivity {
             result.setText(Mi_Ripeness[maxPosRipeness]);
             size.setText(Mi_Size[maxPosSize]);
 
+            DecimalFormat df = new DecimalFormat();
+            df.setMaximumFractionDigits(2);
+
             confidence.setText(
-                    "Class Confidence: "+confidencesripeness[maxPosRipeness] * 100 + " %" +
-                            "\n" + "Size Confidence: "+confidencesripeness[maxPosRipeness] * 100 + " %");
+                    "Class Confidence: "+df.format(confidencesripeness[maxPosRipeness] * 100) + "%" +
+                            "\n" + "Size Confidence: "+df.format(confidencesripeness[maxPosRipeness] * 100) + "%");
 
             // Releases model resources if no longer used.
             MiRipeness.close();
