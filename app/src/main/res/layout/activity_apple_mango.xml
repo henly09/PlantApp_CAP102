@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerInParent="true"
-        android:layout_marginBottom="49dp"
+        android:layout_marginBottom="9dp"
         android:backgroundTint="@android:color/holo_orange_dark"
         android:text="Take Picture"
         android:textAllCaps="false"
@@ -55,7 +55,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/resultAM"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="20sp"
+        android:layout_marginTop="30sp"
         android:text="Confidences:"
         android:textSize="20sp"
         android:textStyle="bold" />
