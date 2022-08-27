@@ -116,7 +116,7 @@ public class IndianMangoActivity extends AppCompatActivity {
                 }
             }
 
-            String[] Mi_Ripeness = {"Ripe","Ripe W/ Defect","Rotten","Unripe"};
+            String[] Mi_Ripeness = {"Ripe Indian Mango","Ripe W/ Defect Indian Mango","Rotten Indian Mango","Unripe Indian Mango"};
             String[] Mi_Size = {"Large","Medium","Small"};
 
             result.setText(Mi_Ripeness[maxPosRipeness]);

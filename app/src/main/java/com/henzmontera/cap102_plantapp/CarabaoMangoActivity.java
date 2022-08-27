@@ -115,7 +115,7 @@ public class CarabaoMangoActivity extends AppCompatActivity {
                 }
             }
 
-            String[] Mi_Ripeness = {"Ripe","Ripe W/ Defect","Rotten","Unripe"};
+            String[] Mi_Ripeness = {"Ripe Carabao Mango","Ripe W/ Defect Carabao Mango","Rotten Carabao Mango","Unripe Carabao Mango"};
             String[] Mi_Size = {"Large","Medium","Small"};
 
             result.setText(Mi_Ripeness[maxPosRipeness]);
