@@ -77,7 +77,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/confidenceAM"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="30dp"
         android:gravity="center"
         android:text="Size:"
         android:textSize="20sp"

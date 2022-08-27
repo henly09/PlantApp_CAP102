@@ -39,6 +39,8 @@ public class AppleMangoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_apple_mango);
 
+        setTitle("Apple Mango Identifier");
+
         result = findViewById(R.id.resultAM);
         confidence = findViewById(R.id.confidenceAM);
         size = findViewById(R.id.sizeAM);

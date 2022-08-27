@@ -38,6 +38,8 @@ public class CarabaoMangoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_carabao_mango);
 
+        setTitle("Carabao Mango Identifier");
+
         result = findViewById(R.id.resultCM);
         confidence = findViewById(R.id.confidenceCM);
         imageView = findViewById(R.id.imageViewCM);

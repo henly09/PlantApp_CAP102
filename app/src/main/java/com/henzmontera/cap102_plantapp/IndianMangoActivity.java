@@ -39,6 +39,8 @@ public class IndianMangoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_indian_mango);
 
+        setTitle("Indian Mango Identifier");
+
         result = findViewById(R.id.resultIM);
         confidence = findViewById(R.id.confidenceIM);
         imageView = findViewById(R.id.imageViewIM);
