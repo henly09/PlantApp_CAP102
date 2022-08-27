@@ -117,7 +117,7 @@ public class AppleMangoActivity extends AppCompatActivity {
                 }
             }
 
-            String[] Ma_Ripeness = {"Over-Ripe","Ripe","Ripe w/ Defects","Rotten","Unripe"};
+            String[] Ma_Ripeness = {"Ripe","Ripe W/ Defect","Rotten","Unripe"};
             String[] Ma_Size = {"Small","Medium","Large"};
 
             result.setText(Ma_Ripeness[maxPosRipeness]);
