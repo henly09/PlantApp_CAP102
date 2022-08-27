@@ -1,6 +1,6 @@
 # 🌱🌱 ManGo: A Mango Farming Assistant App 🌱🌱
 
-The main objective of this study is to design and develop an app that helps new farmers grow crops on their own. Specifically, it aims to:
+The main objective of this study is to design and develop an app that helps new farmers grow Mango crops on their own. Specifically, it aims to:
 1.	Provide a Platform for sharing about fruit farming.
 2.	Provide a function can detect the category of a fruit through image-processing. (unripe, ripe, overripe, rotten).
 3.	Provide a function that displaces basic information about fruit farming.
