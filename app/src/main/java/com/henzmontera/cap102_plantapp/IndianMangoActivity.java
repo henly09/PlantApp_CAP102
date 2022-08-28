@@ -44,8 +44,8 @@ public class IndianMangoActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_indian_mango);
-
-        setTitle("Indian Mango Identifier");
+        getSupportActionBar().setBackgroundDrawable(getDrawable(R.drawable.side_nav_bar));
+        setTitle("INDIAN MANGO");
 
         result = findViewById(R.id.resultIM);
         confidence = findViewById(R.id.confidenceIM);

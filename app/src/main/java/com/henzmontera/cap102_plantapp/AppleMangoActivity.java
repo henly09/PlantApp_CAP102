@@ -5,10 +5,13 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.Manifest;
+import android.app.ActionBar;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.media.ThumbnailUtils;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -44,7 +47,10 @@ public class AppleMangoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_apple_mango);
 
-        setTitle("Apple Mango Identifier");
+        getSupportActionBar().setBackgroundDrawable(getDrawable(R.drawable.side_nav_bar));
+
+        setTitle("APPLE MANGO");
+
 
         result = findViewById(R.id.resultAM);
         confidence = findViewById(R.id.confidenceAM);

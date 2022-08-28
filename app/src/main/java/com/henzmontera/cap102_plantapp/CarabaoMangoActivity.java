@@ -44,8 +44,8 @@ public class CarabaoMangoActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_carabao_mango);
-
-        setTitle("Carabao Mango Identifier");
+        getSupportActionBar().setBackgroundDrawable(getDrawable(R.drawable.side_nav_bar));
+        setTitle("CARABAO MANGO");
 
         result = findViewById(R.id.resultCM);
         confidence = findViewById(R.id.confidenceCM);

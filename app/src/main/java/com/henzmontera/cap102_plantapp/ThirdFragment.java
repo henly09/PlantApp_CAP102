@@ -3,6 +3,7 @@ package com.henzmontera.cap102_plantapp;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import android.util.Log;
@@ -23,6 +24,8 @@ public class ThirdFragment extends Fragment {
         Button mangoapplebutton = rootview.findViewById(R.id.applemangobutton);
         Button mangocarabaobutton = rootview.findViewById(R.id.carabaomangobutton);
         Button mangoindianbutton = rootview.findViewById(R.id.indianmangobutton);
+
+        ((AppCompatActivity)getActivity()).getSupportActionBar().setBackgroundDrawable(getActivity().getDrawable(R.drawable.side_nav_bar));
 
         mangoapplebutton.setOnClickListener(view -> {
             Intent intent = new Intent(getActivity(), AppleMangoActivity.class);

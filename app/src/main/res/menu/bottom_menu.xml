@@ -8,10 +8,10 @@
     <item
         android:id="@+id/secondFragment"
         android:title="Handbook"
-        android:icon="@drawable/ic_handbook"/>
+        android:icon="@drawable/ic_handbook" />
     <item
         android:id="@+id/thirdFragment"
         android:title="Image Processing"
-        android:icon="@drawable/ic_camera"/>
+        android:icon="@drawable/ic_camera" />
 
 </menu>
