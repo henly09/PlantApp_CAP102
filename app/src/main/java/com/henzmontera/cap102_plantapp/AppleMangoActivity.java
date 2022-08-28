@@ -1,17 +1,24 @@
 package com.henzmontera.cap102_plantapp;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.Manifest;
+import android.app.ActionBar;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.media.ThumbnailUtils;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.view.View;
+import android.text.InputType;
+import android.util.Log;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -29,34 +36,83 @@ import java.text.DecimalFormat;
 
 public class AppleMangoActivity extends AppCompatActivity {
 
-    TextView result, confidence, size;
+    TextView result, confidence, size, brixlevel;
     ImageView imageView;
-    Button picture;
+    Button picture, addingbrix;
     int imageSize = 224;
+    private String m_Text = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_apple_mango);
 
+        getSupportActionBar().setBackgroundDrawable(getDrawable(R.drawable.side_nav_bar));
+
+        setTitle("APPLE MANGO");
+
+
         result = findViewById(R.id.resultAM);
         confidence = findViewById(R.id.confidenceAM);
         size = findViewById(R.id.sizeAM);
         imageView = findViewById(R.id.imageViewAM);
         picture = findViewById(R.id.buttonAM);
+        addingbrix = findViewById(R.id.addingbrixAM);
+        brixlevel = findViewById(R.id.brixlevelAM);
 
-        picture.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                // Launch camera if we have permission
-                if (checkSelfPermission(Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED) {
-                    Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                    startActivityForResult(cameraIntent, 1);
-                } else {
-                    //Request camera permission if we don't have it.
-                    requestPermissions(new String[]{Manifest.permission.CAMERA}, 100);
-                }
+
+        picture.setOnClickListener(view -> {
+            // Launch camera if we have permission
+            if (checkSelfPermission(Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED) {
+                Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                startActivityForResult(cameraIntent, 1);
+            } else {
+                //Request camera permission if we don't have it.
+                requestPermissions(new String[]{Manifest.permission.CAMERA}, 100);
             }
+        });
+
+        addingbrix.setOnClickListener(view -> {
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle("Input Brix Percentage");
+            builder.setMessage("Put the percentage of the output of the refractometer which using brix meter.");
+            // Set up the input
+            final EditText input = new EditText(this);
+            // Specify the type of input expected; this, for example, sets the input as a password, and will mask the text
+            input.setInputType(InputType.TYPE_CLASS_NUMBER);
+            builder.setView(input);
+            // Set up the buttons
+            builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    m_Text = input.getText().toString();
+                    int a = Integer.parseInt(m_Text);
+                    String b = "";
+                    if (a < 4){
+                        b = "Sour";
+                    }
+                    else if (a >= 4 && a < 6){
+                        b = "Barely Sweet";
+                    }
+                    else if (a >= 6 && a < 10){
+                        b = "Sweet";
+                    }
+                    else if (a >= 10 && a < 14){
+                        b = "Perfect Sweet";
+                    }
+                    else if (a >= 14){
+                        b = "Very Sweet";
+                    }
+                    brixlevel.setText(b);
+                }
+            });
+            builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.cancel();
+                }
+            });
+            builder.show();
         });
     }
 
@@ -117,7 +173,7 @@ public class AppleMangoActivity extends AppCompatActivity {
                 }
             }
 
-            String[] Ma_Ripeness = {"Over-Ripe","Ripe","Ripe w/ Defects","Rotten","Unripe"};
+            String[] Ma_Ripeness = {"Ripe","Ripe W/ Defect","Rotten","Unripe"};
             String[] Ma_Size = {"Small","Medium","Large"};
 
             result.setText(Ma_Ripeness[maxPosRipeness]);
@@ -127,14 +183,15 @@ public class AppleMangoActivity extends AppCompatActivity {
             df.setMaximumFractionDigits(2);
 
             confidence.setText(
-                    "Class Confidence: "+df.format(confidencesripeness[maxPosRipeness] * 100) + "%" +
-                    "\n" + "Size Confidence: "+df.format(confidencessize[maxPosSize] * 100) + "%");
+                    "Ripeness: "+df.format(confidencesripeness[maxPosRipeness] * 100) + "%" +
+                    "\n" + "Size: "+df.format(confidencessize[maxPosSize] * 100) + "%");
 
             // Releases model resources if no longer used.
             MaSize.close();
             MaRipeness.close();
 
         } catch (IOException e) {
+            Log.d("Error: ","Error: "+e);
             Toast.makeText(this, "Error Occured!. Please Try Again Later!", Toast.LENGTH_LONG).show();
         }
     }

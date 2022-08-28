@@ -1,17 +1,22 @@
 package com.henzmontera.cap102_plantapp;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.Manifest;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.media.ThumbnailUtils;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.text.InputType;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -29,21 +34,26 @@ import java.text.DecimalFormat;
 
 public class IndianMangoActivity extends AppCompatActivity {
 
-    TextView result, confidence, size;
+    TextView result, confidence, size, brixlevel;
     ImageView imageView;
-    Button picture;
+    Button picture, addingbrix;
     int imageSize = 224;
+    private String m_Text = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_indian_mango);
+        getSupportActionBar().setBackgroundDrawable(getDrawable(R.drawable.side_nav_bar));
+        setTitle("INDIAN MANGO");
 
         result = findViewById(R.id.resultIM);
         confidence = findViewById(R.id.confidenceIM);
         imageView = findViewById(R.id.imageViewIM);
         picture = findViewById(R.id.buttonIM);
         size = findViewById(R.id.sizeIM);
+        addingbrix = findViewById(R.id.addingbrixIM);
+        brixlevel = findViewById(R.id.brixlevelIM);
 
         picture.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -57,6 +67,49 @@ public class IndianMangoActivity extends AppCompatActivity {
                     requestPermissions(new String[]{Manifest.permission.CAMERA}, 100);
                 }
             }
+        });
+
+        addingbrix.setOnClickListener(view -> {
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle("Input Brix Percentage");
+            builder.setMessage("Put the percentage of the output of the refractometer which using brix meter.");
+            // Set up the input
+            final EditText input = new EditText(this);
+            // Specify the type of input expected; this, for example, sets the input as a password, and will mask the text
+            input.setInputType(InputType.TYPE_CLASS_NUMBER);
+            builder.setView(input);
+            // Set up the buttons
+            builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    m_Text = input.getText().toString();
+                    int a = Integer.parseInt(m_Text);
+                    String b = "";
+                    if (a < 4){
+                        b = "Sour";
+                    }
+                    else if (a >= 4 && a < 6){
+                        b = "Barely Sweet";
+                    }
+                    else if (a >= 6 && a < 10){
+                        b = "Sweet";
+                    }
+                    else if (a >= 10 && a < 14){
+                        b = "Perfect Sweet";
+                    }
+                    else if (a >= 14){
+                        b = "Very Sweet";
+                    }
+                    brixlevel.setText(b);
+                }
+            });
+            builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.cancel();
+                }
+            });
+            builder.show();
         });
     }
 
@@ -126,14 +179,15 @@ public class IndianMangoActivity extends AppCompatActivity {
             df.setMaximumFractionDigits(2);
 
             confidence.setText(
-                    "Class Confidence: "+df.format(confidencesripeness[maxPosRipeness] * 100) + "%" +
-                            "\n" + "Size Confidence: "+df.format(confidencesripeness[maxPosRipeness] * 100) + "%");
+                    "Ripeness: "+df.format(confidencesripeness[maxPosRipeness] * 100) + "%" +
+                            "\n" + "Size: "+df.format(confidencesripeness[maxPosRipeness] * 100) + "%");
 
             // Releases model resources if no longer used.
             MiRipeness.close();
             MiSize.close();
 
         } catch (IOException e) {
+            Log.d("Error: ","Error: "+e);
             Toast.makeText(this, "Error Occured!. Please Try Again Later!", Toast.LENGTH_LONG).show();
         }
 

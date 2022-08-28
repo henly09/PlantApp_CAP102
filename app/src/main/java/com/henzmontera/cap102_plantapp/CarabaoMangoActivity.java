@@ -1,21 +1,28 @@
 package com.henzmontera.cap102_plantapp;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.Manifest;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.media.ThumbnailUtils;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.text.InputType;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
-// import com.henzmontera.cap102_plantapp.ml.MangaApple;
+import com.henzmontera.cap102_plantapp.ml.CmRipenessSorter;
+import com.henzmontera.cap102_plantapp.ml.CmSizeSorter;
 
 import org.tensorflow.lite.DataType;
 import org.tensorflow.lite.support.tensorbuffer.TensorBuffer;
@@ -23,23 +30,30 @@ import org.tensorflow.lite.support.tensorbuffer.TensorBuffer;
 import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
+import java.text.DecimalFormat;
 
 public class CarabaoMangoActivity extends AppCompatActivity {
 
-    TextView result, confidence;
+    TextView result, confidence, size, brixlevel;
     ImageView imageView;
-    Button picture;
+    Button picture, addingbrix;
     int imageSize = 224;
+    private String m_Text = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_carabao_mango);
+        getSupportActionBar().setBackgroundDrawable(getDrawable(R.drawable.side_nav_bar));
+        setTitle("CARABAO MANGO");
 
         result = findViewById(R.id.resultCM);
         confidence = findViewById(R.id.confidenceCM);
         imageView = findViewById(R.id.imageViewCM);
         picture = findViewById(R.id.buttonCM);
+        size = findViewById(R.id.sizeCM);
+        addingbrix = findViewById(R.id.addingbrixCM);
+        brixlevel = findViewById(R.id.brixlevelCM);
 
         picture.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -54,14 +68,59 @@ public class CarabaoMangoActivity extends AppCompatActivity {
                 }
             }
         });
+
+        addingbrix.setOnClickListener(view -> {
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle("Input Brix Percentage");
+            builder.setMessage("Put the percentage of the output of the refractometer which using brix meter.");
+            // Set up the input
+            final EditText input = new EditText(this);
+            // Specify the type of input expected; this, for example, sets the input as a password, and will mask the text
+            input.setInputType(InputType.TYPE_CLASS_NUMBER);
+            builder.setView(input);
+            // Set up the buttons
+            builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    m_Text = input.getText().toString();
+                    int a = Integer.parseInt(m_Text);
+                    String b = "";
+                    if (a < 4){
+                        b = "Sour";
+                    }
+                    else if (a >= 4 && a < 6){
+                        b = "Barely Sweet";
+                    }
+                    else if (a >= 6 && a < 10){
+                        b = "Sweet";
+                    }
+                    else if (a >= 10 && a < 14){
+                        b = "Perfect Sweet";
+                    }
+                    else if (a >= 14){
+                        b = "Very Sweet";
+                    }
+                    brixlevel.setText(b);
+                }
+            });
+            builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.cancel();
+                }
+            });
+            builder.show();
+        });
     }
 
     public void classifyImage(Bitmap image){ // Add model and add text files
-        /*
+
         try {
 
-            MangaApple model = MangaApple.newInstance(getApplicationContext());
-             Creates inputs for reference.
+            CmRipenessSorter CmRipeness = CmRipenessSorter.newInstance(getApplicationContext());
+            CmSizeSorter CmSize = CmSizeSorter.newInstance(getApplicationContext());
+
+            // Creates inputs for reference.
             TensorBuffer inputFeature0 = TensorBuffer.createFixedSize(new int[]{1, 224, 224, 3}, DataType.FLOAT32);
             ByteBuffer byteBuffer = ByteBuffer.allocateDirect(4 * imageSize * imageSize * 3);
             byteBuffer.order(ByteOrder.nativeOrder());
@@ -79,40 +138,58 @@ public class CarabaoMangoActivity extends AppCompatActivity {
                 }
             }
             inputFeature0.loadBuffer(byteBuffer);
-            // Runs model inference and gets result.
-            MangaApple.Outputs outputs = model.process(inputFeature0);
-            TensorBuffer outputFeature0 = outputs.getOutputFeature0AsTensorBuffer();
 
-            float[] confidences = outputFeature0.getFloatArray();
+
+            // Runs model inference and gets result.
+            CmRipenessSorter.Outputs outputsripness = CmRipeness.process(inputFeature0);
+            TensorBuffer outputFeature0ripeness = outputsripness.getOutputFeature0AsTensorBuffer();
+
+            float[] confidencesripeness = outputFeature0ripeness.getFloatArray();
             // find the index of the class with the biggest confidence.
-            int maxPos = 0;
-            float maxConfidence = 0;
-            for(int i = 0; i < confidences.length; i++){
-                if(confidences[i] > maxConfidence){
-                    maxConfidence = confidences[i];
-                    maxPos = i;
+            int maxPosRipeness = 0;
+            float maxConfidenceRipeness = 0;
+            for(int i = 0; i < confidencesripeness.length; i++){
+                if(confidencesripeness[i] > maxConfidenceRipeness){
+                    maxConfidenceRipeness = confidencesripeness[i];
+                    maxPosRipeness = i;
                 }
             }
 
-            String[] classes =
-                    {"Large_CM_OR", "Large_CM_R", "Large_CM_RD", "Large_CM_ROT", "Large_CM_UR",
-                            "Medium_CM_OR", "Medium_CM_R", "Medium_CM_RD", "Medium_CM_ROT", "Medium_CM_UR",
-                            "SMALL_CM_OR", "SMALL_CM_R", "SMALL_CM_RD", "SMALL_CM_ROT", "SMALL_CM_UR"};
+            CmSizeSorter.Outputs outputssize = CmSize.process(inputFeature0);
+            TensorBuffer outputFeature0size = outputssize.getOutputFeature0AsTensorBuffer();
 
-            result.setText(classes[maxPos]);
-
-            String s = "";
-            for(int i = 0; i <= maxPos; i++){
-                s += String.format("%s: %.1f%%\n", classes[i], confidences[i] * 100);
+            float[] confidencessize = outputFeature0size.getFloatArray();
+            // find the index of the class with the biggest confidence.
+            int maxPosSize = 0;
+            float maxConfidenceSize = 0;
+            for(int i = 0; i < confidencessize.length; i++){
+                if(confidencessize[i] > maxConfidenceSize){
+                    maxConfidenceSize = confidencessize[i];
+                    maxPosSize = i;
+                }
             }
 
-            confidence.setText(confidences[maxPos] * 100 + " %");
+            String[] Mi_Ripeness = {"Ripe","Ripe W/ Defect","Rotten","Unripe"};
+            String[] Mi_Size = {"Large","Medium","Small"};
+
+            result.setText(Mi_Ripeness[maxPosRipeness]);
+            size.setText(Mi_Size[maxPosSize]);
+
+            DecimalFormat df = new DecimalFormat();
+            df.setMaximumFractionDigits(2);
+
+            confidence.setText(
+                    "Ripeness: "+df.format(confidencesripeness[maxPosRipeness] * 100) + "%" +
+                            "\n" + "Size: "+df.format(confidencesripeness[maxPosRipeness] * 100) + "%");
+
             // Releases model resources if no longer used.
-            model.close();
+            CmRipeness.close();
+            CmSize.close();
         } catch (IOException e) {
-            // TODO Handle the exception
+            Log.d("Error: ","Error: "+e);
+            Toast.makeText(this, "Error Occured!. Please Try Again Later!", Toast.LENGTH_LONG).show();
         }
-     */
+
     }
 
     @Override
