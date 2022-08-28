@@ -1,19 +1,25 @@
 package com.henzmontera.cap102_plantapp;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.Manifest;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.media.ThumbnailUtils;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.text.InputType;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.henzmontera.cap102_plantapp.ml.CmRipenessSorter;
 import com.henzmontera.cap102_plantapp.ml.CmSizeSorter;
@@ -28,10 +34,11 @@ import java.text.DecimalFormat;
 
 public class CarabaoMangoActivity extends AppCompatActivity {
 
-    TextView result, confidence, size;
+    TextView result, confidence, size, brixlevel;
     ImageView imageView;
-    Button picture;
+    Button picture, addingbrix;
     int imageSize = 224;
+    private String m_Text = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +52,8 @@ public class CarabaoMangoActivity extends AppCompatActivity {
         imageView = findViewById(R.id.imageViewCM);
         picture = findViewById(R.id.buttonCM);
         size = findViewById(R.id.sizeCM);
+        addingbrix = findViewById(R.id.addingbrixCM);
+        brixlevel = findViewById(R.id.brixlevelCM);
 
         picture.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -58,6 +67,49 @@ public class CarabaoMangoActivity extends AppCompatActivity {
                     requestPermissions(new String[]{Manifest.permission.CAMERA}, 100);
                 }
             }
+        });
+
+        addingbrix.setOnClickListener(view -> {
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle("Input Brix Percentage");
+            builder.setMessage("Put the percentage of the output of the refractometer which using brix meter.");
+            // Set up the input
+            final EditText input = new EditText(this);
+            // Specify the type of input expected; this, for example, sets the input as a password, and will mask the text
+            input.setInputType(InputType.TYPE_CLASS_NUMBER);
+            builder.setView(input);
+            // Set up the buttons
+            builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    m_Text = input.getText().toString();
+                    int a = Integer.parseInt(m_Text);
+                    String b = "";
+                    if (a < 4){
+                        b = "Sour";
+                    }
+                    else if (a >= 4 && a < 6){
+                        b = "Barely Sweet";
+                    }
+                    else if (a >= 6 && a < 10){
+                        b = "Sweet";
+                    }
+                    else if (a >= 10 && a < 14){
+                        b = "Perfect Sweet";
+                    }
+                    else if (a >= 14){
+                        b = "Very Sweet";
+                    }
+                    brixlevel.setText(b);
+                }
+            });
+            builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.cancel();
+                }
+            });
+            builder.show();
         });
     }
 
@@ -117,7 +169,7 @@ public class CarabaoMangoActivity extends AppCompatActivity {
                 }
             }
 
-            String[] Mi_Ripeness = {"Ripe Carabao Mango","Ripe W/ Defect Carabao Mango","Rotten Carabao Mango","Unripe Carabao Mango"};
+            String[] Mi_Ripeness = {"Ripe","Ripe W/ Defect","Rotten","Unripe"};
             String[] Mi_Size = {"Large","Medium","Small"};
 
             result.setText(Mi_Ripeness[maxPosRipeness]);
@@ -127,14 +179,15 @@ public class CarabaoMangoActivity extends AppCompatActivity {
             df.setMaximumFractionDigits(2);
 
             confidence.setText(
-                    "Class Confidence: "+df.format(confidencesripeness[maxPosRipeness] * 100) + "%" +
-                            "\n" + "Size Confidence: "+df.format(confidencesripeness[maxPosRipeness] * 100) + "%");
+                    "Ripeness: "+df.format(confidencesripeness[maxPosRipeness] * 100) + "%" +
+                            "\n" + "Size: "+df.format(confidencesripeness[maxPosRipeness] * 100) + "%");
 
             // Releases model resources if no longer used.
             CmRipeness.close();
             CmSize.close();
         } catch (IOException e) {
-            // TODO Handle the exception
+            Log.d("Error: ","Error: "+e);
+            Toast.makeText(this, "Error Occured!. Please Try Again Later!", Toast.LENGTH_LONG).show();
         }
 
     }
