@@ -54,12 +54,12 @@ public class LoginActivity extends AppCompatActivity {
         LoginButton.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View view) {
-
+                String url = "http://172.21.48.1/networkingbased/LoginUser.php";
 
                RequestQueue request = Volley.newRequestQueue(view.getContext());
                JsonArrayRequest RRequest = new JsonArrayRequest(
                        Request.Method.POST,
-                       "http://172.21.48.1/networkingbased/LoginUser.php",
+                       url,
                        null,
                        new Response.Listener<JSONArray>() {
                            @Override
