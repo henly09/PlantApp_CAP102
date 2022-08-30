@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         botnavView = findViewById(R.id.bottomNavigationView);
         navcon = Navigation.findNavController(this,R.id.fragmentContainerView4);
         appbar = new AppBarConfiguration.Builder(R.id.firstFragment,R.id.secondFragment,R.id.thirdFragment).build();
-        NavigationUI.setupActionBarWithNavController(this, navcon, appbar);
+        // NavigationUI.setupActionBarWithNavController(MainActivity.this, navcon, appbar);
 
         navview.setNavigationItemSelectedListener(this);
         NavigationUI.setupWithNavController(botnavView,navcon);
@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         if(toggle.onOptionsItemSelected(item)){
             return true;
         }
-        return true;
+        return false;
     }
 
     @Override

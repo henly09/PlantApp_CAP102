@@ -45,11 +45,9 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 
-<<<<<<< HEAD
     implementation 'com.github.AppIntro:AppIntro:6.2.0'
-=======
+
     //TensorFlow
->>>>>>> a1c5837595677db8b4c8fe042417faed3b414c7d
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     implementation 'org.tensorflow:tensorflow-lite-support:0.4.1'
     implementation 'org.tensorflow:tensorflow-lite-metadata:0.1.0'
