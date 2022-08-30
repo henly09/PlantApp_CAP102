@@ -31,7 +31,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         // Drawer Navigation setup
@@ -58,32 +57,39 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         if(toggle.onOptionsItemSelected(item)){
             return true;
         }
-        return false;
+        return true;
     }
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
-            case R.id.firstFragment:
-                NavController navController1 = Navigation.findNavController(this, R.id.fragmentContainerView4);
-                navController1.navigateUp();
-                navController1.navigate(R.id.firstFragment);
+            case R.id.Login:
                 drawer.closeDrawers();
-                Toast.makeText(this, "Timeline", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Login", Toast.LENGTH_SHORT).show();
                 break;
-            case R.id.secondFragment:
-                NavController navController2 = Navigation.findNavController(this, R.id.fragmentContainerView4);
-                navController2.navigateUp();
-                navController2.navigate(R.id.secondFragment);
+            case R.id.Register:
                 drawer.closeDrawers();
-                Toast.makeText(this, "Handbook", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Register", Toast.LENGTH_SHORT).show();
                 break;
-            case R.id.thirdFragment:
-                NavController navController3 = Navigation.findNavController(this, R.id.fragmentContainerView4);
-                navController3.navigateUp();
-                navController3.navigate(R.id.thirdFragment);
+            case R.id.Timer:
                 drawer.closeDrawers();
-                Toast.makeText(this, "Image Processing", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Timer", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.Guide:
+                drawer.closeDrawers();
+                Toast.makeText(this, "Guide", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.DrawerOption:
+                drawer.closeDrawers();
+                Toast.makeText(this, "Settings", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.DrawerAuthor:
+                drawer.closeDrawers();
+                Toast.makeText(this, "Authors", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.DrawerSocialMedia:
+                drawer.closeDrawers();
+                Toast.makeText(this, "Social Media", Toast.LENGTH_SHORT).show();
                 break;
         }
         return true;

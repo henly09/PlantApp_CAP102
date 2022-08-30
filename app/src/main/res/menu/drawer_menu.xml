@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:title="Account">
+        <menu>
+            <group>
+                <item
+                    android:id="@+id/Login"
+                    android:title="Login"
+                    android:icon="@drawable/ic_baseline_login_24" />
+                <item
+                    android:id="@+id/Register"
+                    android:title="Register"
+                    android:icon="@drawable/register" />
+            </group>
+        </menu>
+    </item>
+
+    <item android:title="Tools">
+        <menu>
+            <group>
+                <item
+                    android:id="@+id/Timer"
+                    android:title="Timer"
+                    android:icon="@drawable/time" />
+                <item
+                    android:id="@+id/Guide"
+                    android:title="Guide"
+                    android:icon="@drawable/guide" />
+                <item
+                    android:id="@+id/DrawerOption"
+                    android:title="Options"
+                    android:icon="@drawable/ic_settings" />
+            </group>
+        </menu>
+    </item>
+
+    <item android:title="About">
+        <menu>
+            <group>
+                <item
+                    android:id="@+id/DrawerAuthor"
+                    android:title="Authors"
+                    android:icon="@drawable/ic_baseline_bookmarks_24" />
+                <item
+                    android:id="@+id/DrawerSocialMedia"
+                    android:title="Social Media"
+                    android:icon="@drawable/ic_menu_camera" />
+            </group>
+        </menu>
+    </item>
+
+</menu>
