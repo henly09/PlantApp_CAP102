@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 
@@ -27,7 +28,7 @@ public class ThirdFragment extends Fragment {
         Button mangocarabaobutton = rootview.findViewById(R.id.carabaomangobutton);
         Button mangoindianbutton = rootview.findViewById(R.id.indianmangobutton);
 
-    //    ((AppCompatActivity)getActivity()).getSupportActionBar().setBackgroundDrawable(getActivity().getDrawable(R.drawable.actionbartheme));
+        ((AppCompatActivity)getActivity()).getSupportActionBar().setBackgroundDrawable(getActivity().getDrawable(R.drawable.actionbartheme));
 
         mangoapplebutton.setOnClickListener(view -> {
             Intent intent = new Intent(getActivity(), ImageProcAM.class);

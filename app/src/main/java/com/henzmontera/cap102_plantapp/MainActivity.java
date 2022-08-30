@@ -31,6 +31,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         // Drawer Navigation setup
@@ -44,7 +45,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         botnavView = findViewById(R.id.bottomNavigationView);
         navcon = Navigation.findNavController(this,R.id.fragmentContainerView4);
         appbar = new AppBarConfiguration.Builder(R.id.firstFragment,R.id.secondFragment,R.id.thirdFragment).build();
-        // NavigationUI.setupActionBarWithNavController(MainActivity.this, navcon, appbar);
+        NavigationUI.setupActionBarWithNavController(this, navcon, appbar);
 
         navview.setNavigationItemSelectedListener(this);
         NavigationUI.setupWithNavController(botnavView,navcon);
