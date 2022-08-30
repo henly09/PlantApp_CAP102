@@ -4,6 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/Henz Montera/Desktop/CAP102/cap102_PlantApp/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.14" />
+        <entry key="..\:/Users/Henz Montera/Desktop/CAP102/cap102_PlantApp/app/src/main/res/drawable/actionbarforiamgeprocessing.xml" value="0.1445" />
         <entry key="..\:/Users/Henz Montera/Desktop/CAP102/cap102_PlantApp/app/src/main/res/drawable/actionbartheme.xml" value="0.1375" />
         <entry key="..\:/Users/Henz Montera/Desktop/CAP102/cap102_PlantApp/app/src/main/res/drawable/circle_shape.xml" value="0.145" />
         <entry key="..\:/Users/Henz Montera/Desktop/CAP102/cap102_PlantApp/app/src/main/res/drawable/circular_progress_bar.xml" value="0.145" />
@@ -21,10 +22,11 @@
         <entry key="..\:/Users/Henz Montera/Desktop/CAP102/cap102_PlantApp/app/src/main/res/drawable/imageviewborder.xml" value="0.1375" />
         <entry key="..\:/Users/Henz Montera/Desktop/CAP102/cap102_PlantApp/app/src/main/res/drawable/imageviewborderapplemango.xml" value="0.1375" />
         <entry key="..\:/Users/Henz Montera/Desktop/CAP102/cap102_PlantApp/app/src/main/res/drawable/imageviewbordercarabaomango.xml" value="0.1375" />
+        <entry key="..\:/Users/Henz Montera/Desktop/CAP102/cap102_PlantApp/app/src/main/res/drawable/imageviewborderindianmango.xml" value="0.1445" />
         <entry key="..\:/Users/Henz Montera/Desktop/CAP102/cap102_PlantApp/app/src/main/res/drawable/nav_item_color_state.xml" value="0.1375" />
         <entry key="..\:/Users/Henz Montera/Desktop/CAP102/cap102_PlantApp/app/src/main/res/drawable/side_nav_bar.xml" value="0.133" />
         <entry key="..\:/Users/Henz Montera/Desktop/CAP102/cap102_PlantApp/app/src/main/res/layout/activity_apple_mango.xml" value="0.26132246376811596" />
-        <entry key="..\:/Users/Henz Montera/Desktop/CAP102/cap102_PlantApp/app/src/main/res/layout/activity_carabao_mango.xml" value="0.18840579710144928" />
+        <entry key="..\:/Users/Henz Montera/Desktop/CAP102/cap102_PlantApp/app/src/main/res/layout/activity_carabao_mango.xml" value="0.25" />
         <entry key="..\:/Users/Henz Montera/Desktop/CAP102/cap102_PlantApp/app/src/main/res/layout/activity_indian_mango.xml" value="0.25" />
         <entry key="..\:/Users/Henz Montera/Desktop/CAP102/cap102_PlantApp/app/src/main/res/layout/activity_login.xml" value="0.109486000835771" />
         <entry key="..\:/Users/Henz Montera/Desktop/CAP102/cap102_PlantApp/app/src/main/res/layout/activity_main.xml" value="0.2346014492753623" />

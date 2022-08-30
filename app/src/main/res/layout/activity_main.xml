@@ -11,8 +11,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#F3F3CD"
-        android:backgroundTint="#F3F3CD"
+        android:background="#F9fff4"
+        android:backgroundTint="#F9fff4"
         tools:context=".MainActivity">
 
         <com.google.android.material.bottomnavigation.BottomNavigationView

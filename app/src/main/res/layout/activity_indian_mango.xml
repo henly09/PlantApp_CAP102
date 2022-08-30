@@ -4,58 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F3F3CD"
-    android:backgroundTint="#F3F3CD"
-    tools:context=".MainActivity"
-    android:screenOrientation="portrait" >
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="154dp"
-        android:layout_height="154dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.48"
-        app:srcCompat="@drawable/im_overlay" />
-
-    <ImageView
-        android:id="@+id/imageView8"
-        android:layout_width="154dp"
-        android:layout_height="154dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.48"
-        app:srcCompat="@drawable/im_overlay" />
-
-    <ImageView
-        android:id="@+id/imageView12"
-        android:layout_width="154dp"
-        android:layout_height="154dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/im_overlay" />
-
-    <ImageView
-        android:id="@+id/imageView13"
-        android:layout_width="154dp"
-        android:layout_height="154dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/im_overlay" />
+    android:background="#F9fff4"
+    android:backgroundTint="#F9fff4"
+    android:screenOrientation="portrait"
+    tools:context=".MainActivity">
 
     <Button
         android:id="@+id/buttonIM"
@@ -85,6 +37,7 @@
         android:backgroundTint="@android:color/holo_orange_dark"
         android:text="Add Brix%"
         android:textColor="#FFFFFFFF"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -104,6 +57,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.521" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="154dp"
+        android:layout_height="154dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.454"
+        app:srcCompat="@drawable/im_overlay" />
 
     <TextView
         android:id="@+id/classifiedIM"

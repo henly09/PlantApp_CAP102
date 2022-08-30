@@ -67,7 +67,7 @@ public class CarabaoMangoActivity extends AppCompatActivity {
         decorView.setSystemUiVisibility(uiOptions);
 
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        getSupportActionBar().setBackgroundDrawable(getDrawable(R.drawable.side_nav_bar));
+        getSupportActionBar().setBackgroundDrawable(getDrawable(R.drawable.actionbartheme));
         setTitle("CARABAO MANGO");
 
         result = findViewById(R.id.resultCM);

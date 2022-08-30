@@ -24,4 +24,6 @@
     <color name="graytext">#476423</color>
     <color name="paleblue">#ACD0F9</color>
     <color name="ActionBarTitleColor">#FFFFFFFF</color>
+    <color name="image_before">#aeb2b3</color>
+    <color name="actionbarforiamgeprocessing">#a4d46c</color>
 </resources>
