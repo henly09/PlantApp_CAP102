@@ -3,13 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.henzmontera.cap102_plantapp">
 
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-
-    <uses-permission android:name="android.permission.CAMERA" />
-
     <application
-        android:usesCleartextTraffic="true"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -20,7 +14,6 @@
         android:theme="@style/Theme.Cap102_PlantApp"
         tools:targetApi="31">
         <activity
-<<<<<<< HEAD
             android:name=".ImageProcAM"
             android:theme="@style/Theme.AppCompat.NoActionBar"
             android:exported="true"/>
@@ -32,20 +25,6 @@
             android:name=".ImageProcIM"
             android:theme="@style/Theme.AppCompat.NoActionBar"
             android:exported="true"/>
-=======
-            android:name=".RegisterActivity"
-            android:exported="false" />
-        <activity
-            android:name=".LoginActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-
-        </activity>
->>>>>>> a1c5837595677db8b4c8fe042417faed3b414c7d
         <activity
             android:name=".IndianMangoActivity"
             android:exported="true" />
@@ -58,8 +37,14 @@
         <activity
             android:name=".MainActivity"
             android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
     </application>
+
+    <uses-permission android:name="android.permission.CAMERA" />
 
 </manifest>
