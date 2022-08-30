@@ -1,8 +1,5 @@
 package com.henzmontera.cap102_plantapp;
 
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -20,10 +17,12 @@ import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
 
 import org.json.JSONArray;
-import org.json.JSONException;
 
 import java.util.HashMap;
 import java.util.Map;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -38,8 +37,8 @@ public class RegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
         EditEmail = findViewById(R.id.editRegisterEmail);
-        EditUser = findViewById(R.id.editLoginUsernameText);
-        EditPass = findViewById(R.id.editLoginPasswordText);
+        EditUser = findViewById(R.id.editRegisterUsername);
+        EditPass = findViewById(R.id.editRegisterPassword);
         RegisterButton = findViewById(R.id.RegisterButton);
         LoginText = findViewById(R.id.LoginText);
 
