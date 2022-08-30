@@ -1,22 +1,21 @@
 package com.henzmontera.cap102_plantapp;
-
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
+// Developed by: John Henly A. Montera
+// BSIT-4th-Year
+// Cap102-Project
 
 import android.Manifest;
-import android.app.ActionBar;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.media.ThumbnailUtils;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.text.InputType;
 import android.util.Log;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -34,6 +33,12 @@ import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.text.DecimalFormat;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+
 public class AppleMangoActivity extends AppCompatActivity {
 
     TextView result, confidence, size, brixlevel;
@@ -47,10 +52,24 @@ public class AppleMangoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_apple_mango);
 
+        // calling the action bar
+        ActionBar actionBar = getSupportActionBar();
+        // showing the back button in action bar
+        actionBar.setDisplayHomeAsUpEnabled(true);
+
+        // Hide both the navigation bar and the status bar.
+        // SYSTEM_UI_FLAG_FULLSCREEN is only available on Android 4.1 and higher, but as
+        // a general rule, you should design your app to hide the status bar whenever you
+        // hide the navigation bar.
+
+        View decorView = getWindow().getDecorView();
+        int uiOptions = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+                | View.SYSTEM_UI_FLAG_FULLSCREEN;
+        decorView.setSystemUiVisibility(uiOptions);
+
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getSupportActionBar().setBackgroundDrawable(getDrawable(R.drawable.side_nav_bar));
-
         setTitle("APPLE MANGO");
-
 
         result = findViewById(R.id.resultAM);
         confidence = findViewById(R.id.confidenceAM);
@@ -114,6 +133,18 @@ public class AppleMangoActivity extends AppCompatActivity {
             });
             builder.show();
         });
+    }
+
+    // this event will enable the back
+    // function to the button on press
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                this.finish();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     public void classifyImage(Bitmap image){

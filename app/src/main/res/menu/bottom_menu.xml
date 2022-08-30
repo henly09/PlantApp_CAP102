@@ -4,7 +4,7 @@
     <item
         android:id="@+id/firstFragment"
         android:title="NewsFeed"
-        android:icon="@drawable/ic_home"/>
+        android:icon="@drawable/ic_home" />
     <item
         android:id="@+id/secondFragment"
         android:title="Handbook"

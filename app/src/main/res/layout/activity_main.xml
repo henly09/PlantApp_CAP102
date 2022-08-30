@@ -16,11 +16,17 @@
         android:id="@+id/bottomNavigationView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#fff"
+        android:background="#a5d26a"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:menu="@menu/bottom_menu"/>
+        app:menu="@menu/bottom_menu"
+        app:labelVisibilityMode="unlabeled"
+        app:itemIconSize="35dp"
+        android:layout_gravity="start"
+        app:itemIconTint="@drawable/nav_item_color_state"
+        app:itemTextColor="@drawable/nav_item_color_state"
+        />
 
     <fragment
         android:id="@+id/fragmentContainerView4"
