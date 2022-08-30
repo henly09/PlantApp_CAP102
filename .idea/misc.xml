@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Henz Montera/Desktop/CAP102/cap102_PlantApp/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.14" />
         <entry key="..\:/Users/Henz Montera/Desktop/CAP102/cap102_PlantApp/app/src/main/res/drawable/actionbartheme.xml" value="0.1375" />
         <entry key="..\:/Users/Henz Montera/Desktop/CAP102/cap102_PlantApp/app/src/main/res/drawable/circle_shape.xml" value="0.145" />
         <entry key="..\:/Users/Henz Montera/Desktop/CAP102/cap102_PlantApp/app/src/main/res/drawable/circular_progress_bar.xml" value="0.145" />
@@ -33,6 +34,7 @@
         <entry key="..\:/Users/Henz Montera/Desktop/CAP102/cap102_PlantApp/app/src/main/res/layout/fragment_first.xml" value="0.20697463768115942" />
         <entry key="..\:/Users/Henz Montera/Desktop/CAP102/cap102_PlantApp/app/src/main/res/layout/fragment_second.xml" value="0.20697463768115942" />
         <entry key="..\:/Users/Henz Montera/Desktop/CAP102/cap102_PlantApp/app/src/main/res/layout/fragment_third.xml" value="0.20697463768115942" />
+        <entry key="..\:/Users/Henz Montera/Desktop/CAP102/cap102_PlantApp/app/src/main/res/layout/toolbar.xml" value="0.1526268115942029" />
         <entry key="..\:/Users/Henz Montera/Desktop/CAP102/cap102_PlantApp/app/src/main/res/menu/bottom_menu.xml" value="0.27291666666666664" />
         <entry key="..\:/Users/Henz Montera/Desktop/CAP102/cap102_PlantApp/app/src/main/res/menu/drawer_menu.xml" value="0.2231722958529286" />
         <entry key="..\:/Users/Henz Montera/Desktop/CAP102/cap102_PlantApp/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.1375" />
@@ -52,7 +54,6 @@
         <entry key="..\:/Users/Henz Montera/Desktop/cap102_PlantApp/app/src/main/res/menu/main_menu.xml" value="0.27291666666666664" />
         <entry key="..\:/Users/Henz Montera/Desktop/cap102_PlantApp/app/src/main/res/menu/navigation_menu.xml" value="0.22" />
         <entry key="..\:/Users/Henz Montera/Desktop/cap102_PlantApp/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.21" />
-        <entry key="..\:/Users/neoma/AndroidStudioProjects/PlantApp_CAP102/app/src/main/res/layout/activity_login.xml" value="0.3328804347826087" />
       </map>
     </option>
   </component>
