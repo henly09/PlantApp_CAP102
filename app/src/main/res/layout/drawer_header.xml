@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="192dp"
     android:background="#a5d26a"
-    android:padding="16dp">
+    android:padding="16dp"
+    android:screenOrientation="portrait" >
 
     <ImageView
         android:layout_width="205dp"
