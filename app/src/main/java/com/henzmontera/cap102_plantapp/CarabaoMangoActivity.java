@@ -2,8 +2,8 @@ package com.henzmontera.cap102_plantapp;
 // Developed by: John Henly A. Montera
 // BSIT-4th-Year
 // Cap102-Project
+
 import android.Manifest;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
@@ -102,36 +102,28 @@ public class CarabaoMangoActivity extends AppCompatActivity {
             input.setInputType(InputType.TYPE_CLASS_NUMBER);
             builder.setView(input);
             // Set up the buttons
-            builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    m_Text = input.getText().toString();
-                    int a = Integer.parseInt(m_Text);
-                    String b = "";
-                    if (a < 4){
-                        b = "Sour";
-                    }
-                    else if (a >= 4 && a < 6){
-                        b = "Barely Sweet";
-                    }
-                    else if (a >= 6 && a < 10){
-                        b = "Sweet";
-                    }
-                    else if (a >= 10 && a < 14){
-                        b = "Perfect Sweet";
-                    }
-                    else if (a >= 14){
-                        b = "Very Sweet";
-                    }
-                    brixlevel.setText(b);
+            builder.setPositiveButton("OK", (dialog, which) -> {
+                m_Text = input.getText().toString();
+                int a = Integer.parseInt(m_Text);
+                String b = "";
+                if (a < 4){
+                    b = "Sour";
                 }
-            });
-            builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    dialog.cancel();
+                else if (a >= 4 && a < 6){
+                    b = "Barely Sweet";
                 }
+                else if (a >= 6 && a < 10){
+                    b = "Sweet";
+                }
+                else if (a >= 10 && a < 14){
+                    b = "Perfect Sweet";
+                }
+                else if (a >= 14){
+                    b = "Very Sweet";
+                }
+                brixlevel.setText(b);
             });
+            builder.setNegativeButton("Cancel", (dialog, which) -> dialog.cancel());
             builder.show();
         });
     }

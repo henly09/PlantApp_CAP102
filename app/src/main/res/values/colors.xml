@@ -23,4 +23,5 @@
     <color name="fifthiconcolor">#fd904c</color>
     <color name="graytext">#476423</color>
     <color name="paleblue">#ACD0F9</color>
+    <color name="ActionBarTitleColor">#FFFFFFFF</color>
 </resources>

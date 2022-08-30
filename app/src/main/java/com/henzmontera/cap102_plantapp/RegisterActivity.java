@@ -2,7 +2,6 @@ package com.henzmontera.cap102_plantapp;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -50,50 +49,44 @@ public class RegisterActivity extends AppCompatActivity {
         ////////////////////////////////////////////////////////////////////
 
         //Going back to Login Activity
-        LoginText.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
-                startActivity(intent);
-            }
+        LoginText.setOnClickListener(view -> {
+            Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
+            startActivity(intent);
         });
 
         ////////////////////////////////////////////////////////////////////
 
         //Register New User
-        RegisterButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String url = "http://172.21.48.1/networkingbased/RegisterUser.php";
-                RequestQueue request = Volley.newRequestQueue(view.getContext());
-                JsonArrayRequest RRequest = new JsonArrayRequest(
-                        Request.Method.POST,
-                        url,
-                        null,
-                        new Response.Listener<JSONArray>() {
-                            @Override
-                            public void onResponse(JSONArray response) {
-                            }
-                        },
-                        new Response.ErrorListener() {
-                            @Override
-                            public void onErrorResponse(VolleyError error) {
-                                Toast.makeText(view.getContext(), "Failed to login.\n In ErrorListener \n" + error.getMessage(), Toast.LENGTH_LONG).show();
-                            }
+        RegisterButton.setOnClickListener(view -> {
+            String url = "http://172.21.48.1/networkingbased/RegisterUser.php";
+            RequestQueue request = Volley.newRequestQueue(view.getContext());
+            JsonArrayRequest RRequest = new JsonArrayRequest(
+                    Request.Method.POST,
+                    url,
+                    null,
+                    new Response.Listener<JSONArray>() {
+                        @Override
+                        public void onResponse(JSONArray response) {
                         }
-                ) {
-                    @Nullable
-                    @Override
-                    protected Map<String, String> getParams() throws AuthFailureError {
-                        Map<String, String> param = new HashMap<>();
-                        param.put("EMAIL", email);
-                        param.put("USER", user);
-                        param.put("PASS", pass);
-                        return param;
+                    },
+                    new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+                            Toast.makeText(view.getContext(), "Failed to login.\n In ErrorListener \n" + error.getMessage(), Toast.LENGTH_LONG).show();
+                        }
                     }
-                };
-                request.add(RRequest);
-            }
+            ) {
+                @Nullable
+                @Override
+                protected Map<String, String> getParams() throws AuthFailureError {
+                    Map<String, String> param = new HashMap<>();
+                    param.put("EMAIL", email);
+                    param.put("USER", user);
+                    param.put("PASS", pass);
+                    return param;
+                }
+            };
+            request.add(RRequest);
         });
     }
 }

@@ -4,6 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#F3F3CD"
+    android:backgroundTint="#F3F3CD"
     tools:context=".MainActivity">
 
     <Button
@@ -16,12 +18,28 @@
         android:backgroundTint="@android:color/holo_orange_dark"
         android:text="Take Picture"
         android:textAllCaps="false"
+        android:textColor="#FFFFFFFF"
         android:textSize="21sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/classifiedAM"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/addingbrixAM"
+        android:layout_width="119dp"
+        android:layout_height="48dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginEnd="16dp"
+        android:backgroundTint="@android:color/holo_orange_dark"
+        android:text="Add Brix%"
+        android:textColor="#FFFFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.891" />
 
     <ImageView
         android:id="@+id/imageViewAM"
@@ -37,6 +55,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.521" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="115dp"
+        android:layout_height="114dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.976"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.471"
+        app:srcCompat="@drawable/am_overlay_2" />
 
     <TextView
         android:id="@+id/classifiedAM"
@@ -158,31 +188,5 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/addingbrixAM"
-        android:layout_width="119dp"
-        android:layout_height="48dp"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginEnd="16dp"
-        android:backgroundTint="@android:color/holo_orange_dark"
-        android:text="Add Brix%"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.891" />
-
-    <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="115dp"
-        android:layout_height="114dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.976"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.471"
-        app:srcCompat="@drawable/am_overlay_2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

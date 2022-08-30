@@ -48,19 +48,19 @@
 
         <activity
             android:name=".IndianMangoActivity"
-            android:theme="@style/Theme.AppCompat.Light"
+            android:theme="@style/Theme.AppCompat.DayNight.DarkActionBar"
             android:exported="true" />
         <activity
             android:name=".CarabaoMangoActivity"
-            android:theme="@style/Theme.AppCompat.Light"
+            android:theme="@style/Theme.AppCompat.DayNight.DarkActionBar"
             android:exported="true" />
         <activity
             android:name=".AppleMangoActivity"
-            android:theme="@style/Theme.AppCompat.Light"
+            android:theme="@style/Theme.AppCompat.DayNight.DarkActionBar"
             android:exported="true" />
         <activity
             android:name=".MainActivity"
-            android:theme="@style/Theme.AppCompat.Light"
+            android:theme="@style/Theme.AppCompat.DayNight.DarkActionBar"
             android:exported="true">
 
         </activity>
