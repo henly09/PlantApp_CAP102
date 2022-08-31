@@ -9,13 +9,53 @@
     android:screenOrientation="portrait"
     tools:context=".MainActivity">
 
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="272dp"
+        android:layout_height="290dp"
+        android:layout_marginBottom="524dp"
+        android:layout_marginEnd="204dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/cm_overlay" />
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="272dp"
+        android:layout_height="290dp"
+        android:layout_marginBottom="260dp"
+        android:layout_marginStart="232dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/cm_overlay" />
+
+    <ImageView
+        android:id="@+id/imageView8"
+        android:layout_width="272dp"
+        android:layout_height="290dp"
+        android:layout_marginBottom="624dp"
+        android:layout_marginStart="220dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/cm_overlay" />
+
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="272dp"
+        android:layout_height="290dp"
+        android:layout_marginStart="188dp"
+        android:layout_marginTop="668dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/cm_overlay" />
+
     <Button
         android:id="@+id/buttonCM"
         android:layout_width="200dp"
         android:layout_height="50dp"
         android:layout_below="@+id/imageViewCM"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="24dp"
+        android:layout_marginBottom="40dp"
         android:backgroundTint="@android:color/holo_orange_dark"
         android:text="Take Picture"
         android:textAllCaps="false"
@@ -33,15 +73,15 @@
         android:layout_height="48dp"
         android:layout_alignParentEnd="true"
         android:layout_alignParentTop="true"
-        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="92dp"
         android:backgroundTint="@android:color/holo_orange_dark"
         android:text="Add Brix%"
         android:textColor="#FFFFFFFF"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.891" />
+        app:layout_constraintHorizontal_bias="0.941"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
         android:id="@+id/imageViewCM"
@@ -49,26 +89,14 @@
         android:layout_height="312dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="24dp"
         android:background="@drawable/imageviewbordercarabaomango"
         android:src="@drawable/cameraicon"
         app:layout_constraintBottom_toTopOf="@+id/buttonCM"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.521" />
-
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="154dp"
-        android:layout_height="154dp"
-        app:layout_constraintBottom_toTopOf="@+id/addingbrixCM"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.589"
-        app:srcCompat="@drawable/cm_overlay" />
+        app:layout_constraintVertical_bias="0.634" />
 
     <TextView
         android:id="@+id/classifiedCM"
@@ -77,75 +105,13 @@
         android:layout_alignParentStart="true"
         android:layout_below="@+id/imageViewCM"
         android:layout_marginBottom="20dp"
-        android:layout_marginStart="28dp"
+        android:layout_marginStart="32dp"
         android:gravity="center"
         android:text="Ripeness:"
-        android:textSize="20sp"
+        android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/confidencesTextCM"
         app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/resultCM"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="5dp"
-        android:layout_toEndOf="@+id/classifiedCM"
-        android:text=""
-        android:textColor="#29BD00"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/confidenceCM"
-        app:layout_constraintStart_toEndOf="@+id/classifiedCM"
-        app:layout_constraintTop_toBottomOf="@+id/buttonCM"
-        app:layout_constraintVertical_bias="0.65" />
-
-    <TextView
-        android:id="@+id/confidenceCM"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_marginBottom="12dp"
-        android:layout_marginStart="5dp"
-        android:layout_toEndOf="@+id/confidencesTextCM"
-        android:gravity="center"
-        android:text=""
-        android:textColor="#29BD00"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/sizeCM"
-        app:layout_constraintStart_toEndOf="@+id/confidencesTextCM" />
-
-    <TextView
-        android:id="@+id/sizeCM"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_marginBottom="24dp"
-        android:layout_marginStart="5dp"
-        android:layout_toEndOf="@+id/SizesCM"
-        android:gravity="center"
-        android:textColor="#29BD00"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/brixlevelCM"
-        app:layout_constraintStart_toEndOf="@+id/SizesCM" />
-
-    <TextView
-        android:id="@+id/brixlevelCM"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_marginBottom="84dp"
-        android:layout_marginStart="8dp"
-        android:layout_toEndOf="@+id/SizesCM"
-        android:gravity="center"
-        android:textColor="#29BD00"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/brixlevelsCM" />
 
     <TextView
         android:id="@+id/confidencesTextCM"
@@ -154,9 +120,9 @@
         android:layout_alignParentStart="true"
         android:layout_below="@+id/classifiedCM"
         android:layout_marginBottom="20dp"
-        android:layout_marginStart="28dp"
+        android:layout_marginStart="32dp"
         android:text="Confidences:"
-        android:textSize="20sp"
+        android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/SizesCM"
         app:layout_constraintStart_toStartOf="parent" />
@@ -168,10 +134,10 @@
         android:layout_alignParentStart="true"
         android:layout_below="@+id/confidencesTextCM"
         android:layout_marginBottom="20dp"
-        android:layout_marginStart="28dp"
+        android:layout_marginStart="32dp"
         android:gravity="center"
         android:text="Size:"
-        android:textSize="20sp"
+        android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/brixlevelsCM"
         app:layout_constraintStart_toStartOf="parent" />
@@ -182,11 +148,11 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/SizesCM"
-        android:layout_marginBottom="84dp"
-        android:layout_marginStart="28dp"
+        android:layout_marginBottom="104dp"
+        android:layout_marginStart="32dp"
         android:gravity="center"
         android:text="Brix Level:"
-        android:textSize="20sp"
+        android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

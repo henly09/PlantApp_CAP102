@@ -49,7 +49,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         navview.setNavigationItemSelectedListener(this);
         NavigationUI.setupWithNavController(botnavView,navcon);
 
-
     }
 
     @Override
