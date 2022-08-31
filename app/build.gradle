@@ -46,6 +46,7 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 
     implementation 'com.github.AppIntro:AppIntro:6.2.0'
+    implementation 'io.github.medyo:android-about-page:2.0.0'
 
     //TensorFlow
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'

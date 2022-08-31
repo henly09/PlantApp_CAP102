@@ -1,5 +1,6 @@
 package com.henzmontera.cap102_plantapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.WindowManager;
@@ -83,6 +84,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 Toast.makeText(this, "Settings", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.DrawerAuthor:
+                Intent intent = new Intent(this, AboutAuthor.class);
+                startActivity(intent);
                 drawer.closeDrawers();
                 Toast.makeText(this, "Authors", Toast.LENGTH_SHORT).show();
                 break;

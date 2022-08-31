@@ -122,7 +122,7 @@ public class CarabaoMangoActivity extends AppCompatActivity {
                 else if (a >= 14){
                     b = "Very Sweet";
                 }
-                String resultstyledText = "Brix Level: <font style='font-size:18px' color='#249023'>"+ b +"</font>";
+                String resultstyledText = "Brix Level: <font color='#249023'>"+ b +"</font>";
                 brixlevel.setText(Html.fromHtml(resultstyledText), TextView.BufferType.SPANNABLE);
             });
             builder.setNegativeButton("Cancel", (dialog, which) -> dialog.cancel());
@@ -201,10 +201,10 @@ public class CarabaoMangoActivity extends AppCompatActivity {
             String[] Cm_Ripeness = {"Ripe","Ripe W/ Defect","Rotten","Unripe"};
             String[] Cm_Size = {"Large","Medium","Small"};
 
-            String resultstyledText = "Ripeness: <font style='font-size:18px' color='#249023'>"+ Cm_Ripeness[maxPosRipeness] +"</font>";
+            String resultstyledText = "Ripeness: <font color='#249023'>"+ Cm_Ripeness[maxPosRipeness] +"</font>";
             result.setText(Html.fromHtml(resultstyledText), TextView.BufferType.SPANNABLE);
 
-            String sizestyledText = "Size: <font style='font-size:18px' color='#249023'>"+ Cm_Size[maxPosSize] +"</font>";
+            String sizestyledText = "Size: <font color='#249023'>"+ Cm_Size[maxPosSize] +"</font>";
             size.setText(Html.fromHtml(sizestyledText), TextView.BufferType.SPANNABLE);
 
             DecimalFormat df = new DecimalFormat();
