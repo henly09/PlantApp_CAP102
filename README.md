@@ -1,9 +1,11 @@
 # 🌱🌱 ManGo: A Mango Farming Assistant App 🌱🌱
 
 The main objective of this study is to design and develop an app that helps new farmers grow Mango crops on their own. Specifically, it aims to:
-1.	Provide a Platform for sharing about fruit farming.
-2.	Provide a function can detect the category of a fruit through image-processing. (unripe, ripe, overripe, rotten).
-3.	Provide a function that displaces basic information about fruit farming.
+1.	A Platform for sharing about mango farming.
+2.	A function that displays basic information about mango farming.
+3.	A function to classify the ripeness of a mango through image-processing.
+4.	A function to classify the sweetness of a mango using brix refractometer. 
+5.	A function to classify the size of a mango through image-processing.
 
 ## Description
 
