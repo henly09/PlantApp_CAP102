@@ -5,13 +5,9 @@
         <menu>
             <group>
                 <item
-                    android:id="@+id/Login"
-                    android:title="Login"
-                    android:icon="@drawable/ic_baseline_login_24" />
-                <item
-                    android:id="@+id/Register"
-                    android:title="Register"
-                    android:icon="@drawable/register" />
+                    android:id="@+id/Profile"
+                    android:icon="@drawable/ic_baseline_login_24"
+                    android:title="My Profile" />
             </group>
         </menu>
     </item>
@@ -27,10 +23,6 @@
                     android:id="@+id/Guide"
                     android:title="Guide"
                     android:icon="@drawable/guide" />
-                <item
-                    android:id="@+id/DrawerOption"
-                    android:title="Options"
-                    android:icon="@drawable/ic_settings" />
             </group>
         </menu>
     </item>
@@ -46,6 +38,18 @@
                     android:id="@+id/DrawerSocialMedia"
                     android:title="Social Media"
                     android:icon="@drawable/ic_menu_camera" />
+            </group>
+        </menu>
+    </item>
+    <item android:title="Settings">
+        <menu>
+            <group>
+                <item
+                    android:id="@+id/DrawerOption"
+                    android:title="Option" />
+                <item
+                    android:id="@+id/DrawerLogout"
+                    android:title="Logout" />
             </group>
         </menu>
     </item>

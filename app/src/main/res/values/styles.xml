@@ -9,4 +9,9 @@
         <item name="colorAccent">@color/white</item>
     </style>
 
+    <style name="Black" parent="Theme.AppCompat">
+        <item name="colorAccent">@color/black</item>
+        <item name="icon">@color/black</item>
+    </style>
+
 </resources>
