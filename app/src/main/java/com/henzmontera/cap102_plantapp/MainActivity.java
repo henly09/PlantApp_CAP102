@@ -83,15 +83,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 drawer.closeDrawers();
                 Toast.makeText(this, "Settings", Toast.LENGTH_SHORT).show();
                 break;
-            case R.id.DrawerAuthor:
+            case R.id.AboutUs:
                 Intent intent = new Intent(this, AboutAuthor.class);
                 startActivity(intent);
                 drawer.closeDrawers();
                 Toast.makeText(this, "Authors", Toast.LENGTH_SHORT).show();
-                break;
-            case R.id.DrawerSocialMedia:
-                drawer.closeDrawers();
-                Toast.makeText(this, "Social Media", Toast.LENGTH_SHORT).show();
                 break;
         }
         return true;
