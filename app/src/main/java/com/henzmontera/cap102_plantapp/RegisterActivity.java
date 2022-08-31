@@ -12,10 +12,8 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-
-import org.json.JSONArray;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -41,11 +39,6 @@ public class RegisterActivity extends AppCompatActivity {
         RegisterButton = findViewById(R.id.RegisterButton);
         LoginText = findViewById(R.id.LoginText);
 
-        //Get the Texts and Convert into String type
-        String email = EditEmail.getText().toString();
-        String user = EditUser.getText().toString();
-        String pass = EditPass.getText().toString();
-
         ////////////////////////////////////////////////////////////////////
 
         //Going back to Login Activity
@@ -58,21 +51,27 @@ public class RegisterActivity extends AppCompatActivity {
 
         //Register New User
         RegisterButton.setOnClickListener(view -> {
-            String url = "http://172.21.48.1/networkingbased/RegisterUser.php";
-            RequestQueue request = Volley.newRequestQueue(view.getContext());
-            JsonArrayRequest RRequest = new JsonArrayRequest(
+            String url = "http://192.168.254.100/networkingbased/RegisterUser.php";
+            RequestQueue request = Volley.newRequestQueue(RegisterActivity.this);
+            StringRequest RRequest = new StringRequest(
                     Request.Method.POST,
                     url,
-                    null,
-                    new Response.Listener<JSONArray>() {
+                    new Response.Listener<String>() {
                         @Override
-                        public void onResponse(JSONArray response) {
+                        public void onResponse(String response) {
+                            try{
+                                Toast.makeText(RegisterActivity.this, "User Create Successfully", Toast.LENGTH_SHORT).show();
+                                Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
+                                startActivity(intent);
+                            }catch(Exception e){
+                                Toast.makeText(RegisterActivity.this, "String Exception Error!!\n\n" + e.getMessage(),Toast.LENGTH_SHORT).show();
+                            }
                         }
                     },
                     new Response.ErrorListener() {
                         @Override
                         public void onErrorResponse(VolleyError error) {
-                            Toast.makeText(view.getContext(), "Failed to login.\n In ErrorListener \n" + error.getMessage(), Toast.LENGTH_LONG).show();
+                            Toast.makeText(RegisterActivity.this, "Volley Error.\nIn ErrorListener\n" + error.getMessage(), Toast.LENGTH_LONG).show();
                         }
                     }
             ) {
@@ -80,9 +79,9 @@ public class RegisterActivity extends AppCompatActivity {
                 @Override
                 protected Map<String, String> getParams() throws AuthFailureError {
                     Map<String, String> param = new HashMap<>();
-                    param.put("EMAIL", email);
-                    param.put("USER", user);
-                    param.put("PASS", pass);
+                    param.put("EMAIL", EditEmail.getText().toString());
+                    param.put("USER", EditUser.getText().toString());
+                    param.put("PASS", EditPass.getText().toString());
                     return param;
                 }
             };

@@ -3,31 +3,29 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/Henz Montera/Desktop/CAP102/cap102_PlantApp/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.14" />
-        <entry key="..\:/Users/Henz Montera/Desktop/CAP102/cap102_PlantApp/app/src/main/res/drawable/actionbarforiamgeprocessing.xml" value="0.1445" />
         <entry key="..\:/Users/Henz Montera/Desktop/CAP102/cap102_PlantApp/app/src/main/res/drawable/actionbartheme.xml" value="0.1375" />
         <entry key="..\:/Users/Henz Montera/Desktop/CAP102/cap102_PlantApp/app/src/main/res/drawable/circle_shape.xml" value="0.145" />
         <entry key="..\:/Users/Henz Montera/Desktop/CAP102/cap102_PlantApp/app/src/main/res/drawable/circular_progress_bar.xml" value="0.145" />
         <entry key="..\:/Users/Henz Montera/Desktop/CAP102/cap102_PlantApp/app/src/main/res/drawable/custome_progress_drawable.xml" value="0.135" />
-        <entry key="..\:/Users/Henz Montera/Desktop/CAP102/cap102_PlantApp/app/src/main/res/drawable/ic_baseline_timelapse_24.xml" value="0.1405" />
         <entry key="..\:/Users/Henz Montera/Desktop/CAP102/cap102_PlantApp/app/src/main/res/drawable/ic_camera.xml" value="0.1425" />
-        <entry key="..\:/Users/Henz Montera/Desktop/CAP102/cap102_PlantApp/app/src/main/res/drawable/ic_developer_author.xml" value="0.1445" />
         <entry key="..\:/Users/Henz Montera/Desktop/CAP102/cap102_PlantApp/app/src/main/res/drawable/ic_handbook.xml" value="0.1375" />
         <entry key="..\:/Users/Henz Montera/Desktop/CAP102/cap102_PlantApp/app/src/main/res/drawable/ic_home.xml" value="0.1375" />
         <entry key="..\:/Users/Henz Montera/Desktop/CAP102/cap102_PlantApp/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2655" />
         <entry key="..\:/Users/Henz Montera/Desktop/CAP102/cap102_PlantApp/app/src/main/res/drawable/ic_menu_camera.xml" value="0.1445" />
         <entry key="..\:/Users/Henz Montera/Desktop/CAP102/cap102_PlantApp/app/src/main/res/drawable/ic_nature_background.xml" value="0.133" />
-        <entry key="..\:/Users/Henz Montera/Desktop/CAP102/cap102_PlantApp/app/src/main/res/drawable/ic_nature_foreground.xml" value="0.1445" />
-        <entry key="..\:/Users/Henz Montera/Desktop/CAP102/cap102_PlantApp/app/src/main/res/drawable/ic_settings.xml" value="0.1445" />
         <entry key="..\:/Users/Henz Montera/Desktop/CAP102/cap102_PlantApp/app/src/main/res/drawable/imageviewborder.xml" value="0.1375" />
         <entry key="..\:/Users/Henz Montera/Desktop/CAP102/cap102_PlantApp/app/src/main/res/drawable/imageviewborderapplemango.xml" value="0.1375" />
         <entry key="..\:/Users/Henz Montera/Desktop/CAP102/cap102_PlantApp/app/src/main/res/drawable/imageviewbordercarabaomango.xml" value="0.1375" />
-        <entry key="..\:/Users/Henz Montera/Desktop/CAP102/cap102_PlantApp/app/src/main/res/drawable/imageviewborderindianmango.xml" value="0.1445" />
         <entry key="..\:/Users/Henz Montera/Desktop/CAP102/cap102_PlantApp/app/src/main/res/drawable/nav_item_color_state.xml" value="0.1375" />
         <entry key="..\:/Users/Henz Montera/Desktop/CAP102/cap102_PlantApp/app/src/main/res/drawable/side_nav_bar.xml" value="0.133" />
         <entry key="..\:/Users/Henz Montera/Desktop/CAP102/cap102_PlantApp/app/src/main/res/layout/activity_apple_mango.xml" value="0.22" />
+<<<<<<< HEAD
         <entry key="..\:/Users/Henz Montera/Desktop/CAP102/cap102_PlantApp/app/src/main/res/layout/activity_carabao_mango.xml" value="0.22" />
         <entry key="..\:/Users/Henz Montera/Desktop/CAP102/cap102_PlantApp/app/src/main/res/layout/activity_indian_mango.xml" value="0.22" />
+=======
+        <entry key="..\:/Users/Henz Montera/Desktop/CAP102/cap102_PlantApp/app/src/main/res/layout/activity_carabao_mango.xml" value="0.25" />
+        <entry key="..\:/Users/Henz Montera/Desktop/CAP102/cap102_PlantApp/app/src/main/res/layout/activity_indian_mango.xml" value="0.25" />
+>>>>>>> b6fd8ae1e96977d9627dcc20530519b6315968d1
         <entry key="..\:/Users/Henz Montera/Desktop/CAP102/cap102_PlantApp/app/src/main/res/layout/activity_login.xml" value="0.109486000835771" />
         <entry key="..\:/Users/Henz Montera/Desktop/CAP102/cap102_PlantApp/app/src/main/res/layout/activity_main.xml" value="0.2346014492753623" />
         <entry key="..\:/Users/Henz Montera/Desktop/CAP102/cap102_PlantApp/app/src/main/res/layout/activity_register.xml" value="0.12740487387772553" />
@@ -35,10 +33,8 @@
         <entry key="..\:/Users/Henz Montera/Desktop/CAP102/cap102_PlantApp/app/src/main/res/layout/drawer_header.xml" value="0.20742753623188406" />
         <entry key="..\:/Users/Henz Montera/Desktop/CAP102/cap102_PlantApp/app/src/main/res/layout/fragment_first.xml" value="0.20697463768115942" />
         <entry key="..\:/Users/Henz Montera/Desktop/CAP102/cap102_PlantApp/app/src/main/res/layout/fragment_second.xml" value="0.20697463768115942" />
-        <entry key="..\:/Users/Henz Montera/Desktop/CAP102/cap102_PlantApp/app/src/main/res/layout/fragment_third.xml" value="0.2" />
-        <entry key="..\:/Users/Henz Montera/Desktop/CAP102/cap102_PlantApp/app/src/main/res/layout/toolbar.xml" value="0.1526268115942029" />
+        <entry key="..\:/Users/Henz Montera/Desktop/CAP102/cap102_PlantApp/app/src/main/res/layout/fragment_third.xml" value="0.20697463768115942" />
         <entry key="..\:/Users/Henz Montera/Desktop/CAP102/cap102_PlantApp/app/src/main/res/menu/bottom_menu.xml" value="0.27291666666666664" />
-        <entry key="..\:/Users/Henz Montera/Desktop/CAP102/cap102_PlantApp/app/src/main/res/menu/drawer_menu.xml" value="0.2231722958529286" />
         <entry key="..\:/Users/Henz Montera/Desktop/CAP102/cap102_PlantApp/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.1375" />
         <entry key="..\:/Users/Henz Montera/Desktop/cap102_PlantApp/app/src/main/res/drawable/nav_item_background.xml" value="0.1775" />
         <entry key="..\:/Users/Henz Montera/Desktop/cap102_PlantApp/app/src/main/res/layout/activity_main.xml" value="0.25" />
@@ -56,10 +52,12 @@
         <entry key="..\:/Users/Henz Montera/Desktop/cap102_PlantApp/app/src/main/res/menu/main_menu.xml" value="0.27291666666666664" />
         <entry key="..\:/Users/Henz Montera/Desktop/cap102_PlantApp/app/src/main/res/menu/navigation_menu.xml" value="0.22" />
         <entry key="..\:/Users/Henz Montera/Desktop/cap102_PlantApp/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.21" />
+        <entry key="..\:/Users/neoma/AndroidStudioProjects/PlantApp_CAP102/app/src/main/res/layout/activity_login.xml" value="0.3328804347826087" />
+        <entry key="..\:/Users/neoma/AndroidStudioProjects/PlantApp_CAP102/app/src/main/res/layout/activity_register.xml" value="0.25" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

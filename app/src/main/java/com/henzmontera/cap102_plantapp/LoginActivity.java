@@ -33,14 +33,6 @@ public class LoginActivity extends AppCompatActivity {
 
         /////////////////////////////////////////////////////////////////////////////
 
-        LoginButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                startActivity(intent);
-            }
-        });
-
         RegisText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -49,5 +41,15 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
+        //////////////////////////////////////////////////////////////////////////////
+
+        LoginButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
     }
+
 }
