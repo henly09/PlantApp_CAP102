@@ -2,7 +2,6 @@ package com.henzmontera.cap102_plantapp;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -23,6 +22,9 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+      //  MicrosoftDataImport(); Time Bomb
+
         LoginButton = findViewById(R.id.LoginButton);
         UserEditText = findViewById(R.id.editLoginUsernameText);
         PasswordEditText = findViewById(R.id.editLoginPasswordText);
@@ -33,23 +35,22 @@ public class LoginActivity extends AppCompatActivity {
 
         /////////////////////////////////////////////////////////////////////////////
 
-        RegisText.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
-                startActivity(intent);
-            }
+        RegisText.setOnClickListener(view -> {
+            Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
+            startActivity(intent);
         });
 
         //////////////////////////////////////////////////////////////////////////////
 
-        LoginButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                startActivity(intent);
-            }
+        LoginButton.setOnClickListener(view -> {
+            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+            startActivity(intent);
         });
+    }
+
+    public void MicrosoftDataImport(){
+        MicrosoftDataImporter Mdataimporter = new MicrosoftDataImporter();
+        Mdataimporter.FirebaseTest();
     }
 
 }

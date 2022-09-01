@@ -1,5 +1,9 @@
 package com.henzmontera.cap102_plantapp;
 
+// Developed by: John Henly A. Montera
+// BSIT-4th-Year
+// Cap102-Project
+
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.Gravity;
@@ -36,11 +40,11 @@ public class AboutAuthor extends AppCompatActivity {
                 .addEmail("johnalvin.bula@hcdc.edu.ph","johnalvin.bula@hcdc.edu.ph")
                 .addEmail("cyrexjoshua.cuizon@hcdc.edu.ph","cyrexjoshua.cuizon@hcdc.edu.ph")
                 .addGroup("Author's Github Account")
-                .addWebsite("https://github.com/BnkuBnku", "Cyrex Joshua Cuizon")
-                .addWebsite("https://github.com/alvinbula24", "John Alvin Bula")
-                .addWebsite("https://github.com/henly09", "John Henly A. Montera")
+                .addGitHub("BnkuBnku", "Cyrex Joshua Cuizon")
+                .addGitHub("alvinbula24", "John Alvin Bula")
+                .addGitHub("henly09", "John Henly A. Montera")
                 .addGroup("App's Source Code")
-                .addGitHub("https://github.com/henly09/PlantApp_CAP102", "Source Code")
+                .addGitHub("henly09/tensorflow-lite-tester", "Source Code")
                 .addItem(createCopyright())
                 .create();
 
