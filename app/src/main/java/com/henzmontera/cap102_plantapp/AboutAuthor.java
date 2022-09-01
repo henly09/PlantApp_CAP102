@@ -17,12 +17,10 @@ public class AboutAuthor extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_about_author);
 
         getSupportActionBar().setBackgroundDrawable(getDrawable(R.drawable.actionbartheme));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        Element adsElement = new Element();
         View aboutPage = new AboutPage(this)
                 .isRTL(false)
                 .setImage(R.drawable.logo_mangos_small_reso)
@@ -30,9 +28,9 @@ public class AboutAuthor extends AppCompatActivity {
                         "fruit crops with the guide of the application that we will create.")
                 .addItem(new Element().setTitle("Version 1.0"))
                 .addGroup("Author's Facebook")
-                .addFacebook("https://www.facebook.com/mhax.ter/","John Henly Montera")
-                .addFacebook("https://www.facebook.com/cycyulike","Cyrex Joshua Cuizon")
-                .addFacebook("https://www.facebook.com/alvinbula","John Alvin Bula")
+                .addFacebook("mhax.ter","John Henly Montera")
+                .addFacebook("cycyulike","Cyrex Joshua Cuizon")
+                .addFacebook("alvinbula","John Alvin Bula")
                 .addGroup("Author's Email")
                 .addEmail("johnhenly.montera@hcdc.edu.ph","johnhenly.montera@hcdc.edu.ph")
                 .addEmail("johnalvin.bula@hcdc.edu.ph","johnalvin.bula@hcdc.edu.ph")
