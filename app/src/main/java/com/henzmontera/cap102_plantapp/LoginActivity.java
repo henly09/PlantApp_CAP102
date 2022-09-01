@@ -23,7 +23,7 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-      //  MicrosoftDataImport(); Time Bomb
+      //  MicrosoftDataImport(); Ayaw hilabti <-- Henz
 
         LoginButton = findViewById(R.id.LoginButton);
         UserEditText = findViewById(R.id.editLoginUsernameText);
@@ -48,7 +48,7 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
-    public void MicrosoftDataImport(){
+    public void MicrosoftDataImport(){ // <---- Ayaw hilabti - Henz
         MicrosoftDataImporter Mdataimporter = new MicrosoftDataImporter();
         Mdataimporter.FirebaseTest();
     }
