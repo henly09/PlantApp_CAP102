@@ -2,7 +2,7 @@
     <string name="app_name">ManGo</string>
     <string name="start" />
     <string name="close" />
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="write_message">Write Message</string>
+    <string name="no_data_avail">Hey! Make a little story for yourself.</string>
 
 </resources>
