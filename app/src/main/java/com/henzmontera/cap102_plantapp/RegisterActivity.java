@@ -45,6 +45,7 @@ public class RegisterActivity extends AppCompatActivity {
         LoginText.setOnClickListener(view -> {
             Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
             startActivity(intent);
+            finish();
         });
 
         ////////////////////////////////////////////////////////////////////
@@ -63,6 +64,7 @@ public class RegisterActivity extends AppCompatActivity {
                                 Toast.makeText(RegisterActivity.this, "User Create Successfully", Toast.LENGTH_SHORT).show();
                                 Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
                                 startActivity(intent);
+                                finish();
                             }catch(Exception e){
                                 Toast.makeText(RegisterActivity.this, "String Exception Error!!\n\n" + e.getMessage(),Toast.LENGTH_SHORT).show();
                             }

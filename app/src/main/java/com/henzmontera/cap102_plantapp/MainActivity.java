@@ -64,12 +64,18 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
             case R.id.Login:
+                Intent intentLogin = new Intent(this, LoginActivity.class);
+                startActivity(intentLogin);
                 drawer.closeDrawers();
                 Toast.makeText(this, "Login", Toast.LENGTH_SHORT).show();
+                finish();
                 break;
             case R.id.Register:
+                Intent intentRegister = new Intent(this, RegisterActivity.class);
+                startActivity(intentRegister);
                 drawer.closeDrawers();
                 Toast.makeText(this, "Register", Toast.LENGTH_SHORT).show();
+                finish();
                 break;
             case R.id.Introduction:
                 Intent intentIntro = new Intent(this, Guide.class);
