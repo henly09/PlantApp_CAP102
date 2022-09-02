@@ -24,6 +24,7 @@ public class AboutAuthor extends AppCompatActivity {
 
         getSupportActionBar().setBackgroundDrawable(getDrawable(R.drawable.actionbartheme));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle("About Us");
 
         View aboutPage = new AboutPage(this)
                 .isRTL(false)

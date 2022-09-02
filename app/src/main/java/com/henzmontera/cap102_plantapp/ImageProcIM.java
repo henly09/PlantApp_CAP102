@@ -2,7 +2,10 @@ package com.henzmontera.cap102_plantapp;
 // Developed by: John Henly A. Montera
 // BSIT-4th-Year
 // Cap102-Project
+
+import android.content.ContentValues;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 
 import com.github.appintro.AppIntro;
@@ -13,6 +16,8 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 public class ImageProcIM extends AppIntro {
+
+    SQLiteDatabase myDB;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -107,6 +112,11 @@ public class ImageProcIM extends AppIntro {
 
     @Override
     protected void onSkipPressed(Fragment currentFragment) {
+        myDB = openOrCreateDatabase("IntroSlideCheckStatus.db", 0, null);
+        ContentValues cv = new ContentValues();
+        cv.put("status", "disable");
+        myDB.update("proc_im_to_ima", cv, "status = 'enable'", null);
+        myDB.close();
         Intent intent = new Intent(getApplicationContext(), IndianMangoActivity.class);
         startActivity(intent);
         super.onSkipPressed(currentFragment);
@@ -115,6 +125,11 @@ public class ImageProcIM extends AppIntro {
 
     @Override
     protected void onDonePressed(Fragment currentFragment) {
+        myDB = openOrCreateDatabase("IntroSlideCheckStatus.db", 0, null);
+        ContentValues cv = new ContentValues();
+        cv.put("status", "disable");
+        myDB.update("proc_im_to_ima", cv, "status = 'enable'", null);
+        myDB.close();
         Intent intent = new Intent(getApplicationContext(), IndianMangoActivity.class);
         startActivity(intent);
         super.onDonePressed(currentFragment);
