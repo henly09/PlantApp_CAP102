@@ -50,7 +50,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         navview.setNavigationItemSelectedListener(this);
         NavigationUI.setupWithNavController(botnavView,navcon);
 
-
     }
 
     @Override
@@ -64,34 +63,31 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
-            case R.id.Profile:
+            case R.id.Login:
                 drawer.closeDrawers();
-                Intent intent = new Intent(MainActivity.this, ProfileActivity.class);
-                startActivity(intent);
+                Toast.makeText(this, "Login", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.Register:
+                drawer.closeDrawers();
+                Toast.makeText(this, "Register", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.Timer:
                 drawer.closeDrawers();
-                Toast.makeText(MainActivity.this, "Timer", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Timer", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.Guide:
                 drawer.closeDrawers();
-                Toast.makeText(MainActivity.this, "Guide", Toast.LENGTH_SHORT).show();
-                break;
-            case R.id.DrawerAuthor:
-                drawer.closeDrawers();
-                Toast.makeText(MainActivity.this, "Authors", Toast.LENGTH_SHORT).show();
-                break;
-            case R.id.DrawerSocialMedia:
-                drawer.closeDrawers();
-                Toast.makeText(MainActivity.this, "Social Media", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Guide", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.DrawerOption:
                 drawer.closeDrawers();
-                Toast.makeText(MainActivity.this, "Option", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Settings", Toast.LENGTH_SHORT).show();
                 break;
-            case R.id.DrawerLogout:
+            case R.id.AboutUs:
+                Intent intent = new Intent(this, AboutAuthor.class);
+                startActivity(intent);
                 drawer.closeDrawers();
-                Toast.makeText(MainActivity.this, "Logout", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Authors", Toast.LENGTH_SHORT).show();
                 break;
         }
         return true;

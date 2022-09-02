@@ -12,6 +12,7 @@ import android.graphics.Bitmap;
 import android.media.ThumbnailUtils;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.text.Html;
 import android.text.InputType;
 import android.util.Log;
 import android.view.MenuItem;
@@ -72,13 +73,13 @@ public class IndianMangoActivity extends AppCompatActivity {
         getSupportActionBar().setBackgroundDrawable(getDrawable(R.drawable.actionbartheme));
         setTitle("INDIAN MANGO");
 
-        result = findViewById(R.id.resultIM);
-        confidence = findViewById(R.id.confidenceIM);
+        result = findViewById(R.id.classifiedIM);
+        confidence = findViewById(R.id.confidencesTextIM);
         imageView = findViewById(R.id.imageViewIM);
         picture = findViewById(R.id.buttonIM);
-        size = findViewById(R.id.sizeIM);
+        size = findViewById(R.id.SizesIM);
         addingbrix = findViewById(R.id.addingbrixIM);
-        brixlevel = findViewById(R.id.brixlevelIM);
+        brixlevel = findViewById(R.id.brixlevelsIM);
 
         picture.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -125,7 +126,8 @@ public class IndianMangoActivity extends AppCompatActivity {
                     else if (a >= 14){
                         b = "Very Sweet";
                     }
-                    brixlevel.setText(b);
+                    String resultstyledText = "Brix Level: <font color='#249023'>"+ b +"</font>";
+                    brixlevel.setText(Html.fromHtml(resultstyledText), TextView.BufferType.SPANNABLE);
                 }
             });
             builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
@@ -209,15 +211,17 @@ public class IndianMangoActivity extends AppCompatActivity {
             String[] Mi_Ripeness = {"Ripe","Ripe W/ Defect","Rotten","Unripe"};
             String[] Mi_Size = {"Large","Medium","Small"};
 
-            result.setText(Mi_Ripeness[maxPosRipeness]);
-            size.setText(Mi_Size[maxPosSize]);
+            String resultstyledText = "Ripeness: <font color='#249023'>"+ Mi_Ripeness[maxPosRipeness] +"</font>";
+            result.setText(Html.fromHtml(resultstyledText), TextView.BufferType.SPANNABLE);
+
+            String sizestyledText = "Size: <font color='#249023'>"+ Mi_Size[maxPosSize] +"</font>";
+            size.setText(Html.fromHtml(sizestyledText), TextView.BufferType.SPANNABLE);
 
             DecimalFormat df = new DecimalFormat();
             df.setMaximumFractionDigits(2);
 
-            confidence.setText(
-                    "Ripeness: "+df.format(confidencesripeness[maxPosRipeness] * 100) + "%" +
-                            "\n" + "Size: "+df.format(confidencesripeness[maxPosRipeness] * 100) + "%");
+            String confidencestyledText = "Confidences: <font color='#249023'>"+ "R: "+df.format(confidencesripeness[maxPosRipeness] * 100) + "%" + ", S: "+df.format(confidencessize[maxPosSize] * 100) + "%" +"</font>";
+            confidence.setText(Html.fromHtml(confidencestyledText), TextView.BufferType.SPANNABLE);
 
             // Releases model resources if no longer used.
             MiRipeness.close();

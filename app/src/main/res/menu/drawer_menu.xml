@@ -31,13 +31,9 @@
         <menu>
             <group>
                 <item
-                    android:id="@+id/DrawerAuthor"
-                    android:title="Authors"
+                    android:id="@+id/AboutUs"
+                    android:title="About Us"
                     android:icon="@drawable/ic_baseline_bookmarks_24" />
-                <item
-                    android:id="@+id/DrawerSocialMedia"
-                    android:title="Social Media"
-                    android:icon="@drawable/ic_menu_camera" />
             </group>
         </menu>
     </item>

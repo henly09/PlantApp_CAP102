@@ -9,13 +9,53 @@
     android:screenOrientation="portrait"
     tools:context=".MainActivity">
 
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="347dp"
+        android:layout_height="367dp"
+        android:layout_marginStart="184dp"
+        android:layout_marginTop="632dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/im_overlay" />
+
+    <ImageView
+        android:id="@+id/imageView9"
+        android:layout_width="247dp"
+        android:layout_height="291dp"
+        android:layout_marginBottom="244dp"
+        android:layout_marginEnd="276dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/im_overlay" />
+
+    <ImageView
+        android:id="@+id/imageView11"
+        android:layout_width="251dp"
+        android:layout_height="254dp"
+        android:layout_marginBottom="456dp"
+        android:layout_marginStart="256dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/im_overlay" />
+
+    <ImageView
+        android:id="@+id/imageView10"
+        android:layout_width="273dp"
+        android:layout_height="249dp"
+        android:layout_marginBottom="644dp"
+        android:layout_marginEnd="180dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/im_overlay" />
+
     <Button
         android:id="@+id/buttonIM"
         android:layout_width="200dp"
         android:layout_height="50dp"
         android:layout_below="@+id/imageViewIM"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="24dp"
+        android:layout_marginBottom="40dp"
         android:backgroundTint="@android:color/holo_orange_dark"
         android:text="Take Picture"
         android:textAllCaps="false"
@@ -33,15 +73,15 @@
         android:layout_height="48dp"
         android:layout_alignParentEnd="true"
         android:layout_alignParentTop="true"
-        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="92dp"
         android:backgroundTint="@android:color/holo_orange_dark"
         android:text="Add Brix%"
         android:textColor="#FFFFFFFF"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.891" />
+        app:layout_constraintHorizontal_bias="0.941"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
         android:id="@+id/imageViewIM"
@@ -49,26 +89,14 @@
         android:layout_height="312dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="24dp"
         android:background="@drawable/imageviewborderindianmango"
         android:src="@drawable/cameraicon"
         app:layout_constraintBottom_toTopOf="@+id/buttonIM"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.521" />
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="154dp"
-        android:layout_height="154dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.454"
-        app:srcCompat="@drawable/im_overlay" />
+        app:layout_constraintVertical_bias="0.634" />
 
     <TextView
         android:id="@+id/classifiedIM"
@@ -77,75 +105,13 @@
         android:layout_alignParentStart="true"
         android:layout_below="@+id/imageViewIM"
         android:layout_marginBottom="20dp"
-        android:layout_marginStart="28dp"
+        android:layout_marginStart="32dp"
         android:gravity="center"
         android:text="Ripeness:"
-        android:textSize="20sp"
+        android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/confidencesTextIM"
         app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/resultIM"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="10dp"
-        android:layout_toEndOf="@+id/classifiedIM"
-        android:text=""
-        android:textColor="#29BD00"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/confidenceIM"
-        app:layout_constraintStart_toEndOf="@+id/classifiedIM"
-        app:layout_constraintTop_toBottomOf="@+id/buttonIM"
-        app:layout_constraintVertical_bias="0.65" />
-
-    <TextView
-        android:id="@+id/confidenceIM"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_marginBottom="12dp"
-        android:layout_marginStart="10dp"
-        android:layout_toEndOf="@+id/confidencesTextIM"
-        android:gravity="center"
-        android:text=""
-        android:textColor="#29BD00"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/sizeIM"
-        app:layout_constraintStart_toEndOf="@+id/confidencesTextIM" />
-
-    <TextView
-        android:id="@+id/sizeIM"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_marginBottom="24dp"
-        android:layout_marginStart="10dp"
-        android:layout_toEndOf="@+id/SizesIM"
-        android:gravity="center"
-        android:textColor="#29BD00"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/brixlevelIM"
-        app:layout_constraintStart_toEndOf="@+id/SizesIM" />
-
-    <TextView
-        android:id="@+id/brixlevelIM"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_marginBottom="84dp"
-        android:layout_marginStart="4dp"
-        android:layout_toEndOf="@+id/SizesIM"
-        android:gravity="center"
-        android:textColor="#29BD00"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/brixlevelsIM" />
 
     <TextView
         android:id="@+id/confidencesTextIM"
@@ -154,9 +120,9 @@
         android:layout_alignParentStart="true"
         android:layout_below="@+id/classifiedIM"
         android:layout_marginBottom="20dp"
-        android:layout_marginStart="28dp"
+        android:layout_marginStart="32dp"
         android:text="Confidences:"
-        android:textSize="20sp"
+        android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/SizesIM"
         app:layout_constraintStart_toStartOf="parent" />
@@ -168,10 +134,10 @@
         android:layout_alignParentStart="true"
         android:layout_below="@+id/confidencesTextIM"
         android:layout_marginBottom="20dp"
-        android:layout_marginStart="28dp"
+        android:layout_marginStart="32dp"
         android:gravity="center"
         android:text="Size:"
-        android:textSize="20sp"
+        android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/brixlevelsIM"
         app:layout_constraintStart_toStartOf="parent" />
@@ -182,11 +148,11 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/SizesIM"
-        android:layout_marginBottom="84dp"
-        android:layout_marginStart="28dp"
+        android:layout_marginBottom="104dp"
+        android:layout_marginStart="32dp"
         android:gravity="center"
         android:text="Brix Level:"
-        android:textSize="20sp"
+        android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

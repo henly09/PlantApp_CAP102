@@ -1,9 +1,5 @@
 package com.henzmontera.cap102_plantapp;
 
-// Developed by: John Henly A. Montera
-// BSIT-4th-Year
-// Cap102-Project
-
 import android.content.ContentValues;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
@@ -16,7 +12,7 @@ import com.github.appintro.AppIntroPageTransformerType;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-public class ImageProcAM extends AppIntro {
+public class LogToMainSlides extends AppIntro {
 
     SQLiteDatabase myDB;
 
@@ -24,9 +20,10 @@ public class ImageProcAM extends AppIntro {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+
         addSlide(AppIntroFragment.createInstance(
-                "Welcome!",
-                "This is a demo example in java of AppIntro library, with a custom background on each slide!",
+                "Welcome User!",
+                "This is a ManGo in java of AppIntro library, with a custom background on each slide!",
                 R.drawable.firstslide,
                 R.color.firsticoncolor,
                 R.color.graytext,
@@ -100,7 +97,7 @@ public class ImageProcAM extends AppIntro {
         setColorTransitionsEnabled(true);
 
         // set indication color
-        setIndicatorColor(getResources().getColor(R.color.fifthiconcolor),getResources().getColor(R.color.graytext));
+        setIndicatorColor(getResources().getColor(R.color.fifthiconcolor), getResources().getColor(R.color.graytext));
 
         // set nav bar color
         setNavBarColor(getResources().getColor(R.color.graytext));
@@ -109,7 +106,6 @@ public class ImageProcAM extends AppIntro {
         setBackArrowColor(getResources().getColor(R.color.graytext));
         setNextArrowColor(getResources().getColor(R.color.graytext));
 
-
     }
 
     @Override
@@ -117,9 +113,9 @@ public class ImageProcAM extends AppIntro {
         myDB = openOrCreateDatabase("IntroSlideCheckStatus.db", 0, null);
         ContentValues cv = new ContentValues();
         cv.put("status", "disable");
-        myDB.update("proc_am_to_ama", cv, "status = 'enable'", null);
+        myDB.update("logintomaincheckbox", cv, "status = 'enable'", null);
         myDB.close();
-        Intent intent = new Intent(getApplicationContext(), AppleMangoActivity.class);
+        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
         startActivity(intent);
         super.onSkipPressed(currentFragment);
         finish();
@@ -130,11 +126,12 @@ public class ImageProcAM extends AppIntro {
         myDB = openOrCreateDatabase("IntroSlideCheckStatus.db", 0, null);
         ContentValues cv = new ContentValues();
         cv.put("status", "disable");
-        myDB.update("proc_am_to_ama", cv, "status = 'enable'", null);
+        myDB.update("logintomaincheckbox", cv, "status = 'enable'", null);
         myDB.close();
-        Intent intent = new Intent(getApplicationContext(), AppleMangoActivity.class);
+        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
         startActivity(intent);
         super.onDonePressed(currentFragment);
         finish();
     }
+
 }

@@ -12,6 +12,7 @@ android {
         versionCode 1
         versionName "1.0"
 
+        buildConfigField "String", "BUILD_DATE", "\"" + new Date().getTime() + "\""
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -47,6 +48,8 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 
     implementation 'com.github.AppIntro:AppIntro:6.2.0'
+    implementation 'io.github.medyo:android-about-page:2.0.0'
+    implementation 'com.github.kibotu:TimeBomb:-SNAPSHOT'
 
     //TensorFlow
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'

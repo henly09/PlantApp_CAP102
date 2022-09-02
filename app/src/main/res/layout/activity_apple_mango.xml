@@ -9,13 +9,43 @@
     android:screenOrientation="portrait"
     tools:context=".MainActivity">
 
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="272dp"
+        android:layout_height="290dp"
+        android:layout_marginStart="204dp"
+        android:layout_marginTop="656dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/am_overlay_2" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="272dp"
+        android:layout_height="290dp"
+        android:layout_marginBottom="600dp"
+        android:layout_marginEnd="200dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/am_overlay_2" />
+
+    <ImageView
+        android:id="@+id/imageView7"
+        android:layout_width="272dp"
+        android:layout_height="290dp"
+        android:layout_marginBottom="312dp"
+        android:layout_marginStart="240dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/am_overlay_2" />
+
     <Button
         android:id="@+id/buttonAM"
         android:layout_width="200dp"
         android:layout_height="50dp"
         android:layout_below="@+id/imageViewAM"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="24dp"
+        android:layout_marginBottom="40dp"
         android:backgroundTint="@android:color/holo_orange_dark"
         android:text="Take Picture"
         android:textAllCaps="false"
@@ -27,50 +57,6 @@
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <Button
-        android:id="@+id/addingbrixAM"
-        android:layout_width="119dp"
-        android:layout_height="48dp"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginBottom="72dp"
-        android:backgroundTint="@android:color/holo_orange_dark"
-        android:text="Add Brix%"
-        android:textColor="#FFFFFFFF"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.945"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <ImageView
-        android:id="@+id/imageViewAM"
-        android:layout_width="312dp"
-        android:layout_height="312dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="24dp"
-        android:background="@drawable/imageviewborderapplemango"
-        android:src="@drawable/cameraicon"
-        app:layout_constraintBottom_toTopOf="@+id/buttonAM"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.521" />
-
-    <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="154dp"
-        android:layout_height="154dp"
-        android:layout_marginBottom="204dp"
-        app:layout_constraintBottom_toTopOf="@+id/addingbrixAM"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.992"
-        app:srcCompat="@drawable/am_overlay_2" />
-
     <TextView
         android:id="@+id/classifiedAM"
         android:layout_width="wrap_content"
@@ -78,88 +64,12 @@
         android:layout_alignParentStart="true"
         android:layout_below="@+id/imageViewAM"
         android:layout_marginBottom="20dp"
-        android:layout_marginStart="28dp"
+        android:layout_marginStart="32dp"
         android:gravity="center"
         android:text="Ripeness:"
-        android:textSize="20sp"
+        android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/confidencesTextAM"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/resultAM"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="5dp"
-        android:layout_toEndOf="@+id/classifiedAM"
-        android:text=""
-        android:textColor="#29BD00"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/confidenceAM"
-        app:layout_constraintStart_toEndOf="@+id/classifiedAM"
-        app:layout_constraintTop_toBottomOf="@+id/buttonAM"
-        app:layout_constraintVertical_bias="0.65" />
-
-    <TextView
-        android:id="@+id/confidenceAM"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_marginBottom="12dp"
-        android:layout_marginStart="5dp"
-        android:layout_toEndOf="@+id/confidencesTextAM"
-        android:gravity="center"
-        android:text=""
-        android:textColor="#29BD00"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/sizeAM"
-        app:layout_constraintStart_toEndOf="@+id/confidencesTextAM" />
-
-    <TextView
-        android:id="@+id/sizeAM"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_marginBottom="24dp"
-        android:layout_marginStart="5dp"
-        android:layout_toEndOf="@+id/SizesAM"
-        android:gravity="center"
-        android:textColor="#29BD00"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/brixlevelAM"
-        app:layout_constraintStart_toEndOf="@+id/SizesAM" />
-
-    <TextView
-        android:id="@+id/brixlevelAM"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_marginBottom="84dp"
-        android:layout_marginStart="8dp"
-        android:layout_toEndOf="@+id/SizesAM"
-        android:gravity="center"
-        android:textColor="#29BD00"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/brixlevelsAM" />
-
-    <TextView
-        android:id="@+id/confidencesTextAM"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/classifiedAM"
-        android:layout_marginBottom="20dp"
-        android:layout_marginStart="28dp"
-        android:text="Confidences:"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/SizesAM"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
@@ -169,10 +79,10 @@
         android:layout_alignParentStart="true"
         android:layout_below="@+id/confidencesTextAM"
         android:layout_marginBottom="20dp"
-        android:layout_marginStart="28dp"
+        android:layout_marginStart="32dp"
         android:gravity="center"
         android:text="Size:"
-        android:textSize="20sp"
+        android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/brixlevelsAM"
         app:layout_constraintStart_toStartOf="parent" />
@@ -183,13 +93,58 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/SizesAM"
-        android:layout_marginBottom="84dp"
-        android:layout_marginStart="28dp"
+        android:layout_marginBottom="104dp"
+        android:layout_marginStart="32dp"
         android:gravity="center"
         android:text="Brix Level:"
-        android:textSize="20sp"
+        android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/confidencesTextAM"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/classifiedAM"
+        android:layout_marginBottom="20dp"
+        android:layout_marginStart="32dp"
+        android:text="Confidences:"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/SizesAM"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/addingbrixAM"
+        android:layout_width="119dp"
+        android:layout_height="48dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginBottom="92dp"
+        android:backgroundTint="@android:color/holo_orange_dark"
+        android:text="Add Brix%"
+        android:textColor="#FFFFFFFF"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.941"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageViewAM"
+        android:layout_width="312dp"
+        android:layout_height="312dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/imageviewborderapplemango"
+        android:src="@drawable/cameraicon"
+        app:layout_constraintBottom_toTopOf="@+id/buttonAM"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.634" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
