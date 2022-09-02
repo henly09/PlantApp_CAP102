@@ -71,21 +71,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 drawer.closeDrawers();
                 Toast.makeText(this, "Register", Toast.LENGTH_SHORT).show();
                 break;
-            case R.id.Timer:
+            case R.id.Introduction:
+                Intent intentIntro = new Intent(this, Guide.class);
+                startActivity(intentIntro);
                 drawer.closeDrawers();
-                Toast.makeText(this, "Timer", Toast.LENGTH_SHORT).show();
-                break;
-            case R.id.Guide:
-                drawer.closeDrawers();
-                Toast.makeText(this, "Guide", Toast.LENGTH_SHORT).show();
-                break;
-            case R.id.DrawerOption:
-                drawer.closeDrawers();
-                Toast.makeText(this, "Settings", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Introduction", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.AboutUs:
-                Intent intent = new Intent(this, AboutAuthor.class);
-                startActivity(intent);
+                Intent intentAboutUs = new Intent(this, AboutAuthor.class);
+                startActivity(intentAboutUs);
                 drawer.closeDrawers();
                 Toast.makeText(this, "Authors", Toast.LENGTH_SHORT).show();
                 break;

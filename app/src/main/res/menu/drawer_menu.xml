@@ -16,21 +16,13 @@
         </menu>
     </item>
 
-    <item android:title="Tools">
+    <item android:title="Manual">
         <menu>
             <group>
                 <item
-                    android:id="@+id/Timer"
-                    android:title="Timer"
-                    android:icon="@drawable/time" />
-                <item
-                    android:id="@+id/Guide"
+                    android:id="@+id/Introduction"
                     android:title="Guide"
-                    android:icon="@drawable/guide" />
-                <item
-                    android:id="@+id/DrawerOption"
-                    android:title="Options"
-                    android:icon="@drawable/ic_settings" />
+                    android:icon="@drawable/guide"/>
             </group>
         </menu>
     </item>
@@ -41,7 +33,7 @@
                 <item
                     android:id="@+id/AboutUs"
                     android:title="About Us"
-                    android:icon="@drawable/ic_baseline_bookmarks_24" />
+                    android:icon="@drawable/about" />
             </group>
         </menu>
     </item>
