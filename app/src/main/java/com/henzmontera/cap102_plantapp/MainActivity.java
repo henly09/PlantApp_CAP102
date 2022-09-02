@@ -63,13 +63,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
-            case R.id.Login:
+            case R.id.Profile:
                 drawer.closeDrawers();
-                Toast.makeText(this, "Login", Toast.LENGTH_SHORT).show();
-                break;
-            case R.id.Register:
-                drawer.closeDrawers();
-                Toast.makeText(this, "Register", Toast.LENGTH_SHORT).show();
+                Intent inta = new Intent(MainActivity.this, ProfileActivity.class);
+                startActivity(inta);
                 break;
             case R.id.Timer:
                 drawer.closeDrawers();
@@ -84,10 +81,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 Toast.makeText(this, "Settings", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.AboutUs:
+                drawer.closeDrawers();
                 Intent intent = new Intent(this, AboutAuthor.class);
                 startActivity(intent);
+                break;
+            case R.id.DrawerLogout:
                 drawer.closeDrawers();
-                Toast.makeText(this, "Authors", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Logout", Toast.LENGTH_SHORT).show();
                 break;
         }
         return true;

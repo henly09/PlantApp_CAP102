@@ -2,5 +2,6 @@
     <string name="app_name">ManGo</string>
     <string name="start" />
     <string name="close" />
-
+    <string name="write_message">Write Message</string>
+    <string name="no_data_avail">Hey! Make your profile a little bit story.</string>
 </resources>
