@@ -16,6 +16,10 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".Guide"
+            android:exported="true"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity
             android:name=".LogToMainSlides"
             android:exported="true"
             android:theme="@style/Theme.AppCompat.NoActionBar" />

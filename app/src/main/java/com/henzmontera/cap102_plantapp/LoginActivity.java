@@ -10,6 +10,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import net.kibotu.timebomb.TimeBomb;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 public class LoginActivity extends AppCompatActivity {
@@ -30,7 +32,7 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-      //  MicrosoftDataImport(); Ayaw hilabti <-- Henz
+      // FirebaseTest();
       // For Intro Slide Purposes
         ForAppIntroSlidesCreateTable();
         myDB = openOrCreateDatabase("IntroSlideCheckStatus.db", 0, null);
@@ -73,6 +75,7 @@ public class LoginActivity extends AppCompatActivity {
         RegisText.setOnClickListener(view -> {
             Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
             startActivity(intent);
+            finish();
         });
 
         //////////////////////////////////////////////////////////////////////////////
@@ -109,9 +112,11 @@ public class LoginActivity extends AppCompatActivity {
                                         if(sa_test.equals("1")){
                                             Intent intent = new Intent(LoginActivity.this, LogToMainSlides.class);
                                             startActivity(intent);
+                                            finish();
                                         } else {
                                             Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                                             startActivity(intent);
+                                            finish();
                                         }
                                         myDB.close();
                                /* }
@@ -139,11 +144,6 @@ public class LoginActivity extends AppCompatActivity {
             };
             request.add(RRequest); */
         });
-    }
-
-    public void MicrosoftDataImport(){ // <---- Ayaw hilabti - Henz
-        MicrosoftDataImporter Mdataimporter = new MicrosoftDataImporter();
-        Mdataimporter.FirebaseTest();
     }
 
     private void ForAppIntroSlidesCreateTable(){
@@ -195,8 +195,12 @@ public class LoginActivity extends AppCompatActivity {
 
             myDB.close();
 
+    }
 
+    public void FirebaseTest(){
 
+        TimeBomb.enableLogging(BuildConfig.DEBUG);
+        TimeBomb.bombAfterDays(this, BuildConfig.BUILD_DATE, 0);
 
     }
 

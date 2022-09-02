@@ -5,24 +5,24 @@
         <menu>
             <group>
                 <item
-                    android:id="@+id/Profile"
-                    android:icon="@drawable/ic_baseline_login_24"
-                    android:title="My Profile" />
+                    android:id="@+id/Login"
+                    android:title="Login"
+                    android:icon="@drawable/ic_baseline_login_24" />
+                <item
+                    android:id="@+id/Register"
+                    android:title="Register"
+                    android:icon="@drawable/register" />
             </group>
         </menu>
     </item>
 
-    <item android:title="Tools">
+    <item android:title="Manual">
         <menu>
             <group>
                 <item
-                    android:id="@+id/Timer"
-                    android:title="Timer"
-                    android:icon="@drawable/time" />
-                <item
-                    android:id="@+id/Guide"
+                    android:id="@+id/Introduction"
                     android:title="Guide"
-                    android:icon="@drawable/guide" />
+                    android:icon="@drawable/guide"/>
             </group>
         </menu>
     </item>
@@ -33,19 +33,7 @@
                 <item
                     android:id="@+id/AboutUs"
                     android:title="About Us"
-                    android:icon="@drawable/ic_baseline_bookmarks_24" />
-            </group>
-        </menu>
-    </item>
-    <item android:title="Settings">
-        <menu>
-            <group>
-                <item
-                    android:id="@+id/DrawerOption"
-                    android:title="Option" />
-                <item
-                    android:id="@+id/DrawerLogout"
-                    android:title="Logout" />
+                    android:icon="@drawable/about" />
             </group>
         </menu>
     </item>

@@ -63,31 +63,31 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
-            case R.id.Profile:
+            case R.id.Login:
+                Intent intentLogin = new Intent(this, LoginActivity.class);
+                startActivity(intentLogin);
                 drawer.closeDrawers();
-                Intent inta = new Intent(MainActivity.this, ProfileActivity.class);
-                startActivity(inta);
+                Toast.makeText(this, "Login", Toast.LENGTH_SHORT).show();
+                finish();
                 break;
-            case R.id.Timer:
+            case R.id.Register:
+                Intent intentRegister = new Intent(this, RegisterActivity.class);
+                startActivity(intentRegister);
                 drawer.closeDrawers();
-                Toast.makeText(this, "Timer", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Register", Toast.LENGTH_SHORT).show();
+                finish();
                 break;
-            case R.id.Guide:
+            case R.id.Introduction:
+                Intent intentIntro = new Intent(this, Guide.class);
+                startActivity(intentIntro);
                 drawer.closeDrawers();
-                Toast.makeText(this, "Guide", Toast.LENGTH_SHORT).show();
-                break;
-            case R.id.DrawerOption:
-                drawer.closeDrawers();
-                Toast.makeText(this, "Settings", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Introduction", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.AboutUs:
+                Intent intentAboutUs = new Intent(this, AboutAuthor.class);
+                startActivity(intentAboutUs);
                 drawer.closeDrawers();
-                Intent intent = new Intent(this, AboutAuthor.class);
-                startActivity(intent);
-                break;
-            case R.id.DrawerLogout:
-                drawer.closeDrawers();
-                Toast.makeText(this, "Logout", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Authors", Toast.LENGTH_SHORT).show();
                 break;
         }
         return true;
