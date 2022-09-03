@@ -9,6 +9,22 @@
     android:screenOrientation="portrait"
     tools:context=".MainActivity">
 
+    <com.nex3z.notificationbadge.NotificationBadge
+        android:id="@+id/badgeCM"
+        android:layout_width="28dp"
+        android:layout_height="28dp"
+        android:layout_marginBottom="56dp"
+        android:layout_marginStart="-20dp"
+        android:textSize="16sp"
+        android:translationZ="@dimen/activity_horizontal_margin"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/RecAndProdCM"
+        app:nbAnimationEnabled="true"
+        app:nbBackground="@drawable/badge_file"
+        app:nbMaxTextLength="3" />
+
     <ImageView
         android:id="@+id/imageView5"
         android:layout_width="272dp"
@@ -156,20 +172,6 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
-
-    <com.nex3z.notificationbadge.NotificationBadge
-        android:id="@+id/badgeCM"
-        android:layout_width="28dp"
-        android:layout_height="28dp"
-        android:layout_marginBottom="37dp"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/RecAndProdCM"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:nbAnimationEnabled="true"
-        app:nbBackground="@drawable/badge_file"
-        app:nbMaxTextLength="3" />
 
     <Button
         android:id="@+id/RecAndProdCM"
