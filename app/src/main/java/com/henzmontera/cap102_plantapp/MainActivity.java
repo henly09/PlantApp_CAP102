@@ -26,6 +26,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     AppBarConfiguration appbar;
     ActionBarDrawerToggle toggle;
     NavigationView navview;
+    MenuItem Profile;
+    MenuItem Logout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +52,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         navview.setNavigationItemSelectedListener(this);
         NavigationUI.setupWithNavController(botnavView,navcon);
 
+
     }
 
     @Override
@@ -64,30 +67,41 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
             case R.id.Login:
-                Intent intentLogin = new Intent(this, LoginActivity.class);
+                Intent intentLogin = new Intent(MainActivity.this, LoginActivity.class);
                 startActivity(intentLogin);
                 drawer.closeDrawers();
                 Toast.makeText(this, "Login", Toast.LENGTH_SHORT).show();
                 finish();
                 break;
             case R.id.Register:
-                Intent intentRegister = new Intent(this, RegisterActivity.class);
+                Intent intentRegister = new Intent(MainActivity.this, RegisterActivity.class);
                 startActivity(intentRegister);
                 drawer.closeDrawers();
                 Toast.makeText(this, "Register", Toast.LENGTH_SHORT).show();
                 finish();
                 break;
+            case R.id.AcProfile:
+                Intent intentProfile = new Intent(MainActivity.this, ProfileActivity.class);
+                startActivity(intentProfile);
+                drawer.closeDrawers();
+                break;
             case R.id.Introduction:
-                Intent intentIntro = new Intent(this, Guide.class);
+                Intent intentIntro = new Intent(MainActivity.this, Guide.class);
                 startActivity(intentIntro);
                 drawer.closeDrawers();
                 Toast.makeText(this, "Introduction", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.AboutUs:
-                Intent intentAboutUs = new Intent(this, AboutAuthor.class);
+                Intent intentAboutUs = new Intent(MainActivity.this, AboutAuthor.class);
                 startActivity(intentAboutUs);
                 drawer.closeDrawers();
                 Toast.makeText(this, "Authors", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.Logout:
+                Intent intentLogout = new Intent(MainActivity.this, LoginActivity.class);
+                startActivity(intentLogout);
+                drawer.closeDrawers();
+                finish();
                 break;
         }
         return true;
