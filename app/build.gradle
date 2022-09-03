@@ -47,9 +47,10 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 
-    implementation 'com.github.AppIntro:AppIntro:6.2.0'
-    implementation 'io.github.medyo:android-about-page:2.0.0'
-    implementation 'com.github.kibotu:TimeBomb:-SNAPSHOT'
+    implementation 'com.nex3z:notification-badge:1.0.4' // Notification Badge
+    implementation 'com.github.AppIntro:AppIntro:6.2.0' // Intro Slides
+    implementation 'io.github.medyo:android-about-page:2.0.0' // About Page
+    implementation 'com.github.kibotu:TimeBomb:-SNAPSHOT' // Firebase Data Test
 
     //TensorFlow
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'

@@ -10,16 +10,6 @@
     tools:context=".MainActivity">
 
     <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="272dp"
-        android:layout_height="290dp"
-        android:layout_marginBottom="524dp"
-        android:layout_marginEnd="204dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/cm_overlay" />
-
-    <ImageView
         android:id="@+id/imageView5"
         android:layout_width="272dp"
         android:layout_height="290dp"
@@ -30,11 +20,21 @@
         app:srcCompat="@drawable/cm_overlay" />
 
     <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="272dp"
+        android:layout_height="290dp"
+        android:layout_marginBottom="504dp"
+        android:layout_marginEnd="224dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/cm_overlay" />
+
+    <ImageView
         android:id="@+id/imageView8"
         android:layout_width="272dp"
         android:layout_height="290dp"
-        android:layout_marginBottom="624dp"
-        android:layout_marginStart="220dp"
+        android:layout_marginBottom="616dp"
+        android:layout_marginStart="232dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/cm_overlay" />
@@ -43,11 +43,26 @@
         android:id="@+id/imageView6"
         android:layout_width="272dp"
         android:layout_height="290dp"
-        android:layout_marginStart="188dp"
-        android:layout_marginTop="668dp"
+        android:layout_marginStart="208dp"
+        android:layout_marginTop="648dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/cm_overlay" />
+
+    <ImageView
+        android:id="@+id/imageViewCM"
+        android:layout_width="312dp"
+        android:layout_height="312dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/imageviewbordercarabaomango"
+        android:src="@drawable/cameraicon"
+        app:layout_constraintBottom_toTopOf="@+id/buttonCM"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.634" />
 
     <Button
         android:id="@+id/buttonCM"
@@ -82,21 +97,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.941"
         app:layout_constraintStart_toStartOf="parent" />
-
-    <ImageView
-        android:id="@+id/imageViewCM"
-        android:layout_width="312dp"
-        android:layout_height="312dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:background="@drawable/imageviewbordercarabaomango"
-        android:src="@drawable/cameraicon"
-        app:layout_constraintBottom_toTopOf="@+id/buttonCM"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.493"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.634" />
 
     <TextView
         android:id="@+id/classifiedCM"
@@ -156,5 +156,36 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <com.nex3z.notificationbadge.NotificationBadge
+        android:id="@+id/badgeCM"
+        android:layout_width="28dp"
+        android:layout_height="28dp"
+        android:layout_marginBottom="37dp"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/RecAndProdCM"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:nbAnimationEnabled="true"
+        app:nbBackground="@drawable/badge_file"
+        app:nbMaxTextLength="3" />
+
+    <Button
+        android:id="@+id/RecAndProdCM"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginBottom="28dp"
+        android:backgroundTint="@android:color/holo_orange_dark"
+        android:text="Recipe's &amp; Product's"
+        android:textColor="#FFFFFFFF"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.513"
+        app:layout_constraintStart_toStartOf="parent" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
