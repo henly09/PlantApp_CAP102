@@ -24,6 +24,7 @@ import android.widget.Toast;
 
 import com.henzmontera.cap102_plantapp.ml.CmRipenessSorter;
 import com.henzmontera.cap102_plantapp.ml.CmSizeSorter;
+import com.nex3z.notificationbadge.NotificationBadge;
 
 import org.tensorflow.lite.DataType;
 import org.tensorflow.lite.support.tensorbuffer.TensorBuffer;
@@ -43,9 +44,11 @@ public class CarabaoMangoActivity extends AppCompatActivity {
 
     TextView result, confidence, size, brixlevel;
     ImageView imageView;
-    Button picture, addingbrix;
-    int imageSize = 224;
+    Button picture, addingbrix, RecAndProdCm;
+    int imageSize = 224, notifBadgeCM = 0;
     private String m_Text = "";
+    NotificationBadge notificationBadgeCM;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,6 +81,8 @@ public class CarabaoMangoActivity extends AppCompatActivity {
         size = findViewById(R.id.SizesCM);
         addingbrix = findViewById(R.id.addingbrixCM);
         brixlevel = findViewById(R.id.brixlevelsCM);
+        notificationBadgeCM = findViewById(R.id.badgeCM);
+        RecAndProdCm = findViewById(R.id.RecAndProdCM);
 
         picture.setOnClickListener(new View.OnClickListener() {
             @Override

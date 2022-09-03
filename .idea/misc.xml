@@ -3,7 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Henz Montera/Desktop/CAP102/cap102_PlantApp/app/src/main/res/drawable/about.xml" value="0.1445" />
         <entry key="..\:/Users/Henz Montera/Desktop/CAP102/cap102_PlantApp/app/src/main/res/drawable/actionbartheme.xml" value="0.1375" />
+        <entry key="..\:/Users/Henz Montera/Desktop/CAP102/cap102_PlantApp/app/src/main/res/drawable/badge_file.xml" value="0.142" />
         <entry key="..\:/Users/Henz Montera/Desktop/CAP102/cap102_PlantApp/app/src/main/res/drawable/circle_shape.xml" value="0.145" />
         <entry key="..\:/Users/Henz Montera/Desktop/CAP102/cap102_PlantApp/app/src/main/res/drawable/circular_progress_bar.xml" value="0.145" />
         <entry key="..\:/Users/Henz Montera/Desktop/CAP102/cap102_PlantApp/app/src/main/res/drawable/custome_progress_drawable.xml" value="0.135" />
@@ -21,8 +23,8 @@
         <entry key="..\:/Users/Henz Montera/Desktop/CAP102/cap102_PlantApp/app/src/main/res/layout/activity_about_author.xml" value="0.19067028985507245" />
         <entry key="..\:/Users/Henz Montera/Desktop/CAP102/cap102_PlantApp/app/src/main/res/layout/activity_about_authors.xml" value="0.19067028985507245" />
         <entry key="..\:/Users/Henz Montera/Desktop/CAP102/cap102_PlantApp/app/src/main/res/layout/activity_apple_mango.xml" value="0.22" />
-        <entry key="..\:/Users/Henz Montera/Desktop/CAP102/cap102_PlantApp/app/src/main/res/layout/activity_carabao_mango.xml" value="0.25" />
-        <entry key="..\:/Users/Henz Montera/Desktop/CAP102/cap102_PlantApp/app/src/main/res/layout/activity_indian_mango.xml" value="0.25" />
+        <entry key="..\:/Users/Henz Montera/Desktop/CAP102/cap102_PlantApp/app/src/main/res/layout/activity_carabao_mango.xml" value="0.817047817047817" />
+        <entry key="..\:/Users/Henz Montera/Desktop/CAP102/cap102_PlantApp/app/src/main/res/layout/activity_indian_mango.xml" value="0.22" />
         <entry key="..\:/Users/Henz Montera/Desktop/CAP102/cap102_PlantApp/app/src/main/res/layout/activity_login.xml" value="0.109486000835771" />
         <entry key="..\:/Users/Henz Montera/Desktop/CAP102/cap102_PlantApp/app/src/main/res/layout/activity_main.xml" value="0.2346014492753623" />
         <entry key="..\:/Users/Henz Montera/Desktop/CAP102/cap102_PlantApp/app/src/main/res/layout/activity_register.xml" value="0.12740487387772553" />

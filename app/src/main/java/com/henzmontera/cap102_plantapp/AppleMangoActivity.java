@@ -24,6 +24,7 @@ import android.widget.Toast;
 
 import com.henzmontera.cap102_plantapp.ml.MaRipenessSorter;
 import com.henzmontera.cap102_plantapp.ml.MaSizeSorter;
+import com.nex3z.notificationbadge.NotificationBadge;
 
 import org.tensorflow.lite.DataType;
 import org.tensorflow.lite.support.tensorbuffer.TensorBuffer;
@@ -43,9 +44,10 @@ public class AppleMangoActivity extends AppCompatActivity {
 
     TextView result, confidence, size, brixlevel;
     ImageView imageView;
-    Button picture, addingbrix;
-    int imageSize = 224;
+    Button picture, addingbrix, RecAndProdAM;
+    int imageSize = 224, notifBadgeAM = 0;
     private String m_Text = "";
+    NotificationBadge notificationBadgeAM;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,6 +80,8 @@ public class AppleMangoActivity extends AppCompatActivity {
         picture = findViewById(R.id.buttonAM);
         addingbrix = findViewById(R.id.addingbrixAM);
         brixlevel = findViewById(R.id.brixlevelsAM);
+        notificationBadgeAM = findViewById(R.id.badgeAM);
+        RecAndProdAM = findViewById(R.id.recAndProdAM);
 
 
         picture.setOnClickListener(view -> {

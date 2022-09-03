@@ -23,8 +23,8 @@
         android:id="@+id/imageView4"
         android:layout_width="272dp"
         android:layout_height="290dp"
-        android:layout_marginBottom="600dp"
-        android:layout_marginEnd="200dp"
+        android:layout_marginBottom="460dp"
+        android:layout_marginEnd="252dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@drawable/am_overlay_2" />
@@ -35,6 +35,16 @@
         android:layout_height="290dp"
         android:layout_marginBottom="312dp"
         android:layout_marginStart="240dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/am_overlay_2" />
+
+    <ImageView
+        android:id="@+id/imageView13"
+        android:layout_width="272dp"
+        android:layout_height="290dp"
+        android:layout_marginBottom="696dp"
+        android:layout_marginStart="212dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/am_overlay_2" />
@@ -146,5 +156,35 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.634" />
+
+    <com.nex3z.notificationbadge.NotificationBadge
+        android:id="@+id/badgeAM"
+        android:layout_width="28dp"
+        android:layout_height="28dp"
+        android:layout_marginBottom="37dp"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/recAndProdAM"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:nbAnimationEnabled="true"
+        app:nbBackground="@drawable/badge_file"
+        app:nbMaxTextLength="3" />
+
+    <Button
+        android:id="@+id/recAndProdAM"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginBottom="28dp"
+        android:backgroundTint="@android:color/holo_orange_dark"
+        android:text="Recipe's &amp; Product's"
+        android:textColor="#FFFFFFFF"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.513"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

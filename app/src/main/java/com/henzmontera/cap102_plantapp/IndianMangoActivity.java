@@ -26,6 +26,7 @@ import android.widget.Toast;
 
 import com.henzmontera.cap102_plantapp.ml.MangoIndianRipenessSorter;
 import com.henzmontera.cap102_plantapp.ml.MangoIndianSizeSorter;
+import com.nex3z.notificationbadge.NotificationBadge;
 
 import org.tensorflow.lite.DataType;
 import org.tensorflow.lite.support.tensorbuffer.TensorBuffer;
@@ -45,9 +46,10 @@ public class IndianMangoActivity extends AppCompatActivity {
 
     TextView result, confidence, size, brixlevel;
     ImageView imageView;
-    Button picture, addingbrix;
-    int imageSize = 224;
+    Button picture, addingbrix, RecAndProdIM;
+    int imageSize = 224, notifBadgeIM = 0;
     private String m_Text = "";
+    NotificationBadge notificationBadgeIM;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,18 +82,17 @@ public class IndianMangoActivity extends AppCompatActivity {
         size = findViewById(R.id.SizesIM);
         addingbrix = findViewById(R.id.addingbrixIM);
         brixlevel = findViewById(R.id.brixlevelsIM);
+        notificationBadgeIM = findViewById(R.id.badgeIM);
+        RecAndProdIM = findViewById(R.id.recAndProdIM);
 
-        picture.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                // Launch camera if we have permission
-                if (checkSelfPermission(Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED) {
-                    Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                    startActivityForResult(cameraIntent, 1);
-                } else {
-                    //Request camera permission if we don't have it.
-                    requestPermissions(new String[]{Manifest.permission.CAMERA}, 100);
-                }
+        picture.setOnClickListener(view -> {
+            // Launch camera if we have permission
+            if (checkSelfPermission(Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED) {
+                Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                startActivityForResult(cameraIntent, 1);
+            } else {
+                //Request camera permission if we don't have it.
+                requestPermissions(new String[]{Manifest.permission.CAMERA}, 100);
             }
         });
 
