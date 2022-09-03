@@ -10,9 +10,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import net.kibotu.timebomb.TimeBomb;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -29,7 +29,7 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-      // FirebaseTest();
+      //  FirebaseTest();
       // For Intro Slide Purposes
         ForAppIntroSlidesCreateTable();
         myDB = openOrCreateDatabase("IntroSlideCheckStatus.db", 0, null);

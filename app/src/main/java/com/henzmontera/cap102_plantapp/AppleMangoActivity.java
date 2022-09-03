@@ -83,7 +83,6 @@ public class AppleMangoActivity extends AppCompatActivity {
         notificationBadgeAM = findViewById(R.id.badgeAM);
         RecAndProdAM = findViewById(R.id.recAndProdAM);
 
-
         picture.setOnClickListener(view -> {
             // Launch camera if we have permission
             if (checkSelfPermission(Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED) {

@@ -10,7 +10,7 @@
     tools:context=".MainActivity">
 
     <com.nex3z.notificationbadge.NotificationBadge
-        android:id="@+id/badgeAM"
+        android:id="@+id/badgeIM"
         android:layout_width="28dp"
         android:layout_height="28dp"
         android:layout_marginBottom="56dp"
