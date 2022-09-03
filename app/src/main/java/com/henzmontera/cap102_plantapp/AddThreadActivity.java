@@ -1,29 +1,37 @@
 package com.henzmontera.cap102_plantapp;
 
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 
 import android.os.Bundle;
-import android.view.View;
-import android.view.WindowManager;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 public class AddThreadActivity extends AppCompatActivity {
 
-    Toolbar toolbar;
+    ImageView ProfilePicThread;
+    TextView PostText;
+    EditText EditTextThreadWriteMessage;
+    Button AddImageButtonThread;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_thread);
+        ProfilePicThread = findViewById(R.id.ImageProfileThread);
+        PostText = findViewById(R.id.ButtonPostText);
+        EditTextThreadWriteMessage = findViewById(R.id.EditTextThreadMessInput);
+        AddImageButtonThread = findViewById(R.id.AddImageButton);
 
-        toolbar = findViewById(R.id.uploadToolbar);
+        String thread = EditTextThreadWriteMessage.getText().toString();
 
-        setSupportActionBar(toolbar);
-        toolbar.setNavigationIcon(R.drawable.ic_backarrow);
-        getSupportActionBar().setTitle("");
-        toolbar.setNavigationOnClickListener(view ->{
-            onBackPressed();
+        PostText.setOnClickListener(view ->{
+
+        });
+
+        AddImageButtonThread.setOnClickListener(view ->{
+
         });
 
     }

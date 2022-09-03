@@ -5,7 +5,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -39,12 +38,10 @@ public class ProfileActivity extends AppCompatActivity {
         emptyView = findViewById(R.id.TextviewEmpty);
         UsernameProfile = findViewById(R.id.TextviewUsernameProfile);
 
-        UserPictureProfile = findViewById(R.id.ImageProfileView);
+        UserPictureProfile = findViewById(R.id.ImageProfileThread);
         UserBackgroundProfile = findViewById(R.id.ImageProfileBackground);
 
         recyclerview = findViewById(R.id.recyclerView);
-
-
 
         //If dataset empty, Empty Textview visible, otherwise dataset visible
 //        if (dataset.isEmpty()) {
@@ -58,7 +55,6 @@ public class ProfileActivity extends AppCompatActivity {
 
         // make the boolean variable as false, as all the
         // action name texts and all the sub FABs are invisible
-        isAllFabsVisible = true;
 
         BackButtonProfile.setOnClickListener(view -> {
             onBackPressed();

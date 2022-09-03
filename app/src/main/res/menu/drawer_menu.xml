@@ -12,6 +12,10 @@
                     android:id="@+id/Register"
                     android:title="Register"
                     android:icon="@drawable/register" />
+                <item
+                    android:id="@+id/AcProfile"
+                    android:title="My Profile"
+                    android:icon="@drawable/ic_person"/>
             </group>
         </menu>
     </item>
@@ -37,5 +41,13 @@
             </group>
         </menu>
     </item>
+
+    <group>
+        <item
+            android:id="@+id/Logout"
+            android:title="Logout"
+            android:icon="@drawable/ic_logout" />
+    </group>
+
 
 </menu>
