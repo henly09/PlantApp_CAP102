@@ -56,15 +56,29 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/ImageProfileThread"
         android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
         android:layout_gravity="center_horizontal"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="23dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="10dp"
         android:backgroundTint="@color/colorPrimary"
         android:ems="10"
         android:hint="@string/write_message"
         android:imeOptions="actionDone"
         android:inputType="textMultiLine"
         android:textColorHint="@color/gray" />
+
+    <ImageView
+        android:id="@+id/pimagetv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/AddImageButton"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginEnd="0dp"
+        android:layout_marginBottom="0dp"
+        android:background="@color/white" />
 
     <Button
         android:id="@+id/AddImageButton"
