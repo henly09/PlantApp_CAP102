@@ -27,4 +27,5 @@
     <color name="ActionBarTitleColor">#FFFFFFFF</color>
     <color name="image_before">#aeb2b3</color>
     <color name="actionbarforiamgeprocessing">#a4d46c</color>
+    <color name="colorforAMslide">#a52d32</color>
 </resources>
