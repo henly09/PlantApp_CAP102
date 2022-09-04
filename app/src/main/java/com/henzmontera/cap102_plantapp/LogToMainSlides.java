@@ -44,8 +44,8 @@ public class LogToMainSlides extends AppIntro {
         ));
 
         addSlide(AppIntroFragment.createInstance(
-                "Q&A Software",
-                "Q&A software is provided to users and experts of the mango farming industry in order to share ideas and problems regarding in mango farming industry. The app and its users can asked questions as well as provide or receive expert answers to them. This application is particularly useful for responding to questions regarding specific industries especially in mango farming industry. Users may learn by regularly answering questions or exchanging views with other user who have expertise in mango farm industry.",
+                "Q&A System",
+                "Q&A System is provided to users and experts of the mango farming industry in order to share ideas and problems regarding in mango farming industry. The app and its users can asked questions as well as provide or receive expert answers to them. This application is particularly useful for responding to questions regarding specific industries especially in mango farming industry. Users may learn by regularly answering questions or exchanging views with other user who have expertise in mango farm industry.",
                 R.drawable.introslides3,
                 R.color.thirdiconcolor,
                 R.color.graytext,
