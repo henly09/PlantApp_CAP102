@@ -67,7 +67,7 @@ public class LoginActivity extends AppCompatActivity {
         /////////////////////////////////////////////////////////////////////////////
 
         RegisText.setOnClickListener(view -> {
-            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+            Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
             startActivity(intent);
             finish();
         });
@@ -76,7 +76,7 @@ public class LoginActivity extends AppCompatActivity {
 
         LoginButton.setOnClickListener(view -> {
 
-            Intent intentM = new Intent(LoginActivity.this, ImageProcCM.class);
+            Intent intentM = new Intent(LoginActivity.this, MainActivity.class);
             startActivity(intentM);
 
 //            myDB = openOrCreateDatabase("IntroSlideCheckStatus.db", 0, null);

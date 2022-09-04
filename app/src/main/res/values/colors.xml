@@ -28,4 +28,6 @@
     <color name="image_before">#aeb2b3</color>
     <color name="actionbarforiamgeprocessing">#a4d46c</color>
     <color name="colorforAMslide">#a52d32</color>
+    <color name="darkgray">#404241</color>
+    <color name="testgreen">#086019</color>
 </resources>
