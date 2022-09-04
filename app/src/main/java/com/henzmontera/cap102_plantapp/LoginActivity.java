@@ -76,7 +76,7 @@ public class LoginActivity extends AppCompatActivity {
 
         LoginButton.setOnClickListener(view -> {
 
-            Intent intentM = new Intent(LoginActivity.this, MainActivity.class);
+            Intent intentM = new Intent(LoginActivity.this, LogToMainSlides.class);
             startActivity(intentM);
 
 //            myDB = openOrCreateDatabase("IntroSlideCheckStatus.db", 0, null);
