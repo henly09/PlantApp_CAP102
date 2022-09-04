@@ -51,6 +51,9 @@ public class IndianMangoActivity extends AppCompatActivity {
     private String m_Text = "";
     NotificationBadge notificationBadgeIM;
 
+    int IMbrix;
+    String IMsize,IMripeness;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

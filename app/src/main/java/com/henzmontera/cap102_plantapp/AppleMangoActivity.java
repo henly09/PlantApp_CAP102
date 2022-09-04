@@ -49,6 +49,9 @@ public class AppleMangoActivity extends AppCompatActivity {
     private String m_Text = "";
     NotificationBadge notificationBadgeAM;
 
+    int AMbrix;
+    String AMsize,AMripeness;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
