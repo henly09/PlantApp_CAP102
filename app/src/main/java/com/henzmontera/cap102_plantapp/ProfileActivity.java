@@ -137,6 +137,7 @@ ProfileActivity extends AppCompatActivity {
                             // LIVE
                             recyclerview.setVisibility(View.VISIBLE);
                             recyclerview.requestLayout();
+
                             // GUEST
                             emptyView.setVisibility(View.INVISIBLE);
 
