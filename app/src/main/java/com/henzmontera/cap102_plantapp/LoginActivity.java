@@ -76,10 +76,10 @@ public class LoginActivity extends AppCompatActivity {
 
         LoginButton.setOnClickListener(view -> {
 
-/*            Intent intentM = new Intent(LoginActivity.this, MainActivity.class);
-            startActivity(intentM);*/
+            Intent intentM = new Intent(LoginActivity.this, MainActivity.class);
+            startActivity(intentM);
 
-            myDB = openOrCreateDatabase("IntroSlideCheckStatus.db", 0, null);
+/*            myDB = openOrCreateDatabase("IntroSlideCheckStatus.db", 0, null);
             Cursor ma_checkbox = myDB.rawQuery("SELECT COUNT(*) as count FROM logintomaincheckbox WHERE logintomaincheckbox.status = ?;", new String[] {"enable"});
             while(ma_checkbox.moveToNext()){
                 a_test = ma_checkbox.getColumnIndex("count");
@@ -94,7 +94,7 @@ public class LoginActivity extends AppCompatActivity {
                startActivity(intent);
                 finish();
             }
-            myDB.close();
+            myDB.close();*/
         });
     }
 

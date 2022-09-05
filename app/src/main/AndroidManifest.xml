@@ -32,6 +32,10 @@
             android:exported="true"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
+            android:name=".Refractometer"
+            android:exported="true"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity
             android:name=".LogToMainSlides"
             android:exported="true"
             android:theme="@style/Theme.AppCompat.NoActionBar" />

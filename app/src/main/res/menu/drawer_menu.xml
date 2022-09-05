@@ -25,8 +25,12 @@
             <group>
                 <item
                     android:id="@+id/Introduction"
-                    android:title="Guide"
+                    android:title="App Guide"
                     android:icon="@drawable/guide"/>
+                <item
+                    android:id="@+id/RefractometerGuide"
+                    android:title="Refractometer Guide"
+                    android:icon="@drawable/refractometer"/>
             </group>
         </menu>
     </item>
