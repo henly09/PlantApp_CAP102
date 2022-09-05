@@ -5,7 +5,6 @@ package com.henzmontera.cap102_plantapp;
 // Cap102-Project
 
 import android.Manifest;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
@@ -109,37 +108,29 @@ public class IndianMangoActivity extends AppCompatActivity {
             input.setInputType(InputType.TYPE_CLASS_NUMBER);
             builder.setView(input);
             // Set up the buttons
-            builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    m_Text = input.getText().toString();
-                    int a = Integer.parseInt(m_Text);
-                    String b = "";
-                    if (a < 4){
-                        b = "Sour";
-                    }
-                    else if (a >= 4 && a < 6){
-                        b = "Barely Sweet";
-                    }
-                    else if (a >= 6 && a < 10){
-                        b = "Sweet";
-                    }
-                    else if (a >= 10 && a < 14){
-                        b = "Perfect Sweet";
-                    }
-                    else if (a >= 14){
-                        b = "Very Sweet";
-                    }
-                    String resultstyledText = "Brix Level: <font color='#249023'>"+ b +"</font>";
-                    brixlevel.setText(Html.fromHtml(resultstyledText), TextView.BufferType.SPANNABLE);
+            builder.setPositiveButton("OK", (dialog, which) -> {
+                m_Text = input.getText().toString();
+                int a = Integer.parseInt(m_Text);
+                String b = "";
+                if (a < 4){
+                    b = "Sour";
                 }
-            });
-            builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    dialog.cancel();
+                else if (a >= 4 && a < 6){
+                    b = "Barely Sweet";
                 }
+                else if (a >= 6 && a < 10){
+                    b = "Sweet";
+                }
+                else if (a >= 10 && a < 14){
+                    b = "Perfect Sweet";
+                }
+                else if (a >= 14){
+                    b = "Very Sweet";
+                }
+                String resultstyledText = "Brix Level: <font color='#249023'>"+ b +"</font>";
+                brixlevel.setText(Html.fromHtml(resultstyledText), TextView.BufferType.SPANNABLE);
             });
+            builder.setNegativeButton("Cancel", (dialog, which) -> dialog.cancel());
             builder.show();
         });
     }
