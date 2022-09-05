@@ -10,7 +10,7 @@
     tools:context=".MainActivity">
 
     <com.nex3z.notificationbadge.NotificationBadge
-        android:id="@+id/badgeAM"
+        android:id="@+id/badgeIM"
         android:layout_width="28dp"
         android:layout_height="28dp"
         android:layout_marginBottom="56dp"
@@ -184,6 +184,7 @@
         android:text="Recipe's &amp; Product's"
         android:textColor="#FFFFFFFF"
         android:textStyle="bold"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.513"

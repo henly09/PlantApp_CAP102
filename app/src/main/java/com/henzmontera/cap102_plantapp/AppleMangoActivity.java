@@ -49,6 +49,9 @@ public class AppleMangoActivity extends AppCompatActivity {
     private String m_Text = "";
     NotificationBadge notificationBadgeAM;
 
+    int AMbrix;
+    String AMsize,AMripeness;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -82,7 +85,6 @@ public class AppleMangoActivity extends AppCompatActivity {
         brixlevel = findViewById(R.id.brixlevelsAM);
         notificationBadgeAM = findViewById(R.id.badgeAM);
         RecAndProdAM = findViewById(R.id.recAndProdAM);
-
 
         picture.setOnClickListener(view -> {
             // Launch camera if we have permission

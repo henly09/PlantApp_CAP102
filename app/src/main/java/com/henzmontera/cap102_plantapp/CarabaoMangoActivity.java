@@ -49,6 +49,9 @@ public class CarabaoMangoActivity extends AppCompatActivity {
     private String m_Text = "";
     NotificationBadge notificationBadgeCM;
 
+    int CMbrix;
+    String CMsize,CMripeness;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

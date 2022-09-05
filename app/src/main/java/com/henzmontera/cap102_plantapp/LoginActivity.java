@@ -10,9 +10,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import net.kibotu.timebomb.TimeBomb;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -29,7 +29,7 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-      // FirebaseTest();
+      //  FirebaseTest();
       // For Intro Slide Purposes
         ForAppIntroSlidesCreateTable();
         myDB = openOrCreateDatabase("IntroSlideCheckStatus.db", 0, null);
@@ -79,22 +79,22 @@ public class LoginActivity extends AppCompatActivity {
             Intent intentM = new Intent(LoginActivity.this, MainActivity.class);
             startActivity(intentM);
 
-//            myDB = openOrCreateDatabase("IntroSlideCheckStatus.db", 0, null);
-//            Cursor ma_checkbox = myDB.rawQuery("SELECT COUNT(*) as count FROM logintomaincheckbox WHERE logintomaincheckbox.status = ?;", new String[] {"enable"});
-//            while(ma_checkbox.moveToNext()){
-//                a_test = ma_checkbox.getColumnIndex("count");
-//                sa_test = ma_checkbox.getString(a_test);
-//            }
-//            if(sa_test.equals("1")){
-//                Intent intent = new Intent(LoginActivity.this, LogToMainSlides.class);
-//                startActivity(intent);
-//                finish();
-//            } else {
-//                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-//               startActivity(intent);
-//                finish();
-//            }
-//            myDB.close();
+/*            myDB = openOrCreateDatabase("IntroSlideCheckStatus.db", 0, null);
+            Cursor ma_checkbox = myDB.rawQuery("SELECT COUNT(*) as count FROM logintomaincheckbox WHERE logintomaincheckbox.status = ?;", new String[] {"enable"});
+            while(ma_checkbox.moveToNext()){
+                a_test = ma_checkbox.getColumnIndex("count");
+                sa_test = ma_checkbox.getString(a_test);
+            }
+            if(sa_test.equals("1")){
+                Intent intent = new Intent(LoginActivity.this, LogToMainSlides.class);
+                startActivity(intent);
+                finish();
+            } else {
+                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+               startActivity(intent);
+                finish();
+            }
+            myDB.close();*/
         });
     }
 
