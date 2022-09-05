@@ -5,6 +5,7 @@ import static android.view.View.VISIBLE;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -87,64 +88,64 @@ ProfileActivity extends AppCompatActivity {
         StringRequest r = new StringRequest(
                 Request.Method.GET,
                 url,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        try{
-                            JSONObject oh = new JSONObject(response);
+                response -> {
+                    try{
+                        JSONObject oh = new JSONObject(response);
 
-                            JSONArray latestpost = oh.getJSONArray("LatestPost");
+                        JSONArray latestpost = oh.getJSONArray("LatestPost");
 
-                            int size = latestpost.length();
+                        int size = latestpost.length();
 
-                            String[] A1 = new String[size];
-                            String[] A2 = new String[size];
-                            String[] A3 = new String[size];
-                            String[] A4 = new String[size];
-                            String[] A5 = new String[size];
-                            String[] A6 = new String[size];
-                            String[] A7 = new String[size];
-                            int[] A8 = new int[size];
-                            int[] A9 = new int[size];
+                        String[] A1 = new String[size];
+                        String[] A2 = new String[size];
+                        String[] A3 = new String[size];
+                        String[] A4 = new String[size];
+                        String[] A5 = new String[size];
+                        String[] A6 = new String[size];
+                        String[] A7 = new String[size];
+                        int[] A8 = new int[size];
+                        int[] A9 = new int[size];
 
-                            if (latestpost.length() == 0) {
-                                recyclerview.setVisibility(GONE);
-                                emptyView.setVisibility(VISIBLE);
-                                emptyView.requestLayout();
-                            }
-                            else {
-                                for(int i=0; i<size; i++) {
+                        if (latestpost.length() == 0) {
 
-                                    JSONObject ob = latestpost.getJSONObject(i);
+                            // Live
+                            recyclerview.setVisibility(View.INVISIBLE);
 
-                                    A1[i] = ob.optString("postId");
-                                    A2[i] = ob.optString("postUserId");
-                                    A3[i] = ob.optString("username");
-                                    A4[i] = ob.optString("postDescriptions");
-                                    A5[i] = ob.optString("postTime");
-                                    A6[i] = ob.optString("commentsCount");
-                                    A7[i] = ob.optString("likeCount");
-                                    A8[i] = ob.optInt("userprofilepicture");
-                                    A9[i] = ob.optInt("postImages");
-
-                                    UserPostAdapter userpostAd = new UserPostAdapter(ProfileActivity.this,A1,A2,A3,A4,A5,A6,A7,A8,A9);
-                                    recyclerview.setAdapter(userpostAd);
-                                }
-
-                                recyclerview.setVisibility(VISIBLE);
-                                emptyView.setVisibility(GONE);
-                            }
+                            // Guest
+                            emptyView.setVisibility(View.VISIBLE);
+                            emptyView.requestLayout();
                         }
-                        catch(Exception e){
+                        else {
+                            for(int i=0; i<size; i++) {
+
+                                JSONObject ob = latestpost.getJSONObject(i);
+
+                                A1[i] = ob.optString("postId");
+                                A2[i] = ob.optString("postUserId");
+                                A3[i] = ob.optString("username");
+                                A4[i] = ob.optString("postDescriptions");
+                                A5[i] = ob.optString("postTime");
+                                A6[i] = ob.optString("commentsCount");
+                                A7[i] = ob.optString("likeCount");
+                                A8[i] = ob.optInt("userprofilepicture");
+                                A9[i] = ob.optInt("postImages");
+
+                                UserPostAdapter userpostAd = new UserPostAdapter(ProfileActivity.this,A1,A2,A3,A4,A5,A6,A7,A8,A9);
+                                recyclerview.setAdapter(userpostAd);
+                            }
+
+                            // LIVE
+                            recyclerview.setVisibility(View.VISIBLE);
+                            recyclerview.requestLayout();
+                            // GUEST
+                            emptyView.setVisibility(View.INVISIBLE);
 
                         }
                     }
-                }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Toast.makeText(ProfileActivity.this, "Volley Error Response! \n\n" + error.getMessage(), Toast.LENGTH_SHORT).show();
-            }
-        });
+                    catch(Exception e){
+
+                    }
+                }, error -> Toast.makeText(ProfileActivity.this, "Volley Error Response! \n\n" + error.getMessage(), Toast.LENGTH_SHORT).show());
         q.add(r);
 
     }
