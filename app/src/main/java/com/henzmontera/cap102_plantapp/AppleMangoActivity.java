@@ -3,11 +3,14 @@ package com.henzmontera.cap102_plantapp;
 // BSIT-4th-Year
 // Cap102-Project
 
-import android.Manifest;
+import android.content.ContentResolver;
+import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.graphics.ImageDecoder;
 import android.media.ThumbnailUtils;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.text.Html;
@@ -45,12 +48,12 @@ public class AppleMangoActivity extends AppCompatActivity {
     TextView result, confidence, size, brixlevel;
     ImageView imageView;
     Button picture, addingbrix, RecAndProdAM;
-    int imageSize = 224, notifBadgeAM = 0;
+    int imageSize = 224/*, notifBadgeAM = 0*/;
     private String m_Text = "";
     NotificationBadge notificationBadgeAM;
 
-    int AMbrix;
-    String AMsize,AMripeness;
+/*    int AMbrix;
+    String AMsize,AMripeness;*/
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,14 +90,28 @@ public class AppleMangoActivity extends AppCompatActivity {
         RecAndProdAM = findViewById(R.id.recAndProdAM);
 
         picture.setOnClickListener(view -> {
-            // Launch camera if we have permission
-            if (checkSelfPermission(Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED) {
-                Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                startActivityForResult(cameraIntent, 1);
-            } else {
-                //Request camera permission if we don't have it.
-                requestPermissions(new String[]{Manifest.permission.CAMERA}, 100);
-            }
+            final CharSequence[] options = { "Take Photo", "Choose from Gallery","Cancel" };
+            AlertDialog.Builder builder = new AlertDialog.Builder(AppleMangoActivity.this);
+            builder.setTitle("Take Photo or Choose From Gallery?");
+            builder.setItems(options, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int item) {
+                    if (options[item].equals("Take Photo"))
+                    {
+                        Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                        startActivityForResult(cameraIntent, 1);
+                    }
+                    else if (options[item].equals("Choose from Gallery"))
+                    {
+                        Intent intent = new   Intent(Intent.ACTION_PICK,android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                        startActivityForResult(intent, 2);
+                    }
+                    else if (options[item].equals("Cancel")) {
+                        dialog.dismiss();
+                    }
+                }
+            });
+            builder.show();
         });
 
         addingbrix.setOnClickListener(view -> {
@@ -242,6 +259,33 @@ public class AppleMangoActivity extends AppCompatActivity {
             imageView.setImageBitmap(image);
             image = Bitmap.createScaledBitmap(image, imageSize, imageSize, false);
             classifyImage(image);
+        }
+        if (requestCode == 2 && resultCode == RESULT_OK) {
+            Bitmap bitmap = null;
+            ContentResolver contentResolver = getContentResolver();
+            try {
+                if(Build.VERSION.SDK_INT < 28) {
+                    Uri selectedImage = data.getData();
+                    bitmap = MediaStore.Images.Media.getBitmap(contentResolver, selectedImage);
+                    int dimension = Math.min(bitmap.getWidth(), bitmap.getHeight());
+                    bitmap = ThumbnailUtils.extractThumbnail(bitmap, dimension, dimension);
+                    imageView.setImageBitmap(bitmap);
+                    bitmap = Bitmap.createScaledBitmap(bitmap, imageSize, imageSize, false);
+                    classifyImage(bitmap);
+                } else {
+                    Uri selectedImage = data.getData();
+                    ImageDecoder.Source source = ImageDecoder.createSource(contentResolver, selectedImage);
+                    bitmap = ImageDecoder.decodeBitmap(source);
+                    int dimension = Math.min(bitmap.getWidth(), bitmap.getHeight());
+                    bitmap = ThumbnailUtils.extractThumbnail(bitmap, dimension, dimension);
+                    imageView.setImageBitmap(bitmap);
+                    bitmap = Bitmap.createScaledBitmap(bitmap, imageSize, imageSize, false);
+                    Bitmap softwareBitmap = bitmap.copy(Bitmap.Config.ARGB_8888, false);
+                    classifyImage(softwareBitmap);
+                }
+            } catch (Exception e) {
+                Toast.makeText(this, "Error: "+e, Toast.LENGTH_SHORT).show();
+            }
         }
         super.onActivityResult(requestCode, resultCode, data);
     }
