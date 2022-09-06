@@ -17,7 +17,7 @@ public class Refractometer extends AppIntro {
         addSlide(AppIntroFragment.createInstance(
                 "How to Use a Refractometer?",
                 "A Refractometer is a tool that can determine the concentration of a particular substance in a liquid solution. It uses the principle of refraction, which describes how light bends as it crosses the boundary between one medium and another.",
-                R.drawable.logo_mangos_small_reso,
+                R.drawable.refractometerslide1,
                 R.color.thirdiconcolor,
                 R.color.graytext,
                 R.color.graytext,
@@ -28,7 +28,7 @@ public class Refractometer extends AppIntro {
         addSlide(AppIntroFragment.createInstance(
                 "Brix Refractometer",
                 "Brix Refractometer have a readout that gives the percentage of sucrose, and are used in the food and beverage industry for quality control.",
-                R.drawable.introlog1,
+                R.drawable.refractometerslide2,
                 R.color.thirdiconcolor,
                 R.color.graytext,
                 R.color.graytext,
@@ -39,7 +39,7 @@ public class Refractometer extends AppIntro {
         addSlide(AppIntroFragment.createInstance(
                 "Using a Handheld Brix Refractometer",
                 "To take a measurement with a handheld analog refractometer, follow these steps and read the manufacturer's instructions:",
-                R.drawable.introslides3,
+                R.drawable.refractometerslide3,
                 R.color.thirdiconcolor,
                 R.color.graytext,
                 R.color.graytext,
@@ -50,7 +50,7 @@ public class Refractometer extends AppIntro {
         addSlide(AppIntroFragment.createInstance(
                 "First Step:",
                 "Calibrate the Refractometer with a standard solution before use. Since the reading will be affected by temperature changes, it's best to calibrate at the temperature of the test environment. If this is not possible, correction charts may be used. Some refractometers have automatic temperature correction (ATC), a feature that allows the instrument to automatically correct for temperature differences.",
-                R.drawable.introslide4,
+                R.drawable.refractometerslide4,
                 R.color.thirdiconcolor,
                 R.color.graytext,
                 R.color.graytext,
@@ -61,7 +61,7 @@ public class Refractometer extends AppIntro {
         addSlide(AppIntroFragment.createInstance(
                 "Second Step:",
                 "Place a small amount of liquid (usually 2–5 drops) on the prism, and secure the cover plate. This will evenly distribute the liquid on the prism.",
-                R.drawable.imslide,
+                R.drawable.refractometerslide5,
                 R.color.thirdiconcolor,
                 R.color.darkgray,
                 R.color.darkgray,
@@ -72,7 +72,7 @@ public class Refractometer extends AppIntro {
         addSlide(AppIntroFragment.createInstance(
                 "Third Step:",
                 "Point the prism end of the refractometer toward a light source and focus the eyepiece until the scale is clearly visible.",
-                R.drawable.im1slide,
+                R.drawable.refractometerslide6,
                 R.color.thirdiconcolor,
                 R.color.darkgray,
                 R.color.darkgray,
@@ -83,7 +83,7 @@ public class Refractometer extends AppIntro {
         addSlide(AppIntroFragment.createInstance(
                 "Final Step:",
                 "Read the scale value at the point where the dark and light portions meet.",
-                R.drawable.im2slide,
+                R.drawable.refractometerslide7,
                 R.color.thirdiconcolor,
                 R.color.darkgray,
                 R.color.darkgray,
@@ -94,7 +94,7 @@ public class Refractometer extends AppIntro {
         addSlide(AppIntroFragment.createInstance(
                 "Measurement of Sweetness using Brix Meter",
                 "To measure SSC (degrees Brix percentage) with a Brix Refractometer, collect the flesh from an entire mango cheek or a plug taken down to the seed and juice the entire flesh sample. Then the output result from the refractometer will be input in the Brix Meter Converter which tells the fruit measurement of sweetness",
-                R.drawable.im3slide,
+                R.drawable.refractometerslide8,
                 R.color.thirdiconcolor,
                 R.color.darkgray,
                 R.color.darkgray,
@@ -105,7 +105,7 @@ public class Refractometer extends AppIntro {
         addSlide(AppIntroFragment.createInstance(
                 "Let's Start!",
                 "Thank you for the using our app ManGo. We are glad and happy! We will be always grateful for you using our app. Let's get started.",
-                R.drawable.im5slide,
+                R.drawable.refractometerslide9,
                 R.color.thirdiconcolor,
                 R.color.darkgray,
                 R.color.darkgray,

@@ -33,6 +33,7 @@ public class ThirdFragment extends Fragment {
         Button mangoapplebutton = rootview.findViewById(R.id.applemangobutton);
         Button mangocarabaobutton = rootview.findViewById(R.id.carabaomangobutton);
         Button mangoindianbutton = rootview.findViewById(R.id.indianmangobutton);
+        Button mangopicobutton = rootview.findViewById(R.id.picomangobutton);
 
         ((AppCompatActivity)getActivity()).getSupportActionBar().setBackgroundDrawable(getActivity().getDrawable(R.drawable.actionbartheme));
 
@@ -97,6 +98,11 @@ public class ThirdFragment extends Fragment {
                 Log.d("Indian Mango Image Classification","Indian Mango Image Classification");
             }
             myDB.close();
+        });
+
+        mangopicobutton.setOnClickListener(view -> {
+            Toast.makeText(getActivity(), "Coming Soon!!", Toast.LENGTH_SHORT).show();
+            Log.d("Pico Mango Image Classification","Coming Soon!!");
         });
 
         // Inflate the layout for this fragment
