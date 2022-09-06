@@ -1,30 +1,14 @@
 package com.henzmontera.cap102_plantapp;
 
-import static android.view.View.GONE;
-import static android.view.View.VISIBLE;
-
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-import org.json.JSONArray;
-import org.json.JSONObject;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 
 public class
 ProfileActivity extends AppCompatActivity {
@@ -46,7 +30,7 @@ ProfileActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_profile);
+/*        setContentView(R.layout.activity_profile);
         //FAB Button
         BackButtonProfile = findViewById(R.id.BackButtonProfile);
         AddButtonThread = findViewById(R.id.AddAddButton);
@@ -77,10 +61,11 @@ ProfileActivity extends AppCompatActivity {
         AddButtonThread.setOnClickListener(view -> {
             Intent intent = new Intent(ProfileActivity.this, AddPostActivity.class);
             startActivity(intent);
-        });
+        });*/
     }
 
     public void GetDisplayThread(){
+/*
         String url = "http://192.168.254.100/networkingbased/DisplayLatestPost.php";
 
         RequestQueue q = Volley.newRequestQueue(ProfileActivity.this);
@@ -148,6 +133,7 @@ ProfileActivity extends AppCompatActivity {
                     }
                 }, error -> Toast.makeText(ProfileActivity.this, "Volley Error Response! \n\n" + error.getMessage(), Toast.LENGTH_SHORT).show());
         q.add(r);
+*/
 
     }
 }
