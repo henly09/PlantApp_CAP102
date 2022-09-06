@@ -94,7 +94,7 @@ public class IndianMangoActivity extends AppCompatActivity {
 
             final CharSequence[] options = { "Take Photo", "Choose from Gallery","Cancel" };
             AlertDialog.Builder builder = new AlertDialog.Builder(IndianMangoActivity.this);
-            builder.setTitle("Take Photo or Choose From Gallery?");
+            builder.setTitle("Options:");
             builder.setItems(options, new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int item) {
