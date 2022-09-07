@@ -37,7 +37,7 @@ public class ImageProcCM extends AppIntro {
         addSlide(AppIntroFragment.createInstance(
                 "Capturing Image",
                 "Capture the image within a focus and with high quality image in order for the app to have accurate output.",
-                R.drawable.cm1slide,
+                R.drawable.cm2slide,
                 R.color.secondiconcolor,
                 R.color.graytext,
                 R.color.graytext,
@@ -48,7 +48,7 @@ public class ImageProcCM extends AppIntro {
         addSlide(AppIntroFragment.createInstance(
                 "Distance",
                 "In order for the size classification to work, the camera and the object must have distance between (size of the  distance). This will identify the mango whether it is Small, Medium, or Large .",
-                R.drawable.cm2slide,
+                R.drawable.cm3slide,
                 R.color.secondiconcolor,
                 R.color.graytext,
                 R.color.graytext,
@@ -59,7 +59,7 @@ public class ImageProcCM extends AppIntro {
         addSlide(AppIntroFragment.createInstance(
                 "Refractometer",
                 "To measure SSC (degrees Brix percentage) with a refractometer, collect the flesh from an entire mango cheek or a plug taken down to the seed and juice the entire flesh sample. Then the output result from the refractometer will be input in the brix meter converter which tells the fruit measurement of sweetness",
-                R.drawable.cm3slide,
+                R.drawable.cm4slide,
                 R.color.secondiconcolor,
                 R.color.graytext,
                 R.color.graytext,
@@ -70,7 +70,7 @@ public class ImageProcCM extends AppIntro {
         addSlide(AppIntroFragment.createInstance(
                 "Measure Sweetness using Brix Meter",
                 "Brix is a unit of measurement and it is used to measure the amount of sugar dissolved in water. The output from the refractometer will be used and compare the the Brix table chart which tells on how the sucrose level of the mango.",
-                R.drawable.cm4slide,
+                R.drawable.cm5slide,
                 R.color.secondiconcolor,
                 R.color.graytext,
                 R.color.graytext,
@@ -81,7 +81,7 @@ public class ImageProcCM extends AppIntro {
         addSlide(AppIntroFragment.createInstance(
                 "Let's Start!",
                 "Thank you for the using our app ManGo. We are glad and happy! We will be always grateful for you using our app. Let's get started.",
-                R.drawable.cm5slide,
+                R.drawable.cm1slide,
                 R.color.secondiconcolor,
                 R.color.graytext,
                 R.color.graytext,

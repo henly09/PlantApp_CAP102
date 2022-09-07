@@ -17,9 +17,9 @@
 
         <Button
             android:id="@+id/applemangobutton"
-            android:layout_width="363dp"
-            android:layout_height="220dp"
-            android:layout_marginTop="10dp"
+            android:layout_width="345dp"
+            android:layout_height="205dp"
+            android:layout_marginTop="45dp"
             android:backgroundTint="#e43d35"
             android:text="Apple Mango"
             android:textColor="#FFFFFFFF"
@@ -33,8 +33,8 @@
 
         <Button
             android:id="@+id/carabaomangobutton"
-            android:layout_width="363dp"
-            android:layout_height="220dp"
+            android:layout_width="345dp"
+            android:layout_height="205dp"
             android:backgroundTint="#fae03b"
             android:text="Carabao Mango"
             android:textColor="#FFFFFFFF"
@@ -47,9 +47,9 @@
 
         <Button
             android:id="@+id/picomangobutton"
-            android:layout_width="363dp"
-            android:layout_height="220dp"
-            android:layout_marginBottom="10dp"
+            android:layout_width="345dp"
+            android:layout_height="205dp"
+            android:layout_marginBottom="45dp"
             android:backgroundTint="#FF8400"
             android:text="Pico Mango"
             android:textColor="#FFFFFFFF"
@@ -62,8 +62,8 @@
 
         <Button
             android:id="@+id/indianmangobutton"
-            android:layout_width="363dp"
-            android:layout_height="220dp"
+            android:layout_width="345dp"
+            android:layout_height="205dp"
             android:backgroundTint="#9fd21e"
             android:text="Indian Mango"
             android:textColor="#FFFFFFFF"
