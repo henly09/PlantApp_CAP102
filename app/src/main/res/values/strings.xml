@@ -7,4 +7,6 @@
     成为第一个知道[ManGo]的折扣和优惠的人！前往链接加入我们的 VIP 名单：[https://github.com/henly09/PlantApp_CAP102]。</string>
     <string name="write_message">Write Message</string>
     <string name="no_data_avail">Hey! Make your profile a little non empty.</string>
+
+    <string name="Retrieving_Data_Error">Data Error, Try Refreshing.</string>
 </resources>
