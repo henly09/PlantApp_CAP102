@@ -31,33 +31,37 @@ public class LoginActivity extends AppCompatActivity {
 
       //  FirebaseTest();
       // For Intro Slide Purposes
-        ForAppIntroSlidesCreateTable();
-        myDB = openOrCreateDatabase("IntroSlideCheckStatus.db", 0, null);
-        Cursor a = myDB.rawQuery("SELECT COUNT(*) AS count FROM logintomaincheckbox",null);
-        Cursor b = myDB.rawQuery("SELECT COUNT(*) AS count FROM proc_am_to_ama",null);
-        Cursor c = myDB.rawQuery("SELECT COUNT(*) AS count FROM proc_cm_to_cma",null);
-        Cursor d = myDB.rawQuery("SELECT COUNT(*) AS count FROM proc_im_to_ima",null);
-        while(a.moveToNext()){
-            ca = a.getColumnIndex("count");
-            sca = a.getString(ca);
+        try {
+            ForAppIntroSlidesCreateTable();
+            myDB = openOrCreateDatabase("IntroSlideCheckStatus.db", 0, null);
+            Cursor a = myDB.rawQuery("SELECT COUNT(*) AS count FROM logintomaincheckbox",null);
+            Cursor b = myDB.rawQuery("SELECT COUNT(*) AS count FROM proc_am_to_ama",null);
+            Cursor c = myDB.rawQuery("SELECT COUNT(*) AS count FROM proc_cm_to_cma",null);
+            Cursor d = myDB.rawQuery("SELECT COUNT(*) AS count FROM proc_im_to_ima",null);
+            while(a.moveToNext()){
+                ca = a.getColumnIndex("count");
+                sca = a.getString(ca);
+            }
+            while(b.moveToNext()){
+                cb = b.getColumnIndex("count");
+                scb = b.getString(cb);
+            }
+            while(c.moveToNext()){
+                cc = c.getColumnIndex("count");
+                scc = c.getString(cc);
+            }
+            while(d.moveToNext()){
+                cd = d.getColumnIndex("count");
+                scd = d.getString(cd);
+            }
+            if (sca.equals("0") && scb.equals("0") && scc.equals("0") && scd.equals("0") ){
+                ForAppIntroSlidesInsertData();
+            }
+            myDB.close();
+            // For Intro Slide Purposes
+        } catch (Exception e) {
+            Toast.makeText(this, "Error: "+ e, Toast.LENGTH_SHORT).show();
         }
-        while(b.moveToNext()){
-            cb = b.getColumnIndex("count");
-            scb = b.getString(cb);
-        }
-        while(c.moveToNext()){
-            cc = c.getColumnIndex("count");
-            scc = c.getString(cc);
-        }
-        while(d.moveToNext()){
-            cd = d.getColumnIndex("count");
-            scd = d.getString(cd);
-        }
-        if (sca.equals("0") && scb.equals("0") && scc.equals("0") && scd.equals("0") ){
-            ForAppIntroSlidesInsertData();
-        }
-        myDB.close();
-        // For Intro Slide Purposes
 
         LoginButton = findViewById(R.id.LoginButton);
         UserEditText = findViewById(R.id.editLoginUsernameText);

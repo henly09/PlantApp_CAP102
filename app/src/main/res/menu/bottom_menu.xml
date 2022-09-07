@@ -3,15 +3,15 @@
 
     <item
         android:id="@+id/firstFragment"
-        android:title="NewsFeed"
+        android:title="News Feed"
         android:icon="@drawable/ic_home" />
     <item
         android:id="@+id/secondFragment"
-        android:title="Handbook"
+        android:title="Hand Book"
         android:icon="@drawable/ic_handbook" />
     <item
         android:id="@+id/thirdFragment"
-        android:title="Image Processing"
+        android:title="Mango Analyzer"
         android:icon="@drawable/ic_camera" />
 
 </menu>
