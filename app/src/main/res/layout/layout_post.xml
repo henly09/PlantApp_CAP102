@@ -56,14 +56,6 @@
         </LinearLayout>
 
         <TextView
-            android:id="@+id/ptitletv"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Title"
-            android:textSize="16sp"
-            android:textStyle="bold" />
-
-        <TextView
             android:id="@+id/descript"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
