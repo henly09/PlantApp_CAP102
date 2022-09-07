@@ -91,7 +91,7 @@ public class CarabaoMangoActivity extends AppCompatActivity {
         picture.setOnClickListener(view -> {
             final CharSequence[] options = { "Take Photo", "Choose from Gallery","Cancel" };
             AlertDialog.Builder builder = new AlertDialog.Builder(CarabaoMangoActivity.this);
-            builder.setTitle("Options:");
+            builder.setTitle("Choose an Action");
             builder.setItems(options, (dialog, item) -> {
                 if (options[item].equals("Take Photo"))
                 {

@@ -27,6 +27,8 @@ public class FirstFragment extends Fragment {
 
         View rootview = inflater.inflate(R.layout.fragment_first, container, false);
         ((AppCompatActivity)getActivity()).getSupportActionBar().setBackgroundDrawable(getActivity().getDrawable(R.drawable.actionbartheme));
+
+
         // Dria ka mag create
 
         // Inflate the layout for this fragment

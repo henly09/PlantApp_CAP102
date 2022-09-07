@@ -10,12 +10,13 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
-import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -23,7 +24,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     BottomNavigationView botnavView;
     NavController navcon;
     DrawerLayout drawer;
-    AppBarConfiguration appbar;
+    /*AppBarConfiguration appbar;*/
     ActionBarDrawerToggle toggle;
     NavigationView navview;
     MenuItem Profile;
@@ -36,7 +37,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
-        // Drawer Navigation setup
+        // calling the action bar
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
+
         drawer = findViewById(R.id.drawer_layout);
         navview = findViewById(R.id.navigation_view);
         toggle = new ActionBarDrawerToggle(this, drawer,R.string.start,R.string.close);
@@ -46,21 +50,31 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         // Bottom Navigation setup
         botnavView = findViewById(R.id.bottomNavigationView);
         navcon = Navigation.findNavController(this,R.id.fragmentContainerView4);
-        appbar = new AppBarConfiguration.Builder(R.id.firstFragment,R.id.secondFragment,R.id.thirdFragment).build();
-        NavigationUI.setupActionBarWithNavController(this, navcon, appbar);
-
-        navview.setNavigationItemSelectedListener(this);
         NavigationUI.setupWithNavController(botnavView,navcon);
+        navview.setNavigationItemSelectedListener(this);
 
+/*         appbar = new AppBarConfiguration.Builder(R.id.firstFragment,R.id.secondFragment,R.id.thirdFragment).build();
+         NavigationUI.setupActionBarWithNavController(this, navcon, appbar);*/
 
     }
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if(toggle.onOptionsItemSelected(item)){
-            return true;
+        if (drawer.isDrawerOpen(GravityCompat.START)){
+            switch (item.getItemId()){
+                case android.R.id.home:
+                    drawer.close();
+                    return true;
+            }
         }
-        return true;
+        else if (!drawer.isDrawerOpen(GravityCompat.START)){
+            switch (item.getItemId()){
+                case android.R.id.home:
+                    drawer.open();
+                    return true;
+            }
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
