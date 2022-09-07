@@ -259,12 +259,16 @@ public class IndianMangoActivity extends AppCompatActivity {
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         if (requestCode == 1 && resultCode == RESULT_OK) {
-            Bitmap image = (Bitmap) data.getExtras().get("data");
-            int dimension = Math.min(image.getWidth(), image.getHeight());
-            image = ThumbnailUtils.extractThumbnail(image, dimension, dimension);
-            imageView.setImageBitmap(image);
-            image = Bitmap.createScaledBitmap(image, imageSize, imageSize, false);
-            classifyImage(image);
+            try {
+                Bitmap image = (Bitmap) data.getExtras().get("data");
+                int dimension = Math.min(image.getWidth(), image.getHeight());
+                image = ThumbnailUtils.extractThumbnail(image, dimension, dimension);
+                imageView.setImageBitmap(image);
+                image = Bitmap.createScaledBitmap(image, imageSize, imageSize, false);
+                classifyImage(image);
+            } catch (Exception e) {
+                Toast.makeText(this, "Error: "+e, Toast.LENGTH_SHORT).show();
+            }
         }
         if (requestCode == 2 && resultCode == RESULT_OK) {
             Bitmap bitmap = null;

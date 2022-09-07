@@ -4,7 +4,6 @@ package com.henzmontera.cap102_plantapp;
 // Cap102-Project
 
 import android.content.ContentResolver;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.ImageDecoder;
@@ -93,22 +92,19 @@ public class CarabaoMangoActivity extends AppCompatActivity {
             final CharSequence[] options = { "Take Photo", "Choose from Gallery","Cancel" };
             AlertDialog.Builder builder = new AlertDialog.Builder(CarabaoMangoActivity.this);
             builder.setTitle("Options:");
-            builder.setItems(options, new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int item) {
-                    if (options[item].equals("Take Photo"))
-                    {
-                        Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                        startActivityForResult(cameraIntent, 1);
-                    }
-                    else if (options[item].equals("Choose from Gallery"))
-                    {
-                        Intent intent = new   Intent(Intent.ACTION_PICK,android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                        startActivityForResult(intent, 2);
-                    }
-                    else if (options[item].equals("Cancel")) {
-                        dialog.dismiss();
-                    }
+            builder.setItems(options, (dialog, item) -> {
+                if (options[item].equals("Take Photo"))
+                {
+                    Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                    startActivityForResult(cameraIntent, 1);
+                }
+                else if (options[item].equals("Choose from Gallery"))
+                {
+                    Intent intent = new   Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                    startActivityForResult(intent, 2);
+                }
+                else if (options[item].equals("Cancel")) {
+                    dialog.dismiss();
                 }
             });
             builder.show();
@@ -255,12 +251,17 @@ public class CarabaoMangoActivity extends AppCompatActivity {
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         if (requestCode == 1 && resultCode == RESULT_OK) {
-            Bitmap image = (Bitmap) data.getExtras().get("data");
-            int dimension = Math.min(image.getWidth(), image.getHeight());
-            image = ThumbnailUtils.extractThumbnail(image, dimension, dimension);
-            imageView.setImageBitmap(image);
-            image = Bitmap.createScaledBitmap(image, imageSize, imageSize, false);
-            classifyImage(image);
+            try {
+                Bitmap image = (Bitmap) data.getExtras().get("data");
+                int dimension = Math.min(image.getWidth(), image.getHeight());
+                image = ThumbnailUtils.extractThumbnail(image, dimension, dimension);
+                imageView.setImageBitmap(image);
+                image = Bitmap.createScaledBitmap(image, imageSize, imageSize, false);
+                classifyImage(image);
+            } catch (Exception e){
+                Toast.makeText(this, "Error: "+e, Toast.LENGTH_SHORT).show();
+            }
+
         }
         if (requestCode == 2 && resultCode == RESULT_OK) {
             Bitmap bitmap = null;
