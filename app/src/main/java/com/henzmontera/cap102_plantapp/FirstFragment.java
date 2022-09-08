@@ -1,19 +1,11 @@
 package com.henzmontera.cap102_plantapp;
 
-import static java.sql.Types.NULL;
-
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -25,6 +17,14 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
+
+import static java.sql.Types.NULL;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -61,20 +61,18 @@ public class FirstFragment extends Fragment {
         //RecyclerView Layout
         recyclerview.setHasFixedSize(true);
         recyclerview.setLayoutManager(new LinearLayoutManager(getActivity()));
-
         listposts = new ArrayList<>();
+        useradapt = new UserPostAdapter(getActivity(), listposts);
+        recyclerview.setAdapter(useradapt);
 
         //Call Method
         GetLatestPost();
 
         swiperefresh = rootview.findViewById(R.id.swipeRefreshLayout);
-        swiperefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                listposts.clear(); //Clear Arraylist
-                GetLatestPost();    //Re add the Data into Arraylist again
-                swiperefresh.setRefreshing(false); //False to Animation
-            }
+        swiperefresh.setOnRefreshListener(() -> {
+            listposts.clear(); //Clear Arraylist
+            GetLatestPost();    //Re add the Data into Arraylist again
+            swiperefresh.setRefreshing(false); //False to Animation
         });
         return rootview;
     }
@@ -88,18 +86,18 @@ public class FirstFragment extends Fragment {
                 Request.Method.GET, //Get or Retrieve only Method of request
                 url,
                 response -> {
-                    try{
+                    try {
                         JSONObject oh = new JSONObject(response);
                         JSONArray latestpost = oh.getJSONArray("LatestPost");
 
-                        if(latestpost.length() == NULL){
+                        if (latestpost.length() == NULL) {
                             DataErrorTextView.setVisibility(View.VISIBLE);
                             recyclerview.setVisibility(View.GONE);
                         } else {
                             DataErrorTextView.setVisibility(View.GONE);
                             recyclerview.setVisibility(View.VISIBLE);
 
-                            for(int i = 0; i<latestpost.length();i++){
+                            for (int i = 0; i < latestpost.length(); i++) {
                                 JSONObject al = latestpost.getJSONObject(i);
 
                                 ListPost post = new ListPost(
@@ -118,13 +116,24 @@ public class FirstFragment extends Fragment {
                                 recyclerview.setAdapter(useradapt);
                                 useradapt.notifyDataSetChanged();
                             }
+
                         }
+                    } catch (Exception e) {
+                        Toast.makeText(getActivity(), "Fetching Data From Database Failed. Please Try Again Later..", Toast.LENGTH_SHORT).show();
                     }
-                    catch(Exception e){
-
-                    }
-                }, error -> Toast.makeText(getActivity(), "Volley Error Response! \n\n" + error.getMessage(), Toast.LENGTH_SHORT).show());
+                }, error -> {
+/*                       if (error instanceof TimeoutError || error instanceof NoConnectionError) {
+                            Toast.makeText(getActivity(), "TimeoutError/NoConnectionError occurred, please try again later. "+error, Toast.LENGTH_LONG).show();
+                        } else if (error instanceof AuthFailureError) {
+                            Toast.makeText(getActivity(), "AuthFailureError occurred, please try again later. "+error, Toast.LENGTH_LONG).show();
+                        } else if (error instanceof ServerError) {
+                            Toast.makeText(getActivity(), "ServerError occurred, please try again later. "+error, Toast.LENGTH_LONG).show();
+                        } else if (error instanceof NetworkError) {
+                            Toast.makeText(getActivity(), "NetworkError occurred, please try again later. "+error, Toast.LENGTH_LONG).show();
+                        } else if (error instanceof ParseError) {
+                            Toast.makeText(getActivity(), "ParseError occurred, please try again later. "+error, Toast.LENGTH_LONG).show();
+                        } */
+                });
         q.add(r);
-
     }
 }
