@@ -3,7 +3,6 @@ package com.henzmontera.cap102_plantapp;
 import static java.sql.Types.NULL;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -72,8 +71,9 @@ public class FirstFragment extends Fragment {
         swiperefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                useradapt.notifyDataSetChanged();
-                swiperefresh.setRefreshing(false);
+                listposts.clear(); //Clear Arraylist
+                GetLatestPost();    //Re add the Data into Arraylist again
+                swiperefresh.setRefreshing(false); //False to Animation
             }
         });
         return rootview;
@@ -88,7 +88,6 @@ public class FirstFragment extends Fragment {
                 Request.Method.GET, //Get or Retrieve only Method of request
                 url,
                 response -> {
-                    Log.d("length", response.length()+"");
                     try{
                         JSONObject oh = new JSONObject(response);
                         JSONArray latestpost = oh.getJSONArray("LatestPost");
@@ -117,6 +116,7 @@ public class FirstFragment extends Fragment {
                                 listposts.add(post);
                                 useradapt = new UserPostAdapter(getActivity(), listposts);
                                 recyclerview.setAdapter(useradapt);
+                                useradapt.notifyDataSetChanged();
                             }
                         }
                     }

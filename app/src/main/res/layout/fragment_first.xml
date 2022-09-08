@@ -33,9 +33,8 @@
         android:layout_height="wrap_content"
         android:text="@string/Retrieving_Data_Error"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/swipeRefreshLayout"
-        app:layout_constraintStart_toStartOf="@+id/swipeRefreshLayout"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="MissingConstraints" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
