@@ -4,9 +4,11 @@ package com.henzmontera.cap102_plantapp;
 // BSIT-4th-Year
 // Cap102-Project
 
+import android.Manifest;
 import android.content.ContentResolver;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.ImageDecoder;
 import android.media.ThumbnailUtils;
@@ -100,8 +102,13 @@ public class IndianMangoActivity extends AppCompatActivity {
                 public void onClick(DialogInterface dialog, int item) {
                     if (options[item].equals("Take Photo"))
                     {
-                        Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                        startActivityForResult(cameraIntent, 1);
+                        if (checkSelfPermission(Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED) {
+                            Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                            startActivityForResult(cameraIntent, 1);
+                        } else {
+                            //Request camera permission if we don't have it.
+                            requestPermissions(new String[]{Manifest.permission.CAMERA}, 100);
+                        }
                     }
                     else if (options[item].equals("Choose from Gallery"))
                     {
