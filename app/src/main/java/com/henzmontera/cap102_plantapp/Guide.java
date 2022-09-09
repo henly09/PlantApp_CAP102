@@ -27,8 +27,8 @@ public class Guide extends AppIntro {
         ));
 
         addSlide(AppIntroFragment.createInstance(
-                "Image Classification",
-                "One of the main feature of this app is that it has an image classification system where it can identify whether the captured fruit is categorized on the list (unripe, ripe, overripe, rotten).",
+                "Mango Analyzer",
+                "One of the main feature of this app is that it has an image classification system where it can identify whether the harvested fruit is categorized on the list (unripe, ripe, overripe, rotten).",
                 R.drawable.introlog1,
                 R.color.thirdiconcolor,
                 R.color.graytext,
@@ -83,7 +83,7 @@ public class Guide extends AppIntro {
 
         addSlide(AppIntroFragment.createInstance(
                 "Distance",
-                "In order for the size classification to work, the camera and the object must have distance between (size of the  distance). This will identify the mango whether it is Small, Medium, or Large .",
+                "In order for the size classification to work, the camera and the object must have distance between (7 inch Distance). This will identify the mango whether it is Small, Medium, or Large .",
                 R.drawable.im2slide,
                 R.color.thirdiconcolor,
                 R.color.darkgray,

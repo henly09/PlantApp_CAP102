@@ -7,16 +7,17 @@
     <fragment
         android:id="@+id/firstFragment"
         android:name="com.henzmontera.cap102_plantapp.FirstFragment"
-        android:label="NewsFeed"
+        android:label="News Feed"
         tools:layout="@layout/fragment_first" />
     <fragment
         android:id="@+id/secondFragment"
         android:name="com.henzmontera.cap102_plantapp.SecondFragment"
-        android:label="Handbook"
+        android:label="Hand Book"
         tools:layout="@layout/fragment_second" />
     <fragment
         android:id="@+id/thirdFragment"
         android:name="com.henzmontera.cap102_plantapp.ThirdFragment"
-        android:label="Image Processing"
+        android:label="Mango Analyzer"
         tools:layout="@layout/fragment_third" />
+
 </navigation>

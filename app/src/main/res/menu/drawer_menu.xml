@@ -50,7 +50,7 @@
         <item
             android:id="@+id/Logout"
             android:title="Logout"
-            android:icon="@drawable/ic_logout" />
+            android:icon="@drawable/logout" />
     </group>
 
 

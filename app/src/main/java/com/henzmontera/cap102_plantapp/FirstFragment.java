@@ -4,9 +4,27 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
+
+import static java.sql.Types.NULL;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -21,16 +39,101 @@ import androidx.fragment.app.Fragment;
  */
 public class FirstFragment extends Fragment {
 
+    private SwipeRefreshLayout swiperefresh;
+    private UserPostAdapter useradapt;
+    private RecyclerView recyclerview;
+    private List<ListPost> listposts;
+    private TextView DataErrorTextView;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
         View rootview = inflater.inflate(R.layout.fragment_first, container, false);
         ((AppCompatActivity)getActivity()).getSupportActionBar().setBackgroundDrawable(getActivity().getDrawable(R.drawable.actionbartheme));
-        // Dria ka mag create
 
-        // Inflate the layout for this fragment
+        //TextView
+        DataErrorTextView = rootview.findViewById(R.id.TextViewError);
 
+        //RecyclerView
+        recyclerview = rootview.findViewById(R.id.recyclerFirstFrag);
+
+        //RecyclerView Layout
+        recyclerview.setHasFixedSize(true);
+        recyclerview.setLayoutManager(new LinearLayoutManager(getActivity()));
+        listposts = new ArrayList<>();
+        useradapt = new UserPostAdapter(getActivity(), listposts);
+        recyclerview.setAdapter(useradapt);
+
+        //Call Method
+        GetLatestPost();
+
+        swiperefresh = rootview.findViewById(R.id.swipeRefreshLayout);
+        swiperefresh.setOnRefreshListener(() -> {
+            listposts.clear(); //Clear Arraylist
+            GetLatestPost();    //Re add the Data into Arraylist again
+            swiperefresh.setRefreshing(false); //False to Animation
+        });
         return rootview;
+    }
+
+    private void GetLatestPost(){
+        String url = "http://192.168.254.100/networkingbased/DisplayLatestPost.php";
+
+        RequestQueue q = Volley.newRequestQueue(getActivity());
+
+        StringRequest r = new StringRequest( //Request String type
+                Request.Method.GET, //Get or Retrieve only Method of request
+                url,
+                response -> {
+                    try {
+                        JSONObject oh = new JSONObject(response);
+                        JSONArray latestpost = oh.getJSONArray("LatestPost");
+
+                        if (latestpost.length() == NULL) {
+                            DataErrorTextView.setVisibility(View.VISIBLE);
+                            recyclerview.setVisibility(View.GONE);
+                        } else {
+                            DataErrorTextView.setVisibility(View.GONE);
+                            recyclerview.setVisibility(View.VISIBLE);
+
+                            for (int i = 0; i < latestpost.length(); i++) {
+                                JSONObject al = latestpost.getJSONObject(i);
+
+                                ListPost post = new ListPost(
+                                        al.optString("postUserId"),
+                                        al.optString("postId"),
+                                        al.optString("username"),
+                                        al.optString("postDescriptions"),
+                                        al.optString("postTime"),
+                                        al.optString("commentsCount"),
+                                        al.optString("likeCount"),
+                                        al.optInt("userprofilepicture"),
+                                        al.optInt("postImages")
+                                );
+                                listposts.add(post);
+                                useradapt = new UserPostAdapter(getActivity(), listposts);
+                                recyclerview.setAdapter(useradapt);
+                                useradapt.notifyDataSetChanged();
+                            }
+
+                        }
+                    } catch (Exception e) {
+                        Toast.makeText(getActivity(), "Fetching Data From Database Failed. Please Try Again Later..", Toast.LENGTH_SHORT).show();
+                    }
+                }, error -> {
+/*                       if (error instanceof TimeoutError || error instanceof NoConnectionError) {
+                            Toast.makeText(getActivity(), "TimeoutError/NoConnectionError occurred, please try again later. "+error, Toast.LENGTH_LONG).show();
+                        } else if (error instanceof AuthFailureError) {
+                            Toast.makeText(getActivity(), "AuthFailureError occurred, please try again later. "+error, Toast.LENGTH_LONG).show();
+                        } else if (error instanceof ServerError) {
+                            Toast.makeText(getActivity(), "ServerError occurred, please try again later. "+error, Toast.LENGTH_LONG).show();
+                        } else if (error instanceof NetworkError) {
+                            Toast.makeText(getActivity(), "NetworkError occurred, please try again later. "+error, Toast.LENGTH_LONG).show();
+                        } else if (error instanceof ParseError) {
+                            Toast.makeText(getActivity(), "ParseError occurred, please try again later. "+error, Toast.LENGTH_LONG).show();
+                        } */
+                });
+        q.add(r);
     }
 }
