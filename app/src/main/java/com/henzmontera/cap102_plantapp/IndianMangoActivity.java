@@ -164,7 +164,7 @@ public class IndianMangoActivity extends AppCompatActivity {
         // firmness of the fruit can be determine the ripeness also of the fruit by using penetrometer.
         addingfirm.setOnClickListener(view -> {
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
-            builder.setTitle("Input Firmness Percentage");
+            builder.setTitle("Input Firmness Percentage (Inner Scale)");
             builder.setMessage("Put the percentage of the output of the Penetrometer which using Firmness meter.");
             // Set up the input
             final EditText input = new EditText(this);

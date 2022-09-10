@@ -105,7 +105,7 @@ public class Guide extends AppIntro {
 
         addSlide(AppIntroFragment.createInstance(
                 "Penetrometer",
-                "(Only Available to Indian Mango Analyzer, due to un-accurate measurement of ripeness if we only use image classification only )To measure firmness of the fruit, Use Penetrometer. Use a 8mm/11mm  tip on a GY-3 Penetromter to test the mango flesh with the skin removed.if the 8 mm stamp is used, read on the inner scale. As the firmness of the fruits flesh is to be measured, the testing area has to be free from skin.",
+                "(Only Available to Indian Mango Analyzer, due to un-accurate measurement of ripeness if we only use image classification) To measure firmness of the fruit, Use Penetrometer. Use a 8mm tip on a GY-3 Penetrometer to test the mango flesh with the skin removed.if the 8 mm stamp is used, read on the inner scale. As the firmness of the fruits flesh is to be measured, the testing area has to be free from skin.",
                 R.drawable.im6slide,
                 R.color.thirdiconcolor,
                 R.color.darkgray,

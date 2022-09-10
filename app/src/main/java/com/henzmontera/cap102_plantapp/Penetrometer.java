@@ -17,7 +17,7 @@ public class Penetrometer extends AppIntro {
         super.onCreate(savedInstanceState);
         addSlide(AppIntroFragment.createInstance(
                 "How to Use a Penetrometer?",
-                "The fruit Penetrometer accurately measures fruit hardness by measuring the force required to push a plunger tip (of a certain size) into fruit and vegetables. The GY series of Penetrometers are ideal for testing a wide range of fruits and vegetables.",
+                "(Only Available to Indian Mango Analyzer, due to un-accurate measurement of ripeness if we only use image classification) The fruit Penetrometer accurately measures fruit hardness by measuring the force required to push a plunger tip (of a certain size) into fruit and vegetables. To measure firmness of the fruit, use a Penetrometer. Use a 8mm tip on a GY-3 Penetrometer to test the mango flesh with the skin removed.if the 8 mm stamp is used, read on the inner scale.",
                 R.drawable.pene,
                 R.color.thirdiconcolor,
                 R.color.graytext,
