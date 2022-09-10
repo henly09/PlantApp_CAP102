@@ -58,7 +58,7 @@ public class ImageProcIM extends AppIntro {
 
         addSlide(AppIntroFragment.createInstance(
                 "Penetrometer",
-                "To measure firmness with using fruit Penetrometer, use a 8mm/11mm  tip on a GY-3 Penetromter to test the mango flesh with the skin removed.if the 8 mm stamp is used, read on the inner scale. As the firmness of the fruits flesh is to be measured, the testing area has to be free from skin.",
+                "To measure firmness of the fruit, use a Penetrometer. Use a 8mm/11mm  tip on a GY-3 Penetromter to test the mango flesh with the skin removed.if the 8 mm stamp is used, read on the inner scale. As the firmness of the fruits flesh is to be measured, the testing area has to be free from skin.",
                 R.drawable.im6slide,
                 R.color.thirdiconcolor,
                 R.color.darkgray,
