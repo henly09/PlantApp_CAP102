@@ -31,6 +31,10 @@
                     android:id="@+id/RefractometerGuide"
                     android:title="Refractometer Guide"
                     android:icon="@drawable/refractometer"/>
+                <item
+                    android:id="@+id/PenetrometerGuide"
+                    android:title="Penetrometer Guide"
+                    android:icon="@drawable/penetrometer"/>
             </group>
         </menu>
     </item>

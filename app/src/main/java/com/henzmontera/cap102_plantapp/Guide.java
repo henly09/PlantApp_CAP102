@@ -104,6 +104,17 @@ public class Guide extends AppIntro {
         ));
 
         addSlide(AppIntroFragment.createInstance(
+                "Penetrometer",
+                "(Only Available to Indian Mango Analyzer, due to un-accurate measurement of ripeness if we only use image classification only )To measure firmness with using fruit Penetrometer, use a 8mm/11mm  tip on a GY-3 Penetromter to test the mango flesh with the skin removed.if the 8 mm stamp is used, read on the inner scale. As the firmness of the fruits flesh is to be measured, the testing area has to be free from skin.",
+                R.drawable.im6slide,
+                R.color.thirdiconcolor,
+                R.color.darkgray,
+                R.color.darkgray,
+                R.font.ubuntu_m,
+                R.font.ubuntu_mi
+        ));
+
+        addSlide(AppIntroFragment.createInstance(
                 "Measure Sweetness using Brix Meter",
                 "Brix is a unit of measurement and it is used to measure the amount of sugar dissolved in water. The output from the refractometer will be used and compare the the Brix table chart which tells on how the sucrose level of the mango.",
                 R.drawable.im4slide,

@@ -31,7 +31,7 @@
         android:id="@+id/TextViewError"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/Retrieving_Data_Error"
+        android:text="No Connection, Please Try Again Later"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

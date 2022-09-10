@@ -111,6 +111,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 drawer.closeDrawers();
                 Toast.makeText(this, "Refractometer Guide", Toast.LENGTH_SHORT).show();
                 break;
+            case R.id.PenetrometerGuide:
+                Intent intentPenetrometer = new Intent(MainActivity.this, Penetrometer.class);
+                startActivity(intentPenetrometer);
+                drawer.closeDrawers();
+                Toast.makeText(this, "Refractometer Guide", Toast.LENGTH_SHORT).show();
+                break;
             case R.id.AboutUs:
                 Intent intentAboutUs = new Intent(MainActivity.this, AboutAuthor.class);
                 startActivity(intentAboutUs);
