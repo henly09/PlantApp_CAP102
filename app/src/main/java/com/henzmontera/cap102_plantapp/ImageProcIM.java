@@ -57,6 +57,17 @@ public class ImageProcIM extends AppIntro {
         ));
 
         addSlide(AppIntroFragment.createInstance(
+                "Penetrometer",
+                "To measure firmness with using fruit Penetrometer, use a 8mm/11mm  tip on a GY-3 Penetromter to test the mango flesh with the skin removed.if the 8 mm stamp is used, read on the inner scale. As the firmness of the fruits flesh is to be measured, the testing area has to be free from skin.",
+                R.drawable.im6slide,
+                R.color.thirdiconcolor,
+                R.color.darkgray,
+                R.color.darkgray,
+                R.font.ubuntu_m,
+                R.font.ubuntu_mi
+        ));
+
+        addSlide(AppIntroFragment.createInstance(
                 "Refractometer",
                 "To measure SSC (degrees Brix percentage) with a refractometer, collect the flesh from an entire mango cheek or a plug taken down to the seed and juice the entire flesh sample. Then the output result from the refractometer will be input in the brix meter converter which tells the fruit measurement of sweetness",
                 R.drawable.im3slide,

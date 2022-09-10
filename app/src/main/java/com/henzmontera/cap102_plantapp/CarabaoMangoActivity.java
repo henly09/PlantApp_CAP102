@@ -115,15 +115,6 @@ public class CarabaoMangoActivity extends AppCompatActivity {
                 }
             });
             builder.show();
-
-/*            // Launch camera if we have permission
-            if (checkSelfPermission(Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED) {
-                Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                startActivityForResult(cameraIntent, 1);
-            } else {
-                //Request camera permission if we don't have it.
-                requestPermissions(new String[]{Manifest.permission.CAMERA}, 100);
-            }*/
         });
 
         addingbrix.setOnClickListener(view -> {

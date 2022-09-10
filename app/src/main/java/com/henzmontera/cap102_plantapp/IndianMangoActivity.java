@@ -48,9 +48,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class IndianMangoActivity extends AppCompatActivity {
 
-    TextView result, confidence, size, brixlevel;
+    TextView result, confidence, size, brixlevel, firmlevel;
     ImageView imageView;
-    Button picture, addingbrix, RecAndProdIM;
+    Button picture, addingbrix, RecAndProdIM, addingfirm;
     int imageSize = 224/*, notifBadgeIM = 0*/;
     private String m_Text = "";
     NotificationBadge notificationBadgeIM;
@@ -91,9 +91,10 @@ public class IndianMangoActivity extends AppCompatActivity {
         brixlevel = findViewById(R.id.brixlevelsIM);
         notificationBadgeIM = findViewById(R.id.badgeIM);
         RecAndProdIM = findViewById(R.id.recAndProdIM);
+        addingfirm = findViewById(R.id.addfirmIM);
+        firmlevel = findViewById(R.id.firmlevelIM);
 
         picture.setOnClickListener(view -> {
-
             final CharSequence[] options = { "Take Photo", "Choose from Gallery","Cancel" };
             AlertDialog.Builder builder = new AlertDialog.Builder(IndianMangoActivity.this);
             builder.setTitle("Choose an Action");
@@ -122,14 +123,6 @@ public class IndianMangoActivity extends AppCompatActivity {
             });
             builder.show();
 
-/*            // Launch camera if we have permission
-            if (checkSelfPermission(Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED) {
-                Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                startActivityForResult(cameraIntent, 1);
-            } else {
-                //Request camera permission if we don't have it.
-                requestPermissions(new String[]{Manifest.permission.CAMERA}, 100);
-            }*/
         });
 
         addingbrix.setOnClickListener(view -> {
@@ -163,6 +156,46 @@ public class IndianMangoActivity extends AppCompatActivity {
                 }
                 String resultstyledText = "Brix Level: <font color='#249023'>"+ b +"</font>";
                 brixlevel.setText(Html.fromHtml(resultstyledText), TextView.BufferType.SPANNABLE);
+            });
+            builder.setNegativeButton("Cancel", (dialog, which) -> dialog.cancel());
+            builder.show();
+        });
+
+        // firmness of the fruit can be determine the ripeness also of the fruit by using penetrometer.
+        addingfirm.setOnClickListener(view -> {
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle("Input Firmness Percentage");
+            builder.setMessage("Put the percentage of the output of the Penetrometer which using Firmness meter.");
+            // Set up the input
+            final EditText input = new EditText(this);
+            // Specify the type of input expected; this, for example, sets the input as a password, and will mask the text
+            input.setInputType(InputType.TYPE_CLASS_NUMBER);
+            builder.setView(input);
+            // Set up the buttons
+            builder.setPositiveButton("OK", (dialog, which) -> {
+                m_Text = input.getText().toString();
+                int a = Integer.parseInt(m_Text);
+                String b = "";
+                if (a > 20){
+                    b = "Unripe Firm";
+                }
+                else if (a <= 20 && a >= 16){
+                    b = "Barely Ripe Firm";
+                }
+                else if (a <= 15 && a >= 11){
+                    b = "Barely Soft";
+                }
+                else if (a <= 10 && a >= 6){
+                    b = "Ripe Firm";
+                }
+                else if (a <= 5 && a >= 1){
+                    b = "Perfect Ripe Firm";
+                }
+                else if (a < 1){
+                    b = "Overripe Firm";
+                }
+                String resultstyledText = "Firm Level: <font color='#249023'>"+ b +"</font>";
+                firmlevel.setText(Html.fromHtml(resultstyledText), TextView.BufferType.SPANNABLE);
             });
             builder.setNegativeButton("Cancel", (dialog, which) -> dialog.cancel());
             builder.show();
