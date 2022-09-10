@@ -3,9 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="192dp"
-    android:background="#a5d26a"
+    android:background="@drawable/picture1"
     android:padding="16dp"
-    android:screenOrientation="portrait" >
+    android:screenOrientation="portrait">
 
     <ImageView
         android:layout_width="205dp"
