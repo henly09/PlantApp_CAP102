@@ -12,12 +12,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-public class UserPostAdapter extends RecyclerView.Adapter<UserPostAdapter.ListViewHolder>{
+public class LatestPostAdapter extends RecyclerView.Adapter<LatestPostAdapter.ListViewHolder>{
 
     private Context context;
     private List<ListPost> LISTPOSTS;
 
-    public UserPostAdapter(Context context, List<ListPost> LISTPOSTS) {
+    public LatestPostAdapter(Context context, List<ListPost> LISTPOSTS) {
         this.context = context;
         this.LISTPOSTS = LISTPOSTS;
     }
@@ -44,14 +44,14 @@ public class UserPostAdapter extends RecyclerView.Adapter<UserPostAdapter.ListVi
 
     @NonNull
     @Override
-    public UserPostAdapter.ListViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public LatestPostAdapter.ListViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(context);
         View v = inflater.inflate(R.layout.layout_post,parent, false);
         return new ListViewHolder(v);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull UserPostAdapter.ListViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull LatestPostAdapter.ListViewHolder holder, int position) {
 
         holder.UPostNameTV.setText(LISTPOSTS.get(position).getUSERNAME());
         holder.UPostDesc.setText(LISTPOSTS.get(position).getPOSTDESC());
