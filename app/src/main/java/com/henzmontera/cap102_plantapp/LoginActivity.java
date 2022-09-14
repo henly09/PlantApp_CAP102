@@ -10,9 +10,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.StringRequest;
@@ -25,6 +22,9 @@ import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -95,7 +95,6 @@ public class LoginActivity extends AppCompatActivity {
         //////////////////////////////////////////////////////////////////////////////
 
         LoginButton.setOnClickListener(view -> {
-
             if(UserEditText.getText().toString().isEmpty() || PasswordEditText.getText().toString().isEmpty()){
                 Toast.makeText(this, "One of your field is empty, please Enter", Toast.LENGTH_SHORT).show();
             } else if(UserEditText.getText().toString().isEmpty() && PasswordEditText.getText().toString().isEmpty()){
@@ -103,22 +102,6 @@ public class LoginActivity extends AppCompatActivity {
             } else {
                 LoginAuthenticate(UserEditText.getText().toString(), PasswordEditText.getText().toString());
             }
-/*            myDB = openOrCreateDatabase("IntroSlideCheckStatus.db", 0, null);
-            Cursor ma_checkbox = myDB.rawQuery("SELECT COUNT(*) as count FROM logintomaincheckbox WHERE logintomaincheckbox.status = ?;", new String[] {"enable"});
-            while(ma_checkbox.moveToNext()){
-                a_test = ma_checkbox.getColumnIndex("count");
-                sa_test = ma_checkbox.getString(a_test);
-            }
-            if(sa_test.equals("1")){
-                Intent intent = new Intent(LoginActivity.this, LogToMainSlides.class);
-                startActivity(intent);
-                finish();
-            } else {
-                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-               startActivity(intent);
-                finish();
-            }
-            myDB.close();*/
         });
     }
 
@@ -148,10 +131,24 @@ public class LoginActivity extends AppCompatActivity {
                                 //Create Session
                                 sessionManager.createSession(name,email,id);
 
-                                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                                intent.putExtra("username", auth.optString("username"));
-                                startActivity(intent);
-                                Toast.makeText(this, "Login Successfully", Toast.LENGTH_SHORT).show();
+                                myDB = openOrCreateDatabase("IntroSlideCheckStatus.db", 0, null);
+                                Cursor ma_checkbox = myDB.rawQuery("SELECT COUNT(*) as count FROM logintomaincheckbox WHERE logintomaincheckbox.status = ?;", new String[] {"enable"});
+                                while(ma_checkbox.moveToNext()){
+                                    a_test = ma_checkbox.getColumnIndex("count");
+                                    sa_test = ma_checkbox.getString(a_test);
+                                }
+                                if(sa_test.equals("1")){
+                                    Intent intent = new Intent(LoginActivity.this, LogToMainSlides.class);
+                                    intent.putExtra("username", auth.optString("username"));
+                                    startActivity(intent);
+                                    Toast.makeText(this, "Login Successfully", Toast.LENGTH_SHORT).show();
+                                } else {
+                                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                                    intent.putExtra("username", auth.optString("username"));
+                                    startActivity(intent);
+                                    Toast.makeText(this, "Login Successfully", Toast.LENGTH_SHORT).show();
+                                }
+                                myDB.close();
                             }
                         }
                         catch(Exception e){

@@ -18,10 +18,10 @@ public class AddThreadActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_thread);
-        ProfilePicThread = findViewById(R.id.ImageProfileThread);
+        setContentView(R.layout.activity_add_post);
+        ProfilePicThread = findViewById(R.id.ImageProfilePost);
         PostText = findViewById(R.id.ButtonPostText);
-        EditTextThreadWriteMessage = findViewById(R.id.EditTextThreadMessInput);
+        EditTextThreadWriteMessage = findViewById(R.id.EditTextDescriptionMessagesInput);
         AddImageButtonThread = findViewById(R.id.AddImageButton);
 
         String thread = EditTextThreadWriteMessage.getText().toString();
