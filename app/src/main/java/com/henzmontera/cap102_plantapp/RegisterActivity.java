@@ -7,19 +7,17 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
 import java.util.HashMap;
 import java.util.Map;
-
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -57,25 +55,17 @@ public class RegisterActivity extends AppCompatActivity {
             StringRequest RRequest = new StringRequest(
                     Request.Method.POST,
                     url,
-                    new Response.Listener<String>() {
-                        @Override
-                        public void onResponse(String response) {
-                            try{
-                                Toast.makeText(RegisterActivity.this, "User Create Successfully", Toast.LENGTH_SHORT).show();
-                                Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
-                                startActivity(intent);
-                                finish();
-                            }catch(Exception e){
-                                Toast.makeText(RegisterActivity.this, "String Exception Error!!\n\n" + e.getMessage(),Toast.LENGTH_SHORT).show();
-                            }
+                    response -> {
+                        try{
+                            Toast.makeText(RegisterActivity.this, "User Create Successfully", Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
+                            startActivity(intent);
+                            finish();
+                        }catch(Exception e){
+                            Toast.makeText(RegisterActivity.this, "String Exception Error!!\n\n" + e.getMessage(),Toast.LENGTH_SHORT).show();
                         }
                     },
-                    new Response.ErrorListener() {
-                        @Override
-                        public void onErrorResponse(VolleyError error) {
-                            Toast.makeText(RegisterActivity.this, "Volley Error.\nIn ErrorListener\n" + error.getMessage(), Toast.LENGTH_LONG).show();
-                        }
-                    }
+                    error -> Toast.makeText(RegisterActivity.this, "Volley Error.\nIn ErrorListener\n" + error.getMessage(), Toast.LENGTH_LONG).show()
             ) {
                 @Nullable
                 @Override

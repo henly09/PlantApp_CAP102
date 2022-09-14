@@ -22,28 +22,24 @@
         <entry key="..\:/Users/Henz Montera/Desktop/CAP102/cap102_PlantApp/app/src/main/res/drawable/nav_item_color_state.xml" value="0.1375" />
         <entry key="..\:/Users/Henz Montera/Desktop/CAP102/cap102_PlantApp/app/src/main/res/drawable/side_nav_bar.xml" value="0.133" />
         <entry key="..\:/Users/Henz Montera/Desktop/CAP102/cap102_PlantApp/app/src/main/res/font/font.xml" value="0.24786324786324787" />
-        <entry key="..\:/Users/Henz Montera/Desktop/CAP102/cap102_PlantApp/app/src/main/res/layout/aboutus.xml" value="0.2230769230769231" />
         <entry key="..\:/Users/Henz Montera/Desktop/CAP102/cap102_PlantApp/app/src/main/res/layout/activity_about_author.xml" value="0.19067028985507245" />
         <entry key="..\:/Users/Henz Montera/Desktop/CAP102/cap102_PlantApp/app/src/main/res/layout/activity_about_authors.xml" value="0.19067028985507245" />
         <entry key="..\:/Users/Henz Montera/Desktop/CAP102/cap102_PlantApp/app/src/main/res/layout/activity_add_thread.xml" value="0.17798913043478262" />
         <entry key="..\:/Users/Henz Montera/Desktop/CAP102/cap102_PlantApp/app/src/main/res/layout/activity_apple_mango.xml" value="0.33" />
         <entry key="..\:/Users/Henz Montera/Desktop/CAP102/cap102_PlantApp/app/src/main/res/layout/activity_carabao_mango.xml" value="0.2" />
-        <entry key="..\:/Users/Henz Montera/Desktop/CAP102/cap102_PlantApp/app/src/main/res/layout/activity_indian_mango.xml" value="0.33" />
-        <entry key="..\:/Users/Henz Montera/Desktop/CAP102/cap102_PlantApp/app/src/main/res/layout/activity_login.xml" value="0.5" />
-        <entry key="..\:/Users/Henz Montera/Desktop/CAP102/cap102_PlantApp/app/src/main/res/layout/activity_main.xml" value="0.22" />
+        <entry key="..\:/Users/Henz Montera/Desktop/CAP102/cap102_PlantApp/app/src/main/res/layout/activity_indian_mango.xml" value="0.22" />
+        <entry key="..\:/Users/Henz Montera/Desktop/CAP102/cap102_PlantApp/app/src/main/res/layout/activity_login.xml" value="0.22" />
+        <entry key="..\:/Users/Henz Montera/Desktop/CAP102/cap102_PlantApp/app/src/main/res/layout/activity_main.xml" value="0.2346014492753623" />
         <entry key="..\:/Users/Henz Montera/Desktop/CAP102/cap102_PlantApp/app/src/main/res/layout/activity_profile.xml" value="0.17798913043478262" />
         <entry key="..\:/Users/Henz Montera/Desktop/CAP102/cap102_PlantApp/app/src/main/res/layout/activity_register.xml" value="0.12740487387772553" />
-        <entry key="..\:/Users/Henz Montera/Desktop/CAP102/cap102_PlantApp/app/src/main/res/layout/app_bar.xml" value="0.2230769230769231" />
-        <entry key="..\:/Users/Henz Montera/Desktop/CAP102/cap102_PlantApp/app/src/main/res/layout/appbar.xml" value="0.10944026733500417" />
         <entry key="..\:/Users/Henz Montera/Desktop/CAP102/cap102_PlantApp/app/src/main/res/layout/circular_progress_bar.xml" value="0.20199275362318841" />
         <entry key="..\:/Users/Henz Montera/Desktop/CAP102/cap102_PlantApp/app/src/main/res/layout/drawer_header.xml" value="0.20742753623188406" />
         <entry key="..\:/Users/Henz Montera/Desktop/CAP102/cap102_PlantApp/app/src/main/res/layout/fragment_first.xml" value="0.20697463768115942" />
-        <entry key="..\:/Users/Henz Montera/Desktop/CAP102/cap102_PlantApp/app/src/main/res/layout/fragment_second.xml" value="0.1" />
-        <entry key="..\:/Users/Henz Montera/Desktop/CAP102/cap102_PlantApp/app/src/main/res/layout/fragment_third.xml" value="0.25" />
+        <entry key="..\:/Users/Henz Montera/Desktop/CAP102/cap102_PlantApp/app/src/main/res/layout/fragment_second.xml" value="0.20697463768115942" />
+        <entry key="..\:/Users/Henz Montera/Desktop/CAP102/cap102_PlantApp/app/src/main/res/layout/fragment_third.xml" value="0.20697463768115942" />
         <entry key="..\:/Users/Henz Montera/Desktop/CAP102/cap102_PlantApp/app/src/main/res/menu/bottom_menu.xml" value="0.27291666666666664" />
         <entry key="..\:/Users/Henz Montera/Desktop/CAP102/cap102_PlantApp/app/src/main/res/menu/drawer_menu.xml" value="0.22393162393162394" />
         <entry key="..\:/Users/Henz Montera/Desktop/CAP102/cap102_PlantApp/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.1375" />
-        <entry key="..\:/Users/Henz Montera/Desktop/CAP102/cap102_PlantApp/app/src/main/res/xml/provider_paths.xml" value="0.13043478260869565" />
         <entry key="..\:/Users/Henz Montera/Desktop/cap102_PlantApp/app/src/main/res/drawable/nav_item_background.xml" value="0.1775" />
         <entry key="..\:/Users/Henz Montera/Desktop/cap102_PlantApp/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/Users/Henz Montera/Desktop/cap102_PlantApp/app/src/main/res/layout/app_bar_main.xml" value="0.20606884057971014" />
@@ -60,8 +56,21 @@
         <entry key="..\:/Users/Henz Montera/Desktop/cap102_PlantApp/app/src/main/res/menu/main_menu.xml" value="0.27291666666666664" />
         <entry key="..\:/Users/Henz Montera/Desktop/cap102_PlantApp/app/src/main/res/menu/navigation_menu.xml" value="0.22" />
         <entry key="..\:/Users/Henz Montera/Desktop/cap102_PlantApp/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.21" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/PlantApp_CAP102/app/src/main/res/layout/fragment_second.xml" value="0.13728058684831018" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/PlantApp_CAP102/app/src/main/res/layout/fragment_third.xml" value="0.18" />
         <entry key="..\:/Users/neoma/AndroidStudioProjects/PlantApp_CAP102/app/src/main/res/layout/activity_login.xml" value="0.3328804347826087" />
         <entry key="..\:/Users/neoma/AndroidStudioProjects/PlantApp_CAP102/app/src/main/res/layout/activity_register.xml" value="0.25" />
+        <entry key="..\:/Users/neoma/AndroidStudioProjects/cap102_PlantApp/app/src/main/res/layout/activity_add_post.xml" value="0.25769927536231885" />
+        <entry key="..\:/Users/neoma/AndroidStudioProjects/cap102_PlantApp/app/src/main/res/layout/activity_login.xml" value="0.30085470085470084" />
+        <entry key="..\:/Users/neoma/AndroidStudioProjects/cap102_PlantApp/app/src/main/res/layout/activity_main.xml" value="0.30085470085470084" />
+        <entry key="..\:/Users/neoma/AndroidStudioProjects/cap102_PlantApp/app/src/main/res/layout/activity_profile.xml" value="0.25769927536231885" />
+        <entry key="..\:/Users/neoma/AndroidStudioProjects/cap102_PlantApp/app/src/main/res/layout/activity_register.xml" value="0.30085470085470084" />
+        <entry key="..\:/Users/neoma/AndroidStudioProjects/cap102_PlantApp/app/src/main/res/layout/content_main.xml" value="0.30085470085470084" />
+        <entry key="..\:/Users/neoma/AndroidStudioProjects/cap102_PlantApp/app/src/main/res/layout/drawer_header.xml" value="0.30085470085470084" />
+        <entry key="..\:/Users/neoma/AndroidStudioProjects/cap102_PlantApp/app/src/main/res/layout/fragment_first.xml" value="0.30085470085470084" />
+        <entry key="..\:/Users/neoma/AndroidStudioProjects/cap102_PlantApp/app/src/main/res/layout/layout_post.xml" value="0.30085470085470084" />
+        <entry key="..\:/Users/neoma/AndroidStudioProjects/cap102_PlantApp/app/src/main/res/menu/bottom_menu.xml" value="0.1" />
+        <entry key="..\:/Users/neoma/AndroidStudioProjects/cap102_PlantApp/app/src/main/res/menu/drawer_menu.xml" value="0.30085470085470084" />
       </map>
     </option>
   </component>

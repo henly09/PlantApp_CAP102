@@ -10,9 +10,21 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+
 import net.kibotu.timebomb.TimeBomb;
 
-import androidx.appcompat.app.AppCompatActivity;
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -23,11 +35,15 @@ public class LoginActivity extends AppCompatActivity {
     SQLiteDatabase myDB;
     int ca,cb,cc,cd,a_test;
     String sca,scb,scc,scd, sa_test;
+    SessionManager sessionManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        //Initialize the session manager
+        sessionManager = new SessionManager(this);
 
       //  FirebaseTest();
       // For Intro Slide Purposes
@@ -80,9 +96,13 @@ public class LoginActivity extends AppCompatActivity {
 
         LoginButton.setOnClickListener(view -> {
 
-            Intent intentM = new Intent(LoginActivity.this, MainActivity.class);
-            startActivity(intentM);
-
+            if(UserEditText.getText().toString().isEmpty() || PasswordEditText.getText().toString().isEmpty()){
+                Toast.makeText(this, "One of your field is empty, please Enter", Toast.LENGTH_SHORT).show();
+            } else if(UserEditText.getText().toString().isEmpty() && PasswordEditText.getText().toString().isEmpty()){
+                Toast.makeText(this, "All of your field is empty, please Enter", Toast.LENGTH_SHORT).show();
+            } else {
+                LoginAuthenticate(UserEditText.getText().toString(), PasswordEditText.getText().toString());
+            }
 /*            myDB = openOrCreateDatabase("IntroSlideCheckStatus.db", 0, null);
             Cursor ma_checkbox = myDB.rawQuery("SELECT COUNT(*) as count FROM logintomaincheckbox WHERE logintomaincheckbox.status = ?;", new String[] {"enable"});
             while(ma_checkbox.moveToNext()){
@@ -100,6 +120,59 @@ public class LoginActivity extends AppCompatActivity {
             }
             myDB.close();*/
         });
+    }
+
+    private void LoginAuthenticate(String User, String Pass){
+        try{
+            String url = "http://192.168.254.100/networkingbased/LoginUser.php";
+
+            RequestQueue q = Volley.newRequestQueue(LoginActivity.this);
+
+            StringRequest r = new StringRequest( //Request String type
+                    Request.Method.POST, //Get or Retrieve only Method of request
+                    url,
+                    response -> {
+                        try{
+                            JSONObject oh = new JSONObject(response);
+                            JSONArray authenUser = oh.getJSONArray("User");
+
+                            JSONObject auth = authenUser.getJSONObject(0);
+
+                            if(UserEditText.getText().toString().equals(auth.optString("username").trim()) &&
+                                    PasswordEditText.getText().toString().equals(auth.optString("userpassword").trim())){
+
+                                String name = auth.optString("username").trim();
+                                String email = auth.optString("userpassword").trim();
+                                String id = auth.optString("userid").trim();
+
+                                //Create Session
+                                sessionManager.createSession(name,email,id);
+
+                                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                                intent.putExtra("username", auth.optString("username"));
+                                startActivity(intent);
+                                Toast.makeText(this, "Login Successfully", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                        catch(Exception e){
+                            Toast.makeText(this, "Username and Password incorrect", Toast.LENGTH_SHORT).show();
+
+                        }
+                    }, error -> Toast.makeText(LoginActivity.this, "Volley Error Response! \n\n" + error.getMessage(), Toast.LENGTH_SHORT).show()
+            ) {
+                @Nullable
+                @Override
+                protected Map<String, String> getParams() {
+                    Map<String, String> param = new HashMap<>();
+                    param.put("USER", User);
+                    param.put("PASS", Pass);
+                    return param;
+                }
+            };
+            q.add(r);
+        } catch (Exception e){
+            Toast.makeText(this, "Error Login", Toast.LENGTH_SHORT).show();
+        }
     }
 
     private void ForAppIntroSlidesCreateTable(){

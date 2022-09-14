@@ -6,9 +6,6 @@ import android.view.MenuItem;
 import android.view.WindowManager;
 import android.widget.Toast;
 
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.navigation.NavigationView;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -19,6 +16,9 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.NavigationUI;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationView;
+
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     BottomNavigationView botnavView;
@@ -27,13 +27,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     /*AppBarConfiguration appbar;*/
     ActionBarDrawerToggle toggle;
     NavigationView navview;
-    MenuItem Profile;
-    MenuItem Logout;
+    SessionManager sessionManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //Initialize the session manager
+        sessionManager = new SessionManager(this);
+        sessionManager.checkLogin(); //Check if Logged in
 
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
@@ -124,8 +127,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 Toast.makeText(this, "Authors", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.Logout:
-                Intent intentLogout = new Intent(MainActivity.this, LoginActivity.class);
-                startActivity(intentLogout);
+                sessionManager.logout();
                 drawer.closeDrawers();
                 finish();
                 break;

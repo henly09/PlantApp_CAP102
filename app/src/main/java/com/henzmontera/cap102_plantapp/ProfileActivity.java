@@ -1,14 +1,31 @@
 package com.henzmontera.cap102_plantapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
+
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.RecyclerView;
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class
 ProfileActivity extends AppCompatActivity {
@@ -22,7 +39,12 @@ ProfileActivity extends AppCompatActivity {
     FloatingActionButton BackButtonProfile;
     FloatingActionButton AddButtonThread;
 
-    RecyclerView recyclerview;
+    private SwipeRefreshLayout swiperefresh;
+    private PostAdapter useradapt;
+    private RecyclerView recyclerview;
+    private List<ListPost> listposts;
+
+    SessionManager sessionManager;
 
     // to check whether sub FAB buttons are visible or not.
     Boolean isAllFabsVisible;
@@ -30,7 +52,10 @@ ProfileActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-/*        setContentView(R.layout.activity_profile);
+        setContentView(R.layout.activity_profile);
+        sessionManager = new SessionManager(this);
+        sessionManager.checkLogin(); //Check if Logged in
+
         //FAB Button
         BackButtonProfile = findViewById(R.id.BackButtonProfile);
         AddButtonThread = findViewById(R.id.AddAddButton);
@@ -47,9 +72,23 @@ ProfileActivity extends AppCompatActivity {
         //RecyclerView Layout
         recyclerview.setHasFixedSize(true);
         recyclerview.setLayoutManager(new LinearLayoutManager(this));
+        listposts = new ArrayList<>();
+
+        //Retrieve User's Name and Print in TextView
+        HashMap<String, String> user = sessionManager.getUserDetail();
+        String username = user.get(sessionManager.NAME);
+        UsernameProfile.setText(username);
 
         //Call Display Post Method
-        GetDisplayThread();
+        DisplayPost();
+
+        //SwipeRefresh function
+        swiperefresh = findViewById(R.id.LowerProfileConstraintLayout);
+        swiperefresh.setOnRefreshListener(() -> {
+            listposts.clear(); //Clear Arraylist
+            DisplayPost();    //Re add the Data into Arraylist again
+            swiperefresh.setRefreshing(false); //False to Animation
+        });
 
         //BackButton w/ Finish
         BackButtonProfile.setOnClickListener(view ->{
@@ -61,79 +100,55 @@ ProfileActivity extends AppCompatActivity {
         AddButtonThread.setOnClickListener(view -> {
             Intent intent = new Intent(ProfileActivity.this, AddPostActivity.class);
             startActivity(intent);
-        });*/
+        });
     }
 
-    public void GetDisplayThread(){
-/*
-        String url = "http://192.168.254.100/networkingbased/DisplayLatestPost.php";
+    private void DisplayPost(){
+        String url = "http://192.168.254.100/networkingbased/DisplayUserProfile.php";
 
         RequestQueue q = Volley.newRequestQueue(ProfileActivity.this);
 
-        StringRequest r = new StringRequest(
-                Request.Method.GET,
+        StringRequest r = new StringRequest( //Request String type
+                Request.Method.POST, //Get or Retrieve only Method of request
                 url,
                 response -> {
-                    try{
+                    try {
                         JSONObject oh = new JSONObject(response);
+                        JSONArray userpost = oh.getJSONArray("UserPosts");
 
-                        JSONArray latestpost = oh.getJSONArray("LatestPost");
+                        for (int i = 0; i < userpost.length(); i++) {
+                            JSONObject al = userpost.getJSONObject(i);
 
-                        int size = latestpost.length();
-
-                        String[] A1 = new String[size];
-                        String[] A2 = new String[size];
-                        String[] A3 = new String[size];
-                        String[] A4 = new String[size];
-                        String[] A5 = new String[size];
-                        String[] A6 = new String[size];
-                        String[] A7 = new String[size];
-                        int[] A8 = new int[size];
-                        int[] A9 = new int[size];
-
-                        if (latestpost.length() == 0) {
-
-                            // Live
-                            recyclerview.setVisibility(View.INVISIBLE);
-
-                            // Guest
-                            emptyView.setVisibility(View.VISIBLE);
-                            emptyView.requestLayout();
+                            ListPost post = new ListPost(
+                                    al.optString("postUserId"),
+                                    al.optString("postId"),
+                                    al.optString("username"),
+                                    al.optString("postDescriptions"),
+                                    al.optString("postTime"),
+                                    al.optString("commentsCount"),
+                                    al.optString("likeCount"),
+                                    al.optInt("userprofilepicture"),
+                                    al.optInt("postImages")
+                            );
+                            listposts.add(post);
+                            useradapt = new PostAdapter(ProfileActivity.this, listposts);
+                            recyclerview.setAdapter(useradapt);
+                            useradapt.notifyDataSetChanged();
                         }
-                        else {
-                            for(int i=0; i<size; i++) {
-
-                                JSONObject ob = latestpost.getJSONObject(i);
-
-                                A1[i] = ob.optString("postId");
-                                A2[i] = ob.optString("postUserId");
-                                A3[i] = ob.optString("username");
-                                A4[i] = ob.optString("postDescriptions");
-                                A5[i] = ob.optString("postTime");
-                                A6[i] = ob.optString("commentsCount");
-                                A7[i] = ob.optString("likeCount");
-                                A8[i] = ob.optInt("userprofilepicture");
-                                A9[i] = ob.optInt("postImages");
-
-                                UserPostAdapter userpostAd = new UserPostAdapter(ProfileActivity.this,A1,A2,A3,A4,A5,A6,A7,A8,A9);
-                                recyclerview.setAdapter(userpostAd);
-                            }
-
-                            // LIVE
-                            recyclerview.setVisibility(View.VISIBLE);
-                            recyclerview.requestLayout();
-
-                            // GUEST
-                            emptyView.setVisibility(View.INVISIBLE);
-
-                        }
+                    } catch (Exception e) {
+                        Toast.makeText(ProfileActivity.this, "Fetching Data From Database Failed. Please Try Again Later..", Toast.LENGTH_SHORT).show();
                     }
-                    catch(Exception e){
-
-                    }
-                }, error -> Toast.makeText(ProfileActivity.this, "Volley Error Response! \n\n" + error.getMessage(), Toast.LENGTH_SHORT).show());
+                }, error -> {
+            Toast.makeText(ProfileActivity.this, "Fetching Data From Database Failed. Please Try Again Later..", Toast.LENGTH_SHORT).show();
+        }) {
+            @Nullable
+            @Override
+            protected Map<String, String> getParams() {
+                Map<String, String> param = new HashMap<>();
+                param.put("userid", "2");
+                return param;
+            }
+        };
         q.add(r);
-*/
-
     }
 }

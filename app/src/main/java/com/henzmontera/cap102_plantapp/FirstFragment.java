@@ -1,11 +1,19 @@
 package com.henzmontera.cap102_plantapp;
 
+import static java.sql.Types.NULL;
+
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -17,14 +25,6 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
-
-import static java.sql.Types.NULL;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -40,7 +40,7 @@ import static java.sql.Types.NULL;
 public class FirstFragment extends Fragment {
 
     private SwipeRefreshLayout swiperefresh;
-    private UserPostAdapter useradapt;
+    private PostAdapter useradapt;
     private RecyclerView recyclerview;
     private List<ListPost> listposts;
     private TextView DataErrorTextView;
@@ -62,8 +62,6 @@ public class FirstFragment extends Fragment {
         recyclerview.setHasFixedSize(true);
         recyclerview.setLayoutManager(new LinearLayoutManager(getActivity()));
         listposts = new ArrayList<>();
-        useradapt = new UserPostAdapter(getActivity(), listposts);
-        recyclerview.setAdapter(useradapt);
 
         //Call Method
         GetLatestPost();
@@ -112,7 +110,7 @@ public class FirstFragment extends Fragment {
                                         al.optInt("postImages")
                                 );
                                 listposts.add(post);
-                                useradapt = new UserPostAdapter(getActivity(), listposts);
+                                useradapt = new PostAdapter(getActivity(), listposts);
                                 recyclerview.setAdapter(useradapt);
                                 useradapt.notifyDataSetChanged();
                             }
