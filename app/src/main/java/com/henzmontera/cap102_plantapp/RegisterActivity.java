@@ -24,6 +24,7 @@ public class RegisterActivity extends AppCompatActivity {
     EditText EditEmail;
     EditText EditUser;
     EditText EditPass;
+    EditText EditConfirmPass;
     Button RegisterButton;
     TextView LoginText;
 
@@ -34,6 +35,7 @@ public class RegisterActivity extends AppCompatActivity {
         EditEmail = findViewById(R.id.editRegisterEmail);
         EditUser = findViewById(R.id.editRegisterUsername);
         EditPass = findViewById(R.id.editRegisterPassword);
+        EditConfirmPass = findViewById(R.id.editRegisterConfirmationPassword);
         RegisterButton = findViewById(R.id.RegisterButton);
         LoginText = findViewById(R.id.LoginText);
 
@@ -50,34 +52,38 @@ public class RegisterActivity extends AppCompatActivity {
 
         //Register New User
         RegisterButton.setOnClickListener(view -> {
-            String url = "http://192.168.254.100/networkingbased/RegisterUser.php";
-            RequestQueue request = Volley.newRequestQueue(RegisterActivity.this);
-            StringRequest RRequest = new StringRequest(
-                    Request.Method.POST,
-                    url,
-                    response -> {
-                        try{
-                            Toast.makeText(RegisterActivity.this, "User Create Successfully", Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
-                            startActivity(intent);
-                            finish();
-                        }catch(Exception e){
-                            Toast.makeText(RegisterActivity.this, "String Exception Error!!\n\n" + e.getMessage(),Toast.LENGTH_SHORT).show();
-                        }
-                    },
-                    error -> Toast.makeText(RegisterActivity.this, "Volley Error.\nIn ErrorListener\n" + error.getMessage(), Toast.LENGTH_LONG).show()
-            ) {
-                @Nullable
-                @Override
-                protected Map<String, String> getParams() throws AuthFailureError {
-                    Map<String, String> param = new HashMap<>();
-                    param.put("EMAIL", EditEmail.getText().toString());
-                    param.put("USER", EditUser.getText().toString());
-                    param.put("PASS", EditPass.getText().toString());
-                    return param;
-                }
-            };
-            request.add(RRequest);
+            if(EditPass.getText().toString().equals(EditConfirmPass.getText().toString())){
+                String url = "http://192.168.254.100/networkingbased/RegisterUser.php";
+                RequestQueue request = Volley.newRequestQueue(RegisterActivity.this);
+                StringRequest RRequest = new StringRequest(
+                        Request.Method.POST,
+                        url,
+                        response -> {
+                            try{
+                                Toast.makeText(RegisterActivity.this, "User Create Successfully", Toast.LENGTH_SHORT).show();
+                                Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
+                                startActivity(intent);
+                                finish();
+                            }catch(Exception e){
+                                Toast.makeText(RegisterActivity.this, "String Exception Error!!\n\n" + e.getMessage(),Toast.LENGTH_SHORT).show();
+                            }
+                        },
+                        error -> Toast.makeText(RegisterActivity.this, "Volley Error.\nIn ErrorListener\n" + error.getMessage(), Toast.LENGTH_LONG).show()
+                ) {
+                    @Nullable
+                    @Override
+                    protected Map<String, String> getParams() throws AuthFailureError {
+                        Map<String, String> param = new HashMap<>();
+                        param.put("EMAIL", EditEmail.getText().toString());
+                        param.put("USER", EditUser.getText().toString());
+                        param.put("PASS", EditPass.getText().toString());
+                        return param;
+                    }
+                };
+                request.add(RRequest);
+            } else {
+                Toast.makeText(this, "Those passwords didn’t match. Try again.", Toast.LENGTH_SHORT).show();
+            }
         });
     }
 }
