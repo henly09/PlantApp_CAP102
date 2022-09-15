@@ -132,6 +132,7 @@ public class AppleMangoActivity extends AppCompatActivity {
                 m_Text = input.getText().toString();
                 int a = Integer.parseInt(m_Text);
                 String b = "";
+                // https://www.healthy-vegetable-gardening.com/brix-scale.html
                 if (a < 4){
                     b = "Sour";
                 }
