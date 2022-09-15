@@ -106,6 +106,10 @@ public class LoginActivity extends AppCompatActivity {
         });
 
         GuestButton.setOnClickListener(view -> {
+            String Gname = "UserGuest000";
+            String Gid = "69142";
+            sessionManager.createGuestSession(Gname, Gid); //Guest Mode
+
             Intent intent = new Intent(LoginActivity.this, MainActivity.class);
             startActivity(intent);
             finish();

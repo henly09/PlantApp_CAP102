@@ -76,17 +76,18 @@ ProfileActivity extends AppCompatActivity {
 
         //Retrieve User's Name and Print in TextView
         HashMap<String, String> user = sessionManager.getUserDetail();
-        String username = user.get(sessionManager.NAME);
+        String username = user.get(sessionManager.UNAME);
+        String id = user.get(sessionManager.UID);
         UsernameProfile.setText(username);
 
         //Call Display Post Method
-        DisplayPost();
+        DisplayPost(id);
 
         //SwipeRefresh function
         swiperefresh = findViewById(R.id.LowerProfileConstraintLayout);
         swiperefresh.setOnRefreshListener(() -> {
             listposts.clear(); //Clear Arraylist
-            DisplayPost();    //Re add the Data into Arraylist again
+            DisplayPost(id);    //Re add the Data into Arraylist again
             swiperefresh.setRefreshing(false); //False to Animation
         });
 
@@ -103,7 +104,7 @@ ProfileActivity extends AppCompatActivity {
         });
     }
 
-    private void DisplayPost(){
+    private void DisplayPost(String id){
         String url = "http://192.168.254.100/networkingbased/DisplayUserProfile.php";
 
         RequestQueue q = Volley.newRequestQueue(ProfileActivity.this);
@@ -145,7 +146,7 @@ ProfileActivity extends AppCompatActivity {
             @Override
             protected Map<String, String> getParams() {
                 Map<String, String> param = new HashMap<>();
-                param.put("userid", "2");
+                param.put("userid", id);
                 return param;
             }
         };

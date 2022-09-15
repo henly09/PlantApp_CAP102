@@ -13,11 +13,16 @@ public class SessionManager {
     public Context context;
     int PRIVATE_MODE = 0;
 
+    //User
     private static final String PREF_NAME = "LOGIN";
     private static final String LOGIN = "IS_LOGIN";
-    public static final String NAME = "NAME";
-    public static final String EMAIL = "EMAIL";
-    public static final String ID = "ID";
+    public static final String UNAME = "NAME";
+    public static final String UEMAIL = "EMAIL";
+    public static final String UID = "ID";
+
+    //Guest
+    public static final String GNAME = "NAME";
+    public static final String GID = "ID";
 
     public SessionManager(Context context) {
         this.context = context;
@@ -25,11 +30,19 @@ public class SessionManager {
         editor = sharedPreferences.edit();
     }
 
-    public void createSession(String name, String email, String id){
+    //Create Session
+    public void createUserSession(String name, String email, String id){
         editor.putBoolean(LOGIN, true);
-        editor.putString(NAME, name);
-        editor.putString(EMAIL, email);
-        editor.putString(ID, id);
+        editor.putString(UNAME, name);
+        editor.putString(UEMAIL, email);
+        editor.putString(UID, id);
+        editor.apply();
+    }
+
+    public void createGuestSession(String name, String id){
+        editor.putBoolean(LOGIN, true);
+        editor.putString(GNAME, name);
+        editor.putString(GID, id);
         editor.apply();
     }
 
@@ -39,7 +52,6 @@ public class SessionManager {
     }
 
     public void checkLogin(){
-
         // If Not, Stop session
         if (!this.isLoggin()){
             Intent i = new Intent(context, LoginActivity.class);
@@ -49,22 +61,25 @@ public class SessionManager {
     }
 
     public HashMap<String, String> getUserDetail(){
-
         HashMap<String, String> user = new HashMap<>();
-        user.put(NAME, sharedPreferences.getString(NAME, null));
-        user.put(EMAIL, sharedPreferences.getString(EMAIL, null));
-        user.put(ID, sharedPreferences.getString(ID, null));
-
+        user.put(UNAME, sharedPreferences.getString(UNAME, null));
+        user.put(UEMAIL, sharedPreferences.getString(UEMAIL, null));
+        user.put(UID, sharedPreferences.getString(UID, null));
         return user;
     }
 
-    public void logout(){
+    public HashMap<String, String> getGuestDetails(){
+        HashMap<String, String> guest = new HashMap<>();
+        guest.put(GNAME, sharedPreferences.getString(GNAME, null));
+        guest.put(GID, sharedPreferences.getString(GID, null));
+        return guest;
+    }
 
+    public void logout(){
         editor.clear();
         editor.commit();
         Intent i = new Intent(context, LoginActivity.class);
         context.startActivity(i);
         ((MainActivity) context).finish();
-
     }
 }

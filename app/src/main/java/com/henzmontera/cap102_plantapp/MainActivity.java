@@ -2,6 +2,7 @@ package com.henzmontera.cap102_plantapp;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.WindowManager;
 import android.widget.Toast;
@@ -19,6 +20,8 @@ import androidx.navigation.ui.NavigationUI;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 
+import java.util.HashMap;
+
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     BottomNavigationView botnavView;
@@ -28,15 +31,31 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     ActionBarDrawerToggle toggle;
     NavigationView navview;
     SessionManager sessionManager;
+    NavigationView navigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        String Gname = "UserGuest000";
+        String Gid = "69142";
+
         //Initialize the session manager
         sessionManager = new SessionManager(this);
-        sessionManager.checkLogin(); //Check if Logged in
+        sessionManager.checkLogin(); //Check if Logged In
+
+        //If Not Logged In Guest Mode Initiate
+        if(!sessionManager.isLoggin()){
+            sessionManager.createGuestSession(Gname,Gid);
+        }
+        //Menu Items Visible(Guest/User)
+        HashMap<String, String> guest = sessionManager.getGuestDetails();
+        if(guest.get(sessionManager.GNAME).equals("UserGuest000")){
+            GuestItem();
+        } else {
+            UserItem();
+        }
 
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
@@ -58,6 +77,27 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
 /*         appbar = new AppBarConfiguration.Builder(R.id.firstFragment,R.id.secondFragment,R.id.thirdFragment).build();
          NavigationUI.setupActionBarWithNavController(this, navcon, appbar);*/
+
+    }
+
+    private void GuestItem(){
+        navigationView = findViewById(R.id.navigation_view);
+        Menu menu = navigationView.getMenu();
+        menu.findItem(R.id.Register).setVisible(true);
+        menu.findItem(R.id.Login).setVisible(true);
+
+        menu.findItem(R.id.Logout).setVisible(false);
+        menu.findItem(R.id.AcProfile).setVisible(false);
+    }
+
+    private void UserItem(){
+        navigationView = findViewById(R.id.navigation_view);
+        Menu menu = navigationView.getMenu();
+        menu.findItem(R.id.Register).setVisible(false);
+        menu.findItem(R.id.Login).setVisible(false);
+
+        menu.findItem(R.id.Logout).setVisible(true);
+        menu.findItem(R.id.AcProfile).setVisible(true);
 
     }
 
