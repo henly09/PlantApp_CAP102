@@ -10,6 +10,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.StringRequest;
@@ -23,12 +26,9 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-
 public class LoginActivity extends AppCompatActivity {
 
-    Button LoginButton;
+    Button LoginButton, GuestButton;
     EditText UserEditText;
     EditText PasswordEditText;
     TextView RegisText;
@@ -80,6 +80,7 @@ public class LoginActivity extends AppCompatActivity {
         }
 
         LoginButton = findViewById(R.id.LoginButton);
+        GuestButton = findViewById(R.id.guestButton);
         UserEditText = findViewById(R.id.editLoginUsernameText);
         PasswordEditText = findViewById(R.id.editLoginPasswordText);
         RegisText = findViewById(R.id.RegisterText);
@@ -102,6 +103,12 @@ public class LoginActivity extends AppCompatActivity {
             } else {
                 LoginAuthenticate(UserEditText.getText().toString(), PasswordEditText.getText().toString());
             }
+        });
+
+        GuestButton.setOnClickListener(view -> {
+            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+            startActivity(intent);
+            finish();
         });
     }
 
@@ -129,7 +136,7 @@ public class LoginActivity extends AppCompatActivity {
                                 String id = auth.optString("userid").trim();
 
                                 //Create Session
-                                sessionManager.createSession(name,email,id);
+                                sessionManager.createUserSession(name,email,id);
 
                                 myDB = openOrCreateDatabase("IntroSlideCheckStatus.db", 0, null);
                                 Cursor ma_checkbox = myDB.rawQuery("SELECT COUNT(*) as count FROM logintomaincheckbox WHERE logintomaincheckbox.status = ?;", new String[] {"enable"});
@@ -224,7 +231,6 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void FirebaseTest(){
-
         TimeBomb.enableLogging(BuildConfig.DEBUG);
         TimeBomb.bombAfterDays(this, BuildConfig.BUILD_DATE, 0);
 

@@ -23,12 +23,12 @@
         android:id="@+id/editLoginUsernameText"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="96dp"
+        android:layout_marginTop="224dp"
         android:ems="10"
         android:hint="Username"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintHorizontal_bias="0.488"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
@@ -49,10 +49,24 @@
         android:id="@+id/LoginButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="-6dp"
         android:backgroundTint="#039BE5"
         android:text="Login"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/guestButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="-12dp"
+        android:backgroundTint="#6B7A81"
+        android:text="Guest Mode"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/LoginButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
