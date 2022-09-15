@@ -8,13 +8,9 @@
     android:screenOrientation="portrait">
 
     <ImageView
-        android:layout_width="205dp"
-        android:layout_height="131dp"
-        android:layout_margin="16dp"
-        android:src="@drawable/ic_nature"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
+        android:id="@+id/imageView16"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        app:srcCompat="@drawable/intrologo2" />
 </LinearLayout>
