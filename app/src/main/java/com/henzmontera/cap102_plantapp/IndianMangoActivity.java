@@ -138,6 +138,7 @@ public class IndianMangoActivity extends AppCompatActivity {
             builder.setPositiveButton("OK", (dialog, which) -> {
                 m_Text = input.getText().toString();
                 int a = Integer.parseInt(m_Text);
+                // https://www.healthy-vegetable-gardening.com/brix-scale.html
                 String b = "";
                 if (a < 4){
                     b = "Sour";
@@ -175,6 +176,7 @@ public class IndianMangoActivity extends AppCompatActivity {
             builder.setPositiveButton("OK", (dialog, which) -> {
                 m_Text = input.getText().toString();
                 int a = Integer.parseInt(m_Text);
+                // https://www.mango.org/wp-content/uploads/2017/10/Mango_Maturity_And_Ripeness_Guide.pdf
                 String b = "";
                 if (a > 20){
                     b = "Unripe Firm";
