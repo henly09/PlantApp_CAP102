@@ -28,7 +28,7 @@ public class AboutAuthor extends AppCompatActivity {
 
         View aboutPage = new AboutPage(this)
                 .isRTL(false)
-                .setImage(R.drawable.logo_mangos_small_reso)
+                .setImage(R.drawable.intrologo2_lowres)
                 .setDescription("ManGo is an agricultural mobile-based application where it helps the user to grow healthy" +
                         "fruit crops with the guide of the application that we will create.")
                 .addItem(new Element().setTitle("Version 1.0"))

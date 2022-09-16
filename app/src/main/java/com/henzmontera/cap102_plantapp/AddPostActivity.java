@@ -1,7 +1,5 @@
 package com.henzmontera.cap102_plantapp;
 
-import static java.sql.Types.NULL;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
@@ -9,9 +7,6 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -23,6 +18,11 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+
+import static java.sql.Types.NULL;
 
 public class AddPostActivity extends AppCompatActivity {
 
@@ -48,12 +48,12 @@ public class AddPostActivity extends AppCompatActivity {
         //Retrieve User's Name and Print in TextView
         sessionManager = new SessionManager(this);
         HashMap<String, String> user = sessionManager.getUserDetail();
-        String username = user.get(sessionManager.NAME);
+        String username = user.get(sessionManager.UNAME);
         UserTextView.setText(username);
 
         PostText.setOnClickListener(view ->{
             //Retrieve User's Id
-            String id = user.get(sessionManager.ID);
+            String id = user.get(sessionManager.UID);
 
             //Constructor Get Current Time
             Date currentTime = Calendar.getInstance().getTime();
