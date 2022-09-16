@@ -110,9 +110,22 @@ public class LoginActivity extends AppCompatActivity {
             String Gid = "69142";
             sessionManager.createGuestSession(Gname, Gid); //Guest Mode
 
-            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-            startActivity(intent);
-            finish();
+            myDB = openOrCreateDatabase("IntroSlideCheckStatus.db", 0, null);
+            Cursor ma_checkbox = myDB.rawQuery("SELECT COUNT(*) as count FROM logintomaincheckbox WHERE logintomaincheckbox.status = ?;", new String[] {"enable"});
+            while(ma_checkbox.moveToNext()){
+                a_test = ma_checkbox.getColumnIndex("count");
+                sa_test = ma_checkbox.getString(a_test);
+            }
+            if(sa_test.equals("1")){
+                Intent intent = new Intent(LoginActivity.this, LogToMainSlides.class);
+                startActivity(intent);
+                finish();
+            } else {
+                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                startActivity(intent);
+                finish();
+            }
+            myDB.close();
         });
 
     }
