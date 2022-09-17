@@ -1,5 +1,7 @@
 package com.henzmontera.cap102_plantapp;
 
+import static java.sql.Types.NULL;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
@@ -7,6 +9,9 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -19,20 +24,15 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-
-import static java.sql.Types.NULL;
-
 public class AddPostActivity extends AppCompatActivity {
 
-    ImageView ProfilePicThread;
-    TextView PostText;
-    TextView UserTextView;
-    EditText EditTextDescriptionWriteMessage;
-    Button AddImageButtonThread;
-    ImageView backButtonPost;
-    SessionManager sessionManager;
+    private ImageView ProfilePicThread;
+    private TextView PostText;
+    private TextView UserTextView;
+    private EditText EditTextDescriptionWriteMessage;
+    private Button AddImageButtonThread;
+    private ImageView backButtonPost;
+    private SessionManager sessionManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

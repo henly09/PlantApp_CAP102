@@ -21,12 +21,12 @@ import java.util.Map;
 
 public class RegisterActivity extends AppCompatActivity {
 
-    EditText EditEmail;
-    EditText EditUser;
-    EditText EditPass;
-    EditText EditConfirmPass;
-    Button RegisterButton;
-    TextView LoginText;
+    private EditText EditEmail;
+    private EditText EditUser;
+    private EditText EditPass;
+    private EditText EditConfirmPass;
+    private Button RegisterButton;
+    private TextView LoginText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

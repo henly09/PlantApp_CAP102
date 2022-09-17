@@ -30,14 +30,14 @@ import java.util.Map;
 public class
 ProfileActivity extends AppCompatActivity {
 
-    Button EditProfile; //I doubt to use this
-    TextView UsernameProfile;
-    TextView emptyView;
-    ImageView UserBackgroundProfile;
-    ImageView UserPictureProfile;
+    private Button EditProfile; //I doubt to use this
+    private TextView UsernameProfile;
+    private TextView emptyView;
+    private  ImageView UserBackgroundProfile;
+    private ImageView UserPictureProfile;
 
-    FloatingActionButton BackButtonProfile;
-    FloatingActionButton AddButtonThread;
+    private FloatingActionButton BackButtonProfile;
+    private FloatingActionButton AddButtonThread;
 
     private SwipeRefreshLayout swiperefresh;
     private PostAdapter useradapt;
@@ -60,9 +60,13 @@ ProfileActivity extends AppCompatActivity {
         BackButtonProfile = findViewById(R.id.BackButtonProfile);
         AddButtonThread = findViewById(R.id.AddAddButton);
 
+        //This Textview display if empty data list
         emptyView = findViewById(R.id.TextviewEmpty);
+
+        //Textview's Username
         UsernameProfile = findViewById(R.id.TextviewUsernameProfile);
 
+        //Images
         UserPictureProfile = findViewById(R.id.ImageProfilePost);
         UserBackgroundProfile = findViewById(R.id.ImageProfileBackground);
 
@@ -101,6 +105,11 @@ ProfileActivity extends AppCompatActivity {
         AddButtonThread.setOnClickListener(view -> {
             Intent intent = new Intent(ProfileActivity.this, AddPostActivity.class);
             startActivity(intent);
+        });
+
+        //Select Profile Picture
+        UserPictureProfile.setOnClickListener(view -> {
+
         });
     }
 

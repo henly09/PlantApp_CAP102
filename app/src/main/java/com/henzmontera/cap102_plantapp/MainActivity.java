@@ -24,22 +24,19 @@ import java.util.HashMap;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
-    BottomNavigationView botnavView;
-    NavController navcon;
-    DrawerLayout drawer;
+    private BottomNavigationView botnavView;
+    private NavController navcon;
+    private DrawerLayout drawer;
     /*AppBarConfiguration appbar;*/
-    ActionBarDrawerToggle toggle;
-    NavigationView navview;
-    SessionManager sessionManager;
-    NavigationView navigationView;
+    private ActionBarDrawerToggle toggle;
+    private NavigationView navview;
+    private SessionManager sessionManager;
+    private NavigationView navigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        String Gname = "UserGuest000";
-        String Gid = "69142";
 
         //Initialize the session manager
         sessionManager = new SessionManager(this);
@@ -47,22 +44,25 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         //If Not Logged In Guest Mode Initiate
         if(!sessionManager.isLoggin()){
+            String Gname = "UserGuest000";
+            String Gid = "69142";
             sessionManager.createGuestSession(Gname,Gid);
         }
         //Menu Items Visible(Guest/User)
         HashMap<String, String> guest = sessionManager.getGuestDetails();
         if(guest.get(sessionManager.GNAME).equals("UserGuest000")){
-            GuestItem();
+            GuestItem(); //Only Guest Can Access
         } else {
-            UserItem();
+            UserItem(); //Only User Access
         }
 
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN); //FullScreen
 
         // calling the action bar
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
 
+        //Navigation Drawer Setup
         drawer = findViewById(R.id.drawer_layout);
         navview = findViewById(R.id.navigation_view);
         toggle = new ActionBarDrawerToggle(this, drawer,R.string.start,R.string.close);

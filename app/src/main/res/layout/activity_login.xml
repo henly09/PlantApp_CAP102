@@ -8,7 +8,7 @@
     android:screenOrientation="portrait" >
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/ViewProfilePictureTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
@@ -32,7 +32,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.488"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/ViewProfilePictureTextView" />
 
     <EditText
         android:id="@+id/editLoginPasswordText"
@@ -55,11 +55,11 @@
         android:layout_marginTop="12dp"
         android:text="Register"
         android:textColor="#039BE5"
-        app:layout_constraintStart_toEndOf="@+id/textView2"
+        app:layout_constraintStart_toEndOf="@+id/SelectProfilePictureTextView"
         app:layout_constraintTop_toBottomOf="@+id/editLoginPasswordText" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/SelectProfilePictureTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"

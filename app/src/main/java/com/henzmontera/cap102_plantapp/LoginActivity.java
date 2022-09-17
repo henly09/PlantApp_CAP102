@@ -10,6 +10,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.StringRequest;
@@ -23,19 +26,16 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-
 public class LoginActivity extends AppCompatActivity {
 
-    Button LoginButton, GuestButton;
-    EditText UserEditText;
-    EditText PasswordEditText;
-    TextView RegisText;
-    SQLiteDatabase myDB;
-    int ca,cb,cc,cd,a_test;
-    String sca,scb,scc,scd, sa_test;
-    SessionManager sessionManager;
+    private Button LoginButton, GuestButton;
+    private EditText UserEditText;
+    private EditText PasswordEditText;
+    private TextView RegisText;
+    private SQLiteDatabase myDB;
+    private  int ca,cb,cc,cd,a_test;
+    private String sca,scb,scc,scd, sa_test;
+    private SessionManager sessionManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -154,7 +154,7 @@ public class LoginActivity extends AppCompatActivity {
                                 String id = auth.optString("userid").trim();
 
                                 //Create Session
-                                //sessionManager.createUserSession(name,email,id);
+                                sessionManager.createUserSession(name,email,id);
 
                                 myDB = openOrCreateDatabase("IntroSlideCheckStatus.db", 0, null);
                                 Cursor ma_checkbox = myDB.rawQuery("SELECT COUNT(*) as count FROM logintomaincheckbox WHERE logintomaincheckbox.status = ?;", new String[] {"enable"});
@@ -173,6 +173,7 @@ public class LoginActivity extends AppCompatActivity {
                                     startActivity(intent);
                                     Toast.makeText(this, "Login Successfully", Toast.LENGTH_SHORT).show();
                                 }
+                                finish();
                                 myDB.close();
                             }
                         }
