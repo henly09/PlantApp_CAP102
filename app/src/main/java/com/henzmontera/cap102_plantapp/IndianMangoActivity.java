@@ -51,7 +51,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class IndianMangoActivity extends AppCompatActivity {
 
-    TextView result,size, brixlevel, firmlevel,rcppercentage,scppercentage;
+    TextView /*result,size, brixlevel,*/ firmlevel,rcppercentage,scppercentage;
     StateProgressBar ripenesslevelIM,sizelevelIM,brixlevelIM,penelevelIM;
     ImageView imageView;
     ProgressBar ripebar,sizebar;
@@ -94,14 +94,14 @@ public class IndianMangoActivity extends AppCompatActivity {
         getSupportActionBar().setBackgroundDrawable(getDrawable(R.drawable.actionbartheme));
         setTitle("INDIAN MANGO");
 
-        result = findViewById(R.id.classifiedIM);
+/*        result = findViewById(R.id.classifiedIM);*/
         rcppercentage = findViewById(R.id.ripecpercentageIM);
         scppercentage = findViewById(R.id.sizecpercentageIM);
         imageView = findViewById(R.id.imageViewIM);
         picture = findViewById(R.id.buttonIM);
-        size = findViewById(R.id.SizesIM);
+/*        size = findViewById(R.id.SizesIM);*/
         addingbrix = findViewById(R.id.addingbrixIM);
-        brixlevel = findViewById(R.id.brixlevelsIM);
+/*        brixlevel = findViewById(R.id.brixlevelsIM);*/
         notificationBadgeIM = findViewById(R.id.badgeIM);
         RecAndProdIM = findViewById(R.id.recAndProdIM);
         addingfirm = findViewById(R.id.addfirmIM);
@@ -290,11 +290,11 @@ public class IndianMangoActivity extends AppCompatActivity {
                 }
             }
 
-            String resultstyledText = "Ripeness: <font color='#249023'>"+ Mi_Ripeness[maxPosRipeness] +"</font>";
+/*            String resultstyledText = "Ripeness: <font color='#249023'>"+ Mi_Ripeness[maxPosRipeness] +"</font>";
             result.setText(Html.fromHtml(resultstyledText), TextView.BufferType.SPANNABLE);
 
             String sizestyledText = "Size: <font color='#249023'>"+ Mi_Size[maxPosSize] +"</font>";
-            size.setText(Html.fromHtml(sizestyledText), TextView.BufferType.SPANNABLE);
+            size.setText(Html.fromHtml(sizestyledText), TextView.BufferType.SPANNABLE);*/
 
             if (Mi_Ripeness[maxPosRipeness].equals("Ripe")){
                 ripenesslevelIM.setCurrentStateNumber(StateProgressBar.StateNumber.FOUR);
