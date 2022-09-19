@@ -9,28 +9,82 @@
     android:screenOrientation="portrait"
     tools:context=".MainActivity">
 
-    <com.nex3z.notificationbadge.NotificationBadge
-        android:id="@+id/badgeCM"
-        android:layout_width="28dp"
+    <com.kofigyan.stateprogressbar.StateProgressBar
+        android:id="@+id/brixlevelCM"
+        android:layout_width="348dp"
         android:layout_height="28dp"
-        android:layout_marginBottom="56dp"
-        android:layout_marginStart="-20dp"
-        android:textSize="16sp"
-        android:translationZ="@dimen/activity_horizontal_margin"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="32dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/RecAndProdCM"
-        app:nbAnimationEnabled="true"
-        app:nbBackground="@drawable/badge_file"
-        app:nbMaxTextLength="3" />
+        app:layout_constraintHorizontal_bias="0.488"
+        app:layout_constraintStart_toStartOf="parent"
+        app:spb_animateToCurrentProgressState="true"
+        app:spb_currentStateDescriptionColor="#ee941e"
+        app:spb_currentStateNumber="one"
+        app:spb_maxStateNumber="five"
+        app:spb_stateBackgroundColor="#BDBDBD"
+        app:spb_stateDescriptionColor="#808080"
+        app:spb_stateForegroundColor="#ee941e"
+        app:spb_stateNumberBackgroundColor="#808080"
+        app:spb_stateNumberForegroundColor="#eeeeee" />
+
+    <com.kofigyan.stateprogressbar.StateProgressBar
+        android:id="@+id/sizelevelCM"
+        android:layout_width="348dp"
+        android:layout_height="11dp"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="15dp"
+        app:layout_constraintBottom_toTopOf="@+id/brixlevelsCM"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.488"
+        app:layout_constraintStart_toStartOf="parent"
+        app:spb_animateToCurrentProgressState="true"
+        app:spb_currentStateDescriptionColor="#ee941e"
+        app:spb_currentStateNumber="one"
+        app:spb_maxStateNumber="three"
+        app:spb_stateBackgroundColor="#BDBDBD"
+        app:spb_stateDescriptionColor="#808080"
+        app:spb_stateForegroundColor="#ee941e"
+        app:spb_stateNumberBackgroundColor="#808080"
+        app:spb_stateNumberForegroundColor="#eeeeee" />
+
+    <TextView
+        android:id="@+id/sizesAM3"
+        android:layout_width="76dp"
+        android:layout_height="25dp"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/confidencesTextAM"
+        android:layout_marginBottom="5dp"
+        android:layout_marginStart="32dp"
+        android:gravity="center|center_vertical"
+        android:text="SizeC%:"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/SizesCM"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/sizesAM4"
+        android:layout_width="76dp"
+        android:layout_height="25dp"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/confidencesTextAM"
+        android:layout_marginBottom="12dp"
+        android:layout_marginStart="32dp"
+        android:gravity="center|center_vertical"
+        android:text="RipeC%:"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/sizesAM3"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
         android:id="@+id/imageView5"
         android:layout_width="272dp"
         android:layout_height="290dp"
-        android:layout_marginBottom="260dp"
-        android:layout_marginStart="232dp"
+        android:layout_marginBottom="248dp"
+        android:layout_marginStart="300dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/cm_overlay" />
@@ -39,8 +93,8 @@
         android:id="@+id/imageView2"
         android:layout_width="272dp"
         android:layout_height="290dp"
-        android:layout_marginBottom="504dp"
-        android:layout_marginEnd="224dp"
+        android:layout_marginBottom="684dp"
+        android:layout_marginEnd="244dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@drawable/cm_overlay" />
@@ -59,10 +113,10 @@
         android:id="@+id/imageView6"
         android:layout_width="272dp"
         android:layout_height="290dp"
-        android:layout_marginStart="208dp"
-        android:layout_marginTop="648dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginBottom="424dp"
+        android:layout_marginEnd="280dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@drawable/cm_overlay" />
 
     <ImageView
@@ -78,7 +132,7 @@
         app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.634" />
+        app:layout_constraintVertical_bias="0.887" />
 
     <Button
         android:id="@+id/buttonCM"
@@ -86,7 +140,6 @@
         android:layout_height="50dp"
         android:layout_below="@+id/imageViewCM"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="40dp"
         android:backgroundTint="@android:color/holo_orange_dark"
         android:text="Take Picture"
         android:textAllCaps="false"
@@ -100,19 +153,46 @@
 
     <Button
         android:id="@+id/addingbrixCM"
-        android:layout_width="119dp"
+        android:layout_width="89dp"
         android:layout_height="48dp"
         android:layout_alignParentEnd="true"
         android:layout_alignParentTop="true"
-        android:layout_marginBottom="92dp"
+        android:layout_marginBottom="4dp"
         android:backgroundTint="@android:color/holo_orange_dark"
         android:text="Add Brix%"
         android:textColor="#FFFFFFFF"
+        android:textSize="12sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/brixlevelCM"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.941"
+        app:layout_constraintHorizontal_bias="0.947"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <ProgressBar
+        android:id="@+id/rcpbarCM"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="254dp"
+        android:layout_height="25dp"
+        android:layout_marginBottom="12dp"
+        android:layout_marginEnd="24dp"
+        android:progressDrawable="@drawable/custom_progress_bar_3"
+        app:layout_constraintBottom_toTopOf="@+id/scpbarCM"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/sizesAM4" />
+
+    <ProgressBar
+        android:id="@+id/scpbarCM"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="256dp"
+        android:layout_height="26dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginEnd="24dp"
+        android:progressDrawable="@drawable/custom_progress_bar_3"
+        app:layout_constraintBottom_toTopOf="@+id/SizesCM"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/sizesAM3" />
 
     <TextView
         android:id="@+id/classifiedCM"
@@ -120,13 +200,13 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/imageViewCM"
-        android:layout_marginBottom="20dp"
-        android:layout_marginStart="32dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="20dp"
         android:gravity="center"
         android:text="Ripeness:"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/confidencesTextCM"
+        app:layout_constraintBottom_toTopOf="@+id/ripenesslevelCM"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
@@ -135,12 +215,12 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/classifiedCM"
-        android:layout_marginBottom="20dp"
-        android:layout_marginStart="32dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="20dp"
         android:text="Confidences:"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/SizesCM"
+        app:layout_constraintBottom_toTopOf="@+id/rcpbarCM"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
@@ -149,13 +229,13 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/confidencesTextCM"
-        android:layout_marginBottom="20dp"
-        android:layout_marginStart="32dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="20dp"
         android:gravity="center"
         android:text="Size:"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/brixlevelsCM"
+        app:layout_constraintBottom_toTopOf="@+id/sizelevelCM"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
@@ -164,14 +244,50 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/SizesCM"
-        android:layout_marginBottom="104dp"
-        android:layout_marginStart="32dp"
+        android:layout_marginBottom="16dp"
+        android:layout_marginStart="20dp"
         android:gravity="center"
         android:text="Brix Level:"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/brixlevelCM"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/ripecpercentageCM"
+        android:layout_width="76dp"
+        android:layout_height="25dp"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/confidencesTextAM"
+        android:layout_marginBottom="13dp"
+        android:layout_marginEnd="125dp"
+        android:gravity="center|center_vertical"
+        android:text="0%"
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/sizecpercentageCM"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/sizesAM4" />
+
+    <TextView
+        android:id="@+id/sizecpercentageCM"
+        android:layout_width="76dp"
+        android:layout_height="25dp"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/confidencesTextAM"
+        android:layout_marginBottom="6dp"
+        android:layout_marginEnd="125dp"
+        android:gravity="center|center_vertical"
+        android:text="0%"
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/SizesCM"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/sizesAM3" />
 
     <Button
         android:id="@+id/RecAndProdCM"
@@ -184,11 +300,49 @@
         android:text="Recipe's &amp; Product's"
         android:textColor="#FFFFFFFF"
         android:textStyle="bold"
-        android:visibility="invisible"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.513"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <com.kofigyan.stateprogressbar.StateProgressBar
+        android:id="@+id/ripenesslevelCM"
+        android:layout_width="348dp"
+        android:layout_height="11dp"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="12dp"
+        app:layout_constraintBottom_toTopOf="@+id/confidencesTextCM"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:spb_animateToCurrentProgressState="true"
+        app:spb_currentStateDescriptionColor="#ee941e"
+        app:spb_currentStateNumber="one"
+        app:spb_maxStateNumber="four"
+        app:spb_stateBackgroundColor="#BDBDBD"
+        app:spb_stateDescriptionColor="#808080"
+        app:spb_stateForegroundColor="#ee941e"
+        app:spb_stateNumberBackgroundColor="#808080"
+        app:spb_stateNumberForegroundColor="#FFFFFF" />
+
+    <com.nex3z.notificationbadge.NotificationBadge
+        android:id="@+id/badgeCM"
+        android:layout_width="28dp"
+        android:layout_height="28dp"
+        android:layout_marginBottom="56dp"
+        android:layout_marginStart="-20dp"
+        android:textSize="16sp"
+        android:translationZ="@dimen/activity_horizontal_margin"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/RecAndProdCM"
+        app:nbAnimationEnabled="true"
+        app:nbBackground="@drawable/badge_file"
+        app:nbMaxTextLength="3" >
+
+    </com.nex3z.notificationbadge.NotificationBadge>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

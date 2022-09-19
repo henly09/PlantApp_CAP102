@@ -4,6 +4,7 @@ package com.henzmontera.cap102_plantapp;
 // Cap102-Project
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.content.ContentResolver;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -14,7 +15,6 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.text.Html;
 import android.text.InputType;
 import android.util.Log;
 import android.view.MenuItem;
@@ -23,11 +23,13 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.henzmontera.cap102_plantapp.ml.CmRipenessSorter;
 import com.henzmontera.cap102_plantapp.ml.CmSizeSorter;
+import com.kofigyan.stateprogressbar.StateProgressBar;
 import com.nex3z.notificationbadge.NotificationBadge;
 
 import org.tensorflow.lite.DataType;
@@ -46,16 +48,24 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class CarabaoMangoActivity extends AppCompatActivity {
 
-    TextView result, confidence, size, brixlevel;
+    TextView result, size, brixlevel, rcppercentage,scppercentage;
+    StateProgressBar ripenesslevelCM,sizelevelCM,brixlevelCM;
     ImageView imageView;
+    ProgressBar ripebar,sizebar;
     Button picture, addingbrix, RecAndProdCm;
     int imageSize = 224/*, notifBadgeCM = 0*/;
     private String m_Text = "";
     NotificationBadge notificationBadgeCM;
+    String[] Cm_Ripeness = {"Ripe","RipeW/Def","Rot","Unripe"};
+    String[] Cm_Ripeness_reverse = {"Unripe","Rot","RipeW/Def","Ripe"};
+    String[] Cm_Size = {"Large","Medium","Small"};
+    String[] Cm_Size_reverse = {"Small","Medium","Large"};
+    String[] Cm_Brixlevel = {"Sour","B Sweet","Sweet","P Sweet","V Sweet"};
 
 /*    int CMbrix;
     String CMsize,CMripeness;*/
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -80,15 +90,25 @@ public class CarabaoMangoActivity extends AppCompatActivity {
         getSupportActionBar().setBackgroundDrawable(getDrawable(R.drawable.actionbartheme));
         setTitle("CARABAO MANGO");
 
-        result = findViewById(R.id.classifiedCM);
-        confidence = findViewById(R.id.confidencesTextCM);
+/*        result = findViewById(R.id.classifiedCM);*/
+        rcppercentage = findViewById(R.id.ripecpercentageCM);
+        scppercentage = findViewById(R.id.sizecpercentageCM);
         imageView = findViewById(R.id.imageViewCM);
         picture = findViewById(R.id.buttonCM);
-        size = findViewById(R.id.SizesCM);
+/*        size = findViewById(R.id.SizesCM);*/
         addingbrix = findViewById(R.id.addingbrixCM);
-        brixlevel = findViewById(R.id.brixlevelsCM);
+/*        brixlevel = findViewById(R.id.brixlevelsCM);*/
         notificationBadgeCM = findViewById(R.id.badgeCM);
         RecAndProdCm = findViewById(R.id.RecAndProdCM);
+        ripebar = findViewById(R.id.rcpbarCM);
+        sizebar = findViewById(R.id.scpbarCM);
+        ripenesslevelCM = findViewById(R.id.ripenesslevelCM);
+        sizelevelCM = findViewById(R.id.sizelevelCM);
+        brixlevelCM = findViewById(R.id.brixlevelCM);
+
+        ripenesslevelCM.setStateDescriptionData(Cm_Ripeness_reverse);
+        sizelevelCM.setStateDescriptionData(Cm_Size_reverse);
+        brixlevelCM.setStateDescriptionData(Cm_Brixlevel);
 
         picture.setOnClickListener(view -> {
             final CharSequence[] options = { "Take Photo", "Choose from Gallery","Cancel" };
@@ -133,22 +153,20 @@ public class CarabaoMangoActivity extends AppCompatActivity {
                 String b = "";
                 // https://www.healthy-vegetable-gardening.com/brix-scale.html
                 if (a < 4){
-                    b = "Sour";
+                    brixlevelCM.setCurrentStateNumber(StateProgressBar.StateNumber.ONE);
                 }
                 else if (a >= 4 && a < 6){
-                    b = "Barely Sweet";
+                    brixlevelCM.setCurrentStateNumber(StateProgressBar.StateNumber.TWO);
                 }
                 else if (a >= 6 && a < 10){
-                    b = "Sweet";
+                    brixlevelCM.setCurrentStateNumber(StateProgressBar.StateNumber.THREE);
                 }
                 else if (a >= 10 && a < 14){
-                    b = "Perfect Sweet";
+                    brixlevelCM.setCurrentStateNumber(StateProgressBar.StateNumber.FOUR);
                 }
                 else if (a >= 14){
-                    b = "Very Sweet";
+                    brixlevelCM.setCurrentStateNumber(StateProgressBar.StateNumber.FIVE);
                 }
-                String resultstyledText = "Brix Level: <font color='#249023'>"+ b +"</font>";
-                brixlevel.setText(Html.fromHtml(resultstyledText), TextView.BufferType.SPANNABLE);
             });
             builder.setNegativeButton("Cancel", (dialog, which) -> dialog.cancel());
             builder.show();
@@ -222,20 +240,45 @@ public class CarabaoMangoActivity extends AppCompatActivity {
                 }
             }
 
-            String[] Cm_Ripeness = {"Ripe","Ripe W/ Defect","Rotten","Unripe"};
-            String[] Cm_Size = {"Large","Medium","Small"};
-
-            String resultstyledText = "Ripeness: <font color='#249023'>"+ Cm_Ripeness[maxPosRipeness] +"</font>";
+/*            String resultstyledText = "Ripeness: <font color='#249023'>"+ Cm_Ripeness[maxPosRipeness] +"</font>";
             result.setText(Html.fromHtml(resultstyledText), TextView.BufferType.SPANNABLE);
 
             String sizestyledText = "Size: <font color='#249023'>"+ Cm_Size[maxPosSize] +"</font>";
-            size.setText(Html.fromHtml(sizestyledText), TextView.BufferType.SPANNABLE);
+            size.setText(Html.fromHtml(sizestyledText), TextView.BufferType.SPANNABLE);*/
+
+            if (Cm_Ripeness[maxPosRipeness].equals("Ripe")){
+                ripenesslevelCM.setCurrentStateNumber(StateProgressBar.StateNumber.FOUR);
+            }
+            if (Cm_Ripeness[maxPosRipeness].equals("RipeW/Def")){
+                ripenesslevelCM.setCurrentStateNumber(StateProgressBar.StateNumber.THREE);
+            }
+            if (Cm_Ripeness[maxPosRipeness].equals("Rot")){
+                ripenesslevelCM.setCurrentStateNumber(StateProgressBar.StateNumber.TWO);
+            }
+            if (Cm_Ripeness[maxPosRipeness].equals("Unripe")){
+                ripenesslevelCM.setCurrentStateNumber(StateProgressBar.StateNumber.ONE);
+            }
+
+            if (Cm_Size[maxPosSize].equals("Small")){
+                sizelevelCM.setCurrentStateNumber(StateProgressBar.StateNumber.ONE);
+            }
+            if (Cm_Size[maxPosSize].equals("Medium")){
+                sizelevelCM.setCurrentStateNumber(StateProgressBar.StateNumber.TWO);
+            }
+            if (Cm_Size[maxPosSize].equals("Large")){
+                sizelevelCM.setCurrentStateNumber(StateProgressBar.StateNumber.THREE);
+            }
 
             DecimalFormat df = new DecimalFormat();
-            df.setMaximumFractionDigits(2);
+            df.setMaximumFractionDigits(0);
 
-            String confidencestyledText = "Confidences: <font color='#249023'>"+ "R: "+df.format(confidencesripeness[maxPosRipeness] * 100) + "%" + ", S: "+df.format(confidencessize[maxPosSize] * 100) + "%" +"</font>";
-            confidence.setText(Html.fromHtml(confidencestyledText), TextView.BufferType.SPANNABLE);
+            String a = df.format(confidencesripeness[maxPosRipeness] * 100);
+            String b = df.format(confidencessize[maxPosSize] * 100);
+
+            rcppercentage.setText(a +"%");
+            scppercentage.setText(b +"%");
+            ripebar.setProgress(Math.round(confidencesripeness[maxPosRipeness] * 100));
+            sizebar.setProgress(Math.round(confidencessize[maxPosSize] * 100));
 
             // Releases model resources if no longer used.
             CmRipeness.close();

@@ -10,21 +10,12 @@
     tools:context=".MainActivity">
 
     <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="272dp"
-        android:layout_height="290dp"
-        android:layout_marginStart="204dp"
-        android:layout_marginTop="656dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/am_overlay_2" />
-
-    <ImageView
         android:id="@+id/imageView4"
         android:layout_width="272dp"
         android:layout_height="290dp"
         android:layout_marginBottom="460dp"
         android:layout_marginEnd="252dp"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@drawable/am_overlay_2" />
@@ -33,8 +24,9 @@
         android:id="@+id/imageView7"
         android:layout_width="272dp"
         android:layout_height="290dp"
-        android:layout_marginBottom="312dp"
-        android:layout_marginStart="240dp"
+        android:layout_marginBottom="352dp"
+        android:layout_marginStart="252dp"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/am_overlay_2" />
@@ -45,6 +37,7 @@
         android:layout_height="290dp"
         android:layout_marginBottom="696dp"
         android:layout_marginStart="212dp"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/am_overlay_2" />
@@ -55,7 +48,6 @@
         android:layout_height="50dp"
         android:layout_below="@+id/imageViewAM"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="40dp"
         android:backgroundTint="@android:color/holo_orange_dark"
         android:text="Take Picture"
         android:textAllCaps="false"
@@ -68,19 +60,79 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/classifiedAM"
+        android:id="@+id/brixlevelsAM"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/imageViewAM"
-        android:layout_marginBottom="20dp"
-        android:layout_marginStart="32dp"
+        android:layout_below="@+id/SizesAM"
+        android:layout_marginBottom="16dp"
+        android:layout_marginStart="20dp"
         android:gravity="center"
-        android:text="Ripeness:"
+        android:text="Brix Level:"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/confidencesTextAM"
+        app:layout_constraintBottom_toTopOf="@+id/brixlevelAM"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <com.kofigyan.stateprogressbar.StateProgressBar
+        android:id="@+id/ripenesslevelAM"
+        android:layout_width="348dp"
+        android:layout_height="11dp"
+        app:spb_currentStateNumber="one"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="12dp"
+        app:layout_constraintBottom_toTopOf="@+id/confidencesTextAM"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.488"
+        app:layout_constraintStart_toStartOf="parent"
+        app:spb_animateToCurrentProgressState="true"
+        app:spb_currentStateDescriptionColor="#cf1a1c"
+        app:spb_maxStateNumber="four"
+        app:spb_stateBackgroundColor="#BDBDBD"
+        app:spb_stateDescriptionColor="#808080"
+        app:spb_stateForegroundColor="#cf1a1c"
+        app:spb_stateNumberBackgroundColor="#808080"
+        app:spb_stateNumberForegroundColor="#eeeeee" />
+
+    <com.kofigyan.stateprogressbar.StateProgressBar
+        android:id="@+id/sizelevelAM"
+        android:layout_width="348dp"
+        android:layout_height="11dp"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="15dp"
+        app:spb_currentStateNumber="one"
+        app:layout_constraintBottom_toTopOf="@+id/brixlevelsAM"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.488"
+        app:layout_constraintStart_toStartOf="parent"
+        app:spb_animateToCurrentProgressState="true"
+        app:spb_currentStateDescriptionColor="#cf1a1c"
+        app:spb_maxStateNumber="three"
+        app:spb_stateBackgroundColor="#BDBDBD"
+        app:spb_stateDescriptionColor="#808080"
+        app:spb_stateForegroundColor="#cf1a1c"
+        app:spb_stateNumberBackgroundColor="#808080"
+        app:spb_stateNumberForegroundColor="#eeeeee" />
+
+    <com.kofigyan.stateprogressbar.StateProgressBar
+        android:id="@+id/brixlevelAM"
+        android:layout_width="348dp"
+        android:layout_height="28dp"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.488"
+        app:layout_constraintStart_toStartOf="parent"
+        app:spb_animateToCurrentProgressState="true"
+        app:spb_currentStateDescriptionColor="#cf1a1c"
+        app:spb_currentStateNumber="one"
+        app:spb_maxStateNumber="five"
+        app:spb_stateBackgroundColor="#BDBDBD"
+        app:spb_stateDescriptionColor="#808080"
+        app:spb_stateForegroundColor="#cf1a1c"
+        app:spb_stateNumberBackgroundColor="#808080"
+        app:spb_stateNumberForegroundColor="#eeeeee" />
 
     <TextView
         android:id="@+id/SizesAM"
@@ -88,28 +140,61 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/confidencesTextAM"
-        android:layout_marginBottom="20dp"
-        android:layout_marginStart="32dp"
+        android:layout_marginBottom="8dp"
         android:gravity="center"
         android:text="Size:"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/brixlevelsAM"
+        app:layout_constraintBottom_toTopOf="@+id/sizelevelAM"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.056"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/brixlevelsAM"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/sizesAM"
+        android:layout_width="76dp"
+        android:layout_height="25dp"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/SizesAM"
-        android:layout_marginBottom="104dp"
+        android:layout_below="@+id/confidencesTextAM"
+        android:layout_marginBottom="5dp"
         android:layout_marginStart="32dp"
-        android:gravity="center"
-        android:text="Brix Level:"
-        android:textSize="18sp"
+        android:gravity="center|center_vertical"
+        android:text="SizeC%:"
+        android:textSize="14sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/SizesAM"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/sizesAM2"
+        android:layout_width="76dp"
+        android:layout_height="25dp"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/confidencesTextAM"
+        android:layout_marginBottom="12dp"
+        android:layout_marginStart="32dp"
+        android:gravity="center|center_vertical"
+        android:text="RipeC%:"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/sizesAM"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/addingbrixAM"
+        android:layout_width="89dp"
+        android:layout_height="48dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginBottom="4dp"
+        android:backgroundTint="@android:color/holo_orange_dark"
+        android:text="Add Brix%"
+        android:textColor="#FFFFFFFF"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/brixlevelAM"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.924"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
@@ -118,28 +203,28 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/classifiedAM"
-        android:layout_marginBottom="20dp"
-        android:layout_marginStart="32dp"
+        android:layout_marginBottom="8dp"
         android:text="Confidences:"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/SizesAM"
+        app:layout_constraintBottom_toTopOf="@+id/rcpbarAM"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.07"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <Button
-        android:id="@+id/addingbrixAM"
-        android:layout_width="119dp"
-        android:layout_height="48dp"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginBottom="92dp"
-        android:backgroundTint="@android:color/holo_orange_dark"
-        android:text="Add Brix%"
-        android:textColor="#FFFFFFFF"
+    <TextView
+        android:id="@+id/classifiedAM"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/imageViewAM"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="20dp"
+        android:gravity="center"
+        android:text="Ripeness:"
+        android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.941"
+        app:layout_constraintBottom_toTopOf="@+id/ripenesslevelAM"
         app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
@@ -155,7 +240,7 @@
         app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.634" />
+        app:layout_constraintVertical_bias="0.887" />
 
     <com.nex3z.notificationbadge.NotificationBadge
         android:id="@+id/badgeAM"
@@ -165,6 +250,7 @@
         android:layout_marginStart="-20dp"
         android:textSize="16sp"
         android:translationZ="@dimen/activity_horizontal_margin"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -184,10 +270,68 @@
         android:text="Recipe's &amp; Product's"
         android:textColor="#FFFFFFFF"
         android:textStyle="bold"
-        android:visibility="invisible"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.513"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <ProgressBar
+        android:id="@+id/rcpbarAM"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="254dp"
+        android:layout_height="25dp"
+        android:layout_marginBottom="12dp"
+        android:progressDrawable="@drawable/custom_progress_bg"
+        app:layout_constraintBottom_toTopOf="@+id/scpbarAM"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/sizesAM2" />
+
+    <ProgressBar
+        android:id="@+id/scpbarAM"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="256dp"
+        android:layout_height="26dp"
+        android:layout_marginBottom="5dp"
+        android:progressDrawable="@drawable/custom_progress_bg"
+        app:layout_constraintBottom_toTopOf="@+id/SizesAM"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/sizesAM" />
+
+    <TextView
+        android:id="@+id/ripecpercentageAM"
+        android:layout_width="76dp"
+        android:layout_height="25dp"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/confidencesTextAM"
+        android:layout_marginBottom="12dp"
+        android:gravity="center|center_vertical"
+        android:text="0%"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/scpbarAM"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.381"
+        app:layout_constraintStart_toEndOf="@+id/sizesAM2" />
+
+    <TextView
+        android:id="@+id/sizecpercentageAM"
+        android:layout_width="76dp"
+        android:layout_height="25dp"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/confidencesTextAM"
+        android:layout_marginBottom="5dp"
+        android:gravity="center|center_vertical"
+        android:text="0%"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/SizesAM"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.381"
+        app:layout_constraintStart_toEndOf="@+id/sizesAM" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

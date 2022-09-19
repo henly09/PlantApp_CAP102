@@ -5,6 +5,7 @@ package com.henzmontera.cap102_plantapp;
 // Cap102-Project
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.content.ContentResolver;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -25,11 +26,13 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.henzmontera.cap102_plantapp.ml.MangoIndianRipenessSorter;
 import com.henzmontera.cap102_plantapp.ml.MangoIndianSizeSorter;
+import com.kofigyan.stateprogressbar.StateProgressBar;
 import com.nex3z.notificationbadge.NotificationBadge;
 
 import org.tensorflow.lite.DataType;
@@ -48,16 +51,25 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class IndianMangoActivity extends AppCompatActivity {
 
-    TextView result, confidence, size, brixlevel, firmlevel;
+    TextView result,size, brixlevel, firmlevel,rcppercentage,scppercentage;
+    StateProgressBar ripenesslevelIM,sizelevelIM,brixlevelIM,penelevelIM;
     ImageView imageView;
+    ProgressBar ripebar,sizebar;
     Button picture, addingbrix, RecAndProdIM, addingfirm;
     int imageSize = 224/*, notifBadgeIM = 0*/;
     private String m_Text = "";
     NotificationBadge notificationBadgeIM;
+    String[] Mi_Ripeness = {"Ripe","RipeW/Def","Rot","Unripe"};
+    String[] Mi_Ripeness_reverse = {"Unripe","Rot","RipeW/Def","Ripe"};
+    String[] Mi_Size = {"Large","Medium","Small"};
+    String[] Mi_Size_reverse = {"Small","Medium","Large"};
+    String[] Mi_Brixlevel = {"Sour","B Sweet","Sweet","P Sweet","V Sweet"};
+    String[] Mi_PeneLevel = {"U Firm","BR Firm","B Soft","Ripe Firm","PR Firm"};
 
 /*    int IMbrix;
     String IMsize,IMripeness;*/
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -83,7 +95,8 @@ public class IndianMangoActivity extends AppCompatActivity {
         setTitle("INDIAN MANGO");
 
         result = findViewById(R.id.classifiedIM);
-        confidence = findViewById(R.id.confidencesTextIM);
+        rcppercentage = findViewById(R.id.ripecpercentageIM);
+        scppercentage = findViewById(R.id.sizecpercentageIM);
         imageView = findViewById(R.id.imageViewIM);
         picture = findViewById(R.id.buttonIM);
         size = findViewById(R.id.SizesIM);
@@ -93,6 +106,17 @@ public class IndianMangoActivity extends AppCompatActivity {
         RecAndProdIM = findViewById(R.id.recAndProdIM);
         addingfirm = findViewById(R.id.addfirmIM);
         firmlevel = findViewById(R.id.firmlevelIM);
+        ripebar = findViewById(R.id.rcpbarIM);
+        sizebar = findViewById(R.id.scpbarIM);
+        ripenesslevelIM = findViewById(R.id.ripenesslevelIM);
+        sizelevelIM = findViewById(R.id.sizelevelIM);
+        brixlevelIM = findViewById(R.id.brixlevelIM);
+        penelevelIM = findViewById(R.id.penelevelIM);
+
+        ripenesslevelIM.setStateDescriptionData(Mi_Ripeness_reverse);
+        sizelevelIM.setStateDescriptionData(Mi_Size_reverse);
+        brixlevelIM.setStateDescriptionData(Mi_Brixlevel);
+        penelevelIM.setStateDescriptionData(Mi_PeneLevel);
 
         picture.setOnClickListener(view -> {
             final CharSequence[] options = { "Take Photo", "Choose from Gallery","Cancel" };
@@ -139,24 +163,21 @@ public class IndianMangoActivity extends AppCompatActivity {
                 m_Text = input.getText().toString();
                 int a = Integer.parseInt(m_Text);
                 // https://www.healthy-vegetable-gardening.com/brix-scale.html
-                String b = "";
                 if (a < 4){
-                    b = "Sour";
+                    brixlevelIM.setCurrentStateNumber(StateProgressBar.StateNumber.ONE);
                 }
                 else if (a >= 4 && a < 6){
-                    b = "Barely Sweet";
+                    brixlevelIM.setCurrentStateNumber(StateProgressBar.StateNumber.TWO);
                 }
                 else if (a >= 6 && a < 10){
-                    b = "Sweet";
+                    brixlevelIM.setCurrentStateNumber(StateProgressBar.StateNumber.THREE);
                 }
                 else if (a >= 10 && a < 14){
-                    b = "Perfect Sweet";
+                    brixlevelIM.setCurrentStateNumber(StateProgressBar.StateNumber.FOUR);
                 }
                 else if (a >= 14){
-                    b = "Very Sweet";
+                    brixlevelIM.setCurrentStateNumber(StateProgressBar.StateNumber.FIVE);
                 }
-                String resultstyledText = "Brix Level: <font color='#249023'>"+ b +"</font>";
-                brixlevel.setText(Html.fromHtml(resultstyledText), TextView.BufferType.SPANNABLE);
             });
             builder.setNegativeButton("Cancel", (dialog, which) -> dialog.cancel());
             builder.show();
@@ -179,22 +200,19 @@ public class IndianMangoActivity extends AppCompatActivity {
                 // https://www.mango.org/wp-content/uploads/2017/10/Mango_Maturity_And_Ripeness_Guide.pdf
                 String b = "";
                 if (a > 20){
-                    b = "Unripe Firm";
+                    penelevelIM.setCurrentStateNumber(StateProgressBar.StateNumber.ONE);
                 }
                 else if (a <= 20 && a >= 16){
-                    b = "Barely Ripe Firm";
+                    penelevelIM.setCurrentStateNumber(StateProgressBar.StateNumber.TWO);
                 }
                 else if (a <= 15 && a >= 11){
-                    b = "Barely Soft";
+                    penelevelIM.setCurrentStateNumber(StateProgressBar.StateNumber.THREE);
                 }
                 else if (a <= 10 && a >= 6){
-                    b = "Ripe Firm";
+                    penelevelIM.setCurrentStateNumber(StateProgressBar.StateNumber.FOUR);
                 }
                 else if (a <= 5 && a >= 1){
-                    b = "Perfect Ripe Firm";
-                }
-                else if (a < 1){
-                    b = "Overripe Firm";
+                    penelevelIM.setCurrentStateNumber(StateProgressBar.StateNumber.FIVE);
                 }
                 String resultstyledText = "Firm Level: <font color='#249023'>"+ b +"</font>";
                 firmlevel.setText(Html.fromHtml(resultstyledText), TextView.BufferType.SPANNABLE);
@@ -272,20 +290,45 @@ public class IndianMangoActivity extends AppCompatActivity {
                 }
             }
 
-            String[] Mi_Ripeness = {"Ripe","Ripe W/ Defect","Rotten","Unripe"};
-            String[] Mi_Size = {"Large","Medium","Small"};
-
             String resultstyledText = "Ripeness: <font color='#249023'>"+ Mi_Ripeness[maxPosRipeness] +"</font>";
             result.setText(Html.fromHtml(resultstyledText), TextView.BufferType.SPANNABLE);
 
             String sizestyledText = "Size: <font color='#249023'>"+ Mi_Size[maxPosSize] +"</font>";
             size.setText(Html.fromHtml(sizestyledText), TextView.BufferType.SPANNABLE);
 
-            DecimalFormat df = new DecimalFormat();
-            df.setMaximumFractionDigits(2);
+            if (Mi_Ripeness[maxPosRipeness].equals("Ripe")){
+                ripenesslevelIM.setCurrentStateNumber(StateProgressBar.StateNumber.FOUR);
+            }
+            if (Mi_Ripeness[maxPosRipeness].equals("RipeW/Def")){
+                ripenesslevelIM.setCurrentStateNumber(StateProgressBar.StateNumber.THREE);
+            }
+            if (Mi_Ripeness[maxPosRipeness].equals("Rot")){
+                ripenesslevelIM.setCurrentStateNumber(StateProgressBar.StateNumber.TWO);
+            }
+            if (Mi_Ripeness[maxPosRipeness].equals("Unripe")){
+                ripenesslevelIM.setCurrentStateNumber(StateProgressBar.StateNumber.ONE);
+            }
 
-            String confidencestyledText = "Confidences: <font color='#249023'>"+ "R: "+df.format(confidencesripeness[maxPosRipeness] * 100) + "%" + ", S: "+df.format(confidencessize[maxPosSize] * 100) + "%" +"</font>";
-            confidence.setText(Html.fromHtml(confidencestyledText), TextView.BufferType.SPANNABLE);
+            if (Mi_Size[maxPosSize].equals("Small")){
+                sizelevelIM.setCurrentStateNumber(StateProgressBar.StateNumber.ONE);
+            }
+            if (Mi_Size[maxPosSize].equals("Medium")){
+                sizelevelIM.setCurrentStateNumber(StateProgressBar.StateNumber.TWO);
+            }
+            if (Mi_Size[maxPosSize].equals("Large")){
+                sizelevelIM.setCurrentStateNumber(StateProgressBar.StateNumber.THREE);
+            }
+
+            DecimalFormat df = new DecimalFormat();
+            df.setMaximumFractionDigits(0);
+
+            String a = df.format(confidencesripeness[maxPosRipeness] * 100);
+            String b = df.format(confidencessize[maxPosSize] * 100);
+
+            rcppercentage.setText(a +"%");
+            scppercentage.setText(b +"%");
+            ripebar.setProgress(Math.round(confidencesripeness[maxPosRipeness] * 100));
+            sizebar.setProgress(Math.round(confidencessize[maxPosSize] * 100));
 
             // Releases model resources if no longer used.
             MiRipeness.close();
