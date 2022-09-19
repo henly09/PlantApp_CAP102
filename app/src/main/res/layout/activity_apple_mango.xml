@@ -78,15 +78,15 @@
         android:id="@+id/ripenesslevelAM"
         android:layout_width="348dp"
         android:layout_height="11dp"
-        app:spb_currentStateNumber="one"
         android:layout_centerInParent="true"
-        android:layout_marginBottom="12dp"
+        android:layout_marginBottom="4dp"
         app:layout_constraintBottom_toTopOf="@+id/confidencesTextAM"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.488"
         app:layout_constraintStart_toStartOf="parent"
         app:spb_animateToCurrentProgressState="true"
         app:spb_currentStateDescriptionColor="#cf1a1c"
+        app:spb_currentStateNumber="one"
         app:spb_maxStateNumber="four"
         app:spb_stateBackgroundColor="#BDBDBD"
         app:spb_stateDescriptionColor="#808080"
@@ -157,12 +157,14 @@
         android:layout_alignParentStart="true"
         android:layout_below="@+id/confidencesTextAM"
         android:layout_marginBottom="5dp"
+        android:layout_marginEnd="5dp"
         android:layout_marginStart="32dp"
         android:gravity="center|center_vertical"
         android:text="SizeC%:"
         android:textSize="14sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/SizesAM"
+        app:layout_constraintEnd_toStartOf="@+id/scpbarAM"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
@@ -172,12 +174,14 @@
         android:layout_alignParentStart="true"
         android:layout_below="@+id/confidencesTextAM"
         android:layout_marginBottom="12dp"
+        android:layout_marginEnd="5dp"
         android:layout_marginStart="32dp"
         android:gravity="center|center_vertical"
         android:text="RipeC%:"
         android:textSize="14sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/sizesAM"
+        app:layout_constraintEnd_toStartOf="@+id/rcpbarAM"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
@@ -218,7 +222,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/imageViewAM"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="4dp"
         android:layout_marginStart="20dp"
         android:gravity="center"
         android:text="Ripeness:"
@@ -229,18 +233,18 @@
 
     <ImageView
         android:id="@+id/imageViewAM"
-        android:layout_width="312dp"
-        android:layout_height="312dp"
+        android:layout_width="350dp"
+        android:layout_height="350dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:background="@drawable/imageviewborderapplemango"
         android:src="@drawable/cameraicon"
         app:layout_constraintBottom_toTopOf="@+id/buttonAM"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.887" />
+        app:layout_constraintVertical_bias="1.0" />
 
     <com.nex3z.notificationbadge.NotificationBadge
         android:id="@+id/badgeAM"
@@ -282,23 +286,21 @@
         android:layout_width="254dp"
         android:layout_height="25dp"
         android:layout_marginBottom="12dp"
+        android:layout_marginEnd="32dp"
         android:progressDrawable="@drawable/custom_progress_bg"
         app:layout_constraintBottom_toTopOf="@+id/scpbarAM"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/sizesAM2" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <ProgressBar
         android:id="@+id/scpbarAM"
         style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="256dp"
+        android:layout_width="254dp"
         android:layout_height="26dp"
         android:layout_marginBottom="5dp"
+        android:layout_marginEnd="32dp"
         android:progressDrawable="@drawable/custom_progress_bg"
         app:layout_constraintBottom_toTopOf="@+id/SizesAM"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/sizesAM" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <TextView
         android:id="@+id/ripecpercentageAM"
@@ -315,7 +317,7 @@
         app:layout_constraintBottom_toTopOf="@+id/scpbarAM"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.381"
-        app:layout_constraintStart_toEndOf="@+id/sizesAM2" />
+        app:layout_constraintStart_toStartOf="@+id/rcpbarAM" />
 
     <TextView
         android:id="@+id/sizecpercentageAM"
@@ -323,7 +325,7 @@
         android:layout_height="25dp"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/confidencesTextAM"
-        android:layout_marginBottom="5dp"
+        android:layout_marginBottom="6dp"
         android:gravity="center|center_vertical"
         android:text="0%"
         android:textColor="@color/white"
@@ -332,6 +334,6 @@
         app:layout_constraintBottom_toTopOf="@+id/SizesAM"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.381"
-        app:layout_constraintStart_toEndOf="@+id/sizesAM" />
+        app:layout_constraintStart_toStartOf="@+id/scpbarAM" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

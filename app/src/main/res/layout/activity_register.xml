@@ -25,14 +25,14 @@
         android:id="@+id/editRegisterEmail"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="328dp"
+        android:layout_marginTop="44dp"
         android:ems="10"
         android:hint="Email"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.488"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ViewProfilePictureTextView" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView14" />
 
     <TextView
         android:id="@+id/LoginText"
@@ -111,14 +111,11 @@
         android:id="@+id/imageView14"
         android:layout_width="244dp"
         android:layout_height="253dp"
-        android:layout_marginEnd="75dp"
-        android:layout_marginStart="74dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="40dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.198"
+        app:layout_constraintTop_toBottomOf="@+id/ViewProfilePictureTextView"
         app:srcCompat="@drawable/intrologo2" />
 
 
