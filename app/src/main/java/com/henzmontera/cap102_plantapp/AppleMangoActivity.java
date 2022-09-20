@@ -92,7 +92,7 @@ public class AppleMangoActivity extends AppCompatActivity {
        /* result = findViewById(R.id.classifiedAM);*/
         rcppercentage = findViewById(R.id.ripecpercentageAM);
         scppercentage = findViewById(R.id.sizecpercentageAM);
-/*        size = findViewById(R.id.SizesAM);*/
+        /* size = findViewById(R.id.SizesAM);*/
         imageView = findViewById(R.id.imageViewAM);
         picture = findViewById(R.id.buttonAM);
         addingbrix = findViewById(R.id.addingbrixAM);
