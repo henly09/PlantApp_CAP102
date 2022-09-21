@@ -10,7 +10,7 @@ The main objective of this study is to design and develop an app that helps new 
 ## Description
 
 		ManGo is an agricultural mobile-based application where it helps the user to grow healthy 
-    fruit crops with the guide of the application that we will create. ManGo also has a feature 
+    fruit mango crops with the guide of the application that we will create. ManGo also has a feature 
     similar to StackOverflow where users can share ideas and information with other users of the 
     application. It will can be also use as a handbook due to the information that will store in 
     the application. The main feature of this app is that it has an image processing system where 
