@@ -89,7 +89,7 @@ public class AppleMangoActivity extends AppCompatActivity {
         getSupportActionBar().setBackgroundDrawable(getDrawable(R.drawable.actionbartheme));
         setTitle("APPLE MANGO");
 
-       /* result = findViewById(R.id.classifiedAM);*/
+        /*result = findViewById(R.id.classifiedAM);*/
         rcppercentage = findViewById(R.id.ripecpercentageAM);
         scppercentage = findViewById(R.id.sizecpercentageAM);
         /* size = findViewById(R.id.SizesAM);*/

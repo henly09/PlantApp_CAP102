@@ -48,7 +48,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class CarabaoMangoActivity extends AppCompatActivity {
 
-    TextView result, size, brixlevel, rcppercentage,scppercentage;
+    TextView /*result, size, brixlevel, */rcppercentage,scppercentage;
     StateProgressBar ripenesslevelCM,sizelevelCM,brixlevelCM;
     ImageView imageView;
     ProgressBar ripebar,sizebar;

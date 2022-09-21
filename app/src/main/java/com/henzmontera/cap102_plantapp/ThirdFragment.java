@@ -49,7 +49,7 @@ public class ThirdFragment extends Fragment {
                     Intent intent = new Intent(getActivity(), ImageProcAM.class);
                     startActivity(intent);
                     Toast.makeText(getActivity(), "Apple Mango Guide", Toast.LENGTH_SHORT).show();
-                    Log.d("Apple MangoGuide","Apple Mango Guide");
+                    Log.d("Apple Mango Guide","Apple Mango Guide");
                 } else {
                     Intent intent = new Intent(getActivity(), AppleMangoActivity.class);
                     startActivity(intent);
