@@ -15,7 +15,6 @@
         android:layout_height="290dp"
         android:layout_marginBottom="460dp"
         android:layout_marginEnd="252dp"
-        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@drawable/am_overlay_2" />
@@ -26,7 +25,6 @@
         android:layout_height="290dp"
         android:layout_marginBottom="352dp"
         android:layout_marginStart="252dp"
-        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/am_overlay_2" />
@@ -37,7 +35,6 @@
         android:layout_height="290dp"
         android:layout_marginBottom="696dp"
         android:layout_marginStart="212dp"
-        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/am_overlay_2" />
@@ -316,8 +313,8 @@
         android:textSize="14sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/scpbarAM"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.381"
+        app:layout_constraintEnd_toEndOf="@+id/rcpbarAM"
+        app:layout_constraintHorizontal_bias="0.489"
         app:layout_constraintStart_toStartOf="@+id/rcpbarAM" />
 
     <TextView
@@ -326,15 +323,15 @@
         android:layout_height="25dp"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/confidencesTextAM"
-        android:layout_marginBottom="6dp"
+        android:layout_marginBottom="5dp"
         android:gravity="center|center_vertical"
         android:text="0%"
         android:textColor="@color/white"
         android:textSize="14sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/SizesAM"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.381"
+        app:layout_constraintEnd_toEndOf="@+id/scpbarAM"
+        app:layout_constraintHorizontal_bias="0.489"
         app:layout_constraintStart_toStartOf="@+id/scpbarAM" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

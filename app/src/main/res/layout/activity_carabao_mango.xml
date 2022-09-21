@@ -259,15 +259,14 @@
         android:layout_alignParentStart="true"
         android:layout_below="@+id/confidencesTextAM"
         android:layout_marginBottom="13dp"
-        android:layout_marginEnd="125dp"
         android:gravity="center|center_vertical"
         android:text="0%"
         android:textColor="@color/black"
         android:textSize="14sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/sizecpercentageCM"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintEnd_toEndOf="@+id/rcpbarCM"
+        app:layout_constraintHorizontal_bias="0.489"
         app:layout_constraintStart_toEndOf="@+id/sizesAM4" />
 
     <TextView
@@ -276,16 +275,15 @@
         android:layout_height="25dp"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/confidencesTextAM"
-        android:layout_marginBottom="6dp"
-        android:layout_marginEnd="125dp"
+        android:layout_marginBottom="5dp"
         android:gravity="center|center_vertical"
         android:text="0%"
         android:textColor="@color/black"
         android:textSize="14sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/SizesCM"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintEnd_toEndOf="@+id/scpbarCM"
+        app:layout_constraintHorizontal_bias="0.489"
         app:layout_constraintStart_toEndOf="@+id/sizesAM3" />
 
     <Button
