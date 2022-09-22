@@ -31,7 +31,7 @@ public class AboutAuthor extends AppCompatActivity {
                 .setImage(R.drawable.intrologo2_lowres)
                 .setDescription("ManGo is an agricultural mobile-based application where it helps the user to grow healthy" +
                         "fruit crops with the guide of the application that we will create.")
-                .addItem(new Element().setTitle("Version 1.0"))
+                .addItem(new Element().setTitle("Version 0.1"))
                 .addGroup("Author's Facebook")
                 .addFacebook("mhax.ter","John Henly Montera")
                 .addFacebook("cycyulike","Cyrex Joshua Cuizon")
