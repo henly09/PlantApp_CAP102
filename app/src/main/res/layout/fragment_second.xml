@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".SecondFragment"
-    android:padding="25dp"
+    android:padding="20dp"
+    android:layout_margin="10dp"
     android:screenOrientation="portrait" >
 <LinearLayout
     android:layout_width="match_parent"
@@ -39,7 +40,7 @@
 
     <TextView
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:text="@string/title_seed"
         android:textColor="@color/black"
         android:textSize="25sp"
@@ -370,5 +371,43 @@
         android:textColor="@color/black"
         android:textSize="20sp"/>
 
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:id="@+id/linear1">
+
+        <ImageButton
+            android:id="@+id/ib_carabao"
+            android:layout_width="wrap_content"
+            android:layout_height="100dp"
+            android:src="@drawable/picture18"
+            android:adjustViewBounds="true"
+            android:scaleType="fitCenter"
+            android:padding="0dp"
+            android:layout_margin="8dp" />
+
+        <ImageButton
+            android:id="@+id/ib_indian"
+            android:layout_width="wrap_content"
+            android:layout_height="100dp"
+            android:layout_margin="8dp"
+            android:adjustViewBounds="true"
+            android:padding="0dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/picture19" />
+
+        <ImageButton
+            android:id="@+id/ib_apple"
+            android:layout_width="wrap_content"
+            android:layout_height="100dp"
+            android:layout_margin="8dp"
+            android:adjustViewBounds="true"
+            android:padding="0dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/picture20" />
+    </LinearLayout>
 </LinearLayout>
+
 </ScrollView>
