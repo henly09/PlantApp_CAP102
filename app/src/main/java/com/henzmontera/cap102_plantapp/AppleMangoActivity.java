@@ -30,7 +30,6 @@ import android.widget.Toast;
 import com.henzmontera.cap102_plantapp.ml.MaRipenessSorter;
 import com.henzmontera.cap102_plantapp.ml.MaSizeSorter;
 import com.kofigyan.stateprogressbar.StateProgressBar;
-import com.nex3z.notificationbadge.NotificationBadge;
 
 import org.tensorflow.lite.DataType;
 import org.tensorflow.lite.support.tensorbuffer.TensorBuffer;
@@ -50,12 +49,12 @@ public class AppleMangoActivity extends AppCompatActivity {
 
     TextView /*result,size, brixlevel,*/rcppercentage,scppercentage;
     StateProgressBar ripenesslevelAM,sizelevelAM,brixlevelAM;
-    ImageView imageView;
+    ImageView imageView,ripdialogAM,confidialogAM,sizedialogAM,brixdialogAM;
     ProgressBar ripebar,sizebar;
-    Button picture, addingbrix, RecAndProdAM;
+    Button picture, addingbrix/*, RecAndProdAM*/;
     int imageSize = 224/*, notifBadgeAM = 0*/;
     private String m_Text = "";
-    NotificationBadge notificationBadgeAM;
+    /*NotificationBadge notificationBadgeAM;*/
     String[] Ma_Ripeness = {"Ripe","RipeW/Def","Rot","Unripe"};
     String[] Ma_Ripeness_reverse = {"Unripe","Rot","RipeW/Def","Ripe"};
     String[] Ma_Size = {"Small","Medium","Large"};
@@ -89,26 +88,74 @@ public class AppleMangoActivity extends AppCompatActivity {
         getSupportActionBar().setBackgroundDrawable(getDrawable(R.drawable.actionbartheme));
         setTitle("APPLE MANGO");
 
-        /*result = findViewById(R.id.classifiedAM);*/
-        rcppercentage = findViewById(R.id.ripecpercentageAM);
-        scppercentage = findViewById(R.id.sizecpercentageAM);
-        /* size = findViewById(R.id.SizesAM);*/
+        /*result = findViewById(R.id.classifiedAM);
+        size = findViewById(R.id.SizesAM);
+        brixlevel = findViewById(R.id.brixlevelsAM);
+        notificationBadgeAM = findViewById(R.id.badgeAM);
+        RecAndProdAM = findViewById(R.id.recAndProdAM);*/
+
+
         imageView = findViewById(R.id.imageViewAM);
         picture = findViewById(R.id.buttonAM);
         addingbrix = findViewById(R.id.addingbrixAM);
-        /*brixlevel = findViewById(R.id.brixlevelsAM);*/
-        notificationBadgeAM = findViewById(R.id.badgeAM);
-        RecAndProdAM = findViewById(R.id.recAndProdAM);
+
+        // initialization for progressbar
         ripebar = findViewById(R.id.rcpbarAM);
         sizebar = findViewById(R.id.scpbarAM);
+        rcppercentage = findViewById(R.id.ripecpercentageAM);
+        scppercentage = findViewById(R.id.sizecpercentageAM);
+
+        // initialization for gauges
         ripenesslevelAM = findViewById(R.id.ripenesslevelAM);
         sizelevelAM = findViewById(R.id.sizelevelAM);
         brixlevelAM = findViewById(R.id.brixlevelAM);
 
+        // set dialog box
+        ripdialogAM = findViewById(R.id.ripdialogAM);
+        confidialogAM = findViewById(R.id.confidialogAM);
+        sizedialogAM = findViewById(R.id.sizedialogAM);
+        brixdialogAM = findViewById(R.id.brixdialogAM);
+
+        // set gauge meter description
         ripenesslevelAM.setStateDescriptionData(Ma_Ripeness_reverse);
         sizelevelAM.setStateDescriptionData(Ma_Size);
         brixlevelAM.setStateDescriptionData(Ma_Brixlevel);
 
+        ripdialogAM.setOnClickListener(view -> {
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle("Ripeness Level");
+            builder.setMessage("\nChecking the ripeness of the Mango fruit whether it is unripe, rot, ripe, ripe with defect.");
+            builder.setIcon(getDrawable(R.drawable.info2));
+            builder.setPositiveButton("OK", (dialog, which) -> dialog.dismiss());
+            builder.show();
+        });
+
+        confidialogAM.setOnClickListener(view -> {
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle("Analyzer Confidence Level");
+            builder.setMessage("\nThe output tells on how accurate the analyzer of the results given after the image undergo in process.");
+            builder.setIcon(getDrawable(R.drawable.info2));
+            builder.setPositiveButton("OK", (dialog, which) -> dialog.dismiss());
+            builder.show();
+        });
+
+        sizedialogAM.setOnClickListener(view -> {
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle("Size Level");
+            builder.setMessage("\nChecking the size of the Mango fruit whether it is Large, Medium, or Small");
+            builder.setIcon(getDrawable(R.drawable.info2));
+            builder.setPositiveButton("OK", (dialog, which) -> dialog.dismiss());
+            builder.show();
+        });
+
+        brixdialogAM.setOnClickListener(view -> {
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle("Brix Level");
+            builder.setMessage("\nChecking the Sweetness of the Mango fruit by putting the result percentage from the refractometer. \n\nInstructions: Place a small amount (usually 2–5 drops) of liquid (The Mango Juice) on the prism, and secure the cover plate. This will evenly distribute the liquid on the prism. Point the prism end of the refractometer toward a light source and focus the eyepiece until the scale is clearly visible.");
+            builder.setIcon(getDrawable(R.drawable.info2));
+            builder.setPositiveButton("OK", (dialog, which) -> dialog.dismiss());
+            builder.show();
+        });
 
         picture.setOnClickListener(view -> {
             final CharSequence[] options = { "Take Photo", "Choose from Gallery","Cancel" };

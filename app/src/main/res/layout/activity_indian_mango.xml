@@ -383,4 +383,49 @@
         app:spb_stateNumberBackgroundColor="#808080"
         app:spb_stateNumberForegroundColor="#FFFFFF" />
 
+    <ImageView
+        android:id="@+id/ripdialogIM"
+        android:layout_width="30dp"
+        android:layout_height="25dp"
+        android:layout_marginBottom="4dp"
+        app:layout_constraintBottom_toTopOf="@+id/ripenesslevelIM"
+        app:layout_constraintStart_toEndOf="@+id/classifiedIM"
+        app:srcCompat="@drawable/info2" />
+
+    <ImageView
+        android:id="@+id/confidialogIM"
+        android:layout_width="30dp"
+        android:layout_height="25dp"
+        android:layout_marginBottom="4dp"
+        app:layout_constraintBottom_toTopOf="@+id/rcpbarIM"
+        app:layout_constraintStart_toEndOf="@+id/confidencesTextIM"
+        app:srcCompat="@drawable/info2" />
+
+    <ImageView
+        android:id="@+id/sizedialogIM"
+        android:layout_width="30dp"
+        android:layout_height="25dp"
+        android:layout_marginBottom="3dp"
+        app:layout_constraintBottom_toTopOf="@+id/sizelevelIM"
+        app:layout_constraintStart_toEndOf="@+id/SizesIM"
+        app:srcCompat="@drawable/info2" />
+
+    <ImageView
+        android:id="@+id/brixdialogIM"
+        android:layout_width="30dp"
+        android:layout_height="25dp"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/brixlevelIM"
+        app:layout_constraintStart_toEndOf="@+id/brixlevelsIM"
+        app:srcCompat="@drawable/info2" />
+
+    <ImageView
+        android:id="@+id/firmdialogIM"
+        android:layout_width="30dp"
+        android:layout_height="25dp"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/penelevelIM"
+        app:layout_constraintStart_toEndOf="@+id/firmlevelIM"
+        app:srcCompat="@drawable/info2" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

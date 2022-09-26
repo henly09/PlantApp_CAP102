@@ -10,6 +10,42 @@
     tools:context=".MainActivity">
 
     <ImageView
+        android:id="@+id/brixdialogAM"
+        android:layout_width="30dp"
+        android:layout_height="25dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/brixlevelAM"
+        app:layout_constraintStart_toEndOf="@+id/brixlevelsAM"
+        app:srcCompat="@drawable/info2" />
+
+    <ImageView
+        android:id="@+id/sizedialogAM"
+        android:layout_width="30dp"
+        android:layout_height="25dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/sizelevelAM"
+        app:layout_constraintStart_toEndOf="@+id/SizesAM"
+        app:srcCompat="@drawable/info2" />
+
+    <ImageView
+        android:id="@+id/ripdialogAM"
+        android:layout_width="30dp"
+        android:layout_height="25dp"
+        android:layout_marginBottom="4dp"
+        app:layout_constraintBottom_toTopOf="@+id/ripenesslevelAM"
+        app:layout_constraintStart_toEndOf="@+id/classifiedAM"
+        app:srcCompat="@drawable/info2" />
+
+    <ImageView
+        android:id="@+id/confidialogAM"
+        android:layout_width="30dp"
+        android:layout_height="25dp"
+        android:layout_marginBottom="7dp"
+        app:layout_constraintBottom_toTopOf="@+id/rcpbarAM"
+        app:layout_constraintStart_toEndOf="@+id/confidencesTextAM"
+        app:srcCompat="@drawable/info2" />
+
+    <ImageView
         android:id="@+id/imageView4"
         android:layout_width="272dp"
         android:layout_height="290dp"

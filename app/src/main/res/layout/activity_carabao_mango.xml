@@ -341,5 +341,41 @@
 
     </com.nex3z.notificationbadge.NotificationBadge>
 
+    <ImageView
+        android:id="@+id/ripdialogCM"
+        android:layout_width="30dp"
+        android:layout_height="25dp"
+        android:layout_marginBottom="2dp"
+        app:layout_constraintBottom_toTopOf="@+id/ripenesslevelCM"
+        app:layout_constraintStart_toEndOf="@+id/classifiedCM"
+        app:srcCompat="@drawable/info2" />
+
+    <ImageView
+        android:id="@+id/confidialogCM"
+        android:layout_width="30dp"
+        android:layout_height="25dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/rcpbarCM"
+        app:layout_constraintStart_toEndOf="@+id/confidencesTextCM"
+        app:srcCompat="@drawable/info2" />
+
+    <ImageView
+        android:id="@+id/sizedialogCM"
+        android:layout_width="30dp"
+        android:layout_height="25dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/sizelevelCM"
+        app:layout_constraintStart_toEndOf="@+id/SizesCM"
+        app:srcCompat="@drawable/info2" />
+
+    <ImageView
+        android:id="@+id/brixdialogCM"
+        android:layout_width="30dp"
+        android:layout_height="25dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/brixlevelCM"
+        app:layout_constraintStart_toEndOf="@+id/brixlevelsCM"
+        app:srcCompat="@drawable/info2" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -17,7 +17,6 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.text.Html;
 import android.text.InputType;
 import android.util.Log;
 import android.view.MenuItem;
@@ -33,7 +32,6 @@ import android.widget.Toast;
 import com.henzmontera.cap102_plantapp.ml.MangoIndianRipenessSorter;
 import com.henzmontera.cap102_plantapp.ml.MangoIndianSizeSorter;
 import com.kofigyan.stateprogressbar.StateProgressBar;
-import com.nex3z.notificationbadge.NotificationBadge;
 
 import org.tensorflow.lite.DataType;
 import org.tensorflow.lite.support.tensorbuffer.TensorBuffer;
@@ -51,14 +49,14 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class IndianMangoActivity extends AppCompatActivity {
 
-    TextView /*result,size, brixlevel,*/ firmlevel,rcppercentage,scppercentage;
+    TextView /*result,size, brixlevel, firmlevel,*/rcppercentage,scppercentage;
     StateProgressBar ripenesslevelIM,sizelevelIM,brixlevelIM,penelevelIM;
-    ImageView imageView;
+    ImageView imageView,ripdialogIM,confidialogIM,sizedialogIM,brixdialogIM,firmdialogIM;
     ProgressBar ripebar,sizebar;
-    Button picture, addingbrix, RecAndProdIM, addingfirm;
+    Button picture, addingbrix, /*RecAndProdIM,*/ addingfirm;
     int imageSize = 224/*, notifBadgeIM = 0*/;
     private String m_Text = "";
-    NotificationBadge notificationBadgeIM;
+    /*NotificationBadge notificationBadgeIM;*/
     String[] Mi_Ripeness = {"Ripe","RipeW/Def","Rot","Unripe"};
     String[] Mi_Ripeness_reverse = {"Unripe","Rot","RipeW/Def","Ripe"};
     String[] Mi_Size = {"Large","Medium","Small"};
@@ -94,29 +92,90 @@ public class IndianMangoActivity extends AppCompatActivity {
         getSupportActionBar().setBackgroundDrawable(getDrawable(R.drawable.actionbartheme));
         setTitle("INDIAN MANGO");
 
-/*        result = findViewById(R.id.classifiedIM);*/
-        rcppercentage = findViewById(R.id.ripecpercentageIM);
-        scppercentage = findViewById(R.id.sizecpercentageIM);
+/*        result = findViewById(R.id.classifiedIM);
+          brixlevel = findViewById(R.id.brixlevelsIM);
+          size = findViewById(R.id.SizesIM);
+          RecAndProdIM = findViewById(R.id.recAndProdIM);
+          notificationBadgeIM = findViewById(R.id.badgeIM);
+          firmlevel = findViewById(R.id.firmlevelIM);       */
+
+
         imageView = findViewById(R.id.imageViewIM);
         picture = findViewById(R.id.buttonIM);
-/*        size = findViewById(R.id.SizesIM);*/
+
+        // initialization for button add brix and penetrometer
         addingbrix = findViewById(R.id.addingbrixIM);
-/*        brixlevel = findViewById(R.id.brixlevelsIM);*/
-        notificationBadgeIM = findViewById(R.id.badgeIM);
-        RecAndProdIM = findViewById(R.id.recAndProdIM);
         addingfirm = findViewById(R.id.addfirmIM);
-        firmlevel = findViewById(R.id.firmlevelIM);
+
+        // initialization for progressbar
         ripebar = findViewById(R.id.rcpbarIM);
         sizebar = findViewById(R.id.scpbarIM);
+        rcppercentage = findViewById(R.id.ripecpercentageIM);
+        scppercentage = findViewById(R.id.sizecpercentageIM);
+
+        // initialization for gauges
         ripenesslevelIM = findViewById(R.id.ripenesslevelIM);
         sizelevelIM = findViewById(R.id.sizelevelIM);
         brixlevelIM = findViewById(R.id.brixlevelIM);
         penelevelIM = findViewById(R.id.penelevelIM);
 
+        // set dialog box
+        ripdialogIM = findViewById(R.id.ripdialogIM);
+        confidialogIM = findViewById(R.id.confidialogIM);
+        sizedialogIM = findViewById(R.id.sizedialogIM);
+        brixdialogIM = findViewById(R.id.brixdialogIM);
+        firmdialogIM = findViewById(R.id.firmdialogIM);
+
+        // set gauge meter description
         ripenesslevelIM.setStateDescriptionData(Mi_Ripeness_reverse);
         sizelevelIM.setStateDescriptionData(Mi_Size_reverse);
         brixlevelIM.setStateDescriptionData(Mi_Brixlevel);
         penelevelIM.setStateDescriptionData(Mi_PeneLevel);
+
+        ripdialogIM.setOnClickListener(view -> {
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle("Ripeness Level");
+            builder.setMessage("\nChecking the ripeness of the Mango fruit whether it is unripe, rot, ripe, ripe with defect.");
+            builder.setIcon(getDrawable(R.drawable.info2));
+            builder.setPositiveButton("OK", (dialog, which) -> dialog.dismiss());
+            builder.show();
+        });
+
+        confidialogIM.setOnClickListener(view -> {
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle("Analyzer Confidence Level");
+            builder.setMessage("\nThe output tells on how accurate the analyzer of the results given after the image undergo in process.");
+            builder.setIcon(getDrawable(R.drawable.info2));
+            builder.setPositiveButton("OK", (dialog, which) -> dialog.dismiss());
+            builder.show();
+        });
+
+        sizedialogIM.setOnClickListener(view -> {
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle("Size Level");
+            builder.setMessage("\nChecking the size of the Mango fruit whether it is Large, Medium, or Small");
+            builder.setIcon(getDrawable(R.drawable.info2));
+            builder.setPositiveButton("OK", (dialog, which) -> dialog.dismiss());
+            builder.show();
+        });
+
+        brixdialogIM.setOnClickListener(view -> {
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle("Brix Level");
+            builder.setMessage("\nChecking the Sweetness of the Mango fruit by putting the result percentage from the refractometer. \n\nInstructions: Place a small amount (usually 2–5 drops) of liquid (The Mango Juice) on the prism, and secure the cover plate. This will evenly distribute the liquid on the prism. Point the prism end of the refractometer toward a light source and focus the eyepiece until the scale is clearly visible.");
+            builder.setIcon(getDrawable(R.drawable.info2));
+            builder.setPositiveButton("OK", (dialog, which) -> dialog.dismiss());
+            builder.show();
+        });
+
+        firmdialogIM.setOnClickListener(view -> {
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle("Firm Level");
+            builder.setMessage("\nChecking the Firmness of the Mango fruit by putting the result percentage from the penetrometer. \n\nInstructions: Hold the fruit with one hand on a solid surface. Then push the stamp of the penetrometer with uniform pressure into the skinless flesh. On the stamp, the permissible depth of penetration is determined by a milled marking ring. Avoid jerky or lateral movements during the penetration process. The measured value is read and recorded. 8 mm stamp is used, read on the inner scale.");
+            builder.setIcon(getDrawable(R.drawable.info2));
+            builder.setPositiveButton("OK", (dialog, which) -> dialog.dismiss());
+            builder.show();
+        });
 
         picture.setOnClickListener(view -> {
             final CharSequence[] options = { "Take Photo", "Choose from Gallery","Cancel" };
@@ -198,7 +257,6 @@ public class IndianMangoActivity extends AppCompatActivity {
                 m_Text = input.getText().toString();
                 int a = Integer.parseInt(m_Text);
                 // https://www.mango.org/wp-content/uploads/2017/10/Mango_Maturity_And_Ripeness_Guide.pdf
-                String b = "";
                 if (a > 20){
                     penelevelIM.setCurrentStateNumber(StateProgressBar.StateNumber.ONE);
                 }
@@ -214,8 +272,6 @@ public class IndianMangoActivity extends AppCompatActivity {
                 else if (a <= 5 && a >= 1){
                     penelevelIM.setCurrentStateNumber(StateProgressBar.StateNumber.FIVE);
                 }
-                String resultstyledText = "Firm Level: <font color='#249023'>"+ b +"</font>";
-                firmlevel.setText(Html.fromHtml(resultstyledText), TextView.BufferType.SPANNABLE);
             });
             builder.setNegativeButton("Cancel", (dialog, which) -> dialog.cancel());
             builder.show();

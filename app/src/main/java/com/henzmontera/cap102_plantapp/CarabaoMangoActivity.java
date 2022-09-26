@@ -30,7 +30,6 @@ import android.widget.Toast;
 import com.henzmontera.cap102_plantapp.ml.CmRipenessSorter;
 import com.henzmontera.cap102_plantapp.ml.CmSizeSorter;
 import com.kofigyan.stateprogressbar.StateProgressBar;
-import com.nex3z.notificationbadge.NotificationBadge;
 
 import org.tensorflow.lite.DataType;
 import org.tensorflow.lite.support.tensorbuffer.TensorBuffer;
@@ -50,12 +49,12 @@ public class CarabaoMangoActivity extends AppCompatActivity {
 
     TextView /*result, size, brixlevel, */rcppercentage,scppercentage;
     StateProgressBar ripenesslevelCM,sizelevelCM,brixlevelCM;
-    ImageView imageView;
+    ImageView imageView,ripdialogCM,confidialogCM,sizedialogCM,brixdialogCM;
     ProgressBar ripebar,sizebar;
-    Button picture, addingbrix, RecAndProdCm;
+    Button picture, addingbrix/*, RecAndProdCm*/;
     int imageSize = 224/*, notifBadgeCM = 0*/;
     private String m_Text = "";
-    NotificationBadge notificationBadgeCM;
+/*    NotificationBadge notificationBadgeCM;*/
     String[] Cm_Ripeness = {"Ripe","RipeW/Def","Rot","Unripe"};
     String[] Cm_Ripeness_reverse = {"Unripe","Rot","RipeW/Def","Ripe"};
     String[] Cm_Size = {"Large","Medium","Small"};
@@ -90,25 +89,74 @@ public class CarabaoMangoActivity extends AppCompatActivity {
         getSupportActionBar().setBackgroundDrawable(getDrawable(R.drawable.actionbartheme));
         setTitle("CARABAO MANGO");
 
-/*        result = findViewById(R.id.classifiedCM);*/
-        rcppercentage = findViewById(R.id.ripecpercentageCM);
-        scppercentage = findViewById(R.id.sizecpercentageCM);
+/*              result = findViewById(R.id.classifiedCM);
+                size = findViewById(R.id.SizesCM);
+                brixlevel = findViewById(R.id.brixlevelsCM);
+                notificationBadgeCM = findViewById(R.id.badgeCM);
+                RecAndProdCm = findViewById(R.id.RecAndProdCM);         */
+
+
         imageView = findViewById(R.id.imageViewCM);
         picture = findViewById(R.id.buttonCM);
-/*        size = findViewById(R.id.SizesCM);*/
         addingbrix = findViewById(R.id.addingbrixCM);
-/*        brixlevel = findViewById(R.id.brixlevelsCM);*/
-        notificationBadgeCM = findViewById(R.id.badgeCM);
-        RecAndProdCm = findViewById(R.id.RecAndProdCM);
+
+        // initialization for progressbar
         ripebar = findViewById(R.id.rcpbarCM);
         sizebar = findViewById(R.id.scpbarCM);
+        rcppercentage = findViewById(R.id.ripecpercentageCM);
+        scppercentage = findViewById(R.id.sizecpercentageCM);
+
+        // initialization for gauges
         ripenesslevelCM = findViewById(R.id.ripenesslevelCM);
         sizelevelCM = findViewById(R.id.sizelevelCM);
         brixlevelCM = findViewById(R.id.brixlevelCM);
 
+        // set dialog box
+        ripdialogCM = findViewById(R.id.ripdialogCM);
+        confidialogCM = findViewById(R.id.confidialogCM);
+        sizedialogCM = findViewById(R.id.sizedialogCM);
+        brixdialogCM = findViewById(R.id.brixdialogCM);
+
+        // set gauge meter description
         ripenesslevelCM.setStateDescriptionData(Cm_Ripeness_reverse);
         sizelevelCM.setStateDescriptionData(Cm_Size_reverse);
         brixlevelCM.setStateDescriptionData(Cm_Brixlevel);
+
+        ripdialogCM.setOnClickListener(view-> {
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle("Ripeness Level");
+            builder.setMessage("\nChecking the ripeness of the Mango fruit whether it is unripe, rot, ripe, ripe with defect.");
+            builder.setIcon(getDrawable(R.drawable.info2));
+            builder.setPositiveButton("OK", (dialog, which) -> dialog.dismiss());
+            builder.show();
+        });
+
+        confidialogCM.setOnClickListener(view-> {
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle("Analyzer Confidence Level");
+            builder.setMessage("\nThe output tells on how accurate the analyzer of the results given after the image undergo in process.");
+            builder.setIcon(getDrawable(R.drawable.info2));
+            builder.setPositiveButton("OK", (dialog, which) -> dialog.dismiss());
+            builder.show();
+        });
+
+        sizedialogCM.setOnClickListener(view-> {
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle("Size Level");
+            builder.setMessage("\nChecking the size of the Mango fruit whether it is Large, Medium, or Small");
+            builder.setIcon(getDrawable(R.drawable.info2));
+            builder.setPositiveButton("OK", (dialog, which) -> dialog.dismiss());
+            builder.show();
+        });
+
+        brixdialogCM.setOnClickListener(view-> {
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle("Brix Level");
+            builder.setMessage("\nChecking the Sweetness of the Mango fruit by putting the result percentage from the refractometer. \n\nInstructions: Place a small amount (usually 2–5 drops) of liquid (The Mango Juice) on the prism, and secure the cover plate. This will evenly distribute the liquid on the prism. Point the prism end of the refractometer toward a light source and focus the eyepiece until the scale is clearly visible.");
+            builder.setIcon(getDrawable(R.drawable.info2));
+            builder.setPositiveButton("OK", (dialog, which) -> dialog.dismiss());
+            builder.show();
+        });
 
         picture.setOnClickListener(view -> {
             final CharSequence[] options = { "Take Photo", "Choose from Gallery","Cancel" };
@@ -140,7 +188,7 @@ public class CarabaoMangoActivity extends AppCompatActivity {
         addingbrix.setOnClickListener(view -> {
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
             builder.setTitle("Input Brix Percentage");
-            builder.setMessage("Put the percentage of the output of the refractometer which using brix meter.");
+            builder.setMessage("Put the percentage of the output of \nthe refractometer which using brix meter.");
             // Set up the input
             final EditText input = new EditText(this);
             // Specify the type of input expected; this, for example, sets the input as a password, and will mask the text
