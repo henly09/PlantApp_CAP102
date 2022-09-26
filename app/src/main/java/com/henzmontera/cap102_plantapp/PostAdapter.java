@@ -1,6 +1,9 @@
 package com.henzmontera.cap102_plantapp;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,6 +29,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ListViewHolder
 
         private TextView UPostNameTV, UPostTimeTV, UPostDesc, UPostLikeC, UPostCommentC;
         private ImageView UPostProfPic, UPostImage;
+        private SessionManager sessionManager;
 
         public ListViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -52,14 +56,13 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ListViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull PostAdapter.ListViewHolder holder, int position) {
-
         holder.UPostNameTV.setText(LISTPOSTS.get(position).getUSERNAME());
         holder.UPostDesc.setText(LISTPOSTS.get(position).getPOSTDESC());
         holder.UPostTimeTV.setText(LISTPOSTS.get(position).getPOSTTIME());
         holder.UPostCommentC.setText(LISTPOSTS.get(position).getCOMMENTC());
         holder.UPostLikeC.setText(LISTPOSTS.get(position).getLIKEC());
-        holder.UPostProfPic.setBackgroundResource(LISTPOSTS.get(position).getPROFILEPIC());
-        holder.UPostImage.setBackgroundResource(LISTPOSTS.get(position).getPOSTIMAGES());
+        holder.UPostProfPic.setImageBitmap(StringtoImage(LISTPOSTS.get(position).getPROFILEPIC()));
+        holder.UPostImage.setImageBitmap(StringtoImage(LISTPOSTS.get(position).getPOSTIMAGES()));
     }
 
     @Override
@@ -67,5 +70,10 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ListViewHolder
         return LISTPOSTS.size();
     }
 
-
+    //Convert from String to Bitmap Image
+    private Bitmap StringtoImage(String string){
+        byte[] decodedString = Base64.decode(string, Base64.DEFAULT);
+        Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
+        return decodedByte;
+    }
 }

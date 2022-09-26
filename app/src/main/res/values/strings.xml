@@ -161,4 +161,13 @@
         be approximately 2 to 3 cm long, and then it should be stacked in a box or container with the stalks facing
         down for market transportation. In order to prevent bruising, proper postharvest treatment calls for storing
         in boxes or crates rather than sacks.</string>
+
+    <string name="bottom_sheet_option_view">View profile picture</string>
+    <string name="bottom_sheet_option_select">Select profile picture</string>
+    <string name="bottom_sheet_option_heading">Profile Picture</string>
+    <string name="bottom_sheet_option_remove_photo">Remove Photo</string>
+
+    <string name="bottom_sheet_background_option_select">Select background picture</string>
+    <string name="bottom_sheet_background_option_view">View background picture</string>
+    <string name="bottom_sheet_background_option_heading">Background Picture</string>
 </resources>

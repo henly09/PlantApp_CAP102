@@ -98,7 +98,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         menu.findItem(R.id.Logout).setVisible(true);
         menu.findItem(R.id.AcProfile).setVisible(true);
-
     }
 
     @Override

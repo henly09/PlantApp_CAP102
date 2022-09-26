@@ -386,13 +386,13 @@
             android:adjustViewBounds="true"
             android:scaleType="fitCenter"
             android:padding="0dp"
-            android:layout_margin="8dp" />
+            android:layout_margin="5dp" />
 
         <ImageButton
             android:id="@+id/ib_indian"
             android:layout_width="wrap_content"
             android:layout_height="100dp"
-            android:layout_margin="8dp"
+            android:layout_margin="5dp"
             android:adjustViewBounds="true"
             android:padding="0dp"
             android:scaleType="fitCenter"
@@ -402,7 +402,7 @@
             android:id="@+id/ib_apple"
             android:layout_width="wrap_content"
             android:layout_height="100dp"
-            android:layout_margin="8dp"
+            android:layout_margin="5dp"
             android:adjustViewBounds="true"
             android:padding="0dp"
             android:scaleType="fitCenter"

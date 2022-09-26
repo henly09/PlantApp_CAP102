@@ -71,12 +71,13 @@ public class FirstFragment extends Fragment {
             listposts.clear(); //Clear Arraylist
             GetLatestPost();    //Re add the Data into Arraylist again
             swiperefresh.setRefreshing(false); //False to Animation
+            Toast.makeText(getActivity(), "Refreshed", Toast.LENGTH_SHORT).show();
         });
         return rootview;
     }
 
     private void GetLatestPost(){
-        String url = "http://192.168.254.100/networkingbased/DisplayLatestPost.php";
+        String url = "http://192.168.254.107/networkingbased/DisplayLatestPost.php";
 
         RequestQueue q = Volley.newRequestQueue(getActivity());
 
@@ -106,8 +107,8 @@ public class FirstFragment extends Fragment {
                                         al.optString("postTime"),
                                         al.optString("commentsCount"),
                                         al.optString("likeCount"),
-                                        al.optInt("userprofilepicture"),
-                                        al.optInt("postImages")
+                                        al.optString("userprofilepicture"),
+                                        al.optString("postImages")
                                 );
                                 listposts.add(post);
                                 useradapt = new PostAdapter(getActivity(), listposts);
@@ -117,7 +118,6 @@ public class FirstFragment extends Fragment {
 
                         }
                     } catch (Exception e) {
-                        Toast.makeText(getActivity(), "Fetching Data From Database Failed. Please Try Again Later..", Toast.LENGTH_SHORT).show();
                     }
                 }, error -> {
 /*                       if (error instanceof TimeoutError || error instanceof NoConnectionError) {

@@ -1,8 +1,14 @@
 package com.henzmontera.cap102_plantapp;
 
+import android.content.ContentResolver;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.ImageDecoder;
+import android.media.ThumbnailUtils;
+import android.net.Uri;
 import android.os.Bundle;
-import android.widget.Button;
+import android.util.Base64;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -22,18 +28,16 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class
-ProfileActivity extends AppCompatActivity {
+public class ProfileActivity extends AppCompatActivity {
 
-    private Button EditProfile; //I doubt to use this
     private TextView UsernameProfile;
     private TextView emptyView;
-    private  ImageView UserBackgroundProfile;
     private ImageView UserPictureProfile;
 
     private FloatingActionButton BackButtonProfile;
@@ -44,10 +48,9 @@ ProfileActivity extends AppCompatActivity {
     private RecyclerView recyclerview;
     private List<ListPost> listposts;
 
-    SessionManager sessionManager;
+    private Bitmap bitmap;
 
-    // to check whether sub FAB buttons are visible or not.
-    Boolean isAllFabsVisible;
+    private SessionManager sessionManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,7 +71,6 @@ ProfileActivity extends AppCompatActivity {
 
         //Images
         UserPictureProfile = findViewById(R.id.ImageProfilePost);
-        UserBackgroundProfile = findViewById(R.id.ImageProfileBackground);
 
         //RecyclerView
         recyclerview = findViewById(R.id.recyclerVV);
@@ -78,11 +80,21 @@ ProfileActivity extends AppCompatActivity {
         recyclerview.setLayoutManager(new LinearLayoutManager(this));
         listposts = new ArrayList<>();
 
-        //Retrieve User's Name and Print in TextView
+        //Retrieve User's Name and Print on TextView
         HashMap<String, String> user = sessionManager.getUserDetail();
-        String username = user.get(sessionManager.UNAME);
-        String id = user.get(sessionManager.UID);
+        String username = user.get(sessionManager.UNAME); //Get Username String from Session Manager
+        String id = user.get(sessionManager.UID);   //Get Id String from Session Manager
+        String image = user.get(sessionManager.UIMAGE); //Get Image String from Session manager
         UsernameProfile.setText(username);
+
+        if(image==""){ // If image no string, default profile picture.
+            UserPictureProfile.setBackgroundResource(R.mipmap.ic_nature_foreground);
+        } else { // Else, set Image
+            //Decode from String into Bitmap
+            byte[] decodedString = Base64.decode(image, Base64.DEFAULT);
+            Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
+            UserPictureProfile.setImageBitmap(decodedByte);
+        }
 
         //Call Display Post Method
         DisplayPost(id);
@@ -90,6 +102,7 @@ ProfileActivity extends AppCompatActivity {
         //SwipeRefresh function
         swiperefresh = findViewById(R.id.LowerProfileConstraintLayout);
         swiperefresh.setOnRefreshListener(() -> {
+            Toast.makeText(this, "Refreshed", Toast.LENGTH_SHORT).show();
             listposts.clear(); //Clear Arraylist
             DisplayPost(id);    //Re add the Data into Arraylist again
             swiperefresh.setRefreshing(false); //False to Animation
@@ -109,12 +122,15 @@ ProfileActivity extends AppCompatActivity {
 
         //Select Profile Picture
         UserPictureProfile.setOnClickListener(view -> {
-
+            AddPhotoBottomDialogFragment addPhotoBottomDialogFragment =
+                    AddPhotoBottomDialogFragment.newInstance();
+            addPhotoBottomDialogFragment.show(getSupportFragmentManager(),
+                    "add_photo_dialog_fragment");
         });
     }
 
-    private void DisplayPost(String id){
-        String url = "http://192.168.254.100/networkingbased/DisplayUserProfile.php";
+    private void DisplayPost(String id){ // Display the Results of loaded datasets
+        String url = "http://192.168.254.107/networkingbased/DisplayUserProfile.php";
 
         RequestQueue q = Volley.newRequestQueue(ProfileActivity.this);
 
@@ -137,8 +153,8 @@ ProfileActivity extends AppCompatActivity {
                                     al.optString("postTime"),
                                     al.optString("commentsCount"),
                                     al.optString("likeCount"),
-                                    al.optInt("userprofilepicture"),
-                                    al.optInt("postImages")
+                                    al.optString("userprofilepicture"),
+                                    al.optString("postImages")
                             );
                             listposts.add(post);
                             useradapt = new PostAdapter(ProfileActivity.this, listposts);
@@ -146,7 +162,6 @@ ProfileActivity extends AppCompatActivity {
                             useradapt.notifyDataSetChanged();
                         }
                     } catch (Exception e) {
-                        Toast.makeText(ProfileActivity.this, "Fetching Data From Database Failed. Please Try Again Later..", Toast.LENGTH_SHORT).show();
                     }
                 }, error -> {
             Toast.makeText(ProfileActivity.this, "Fetching Data From Database Failed. Please Try Again Later..", Toast.LENGTH_SHORT).show();
@@ -160,5 +175,60 @@ ProfileActivity extends AppCompatActivity {
             }
         };
         q.add(r);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        ContentResolver contentResolver = getContentResolver();
+           try {
+               Uri selectedImage = data.getData();
+               ImageDecoder.Source source = ImageDecoder.createSource(contentResolver, selectedImage);
+               bitmap = ImageDecoder.decodeBitmap(source);
+               int dimension = Math.min(bitmap.getWidth(), bitmap.getHeight());
+               bitmap = ThumbnailUtils.extractThumbnail(bitmap, dimension, dimension);
+               UserPictureProfile.setImageBitmap(bitmap);
+
+               //Get User Id and send to method's parameter
+               HashMap<String, String> user = sessionManager.getUserDetail();
+               String id = user.get(sessionManager.UID);
+               saveProfilePicture(id);
+           } catch (Exception e) {
+           }
+    }
+
+    private void saveProfilePicture(String Userid){
+        String StoreURL = "http://192.168.254.107/networkingbased/ChangeProfilePicture.php";
+        RequestQueue q = Volley.newRequestQueue(ProfileActivity.this);
+        StringRequest r = new StringRequest(
+                Request.Method.POST,
+                StoreURL,
+                response -> {
+                    try {
+                        Toast.makeText(ProfileActivity.this, "Profile Picture has been updated", Toast.LENGTH_SHORT).show();
+                        sessionManager.updateUserProfilePicture(imageToString(bitmap)); //Update Profile Picture on Session Manager
+                    } catch (Exception e) {
+                    }
+                }, error -> {
+
+                }) {
+            @Nullable
+            @Override
+            protected Map<String, String> getParams() {
+                Map<String, String> param = new HashMap<>();
+                param.put("userid", String.valueOf(Userid));
+                param.put("image", imageToString(bitmap));
+                return param;
+            }
+        };
+        q.add(r);
+    }
+
+    //Convert image into String
+    private String imageToString(Bitmap bitmap){
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.JPEG,100,byteArrayOutputStream);
+        byte[] imgBytes = byteArrayOutputStream.toByteArray();
+        return Base64.encodeToString(imgBytes, Base64.DEFAULT);
     }
 }

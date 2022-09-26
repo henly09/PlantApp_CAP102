@@ -11,10 +11,10 @@ public class ListPost {
     private String COMMENTC;
     private String LIKEC;
 
-    private int PROFILEPIC;
-    private int POSTIMAGES;
+    private String PROFILEPIC;
+    private String POSTIMAGES;
 
-    public ListPost(String USERID, String POSTID, String USERNAME, String POSTDESC, String POSTTIME, String COMMENTC, String LIKEC, int PROFILEPIC, int POSTIMAGES) {
+    public ListPost(String USERID, String POSTID, String USERNAME, String POSTDESC, String POSTTIME, String COMMENTC, String LIKEC, String PROFILEPIC, String POSTIMAGES) {
         this.USERID = USERID;
         this.POSTID = POSTID;
         this.USERNAME = USERNAME;
@@ -54,11 +54,11 @@ public class ListPost {
         return LIKEC;
     }
 
-    public int getPROFILEPIC() {
+    public String getPROFILEPIC() {
         return PROFILEPIC;
     }
 
-    public int getPOSTIMAGES() {
+    public String getPOSTIMAGES() {
         return POSTIMAGES;
     }
 }

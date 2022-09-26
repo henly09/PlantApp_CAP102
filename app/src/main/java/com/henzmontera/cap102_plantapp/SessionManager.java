@@ -18,6 +18,7 @@ public class SessionManager {
     private static final String LOGIN = "IS_LOGIN";
     public static final String UNAME = "NAME";
     public static final String UEMAIL = "EMAIL";
+    public static final String UIMAGE = "IMAGE";
     public static final String UID = "ID";
 
     //Guest
@@ -31,11 +32,17 @@ public class SessionManager {
     }
 
     //Create Session
-    public void createUserSession(String name, String email, String id){
+    public void createUserSession(String name, String email, String id, String image){
         editor.putBoolean(LOGIN, true);
         editor.putString(UNAME, name);
         editor.putString(UEMAIL, email);
+        editor.putString(UIMAGE, image);
         editor.putString(UID, id);
+        editor.apply();
+    }
+
+    public void updateUserProfilePicture(String image){
+        editor.putString(UIMAGE, image);
         editor.apply();
     }
 
@@ -64,6 +71,7 @@ public class SessionManager {
         HashMap<String, String> user = new HashMap<>();
         user.put(UNAME, sharedPreferences.getString(UNAME, null));
         user.put(UEMAIL, sharedPreferences.getString(UEMAIL, null));
+        user.put(UIMAGE, sharedPreferences.getString(UIMAGE, null));
         user.put(UID, sharedPreferences.getString(UID, null));
         return user;
     }

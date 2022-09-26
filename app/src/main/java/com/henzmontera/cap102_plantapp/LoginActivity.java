@@ -132,7 +132,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private void LoginAuthenticate(String User, String Pass){
         try{
-            String url = "http://192.168.254.100/networkingbased/LoginUser.php";
+            String url = "http://192.168.254.107/networkingbased/LoginUser.php";
 
             RequestQueue q = Volley.newRequestQueue(LoginActivity.this);
 
@@ -150,11 +150,11 @@ public class LoginActivity extends AppCompatActivity {
                                     PasswordEditText.getText().toString().equals(auth.optString("userpassword").trim())){
 
                                 String name = auth.optString("username").trim();
-                                String email = auth.optString("userpassword").trim();
+                                String email = auth.optString("email").trim();
                                 String id = auth.optString("userid").trim();
 
                                 //Create Session
-                                sessionManager.createUserSession(name,email,id);
+                                sessionManager.createUserSession(name,email,id,auth.optString("userprofilepicture"));
 
                                 myDB = openOrCreateDatabase("IntroSlideCheckStatus.db", 0, null);
                                 Cursor ma_checkbox = myDB.rawQuery("SELECT COUNT(*) as count FROM logintomaincheckbox WHERE logintomaincheckbox.status = ?;", new String[] {"enable"});

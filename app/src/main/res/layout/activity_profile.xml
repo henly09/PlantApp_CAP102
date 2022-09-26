@@ -5,6 +5,7 @@
     android:id="@+id/WholeProfileConstrainLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:backgroundTint="#EFEAEA"
     tools:context=".ProfileActivity"
     tools:ignore="HardcodedText">
 
@@ -35,22 +36,23 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/UpperProfileConstraintLayout"
         android:layout_width="match_parent"
-        android:layout_height="290dp"
+        android:layout_height="210dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <ImageView
+        <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/ImageProfilePost"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="144dp"
+            android:layout_width="109dp"
+            android:layout_height="109dp"
+            android:layout_marginTop="48dp"
             android:translationZ="@dimen/activity_horizontal_margin"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/ImageProfileBackground"
-            app:srcCompat="@mipmap/ic_nature_foreground" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:shapeAppearanceOverlay="@style/Circular"
+            app:srcCompat="@mipmap/ic_nature_foreground"
+            tools:ignore="MissingConstraints" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/BackButtonProfile"
@@ -68,23 +70,12 @@
             android:id="@+id/TextviewUsernameProfile"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="8dp"
             android:text="Android Android"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/ImageProfilePost" />
-
-        <ImageView
-            android:id="@+id/ImageProfileBackground"
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:adjustViewBounds="false"
-            android:background="#AFAAAA"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -23,7 +23,7 @@
             android:gravity="center_vertical"
             android:orientation="horizontal">
 
-            <ImageView
+            <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/picturetv"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
@@ -41,10 +41,12 @@
                     android:layout_height="wrap_content"
                     android:text="Name"
                     android:textColor="@color/black"
+                    android:layout_marginStart="7dp"
                     android:textSize="20sp" />
 
                 <TextView
                     android:id="@+id/utimetv"
+                    android:layout_marginStart="7dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="0 min" />
@@ -109,8 +111,9 @@
                 android:layout_weight="1"
                 android:autoLink="all"
                 android:background="@color/white"
-                android:drawableStart="@drawable/ic_thumbsup"
-                android:drawableLeft="@drawable/ic_thumbsup"
+                android:drawableStart="@drawable/ic_thumbs_up"
+                android:drawableLeft="@drawable/ic_thumbs_up"
+                android:drawablePadding="@dimen/about_icon_padding"
                 android:padding="5dp"
                 android:text="Like"
                 android:textColor="#4479D0" />
@@ -122,8 +125,8 @@
                 android:layout_weight="1"
                 android:autoLink="all"
                 android:background="@color/white"
-                android:drawableStart="@drawable/ic_comment"
-                android:drawableLeft="@drawable/ic_comment"
+                android:drawableStart="@drawable/ic_add_comment"
+                android:drawableLeft="@drawable/ic_add_comment"
                 android:padding="5dp"
                 android:text="COMMENT"
                 android:textColor="#4479D0" />
