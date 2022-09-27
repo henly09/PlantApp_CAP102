@@ -26,9 +26,9 @@
             android:textColorLink="#FFFFFF"
             android:textSize="24sp"
             app:layout_constraintBottom_toTopOf="@+id/indianmangobutton"
-            app:layout_constraintEnd_toEndOf="@+id/indianmangobutton"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.533"
-            app:layout_constraintStart_toStartOf="@+id/indianmangobutton"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button
@@ -40,9 +40,9 @@
             android:textColor="#FFFFFFFF"
             android:textSize="24sp"
             app:layout_constraintBottom_toTopOf="@+id/picomangobutton"
-            app:layout_constraintEnd_toEndOf="@+id/picomangobutton"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.484"
-            app:layout_constraintStart_toStartOf="@+id/picomangobutton"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/indianmangobutton" />
 
         <Button
@@ -69,9 +69,9 @@
             android:textColor="#FFFFFFFF"
             android:textSize="24sp"
             app:layout_constraintBottom_toTopOf="@+id/carabaomangobutton"
-            app:layout_constraintEnd_toEndOf="@+id/carabaomangobutton"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.533"
-            app:layout_constraintStart_toStartOf="@+id/carabaomangobutton"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/applemangobutton" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -6,7 +6,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
@@ -27,30 +26,21 @@ public class SecondFragment extends Fragment {
         appbtn = rootview.findViewById(R.id.ib_apple);
 
         //Carabao Button
-        carbtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intentIntro = new Intent(getActivity(), CarInfo_sec.class);
-                startActivity(intentIntro);
-            }
+        carbtn.setOnClickListener(view -> {
+            Intent intentIntro = new Intent(getActivity(), CarInfo_sec.class);
+            startActivity(intentIntro);
         });
 
         //Indian Button
-        indbtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intentIntro = new Intent(getActivity(), IndInfo_sec.class);
-                startActivity(intentIntro);
-            }
+        indbtn.setOnClickListener(view -> {
+            Intent intentIntro = new Intent(getActivity(), IndInfo_sec.class);
+            startActivity(intentIntro);
         });
 
         //Apple Button
-        appbtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intentIntro = new Intent(getActivity(), AppleInfo_sec.class);
-                startActivity(intentIntro);
-            }
+        appbtn.setOnClickListener(view -> {
+            Intent intentIntro = new Intent(getActivity(), AppleInfo_sec.class);
+            startActivity(intentIntro);
         });
         // Inflate the layout for this fragment
         return rootview;
