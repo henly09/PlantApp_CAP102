@@ -42,9 +42,7 @@
         <activity
             android:name=".ProfileActivity"
             android:exported="true"
-            android:theme="@style/Theme.AppCompat.NoActionBar" >
-
-        </activity>
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
             android:name=".Guide"
             android:exported="true"
