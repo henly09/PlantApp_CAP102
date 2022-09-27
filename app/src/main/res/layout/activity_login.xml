@@ -92,7 +92,7 @@
         android:layout_marginBottom="-5dp"
         android:layout_marginEnd="12dp"
         android:layout_marginStart="12dp"
-        android:backgroundTint="#6B7A81"
+        android:backgroundTint="#94cc50"
         android:text="Guest Mode"
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/LoginButton"
