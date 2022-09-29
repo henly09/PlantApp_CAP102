@@ -1,13 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:fadeScrollbars="false"
+    android:scrollbars="vertical"
+    android:scrollbarAlwaysDrawVerticalTrack="true">
+<androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#F9fff4"
     android:backgroundTint="#F9fff4"
     android:screenOrientation="portrait"
     tools:context=".MainActivity">
+
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="360dp"
+        android:layout_height="28dp"
+        android:src="@drawable/divider"
+        app:layout_constraintBottom_toTopOf="@+id/classifiedAM"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.484"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView7"
+        android:layout_width="360dp"
+        android:layout_height="28dp"
+        android:src="@drawable/divider"
+        app:layout_constraintBottom_toTopOf="@+id/confidencesTextAM"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.484"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView8"
+        android:layout_width="360dp"
+        android:layout_height="28dp"
+        android:src="@drawable/divider"
+        app:layout_constraintBottom_toTopOf="@+id/SizesAM"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.484"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView25"
+        android:layout_width="360dp"
+        android:layout_height="28dp"
+        android:src="@drawable/divider"
+        app:layout_constraintBottom_toTopOf="@+id/brixlevelsAM"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.484"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView26"
+        android:layout_width="360dp"
+        android:layout_height="28dp"
+        android:layout_marginBottom="40dp"
+        android:src="@drawable/divider"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.484"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
         android:id="@+id/brixdialogAM"
@@ -49,30 +107,20 @@
         android:id="@+id/imageView4"
         android:layout_width="272dp"
         android:layout_height="290dp"
-        android:layout_marginBottom="460dp"
         android:layout_marginEnd="252dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="-100dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/am_overlay_2" />
-
-    <ImageView
-        android:id="@+id/imageView7"
-        android:layout_width="272dp"
-        android:layout_height="290dp"
-        android:layout_marginBottom="352dp"
-        android:layout_marginStart="252dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/am_overlay_2" />
 
     <ImageView
         android:id="@+id/imageView13"
         android:layout_width="272dp"
         android:layout_height="290dp"
-        android:layout_marginBottom="696dp"
-        android:layout_marginStart="212dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginStart="300dp"
+        android:layout_marginTop="140dp"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/am_overlay_2" />
 
     <Button
@@ -81,14 +129,14 @@
         android:layout_height="45dp"
         android:layout_below="@+id/imageViewAM"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="12dp"
+        android:layout_marginBottom="20dp"
         android:backgroundTint="@android:color/holo_orange_dark"
         android:text="Take Picture"
         android:textAllCaps="false"
         android:textColor="#FFFFFFFF"
         android:textSize="16sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/classifiedAM"
+        app:layout_constraintBottom_toTopOf="@+id/imageView6"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent" />
@@ -114,8 +162,7 @@
         android:layout_width="348dp"
         android:layout_height="8dp"
         android:layout_centerInParent="true"
-        android:layout_marginBottom="10dp"
-        app:layout_constraintBottom_toTopOf="@+id/confidencesTextAM"
+        app:layout_constraintBottom_toTopOf="@+id/imageView7"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.488"
         app:layout_constraintStart_toStartOf="parent"
@@ -134,8 +181,7 @@
         android:layout_width="348dp"
         android:layout_height="8dp"
         android:layout_centerInParent="true"
-        android:layout_marginBottom="15dp"
-        app:layout_constraintBottom_toTopOf="@+id/brixlevelsAM"
+        app:layout_constraintBottom_toTopOf="@+id/imageView25"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.488"
         app:layout_constraintStart_toStartOf="parent"
@@ -154,8 +200,7 @@
         android:layout_width="348dp"
         android:layout_height="8dp"
         android:layout_centerInParent="true"
-        android:layout_marginBottom="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/imageView26"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.488"
         app:layout_constraintStart_toStartOf="parent"
@@ -192,14 +237,13 @@
         android:layout_height="25dp"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/confidencesTextAM"
-        android:layout_marginBottom="10dp"
         android:layout_marginEnd="5dp"
         android:layout_marginStart="32dp"
         android:gravity="center|center_vertical"
         android:text="SizeC%:"
         android:textSize="14sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/SizesAM"
+        app:layout_constraintBottom_toTopOf="@id/imageView8"
         app:layout_constraintEnd_toStartOf="@+id/scpbarAM"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -271,10 +315,12 @@
 
     <ImageView
         android:id="@+id/imageViewAM"
-        android:layout_width="300dp"
-        android:layout_height="300dp"
+        android:layout_width="320dp"
+        android:layout_height="320dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="40dp"
         android:background="@drawable/imageviewborderapplemango"
         android:src="@drawable/cameraicon"
         app:layout_constraintBottom_toTopOf="@+id/buttonAM"
@@ -334,10 +380,9 @@
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="254dp"
         android:layout_height="26dp"
-        android:layout_marginBottom="10dp"
         android:layout_marginEnd="32dp"
         android:progressDrawable="@drawable/custom_progress_bg"
-        app:layout_constraintBottom_toTopOf="@+id/SizesAM"
+        app:layout_constraintBottom_toTopOf="@id/imageView8"
         app:layout_constraintEnd_toEndOf="parent" />
 
     <TextView
@@ -363,15 +408,16 @@
         android:layout_height="25dp"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/confidencesTextAM"
-        android:layout_marginBottom="10dp"
         android:gravity="center|center_vertical"
         android:text="0%"
         android:textColor="@color/white"
         android:textSize="14sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/SizesAM"
+        app:layout_constraintBottom_toTopOf="@id/imageView8"
         app:layout_constraintEnd_toEndOf="@+id/scpbarAM"
         app:layout_constraintHorizontal_bias="0.489"
         app:layout_constraintStart_toStartOf="@+id/scpbarAM" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:fadeScrollbars="false"
+    android:scrollbars="vertical"
+    android:scrollbarAlwaysDrawVerticalTrack="true">
+
+<androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#F9fff4"
@@ -9,13 +17,73 @@
     android:screenOrientation="portrait"
     tools:context=".MainActivity">
 
+    <ImageView
+        android:id="@+id/imageView19"
+        android:layout_width="360dp"
+        android:layout_height="28dp"
+        android:layout_marginBottom="40dp"
+        android:src="@drawable/divider"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.484"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="360dp"
+        android:layout_height="28dp"
+        android:src="@drawable/divider"
+        app:layout_constraintBottom_toTopOf="@+id/confidencesTextIM"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView18"
+        android:layout_width="360dp"
+        android:layout_height="28dp"
+        android:src="@drawable/divider"
+        app:layout_constraintBottom_toTopOf="@+id/classifiedIM"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.484"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView9"
+        android:layout_width="360dp"
+        android:layout_height="28dp"
+        android:src="@drawable/divider"
+        app:layout_constraintBottom_toTopOf="@+id/SizesIM"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.484"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView15"
+        android:layout_width="360dp"
+        android:layout_height="28dp"
+        android:layout_marginBottom="1dp"
+        android:src="@drawable/divider"
+        app:layout_constraintBottom_toTopOf="@+id/brixlevelsIM"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.484"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView17"
+        android:layout_width="360dp"
+        android:layout_height="28dp"
+        android:src="@drawable/divider"
+        app:layout_constraintBottom_toTopOf="@+id/firmlevelIM"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.484"
+        app:layout_constraintStart_toStartOf="parent" />
+
     <com.kofigyan.stateprogressbar.StateProgressBar
         android:id="@+id/penelevelIM"
         android:layout_width="348dp"
         android:layout_height="28dp"
         android:layout_centerInParent="true"
-        android:layout_marginBottom="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/imageView19"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.488"
         app:layout_constraintStart_toStartOf="parent"
@@ -34,8 +102,7 @@
         android:layout_width="348dp"
         android:layout_height="28dp"
         android:layout_centerInParent="true"
-        android:layout_marginBottom="12dp"
-        app:layout_constraintBottom_toTopOf="@+id/firmlevelIM"
+        app:layout_constraintBottom_toTopOf="@id/imageView17"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.488"
         app:layout_constraintStart_toStartOf="parent"
@@ -81,7 +148,7 @@
         android:id="@+id/imageView11"
         android:layout_width="251dp"
         android:layout_height="254dp"
-        android:layout_marginBottom="456dp"
+        android:layout_marginBottom="492dp"
         android:layout_marginStart="256dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -103,24 +170,26 @@
         android:layout_height="45dp"
         android:layout_below="@+id/imageViewIM"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="12dp"
+        android:layout_marginBottom="20dp"
         android:backgroundTint="@android:color/holo_orange_dark"
         android:text="Take Picture"
         android:textAllCaps="false"
         android:textColor="#FFFFFFFF"
         android:textSize="16sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/classifiedIM"
+        app:layout_constraintBottom_toTopOf="@+id/imageView18"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.51"
         app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
         android:id="@+id/imageViewIM"
-        android:layout_width="300dp"
-        android:layout_height="300dp"
+        android:layout_width="320dp"
+        android:layout_height="320dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="40dp"
         android:background="@drawable/imageviewborderindianmango"
         android:src="@drawable/cameraicon"
         app:layout_constraintBottom_toTopOf="@+id/buttonIM"
@@ -128,7 +197,7 @@
         app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.759" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/classifiedIM"
@@ -265,14 +334,13 @@
         android:layout_height="25dp"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/confidencesTextAM"
-        android:layout_marginBottom="6dp"
         android:layout_marginStart="35dp"
         android:gravity="center|center_vertical"
         android:text="RipeC%:"
         android:textSize="14sp"
         android:textStyle="bold"
         android:visibility="visible"
-        app:layout_constraintBottom_toTopOf="@+id/SizesIM"
+        app:layout_constraintBottom_toTopOf="@id/imageView9"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
@@ -281,12 +349,11 @@
         android:layout_height="25dp"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/confidencesTextAM"
-        android:layout_marginBottom="6dp"
         android:gravity="center|center_vertical"
         android:text="SizeC%:"
         android:textSize="14sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/SizesIM"
+        app:layout_constraintBottom_toTopOf="@id/imageView9"
         app:layout_constraintEnd_toStartOf="@+id/scpbarIM"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/rcpbarIM" />
@@ -296,10 +363,9 @@
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="100dp"
         android:layout_height="25dp"
-        android:layout_marginBottom="6dp"
         android:layout_marginEnd="35dp"
         android:progressDrawable="@drawable/custom_progress_bar_2"
-        app:layout_constraintBottom_toTopOf="@+id/SizesIM"
+        app:layout_constraintBottom_toTopOf="@id/imageView9"
         app:layout_constraintEnd_toEndOf="parent" />
 
     <ProgressBar
@@ -307,9 +373,8 @@
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="100dp"
         android:layout_height="25dp"
-        android:layout_marginBottom="6dp"
         android:progressDrawable="@drawable/custom_progress_bar_2"
-        app:layout_constraintBottom_toTopOf="@+id/SizesIM"
+        app:layout_constraintBottom_toTopOf="@id/imageView9"
         app:layout_constraintStart_toEndOf="@+id/sizesCM" />
 
     <TextView
@@ -318,14 +383,13 @@
         android:layout_height="25dp"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/confidencesTextAM"
-        android:layout_marginBottom="6dp"
         android:layout_marginStart="16dp"
         android:gravity="center|center_horizontal|center_vertical"
         android:text="0%"
         android:textColor="@color/white"
         android:textSize="14sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/SizesIM"
+        app:layout_constraintBottom_toTopOf="@id/imageView9"
         app:layout_constraintEnd_toEndOf="@+id/scpbarIM"
         app:layout_constraintHorizontal_bias="0.264"
         app:layout_constraintStart_toStartOf="@+id/scpbarIM" />
@@ -336,14 +400,13 @@
         android:layout_height="25dp"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/confidencesTextAM"
-        android:layout_marginBottom="6dp"
         android:layout_marginStart="16dp"
         android:gravity="center|center_vertical"
         android:text="0%"
         android:textColor="@color/white"
         android:textSize="14sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/SizesIM"
+        app:layout_constraintBottom_toTopOf="@id/imageView9"
         app:layout_constraintEnd_toEndOf="@+id/rcpbarIM"
         app:layout_constraintHorizontal_bias="0.264"
         app:layout_constraintStart_toEndOf="@+id/sizesCM" />
@@ -353,8 +416,7 @@
         android:layout_width="348dp"
         android:layout_height="11dp"
         android:layout_centerInParent="true"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/brixlevelsIM"
+        app:layout_constraintBottom_toTopOf="@id/imageView15"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.488"
         app:layout_constraintStart_toStartOf="parent"
@@ -373,8 +435,7 @@
         android:layout_width="348dp"
         android:layout_height="11dp"
         android:layout_centerInParent="true"
-        android:layout_marginBottom="6dp"
-        app:layout_constraintBottom_toTopOf="@+id/confidencesTextIM"
+        app:layout_constraintBottom_toTopOf="@+id/imageView3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.488"
         app:layout_constraintStart_toStartOf="parent"
@@ -434,3 +495,5 @@
         app:srcCompat="@drawable/info2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
