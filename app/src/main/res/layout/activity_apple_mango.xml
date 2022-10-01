@@ -50,6 +50,7 @@
         android:id="@+id/imageView25"
         android:layout_width="360dp"
         android:layout_height="28dp"
+        android:layout_marginBottom="10dp"
         android:src="@drawable/divider"
         app:layout_constraintBottom_toTopOf="@+id/brixlevelsAM"
         app:layout_constraintEnd_toEndOf="parent"
@@ -270,7 +271,6 @@
         android:layout_height="48dp"
         android:layout_alignParentEnd="true"
         android:layout_alignParentTop="true"
-        android:layout_marginBottom="5dp"
         android:backgroundTint="@android:color/holo_orange_dark"
         android:text="Add Brix%"
         android:textColor="#FFFFFFFF"
@@ -315,8 +315,8 @@
 
     <ImageView
         android:id="@+id/imageViewAM"
-        android:layout_width="320dp"
-        android:layout_height="320dp"
+        android:layout_width="330dp"
+        android:layout_height="330dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="20dp"

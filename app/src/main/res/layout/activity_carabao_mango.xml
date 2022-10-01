@@ -102,6 +102,7 @@
             android:id="@+id/imageView23"
             android:layout_width="360dp"
             android:layout_height="28dp"
+            android:layout_marginBottom="10dp"
             android:src="@drawable/divider"
             app:layout_constraintBottom_toTopOf="@+id/brixlevelsCM"
             app:layout_constraintEnd_toEndOf="parent"
@@ -141,8 +142,8 @@
 
         <ImageView
             android:id="@+id/imageViewCM"
-            android:layout_width="320dp"
-            android:layout_height="320dp"
+            android:layout_width="330dp"
+            android:layout_height="330dp"
             android:layout_marginBottom="20dp"
             android:layout_marginTop="40dp"
             android:background="@drawable/imageviewbordercarabaomango"
