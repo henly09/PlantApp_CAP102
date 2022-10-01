@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent">
 <ScrollView
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:fadeScrollbars="false"
@@ -344,6 +344,7 @@
         android:textStyle="bold"
         android:visibility="visible"
         app:layout_constraintBottom_toTopOf="@id/imageView9"
+        app:layout_constraintEnd_toStartOf="@+id/rcpbarIM"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
@@ -352,13 +353,13 @@
         android:layout_height="25dp"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/confidencesTextAM"
+        android:layout_marginEnd="1dp"
         android:gravity="center|center_vertical"
         android:text="SizeC%:"
         android:textSize="14sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@id/imageView9"
         app:layout_constraintEnd_toStartOf="@+id/scpbarIM"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/rcpbarIM" />
 
     <ProgressBar
@@ -369,15 +370,18 @@
         android:layout_marginEnd="35dp"
         android:progressDrawable="@drawable/custom_progress_bar_2"
         app:layout_constraintBottom_toTopOf="@id/imageView9"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/sizesCM2" />
 
     <ProgressBar
         android:id="@+id/rcpbarIM"
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="100dp"
         android:layout_height="25dp"
+        android:layout_marginEnd="12dp"
         android:progressDrawable="@drawable/custom_progress_bar_2"
         app:layout_constraintBottom_toTopOf="@id/imageView9"
+        app:layout_constraintEnd_toStartOf="@+id/sizesCM2"
         app:layout_constraintStart_toEndOf="@+id/sizesCM" />
 
     <TextView
