@@ -87,13 +87,10 @@ public class ProfileActivity extends AppCompatActivity {
         String image = user.get(sessionManager.UIMAGE); //Get Image String from Session manager
         UsernameProfile.setText(username);
 
-        if(image==""){ // If image no string, default profile picture.
+        if(image.isEmpty()){ // If image no string, default profile picture.
             UserPictureProfile.setBackgroundResource(R.mipmap.ic_nature_foreground);
         } else { // Else, set Image
-            //Decode from String into Bitmap
-            byte[] decodedString = Base64.decode(image, Base64.DEFAULT);
-            Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
-            UserPictureProfile.setImageBitmap(decodedByte);
+            UserPictureProfile.setImageBitmap(StringtoImage(image));
         }
 
         //Call Display Post Method
@@ -103,8 +100,10 @@ public class ProfileActivity extends AppCompatActivity {
         swiperefresh = findViewById(R.id.LowerProfileConstraintLayout);
         swiperefresh.setOnRefreshListener(() -> {
             Toast.makeText(this, "Refreshed", Toast.LENGTH_SHORT).show();
-            listposts.clear(); //Clear Arraylist
-            DisplayPost(id);    //Re add the Data into Arraylist again
+            finish();
+            overridePendingTransition(0, 0);
+            startActivity(getIntent());
+            overridePendingTransition(0, 0);
             swiperefresh.setRefreshing(false); //False to Animation
         });
 
@@ -188,7 +187,6 @@ public class ProfileActivity extends AppCompatActivity {
                int dimension = Math.min(bitmap.getWidth(), bitmap.getHeight());
                bitmap = ThumbnailUtils.extractThumbnail(bitmap, dimension, dimension);
                UserPictureProfile.setImageBitmap(bitmap);
-
                //Get User Id and send to method's parameter
                HashMap<String, String> user = sessionManager.getUserDetail();
                String id = user.get(sessionManager.UID);
@@ -227,8 +225,15 @@ public class ProfileActivity extends AppCompatActivity {
     //Convert image into String
     private String imageToString(Bitmap bitmap){
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.JPEG,100,byteArrayOutputStream);
+        bitmap.compress(Bitmap.CompressFormat.JPEG,50,byteArrayOutputStream);
         byte[] imgBytes = byteArrayOutputStream.toByteArray();
         return Base64.encodeToString(imgBytes, Base64.DEFAULT);
+    }
+
+    //Convert from String to Bitmap Image
+    private Bitmap StringtoImage(String string){
+        byte[] decodedString = Base64.decode(string, Base64.DEFAULT);
+        Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
+        return decodedByte;
     }
 }

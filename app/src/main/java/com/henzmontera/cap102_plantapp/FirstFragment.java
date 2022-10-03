@@ -48,7 +48,6 @@ public class FirstFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
         View rootview = inflater.inflate(R.layout.fragment_first, container, false);
         ((AppCompatActivity)getActivity()).getSupportActionBar().setBackgroundDrawable(getActivity().getDrawable(R.drawable.actionbartheme));
 
@@ -68,8 +67,7 @@ public class FirstFragment extends Fragment {
 
         swiperefresh = rootview.findViewById(R.id.swipeRefreshLayout);
         swiperefresh.setOnRefreshListener(() -> {
-            listposts.clear(); //Clear Arraylist
-            GetLatestPost();    //Re add the Data into Arraylist again
+            useradapt.notifyDataSetChanged();
             swiperefresh.setRefreshing(false); //False to Animation
             Toast.makeText(getActivity(), "Refreshed", Toast.LENGTH_SHORT).show();
         });
@@ -78,9 +76,7 @@ public class FirstFragment extends Fragment {
 
     private void GetLatestPost(){
         String url = "http://192.168.254.107/networkingbased/DisplayLatestPost.php";
-
         RequestQueue q = Volley.newRequestQueue(getActivity());
-
         StringRequest r = new StringRequest( //Request String type
                 Request.Method.GET, //Get or Retrieve only Method of request
                 url,
@@ -115,7 +111,6 @@ public class FirstFragment extends Fragment {
                                 recyclerview.setAdapter(useradapt);
                                 useradapt.notifyDataSetChanged();
                             }
-
                         }
                     } catch (Exception e) {
                     }

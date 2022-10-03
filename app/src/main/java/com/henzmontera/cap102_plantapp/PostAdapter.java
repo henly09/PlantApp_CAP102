@@ -1,12 +1,14 @@
 package com.henzmontera.cap102_plantapp;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -27,22 +29,37 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ListViewHolder
 
     public class ListViewHolder extends RecyclerView.ViewHolder {
 
-        private TextView UPostNameTV, UPostTimeTV, UPostDesc, UPostLikeC, UPostCommentC;
-        private ImageView UPostProfPic, UPostImage;
-        private SessionManager sessionManager;
+        private TextView UPostNameTV, UPostTimeTV, UPostDesc, UPostLikeC, UPostCommentC, UPostID, UPostUserId;
+        private ImageView UPostProfPic;
+        private ImageView UPostImage;
+        private Button ULikeButton, UCommentButton;
 
         public ListViewHolder(@NonNull View itemView) {
             super(itemView);
             //textView
-            UPostNameTV = itemView.findViewById(R.id.unametv);
-            UPostTimeTV = itemView.findViewById(R.id.utimetv);
-            UPostDesc = itemView.findViewById(R.id.descript);
-            UPostLikeC = itemView.findViewById(R.id.plikeb);
-            UPostCommentC = itemView.findViewById(R.id.pcommentco);
+            UPostNameTV = itemView.findViewById(R.id.unametv);  //username of user posted
+            UPostTimeTV = itemView.findViewById(R.id.utimetv);  // timestamp posted
+            UPostDesc = itemView.findViewById(R.id.descript);   // description
+            UPostLikeC = itemView.findViewById(R.id.plikeb); // display count of likes
+            UPostCommentC = itemView.findViewById(R.id.pcommentco); // display count of comments
 
             //Image
-            UPostProfPic = itemView.findViewById(R.id.picturetv);
-            UPostImage = itemView.findViewById(R.id.pimagetv);
+            UPostProfPic = itemView.findViewById(R.id.picturetv); //user's profile picture
+            UPostImage = itemView.findViewById(R.id.pimagetv);  //user's posted picture
+
+            //Button
+            ULikeButton = itemView.findViewById(R.id.like);
+            UCommentButton = itemView.findViewById(R.id.comment);
+
+            //Identification
+            UPostID = itemView.findViewById(R.id.upostid);
+            UPostUserId = itemView.findViewById(R.id.uuserId);
+
+            UCommentButton.setOnClickListener(view ->{
+                Intent intent = new Intent(context, ViewCommentPostActivity.class);
+                intent.putExtra("POSTID", UPostID.getText().toString());
+                context.startActivity(intent);
+            });
         }
     }
 
@@ -61,8 +78,27 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ListViewHolder
         holder.UPostTimeTV.setText(LISTPOSTS.get(position).getPOSTTIME());
         holder.UPostCommentC.setText(LISTPOSTS.get(position).getCOMMENTC());
         holder.UPostLikeC.setText(LISTPOSTS.get(position).getLIKEC());
-        holder.UPostProfPic.setImageBitmap(StringtoImage(LISTPOSTS.get(position).getPROFILEPIC()));
-        holder.UPostImage.setImageBitmap(StringtoImage(LISTPOSTS.get(position).getPOSTIMAGES()));
+        if(LISTPOSTS.get(position).getPROFILEPIC().isEmpty()){
+            holder.UPostProfPic.setBackgroundResource(R.mipmap.ic_nature_foreground);
+        }
+        else{
+            holder.UPostProfPic.setImageBitmap(StringtoImage(LISTPOSTS.get(position).getPROFILEPIC()));
+        }
+
+        if(LISTPOSTS.get(position).getPOSTIMAGES().isEmpty()){
+            ViewGroup.LayoutParams layoutParams = holder.UPostImage.getLayoutParams();
+            layoutParams.width = 0;
+            holder.UPostImage.setLayoutParams(layoutParams);
+        }
+        else{
+            holder.UPostImage.setImageBitmap(StringtoImage(LISTPOSTS.get(position).getPOSTIMAGES()));
+            ViewGroup.LayoutParams layoutParams = holder.UPostImage.getLayoutParams();
+            layoutParams.width = 1100;
+            layoutParams.height = 1100;
+            holder.UPostImage.setLayoutParams(layoutParams);
+        }
+        holder.UPostID.setText(LISTPOSTS.get(position).getPOSTID());
+        holder.UPostUserId.setText(LISTPOSTS.get(position).getUSERID());
     }
 
     @Override

@@ -66,16 +66,34 @@ public class AddPostActivity extends AppCompatActivity {
         String img = user.get(sessionManager.UIMAGE);
         UserTextView.setText(username);
 
-        //Decode from String into Bitmap
-        byte[] decodedString = Base64.decode(img, Base64.DEFAULT);
-        Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
-        ProfilePicThread.setImageBitmap(decodedByte);
+        if(img.isEmpty()){ // If image no string, default profile picture.
+            ProfilePicThread.setBackgroundResource(R.mipmap.ic_nature_foreground);
+        } else { // Else, set Image
+            ProfilePicThread.setImageBitmap(StringtoImage(img));
+        }
 
         PostText.setOnClickListener(view ->{
-            String id = user.get(sessionManager.UID);//Retrieve User's Id
-            String description = EditTextDescriptionWriteMessage.getText().toString();//Get Description and Images
-            String imageString = imageToString(bitmap);
-            Posting(id, description, imageString);
+            if(bitmap != null){ // Description and Picture
+                String id = user.get(sessionManager.UID);//Retrieve User's Id
+                String description = EditTextDescriptionWriteMessage.getText().toString();//Get Description
+                String imageString = imageToString(bitmap); // Get Image
+                Posting(id, description, imageString);
+            }
+            if(bitmap == null){ //Only Description
+                String id = user.get(sessionManager.UID);
+                String description = EditTextDescriptionWriteMessage.getText().toString();
+                String imageString = "NULL";
+                Posting(id, description, imageString);
+            }
+            if(EditTextDescriptionWriteMessage.getText().toString().isEmpty()){ // Only Picture
+                String id = user.get(sessionManager.UID);//Retrieve User's Id
+                String description = "NULL";
+                String imageString = imageToString(bitmap);
+                Posting(id, description, imageString);
+            }
+            if(bitmap == null && EditTextDescriptionWriteMessage.getText().toString().isEmpty()){
+                Toast.makeText(AddPostActivity.this, "Its empty, please write message or picture", Toast.LENGTH_SHORT).show();
+            }
         });
 
         AddImageButtonThread.setOnClickListener(view ->{
@@ -147,8 +165,15 @@ public class AddPostActivity extends AppCompatActivity {
     //Convert image into String
     private String imageToString(Bitmap bitmap){
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.JPEG,100,byteArrayOutputStream);
+        bitmap.compress(Bitmap.CompressFormat.JPEG,50,byteArrayOutputStream);
         byte[] imgBytes = byteArrayOutputStream.toByteArray();
         return Base64.encodeToString(imgBytes, Base64.DEFAULT);
+    }
+
+    //Convert from String to Bitmap Image
+    private Bitmap StringtoImage(String string){
+        byte[] decodedString = Base64.decode(string, Base64.DEFAULT);
+        Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
+        return decodedByte;
     }
 }
