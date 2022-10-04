@@ -16,6 +16,7 @@ import com.henzmontera.cap102_plantapp.ImageProcIM;
 import com.henzmontera.cap102_plantapp.Penetrometer;
 import com.henzmontera.cap102_plantapp.R;
 import com.henzmontera.cap102_plantapp.Refractometer;
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView;
 
 import androidx.fragment.app.Fragment;
 
@@ -24,6 +25,8 @@ public class Homefragment extends Fragment {
     Button amguide,cmguide,imguide,pmguide,rmguide;
     View rootview;
     ImageView logo;
+    YouTubePlayerView youtube1,youtube2;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -38,6 +41,10 @@ public class Homefragment extends Fragment {
         rmguide = rootview.findViewById(R.id.rmguide);
 
         logo = rootview.findViewById(R.id.logo);
+
+        youtube1 = rootview.findViewById(R.id.youTubePlayerView);
+        youtube2 = rootview.findViewById(R.id.youTubePlayerView2);
+
 
         logo.setOnClickListener(view -> {
             Toast.makeText(getActivity(), "ManGo© Copyright 2022", Toast.LENGTH_SHORT).show();
