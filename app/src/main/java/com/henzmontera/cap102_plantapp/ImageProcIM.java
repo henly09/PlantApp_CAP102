@@ -147,26 +147,12 @@ public class ImageProcIM extends AppIntro {
 
     @Override
     protected void onSkipPressed(Fragment currentFragment) {
-        myDB = openOrCreateDatabase("IntroSlideCheckStatus.db", 0, null);
-        ContentValues cv = new ContentValues();
-        cv.put("status", "disable");
-        myDB.update("proc_im_to_ima", cv, "status = 'enable'", null);
-        myDB.close();
-        Intent intent = new Intent(getApplicationContext(), IndianMangoActivity.class);
-        startActivity(intent);
         super.onSkipPressed(currentFragment);
         finish();
     }
 
     @Override
     protected void onDonePressed(Fragment currentFragment) {
-        myDB = openOrCreateDatabase("IntroSlideCheckStatus.db", 0, null);
-        ContentValues cv = new ContentValues();
-        cv.put("status", "disable");
-        myDB.update("proc_im_to_ima", cv, "status = 'enable'", null);
-        myDB.close();
-        Intent intent = new Intent(getApplicationContext(), IndianMangoActivity.class);
-        startActivity(intent);
         super.onDonePressed(currentFragment);
         finish();
     }

@@ -93,18 +93,6 @@
             android:exported="true"
             android:theme="@style/Theme.AppCompat.DayNight.DarkActionBar" />
         <activity
-            android:name=".IndianMangoActivity"
-            android:exported="true"
-            android:theme="@style/Theme.AppCompat.DayNight.DarkActionBar" />
-        <activity
-            android:name=".CarabaoMangoActivity"
-            android:exported="true"
-            android:theme="@style/Theme.AppCompat.DayNight.DarkActionBar" />
-        <activity
-            android:name=".AppleMangoActivity"
-            android:exported="true"
-            android:theme="@style/Theme.AppCompat.DayNight.DarkActionBar" />
-        <activity
             android:name=".LoginActivity"
             android:exported="true">
 

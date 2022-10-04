@@ -52,6 +52,7 @@ dependencies {
     implementation 'io.github.medyo:android-about-page:2.0.0' // About Page
     implementation 'com.github.kibotu:TimeBomb:-SNAPSHOT' // Firebase Data Test
     implementation 'com.kofigyan.stateprogressbar:stateprogressbar:1.0.0' // State Progress Bar
+    implementation 'com.pierfrancescosoffritti.androidyoutubeplayer:core:11.1.0' // Youtube Video Player
 
     //TensorFlow
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'

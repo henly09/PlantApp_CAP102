@@ -3,8 +3,6 @@ package com.henzmontera.cap102_plantapp;
 // BSIT-4th-Year
 // Cap102-Project
 
-import android.content.ContentValues;
-import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 
@@ -136,26 +134,12 @@ public class ImageProcCM extends AppIntro {
 
     @Override
     protected void onSkipPressed(Fragment currentFragment) {
-        myDB = openOrCreateDatabase("IntroSlideCheckStatus.db", 0, null);
-        ContentValues cv = new ContentValues();
-        cv.put("status", "disable");
-        myDB.update("proc_cm_to_cma", cv, "status = 'enable'", null);
-        myDB.close();
-        Intent intent = new Intent(getApplicationContext(), CarabaoMangoActivity.class);
-        startActivity(intent);
         super.onSkipPressed(currentFragment);
         finish();
     }
 
     @Override
     protected void onDonePressed(Fragment currentFragment) {
-        myDB = openOrCreateDatabase("IntroSlideCheckStatus.db", 0, null);
-        ContentValues cv = new ContentValues();
-        cv.put("status", "disable");
-        myDB.update("proc_cm_to_cma", cv, "status = 'enable'", null);
-        myDB.close();
-        Intent intent = new Intent(getApplicationContext(), CarabaoMangoActivity.class);
-        startActivity(intent);
         super.onDonePressed(currentFragment);
         finish();
     }

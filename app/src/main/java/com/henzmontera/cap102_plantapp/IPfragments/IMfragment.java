@@ -1,13 +1,8 @@
-package com.henzmontera.cap102_plantapp;
-
-// Developed by: John Henly A. Montera
-// BSIT-4th-Year
-// Cap102-Project
+package com.henzmontera.cap102_plantapp.IPfragments;
 
 import android.Manifest;
-import android.annotation.SuppressLint;
+import android.app.AlertDialog;
 import android.content.ContentResolver;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
@@ -20,9 +15,9 @@ import android.provider.MediaStore;
 import android.text.Html;
 import android.text.InputType;
 import android.util.Log;
-import android.view.MenuItem;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.view.WindowManager;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -30,6 +25,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.henzmontera.cap102_plantapp.R;
 import com.henzmontera.cap102_plantapp.ml.MangoIndianRipenessSorter;
 import com.henzmontera.cap102_plantapp.ml.MangoIndianSizeSorter;
 import com.kofigyan.stateprogressbar.StateProgressBar;
@@ -42,13 +38,13 @@ import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.text.DecimalFormat;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
+import androidx.fragment.app.Fragment;
 
-public class IndianMangoActivity extends AppCompatActivity {
+import static android.app.Activity.RESULT_OK;
+
+public class IMfragment extends Fragment {
 
     TextView /*result,size, brixlevel, firmlevel,*/rcppercentage,scppercentage;
     StateProgressBar ripenesslevelIM,sizelevelIM,brixlevelIM,penelevelIM;
@@ -64,68 +60,49 @@ public class IndianMangoActivity extends AppCompatActivity {
     String[] Mi_Size_reverse = {"Small","Medium","Large"};
     String[] Mi_Brixlevel = {"Sour","B Sweet","Sweet","P Sweet","V Sweet"};
     String[] Mi_PeneLevel = {"U Firm","BR Firm","B Soft","Ripe Firm","PR Firm"};
+    View rootview;
 
-/*    int IMbrix;
+    /*    int IMbrix;
     String IMsize,IMripeness;*/
 
-    @SuppressLint("MissingInflatedId")
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_indian_mango);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
 
-        // calling the action bar
-        ActionBar actionBar = getSupportActionBar();
-        // showing the back button in action bar
-        actionBar.setDisplayHomeAsUpEnabled(true);
+        rootview = inflater.inflate(R.layout.activity_indian_mango, container, false);
 
-        // Hide both the navigation bar and the status bar.
-        // SYSTEM_UI_FLAG_FULLSCREEN is only available on Android 4.1 and higher, but as
-        // a general rule, you should design your app to hide the status bar whenever you
-        // hide the navigation bar.
-
-        View decorView = getWindow().getDecorView();
-        int uiOptions = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
-                | View.SYSTEM_UI_FLAG_FULLSCREEN;
-        decorView.setSystemUiVisibility(uiOptions);
-
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        getSupportActionBar().setBackgroundDrawable(getDrawable(R.drawable.actionbartheme));
-        setTitle("INDIAN MANGO");
-
-/*        result = findViewById(R.id.classifiedIM);
+        /*        result = findViewById(R.id.classifiedIM);
           brixlevel = findViewById(R.id.brixlevelsIM);
           size = findViewById(R.id.SizesIM);
           RecAndProdIM = findViewById(R.id.recAndProdIM);
           notificationBadgeIM = findViewById(R.id.badgeIM);
           firmlevel = findViewById(R.id.firmlevelIM);       */
 
-
-        imageView = findViewById(R.id.imageViewIM);
-        picture = findViewById(R.id.buttonIM);
+        imageView = rootview.findViewById(R.id.imageViewIM);
+        picture = rootview.findViewById(R.id.buttonIM);
 
         // initialization for button add brix and penetrometer
-        addingbrix = findViewById(R.id.addingbrixIM);
-        addingfirm = findViewById(R.id.addfirmIM);
+        addingbrix = rootview.findViewById(R.id.addingbrixIM);
+        addingfirm = rootview.findViewById(R.id.addfirmIM);
 
         // initialization for progressbar
-        ripebar = findViewById(R.id.rcpbarIM);
-        sizebar = findViewById(R.id.scpbarIM);
-        rcppercentage = findViewById(R.id.ripecpercentageIM);
-        scppercentage = findViewById(R.id.sizecpercentageIM);
+        ripebar = rootview.findViewById(R.id.rcpbarIM);
+        sizebar = rootview.findViewById(R.id.scpbarIM);
+        rcppercentage = rootview.findViewById(R.id.ripecpercentageIM);
+        scppercentage = rootview.findViewById(R.id.sizecpercentageIM);
 
         // initialization for gauges
-        ripenesslevelIM = findViewById(R.id.ripenesslevelIM);
-        sizelevelIM = findViewById(R.id.sizelevelIM);
-        brixlevelIM = findViewById(R.id.brixlevelIM);
-        penelevelIM = findViewById(R.id.penelevelIM);
+        ripenesslevelIM = rootview.findViewById(R.id.ripenesslevelIM);
+        sizelevelIM = rootview.findViewById(R.id.sizelevelIM);
+        brixlevelIM = rootview.findViewById(R.id.brixlevelIM);
+        penelevelIM = rootview.findViewById(R.id.penelevelIM);
 
         // set dialog box
-        ripdialogIM = findViewById(R.id.ripdialogIM);
-        confidialogIM = findViewById(R.id.confidialogIM);
-        sizedialogIM = findViewById(R.id.sizedialogIM);
-        brixdialogIM = findViewById(R.id.brixdialogIM);
-        firmdialogIM = findViewById(R.id.firmdialogIM);
+        ripdialogIM = rootview.findViewById(R.id.ripdialogIM);
+        confidialogIM = rootview.findViewById(R.id.confidialogIM);
+        sizedialogIM = rootview.findViewById(R.id.sizedialogIM);
+        brixdialogIM = rootview.findViewById(R.id.brixdialogIM);
+        firmdialogIM = rootview.findViewById(R.id.firmdialogIM);
 
         // set gauge meter description
         ripenesslevelIM.setStateDescriptionData(Mi_Ripeness_reverse);
@@ -134,87 +111,84 @@ public class IndianMangoActivity extends AppCompatActivity {
         penelevelIM.setStateDescriptionData(Mi_PeneLevel);
 
         ripdialogIM.setOnClickListener(view -> {
-            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
             builder.setTitle("Ripeness Level");
             builder.setMessage(Html.fromHtml("\nChecking the <span style='color:#249023;'>\uD835\uDE4D\uD835\uDE5E\uD835\uDE65\uD835\uDE5A\uD835\uDE63\uD835\uDE5A\uD835\uDE68\uD835\uDE68</span> of the <span style='color:#fcc603;'>\uD835\uDE48\uD835\uDE56\uD835\uDE63\uD835\uDE5C\uD835\uDE64 \uD835\uDE41\uD835\uDE67\uD835\uDE6A\uD835\uDE5E\uD835\uDE69<span/> whether it is unripe, rot, ripe, ripe with defect."));
-            builder.setIcon(getDrawable(R.drawable.info2));
+            builder.setIcon(getActivity().getDrawable(R.drawable.info2));
             builder.setPositiveButton("OK", (dialog, which) -> dialog.dismiss());
             builder.show();
         });
 
         confidialogIM.setOnClickListener(view -> {
-            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
             builder.setTitle("Analyzer Confidence Level");
             builder.setMessage(Html.fromHtml("\nThe output tells on how <span style='color:#249023;'>\uD835\uDE56\uD835\uDE58\uD835\uDE58\uD835\uDE6A\uD835\uDE67\uD835\uDE56\uD835\uDE69\uD835\uDE5A</span> the analyzer of the results given after the image undergo in process."));
-            builder.setIcon(getDrawable(R.drawable.info2));
+            builder.setIcon(getActivity().getDrawable(R.drawable.info2));
             builder.setPositiveButton("OK", (dialog, which) -> dialog.dismiss());
             builder.show();
         });
 
         sizedialogIM.setOnClickListener(view -> {
-            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
             builder.setTitle("Size Level");
             builder.setMessage(Html.fromHtml("\nChecking the size of the <span style='color:#fcc603;'>\uD835\uDE48\uD835\uDE56\uD835\uDE63\uD835\uDE5C\uD835\uDE64 \uD835\uDE41\uD835\uDE67\uD835\uDE6A\uD835\uDE5E\uD835\uDE69<span/> whether it is Large, Medium, or Small"));
-            builder.setIcon(getDrawable(R.drawable.info2));
+            builder.setIcon(getActivity().getDrawable(R.drawable.info2));
             builder.setPositiveButton("OK", (dialog, which) -> dialog.dismiss());
             builder.show();
         });
 
         brixdialogIM.setOnClickListener(view -> {
-            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
             builder.setTitle("Brix Level");
             builder.setMessage(Html.fromHtml("\nChecking the <span style='color:#249023;'>\uD835\uDE4E\uD835\uDE6C\uD835\uDE5A\uD835\uDE5A\uD835\uDE69\uD835\uDE63\uD835\uDE5A\uD835\uDE68\uD835\uDE68</span> of the <span style='color:#fcc603;'>\uD835\uDE48\uD835\uDE56\uD835\uDE63\uD835\uDE5C\uD835\uDE64 \uD835\uDE41\uD835\uDE67\uD835\uDE6A\uD835\uDE5E\uD835\uDE69<span/> by putting the result percentage from the refractometer. \n\nInstructions: Place a small amount (usually 2–5 drops) of liquid (The Mango Juice) on the prism, and secure the cover plate. This will evenly distribute the liquid on the prism. Point the prism end of the refractometer toward a light source and focus the eyepiece until the scale is clearly visible."));
-            builder.setIcon(getDrawable(R.drawable.info2));
+            builder.setIcon(getActivity().getDrawable(R.drawable.info2));
             builder.setPositiveButton("OK", (dialog, which) -> dialog.dismiss());
             builder.show();
         });
 
         firmdialogIM.setOnClickListener(view -> {
-            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
             builder.setTitle("Firm Level");
             builder.setMessage(Html.fromHtml("\nChecking the <span style='color:#249023;'>\uD835\uDE41\uD835\uDE5E\uD835\uDE67\uD835\uDE62\uD835\uDE63\uD835\uDE5A\uD835\uDE68\uD835\uDE68</span> of the <span style='color:#fcc603;'>\uD835\uDE48\uD835\uDE56\uD835\uDE63\uD835\uDE5C\uD835\uDE64 \uD835\uDE41\uD835\uDE67\uD835\uDE6A\uD835\uDE5E\uD835\uDE69<span/> by putting the result percentage from the penetrometer. \n\nInstructions: Hold the fruit with one hand on a solid surface. Then push the stamp of the penetrometer with uniform pressure into the skinless flesh. On the stamp, the permissible depth of penetration is determined by a milled marking ring. Avoid jerky or lateral movements during the penetration process. The measured value is read and recorded. 8 mm stamp is used, read on the inner scale."));
-            builder.setIcon(getDrawable(R.drawable.info2));
+            builder.setIcon(getActivity().getDrawable(R.drawable.info2));
             builder.setPositiveButton("OK", (dialog, which) -> dialog.dismiss());
             builder.show();
         });
 
         picture.setOnClickListener(view -> {
             final CharSequence[] options = { "Take Photo", "Choose from Gallery","Cancel" };
-            AlertDialog.Builder builder = new AlertDialog.Builder(IndianMangoActivity.this);
+            AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
             builder.setTitle("Choose an Action");
-            builder.setItems(options, new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int item) {
-                    if (options[item].equals("Take Photo"))
-                    {
-                        if (checkSelfPermission(Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED) {
-                            Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                            startActivityForResult(cameraIntent, 1);
-                        } else {
-                            //Request camera permission if we don't have it.
-                            requestPermissions(new String[]{Manifest.permission.CAMERA}, 100);
-                        }
+            builder.setItems(options, (dialog, item) -> {
+                if (options[item].equals("Take Photo"))
+                {
+                    if (ContextCompat.checkSelfPermission(getContext(), Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED) {
+                        Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                        startActivityForResult(cameraIntent, 1);
+                    } else {
+                        //Request camera permission if we don't have it.
+                        requestPermissions(new String[]{Manifest.permission.CAMERA}, 100);
                     }
-                    else if (options[item].equals("Choose from Gallery"))
-                    {
-                        Intent intent = new   Intent(Intent.ACTION_PICK,android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                        startActivityForResult(intent, 2);
-                    }
-                    else if (options[item].equals("Cancel")) {
-                        dialog.dismiss();
-                    }
+                }
+                else if (options[item].equals("Choose from Gallery"))
+                {
+                    Intent intent = new   Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                    startActivityForResult(intent, 2);
+                }
+                else if (options[item].equals("Cancel")) {
+                    dialog.dismiss();
                 }
             });
             builder.show();
-
         });
 
+
         addingbrix.setOnClickListener(view -> {
-            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
             builder.setTitle("Input Brix Percentage");
             builder.setMessage("Put the percentage of the output of the refractometer which using brix meter.");
             // Set up the input
-            final EditText input = new EditText(this);
+            final EditText input = new EditText(getContext());
             // Specify the type of input expected; this, for example, sets the input as a password, and will mask the text
             input.setInputType(InputType.TYPE_CLASS_NUMBER);
             builder.setView(input);
@@ -245,11 +219,11 @@ public class IndianMangoActivity extends AppCompatActivity {
 
         // firmness of the fruit can be determine the ripeness also of the fruit by using penetrometer.
         addingfirm.setOnClickListener(view -> {
-            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
             builder.setTitle("Input Firmness Percentage (Inner Scale)");
             builder.setMessage("Put the percentage of the output of the Penetrometer which using Firmness meter.");
             // Set up the input
-            final EditText input = new EditText(this);
+            final EditText input = new EditText(getContext());
             // Specify the type of input expected; this, for example, sets the input as a password, and will mask the text
             input.setInputType(InputType.TYPE_CLASS_NUMBER);
             builder.setView(input);
@@ -277,26 +251,18 @@ public class IndianMangoActivity extends AppCompatActivity {
             builder.setNegativeButton("Cancel", (dialog, which) -> dialog.cancel());
             builder.show();
         });
+
+        // Inflate the layout for this fragment
+        return rootview;
     }
 
-    // this event will enable the back
-    // function to the button on press
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                this.finish();
-                return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
 
     public void classifyImage(Bitmap image){ // Add model and add text files
 
         try {
 
-            MangoIndianRipenessSorter MiRipeness = MangoIndianRipenessSorter.newInstance(getApplicationContext());
-            MangoIndianSizeSorter MiSize = MangoIndianSizeSorter.newInstance(getApplicationContext());
+            MangoIndianRipenessSorter MiRipeness = MangoIndianRipenessSorter.newInstance(getContext());
+            MangoIndianSizeSorter MiSize = MangoIndianSizeSorter.newInstance(getContext());
 
             // Creates inputs for reference.
             TensorBuffer inputFeature0 = TensorBuffer.createFixedSize(new int[]{1, 224, 224, 3}, DataType.FLOAT32);
@@ -393,7 +359,7 @@ public class IndianMangoActivity extends AppCompatActivity {
 
         } catch (IOException e) {
             Log.d("Error: ","Error: "+e);
-            Toast.makeText(this, "Error Occured!. Please Try Again Later!", Toast.LENGTH_LONG).show();
+            Toast.makeText(getContext(), "Error Occured!. Please Try Again Later!", Toast.LENGTH_LONG).show();
         }
 
     }
@@ -409,12 +375,12 @@ public class IndianMangoActivity extends AppCompatActivity {
                 image = Bitmap.createScaledBitmap(image, imageSize, imageSize, false);
                 classifyImage(image);
             } catch (Exception e) {
-                Toast.makeText(this, "Error: "+e, Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "Error: "+e, Toast.LENGTH_SHORT).show();
             }
         }
         if (requestCode == 2 && resultCode == RESULT_OK) {
             Bitmap bitmap = null;
-            ContentResolver contentResolver = getContentResolver();
+            ContentResolver contentResolver = getActivity().getApplicationContext().getContentResolver();
             try {
                 if(Build.VERSION.SDK_INT < 28) {
                     Uri selectedImage = data.getData();
@@ -436,9 +402,11 @@ public class IndianMangoActivity extends AppCompatActivity {
                     classifyImage(softwareBitmap);
                 }
             } catch (Exception e) {
-                Toast.makeText(this, "Error: "+e, Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "Error: "+e, Toast.LENGTH_SHORT).show();
             }
         }
         super.onActivityResult(requestCode, resultCode, data);
     }
+
+
 }

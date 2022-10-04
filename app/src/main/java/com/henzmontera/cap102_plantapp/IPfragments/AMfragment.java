@@ -1,10 +1,7 @@
-package com.henzmontera.cap102_plantapp;
-// Developed by: John Henly A. Montera
-// BSIT-4th-Year
-// Cap102-Project
+package com.henzmontera.cap102_plantapp.IPfragments;
 
 import android.Manifest;
-import android.annotation.SuppressLint;
+import android.app.AlertDialog;
 import android.content.ContentResolver;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -18,9 +15,9 @@ import android.provider.MediaStore;
 import android.text.Html;
 import android.text.InputType;
 import android.util.Log;
-import android.view.MenuItem;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.view.WindowManager;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -28,8 +25,9 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.henzmontera.cap102_plantapp.ml.CmRipenessSorter;
-import com.henzmontera.cap102_plantapp.ml.CmSizeSorter;
+import com.henzmontera.cap102_plantapp.R;
+import com.henzmontera.cap102_plantapp.ml.MaRipenessSorter;
+import com.henzmontera.cap102_plantapp.ml.MaSizeSorter;
 import com.kofigyan.stateprogressbar.StateProgressBar;
 
 import org.tensorflow.lite.DataType;
@@ -40,133 +38,112 @@ import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.text.DecimalFormat;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
+import androidx.fragment.app.Fragment;
 
-public class CarabaoMangoActivity extends AppCompatActivity {
+import static android.app.Activity.RESULT_OK;
 
-    TextView /*result, size, brixlevel, */rcppercentage,scppercentage;
-    StateProgressBar ripenesslevelCM,sizelevelCM,brixlevelCM;
-    ImageView imageView,ripdialogCM,confidialogCM,sizedialogCM,brixdialogCM;
+public class AMfragment extends Fragment {
+
+    TextView /*result,size, brixlevel,*/rcppercentage,scppercentage;
+    StateProgressBar ripenesslevelAM,sizelevelAM,brixlevelAM;
+    ImageView imageView,ripdialogAM,confidialogAM,sizedialogAM,brixdialogAM;
     ProgressBar ripebar,sizebar;
-    Button picture, addingbrix/*, RecAndProdCm*/;
-    int imageSize = 224/*, notifBadgeCM = 0*/;
+    Button picture, addingbrix/*, RecAndProdAM*/;
+    int imageSize = 224/*, notifBadgeAM = 0*/;
     private String m_Text = "";
-/*    NotificationBadge notificationBadgeCM;*/
-    String[] Cm_Ripeness = {"Ripe","RipeW/Def","Rot","Unripe"};
-    String[] Cm_Ripeness_reverse = {"Unripe","Rot","RipeW/Def","Ripe"};
-    String[] Cm_Size = {"Large","Medium","Small"};
-    String[] Cm_Size_reverse = {"Small","Medium","Large"};
-    String[] Cm_Brixlevel = {"Sour","B Sweet","Sweet","P Sweet","V Sweet"};
+    /*NotificationBadge notificationBadgeAM;*/
+    String[] Ma_Ripeness = {"Ripe","RipeW/Def","Rot","Unripe"};
+    String[] Ma_Ripeness_reverse = {"Unripe","Rot","RipeW/Def","Ripe"};
+    String[] Ma_Size = {"Small","Medium","Large"};
+    String[] Ma_Brixlevel = {"Sour","B Sweet","Sweet","P Sweet","V Sweet"};
+    View rootview;
 
-/*    int CMbrix;
-    String CMsize,CMripeness;*/
+    /*    int AMbrix;
+    String AMsize,AMripeness;*/
 
-    @SuppressLint("MissingInflatedId")
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_carabao_mango);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        // calling the action bar
-        ActionBar actionBar = getSupportActionBar();
-        // showing the back button in action bar
-        actionBar.setDisplayHomeAsUpEnabled(true);
+        rootview = inflater.inflate(R.layout.activity_apple_mango, container, false);
 
-        // Hide both the navigation bar and the status bar.
-        // SYSTEM_UI_FLAG_FULLSCREEN is only available on Android 4.1 and higher, but as
-        // a general rule, you should design your app to hide the status bar whenever you
-        // hide the navigation bar.
+        /*result = findViewById(R.id.classifiedAM);
+        size = findViewById(R.id.SizesAM);
+        brixlevel = findViewById(R.id.brixlevelsAM);
+        notificationBadgeAM = findViewById(R.id.badgeAM);
+        RecAndProdAM = findViewById(R.id.recAndProdAM);*/
 
-        View decorView = getWindow().getDecorView();
-        int uiOptions = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
-                | View.SYSTEM_UI_FLAG_FULLSCREEN;
-        decorView.setSystemUiVisibility(uiOptions);
-
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        getSupportActionBar().setBackgroundDrawable(getDrawable(R.drawable.actionbartheme));
-        setTitle("CARABAO MANGO");
-
-/*              result = findViewById(R.id.classifiedCM);
-                size = findViewById(R.id.SizesCM);
-                brixlevel = findViewById(R.id.brixlevelsCM);
-                notificationBadgeCM = findViewById(R.id.badgeCM);
-                RecAndProdCm = findViewById(R.id.RecAndProdCM);         */
-
-
-        imageView = findViewById(R.id.imageViewCM);
-        picture = findViewById(R.id.buttonCM);
-        addingbrix = findViewById(R.id.addingbrixCM);
+        imageView = rootview.findViewById(R.id.imageViewAM);
+        picture = rootview.findViewById(R.id.buttonAM);
+        addingbrix = rootview.findViewById(R.id.addingbrixAM);
 
         // initialization for progressbar
-        ripebar = findViewById(R.id.rcpbarCM);
-        sizebar = findViewById(R.id.scpbarCM);
-        rcppercentage = findViewById(R.id.ripecpercentageCM);
-        scppercentage = findViewById(R.id.sizecpercentageCM);
+        ripebar = rootview.findViewById(R.id.rcpbarAM);
+        sizebar = rootview.findViewById(R.id.scpbarAM);
+        rcppercentage = rootview.findViewById(R.id.ripecpercentageAM);
+        scppercentage = rootview.findViewById(R.id.sizecpercentageAM);
 
         // initialization for gauges
-        ripenesslevelCM = findViewById(R.id.ripenesslevelCM);
-        sizelevelCM = findViewById(R.id.sizelevelCM);
-        brixlevelCM = findViewById(R.id.brixlevelCM);
+        ripenesslevelAM = rootview.findViewById(R.id.ripenesslevelAM);
+        sizelevelAM = rootview.findViewById(R.id.sizelevelAM);
+        brixlevelAM = rootview.findViewById(R.id.brixlevelAM);
 
         // set dialog box
-        ripdialogCM = findViewById(R.id.ripdialogCM);
-        confidialogCM = findViewById(R.id.confidialogCM);
-        sizedialogCM = findViewById(R.id.sizedialogCM);
-        brixdialogCM = findViewById(R.id.brixdialogCM);
+        ripdialogAM = rootview.findViewById(R.id.ripdialogAM);
+        confidialogAM = rootview.findViewById(R.id.confidialogAM);
+        sizedialogAM = rootview.findViewById(R.id.sizedialogAM);
+        brixdialogAM = rootview.findViewById(R.id.brixdialogAM);
 
         // set gauge meter description
-        ripenesslevelCM.setStateDescriptionData(Cm_Ripeness_reverse);
-        sizelevelCM.setStateDescriptionData(Cm_Size_reverse);
-        brixlevelCM.setStateDescriptionData(Cm_Brixlevel);
+        ripenesslevelAM.setStateDescriptionData(Ma_Ripeness_reverse);
+        sizelevelAM.setStateDescriptionData(Ma_Size);
+        brixlevelAM.setStateDescriptionData(Ma_Brixlevel);
 
-        ripdialogCM.setOnClickListener(view-> {
-            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        ripdialogAM.setOnClickListener(view -> {
+            AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
             builder.setTitle("Ripeness Level");
             builder.setMessage(Html.fromHtml("\nChecking the <span style='color:#249023;'>\uD835\uDE4D\uD835\uDE5E\uD835\uDE65\uD835\uDE5A\uD835\uDE63\uD835\uDE5A\uD835\uDE68\uD835\uDE68</span> of the <span style='color:#fcc603;'>\uD835\uDE48\uD835\uDE56\uD835\uDE63\uD835\uDE5C\uD835\uDE64 \uD835\uDE41\uD835\uDE67\uD835\uDE6A\uD835\uDE5E\uD835\uDE69<span/> whether it is unripe, rot, ripe, ripe with defect."));
-            builder.setIcon(getDrawable(R.drawable.info2));
+            builder.setIcon(getActivity().getDrawable(R.drawable.info2));
             builder.setPositiveButton("OK", (dialog, which) -> dialog.dismiss());
             builder.show();
         });
 
-        confidialogCM.setOnClickListener(view-> {
-            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        confidialogAM.setOnClickListener(view -> {
+            AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
             builder.setTitle("Analyzer Confidence Level");
             builder.setMessage(Html.fromHtml("\nThe output tells on how <span style='color:#249023;'>\uD835\uDE56\uD835\uDE58\uD835\uDE58\uD835\uDE6A\uD835\uDE67\uD835\uDE56\uD835\uDE69\uD835\uDE5A</span> the analyzer of the results given after the image undergo in process."));
-            builder.setIcon(getDrawable(R.drawable.info2));
+            builder.setIcon(getActivity().getDrawable(R.drawable.info2));
             builder.setPositiveButton("OK", (dialog, which) -> dialog.dismiss());
             builder.show();
         });
 
-        sizedialogCM.setOnClickListener(view-> {
-            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        sizedialogAM.setOnClickListener(view -> {
+            AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
             builder.setTitle("Size Level");
             builder.setMessage(Html.fromHtml("\nChecking the size of the <span style='color:#fcc603;'>\uD835\uDE48\uD835\uDE56\uD835\uDE63\uD835\uDE5C\uD835\uDE64 \uD835\uDE41\uD835\uDE67\uD835\uDE6A\uD835\uDE5E\uD835\uDE69<span/> whether it is Large, Medium, or Small"));
-            builder.setIcon(getDrawable(R.drawable.info2));
+            builder.setIcon(getActivity().getDrawable(R.drawable.info2));
             builder.setPositiveButton("OK", (dialog, which) -> dialog.dismiss());
             builder.show();
         });
 
-        brixdialogCM.setOnClickListener(view-> {
-            AlertDialog.Builder builder = new AlertDialog.Builder(this);
-            builder.setTitle("Brix Level");
+        brixdialogAM.setOnClickListener(view -> {
+            AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+            builder.setTitle("BrixLevel");
             builder.setMessage(Html.fromHtml("\nChecking the <span style='color:#249023;'>\uD835\uDE4E\uD835\uDE6C\uD835\uDE5A\uD835\uDE5A\uD835\uDE69\uD835\uDE63\uD835\uDE5A\uD835\uDE68\uD835\uDE68</span> of the <span style='color:#fcc603;'>\uD835\uDE48\uD835\uDE56\uD835\uDE63\uD835\uDE5C\uD835\uDE64 \uD835\uDE41\uD835\uDE67\uD835\uDE6A\uD835\uDE5E\uD835\uDE69<span/> by putting the result percentage from the refractometer. \n\nInstructions: Place a small amount (usually 2–5 drops) of liquid (The Mango Juice) on the prism, and secure the cover plate. This will evenly distribute the liquid on the prism. Point the prism end of the refractometer toward a light source and focus the eyepiece until the scale is clearly visible."));
-            builder.setIcon(getDrawable(R.drawable.info2));
+            builder.setIcon(getActivity().getDrawable(R.drawable.info2));
             builder.setPositiveButton("OK", (dialog, which) -> dialog.dismiss());
             builder.show();
         });
 
         picture.setOnClickListener(view -> {
             final CharSequence[] options = { "Take Photo", "Choose from Gallery","Cancel" };
-            AlertDialog.Builder builder = new AlertDialog.Builder(CarabaoMangoActivity.this);
+            AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
             builder.setTitle("Choose an Action");
             builder.setItems(options, (dialog, item) -> {
                 if (options[item].equals("Take Photo"))
                 {
-                    if (checkSelfPermission(Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED) {
+                    if (ContextCompat.checkSelfPermission(getContext(), Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED) {
                         Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
                         startActivityForResult(cameraIntent, 1);
                     } else {
@@ -187,65 +164,56 @@ public class CarabaoMangoActivity extends AppCompatActivity {
         });
 
         addingbrix.setOnClickListener(view -> {
-            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
             builder.setTitle("Input Brix Percentage");
-            builder.setMessage("Put the percentage of the output of \nthe refractometer which using brix meter.");
+            builder.setMessage("Put the percentage of the output of the refractometer which using brix meter.");
             // Set up the input
-            final EditText input = new EditText(this);
+            final EditText input = new EditText(getContext());
             // Specify the type of input expected; this, for example, sets the input as a password, and will mask the text
             input.setInputType(InputType.TYPE_CLASS_NUMBER);
             builder.setView(input);
             // Set up the buttons
             builder.setPositiveButton("OK", (dialog, which) -> {
+
                 m_Text = input.getText().toString();
                 int a = Integer.parseInt(m_Text);
-                String b = "";
                 // https://www.healthy-vegetable-gardening.com/brix-scale.html
                 if (a < 4){
-                    brixlevelCM.setCurrentStateNumber(StateProgressBar.StateNumber.ONE);
+                    brixlevelAM.setCurrentStateNumber(StateProgressBar.StateNumber.ONE);
                 }
                 else if (a >= 4 && a < 6){
-                    brixlevelCM.setCurrentStateNumber(StateProgressBar.StateNumber.TWO);
+                    brixlevelAM.setCurrentStateNumber(StateProgressBar.StateNumber.TWO);
                 }
                 else if (a >= 6 && a < 10){
-                    brixlevelCM.setCurrentStateNumber(StateProgressBar.StateNumber.THREE);
+                    brixlevelAM.setCurrentStateNumber(StateProgressBar.StateNumber.THREE);
                 }
                 else if (a >= 10 && a < 14){
-                    brixlevelCM.setCurrentStateNumber(StateProgressBar.StateNumber.FOUR);
+                    brixlevelAM.setCurrentStateNumber(StateProgressBar.StateNumber.FOUR);
                 }
                 else if (a >= 14){
-                    brixlevelCM.setCurrentStateNumber(StateProgressBar.StateNumber.FIVE);
+                    brixlevelAM.setCurrentStateNumber(StateProgressBar.StateNumber.FIVE);
                 }
+
             });
             builder.setNegativeButton("Cancel", (dialog, which) -> dialog.cancel());
             builder.show();
         });
+
+        return rootview;
     }
 
-    // this event will enable the back
-    // function to the button on press
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                this.finish();
-                return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
-
-    public void classifyImage(Bitmap image){ // Add model and add text files
-
+    public void classifyImage(Bitmap image){
         try {
 
-            CmRipenessSorter CmRipeness = CmRipenessSorter.newInstance(getApplicationContext());
-            CmSizeSorter CmSize = CmSizeSorter.newInstance(getApplicationContext());
-
+            MaRipenessSorter MaRipeness = MaRipenessSorter.newInstance(getContext());
+            MaSizeSorter MaSize = MaSizeSorter.newInstance(getContext());
             // Creates inputs for reference.
+
             TensorBuffer inputFeature0 = TensorBuffer.createFixedSize(new int[]{1, 224, 224, 3}, DataType.FLOAT32);
             ByteBuffer byteBuffer = ByteBuffer.allocateDirect(4 * imageSize * imageSize * 3);
             byteBuffer.order(ByteOrder.nativeOrder());
             // get 1D array of 224 * 224 pixels in image
+
             int [] intValues = new int[imageSize * imageSize];
             image.getPixels(intValues, 0, image.getWidth(), 0, 0, image.getWidth(), image.getHeight());
             // iterate over pixels and extract R, G, and B values. Add to bytebuffer.
@@ -258,14 +226,15 @@ public class CarabaoMangoActivity extends AppCompatActivity {
                     byteBuffer.putFloat((val & 0xFF) * (1.f / 255.f));
                 }
             }
+
             inputFeature0.loadBuffer(byteBuffer);
 
-            // Runs model inference and gets result.
-            CmRipenessSorter.Outputs outputsripness = CmRipeness.process(inputFeature0);
-            TensorBuffer outputFeature0ripeness = outputsripness.getOutputFeature0AsTensorBuffer();
+            // Runs Ripeness Model inference and gets result.
+            MaRipenessSorter.Outputs outputsripeness = MaRipeness.process(inputFeature0);
+            TensorBuffer outputFeature0ripeness = outputsripeness.getOutputFeature0AsTensorBuffer();
 
             float[] confidencesripeness = outputFeature0ripeness.getFloatArray();
-            // find the index of the class with the biggest confidence.
+            // find the index of the class with the biggest confidence of ripeness.
             int maxPosRipeness = 0;
             float maxConfidenceRipeness = 0;
             for(int i = 0; i < confidencesripeness.length; i++){
@@ -275,12 +244,13 @@ public class CarabaoMangoActivity extends AppCompatActivity {
                 }
             }
 
-            CmSizeSorter.Outputs outputssize = CmSize.process(inputFeature0);
+            // Runs Size Model inference and gets result.
+            MaSizeSorter.Outputs outputssize = MaSize.process(inputFeature0);
             TensorBuffer outputFeature0size = outputssize.getOutputFeature0AsTensorBuffer();
 
             float[] confidencessize = outputFeature0size.getFloatArray();
-            // find the index of the class with the biggest confidence.
-            int maxPosSize = 0;
+            // find the index of the class with the biggest confidence of ripeness.
+            int maxPosSize= 0;
             float maxConfidenceSize = 0;
             for(int i = 0; i < confidencessize.length; i++){
                 if(confidencessize[i] > maxConfidenceSize){
@@ -289,34 +259,35 @@ public class CarabaoMangoActivity extends AppCompatActivity {
                 }
             }
 
-/*            String resultstyledText = "Ripeness: <font color='#249023'>"+ Cm_Ripeness[maxPosRipeness] +"</font>";
+/*            String resultstyledText = "Ripeness: <font color='#249023'>"+ Ma_Ripeness[maxPosRipeness] +"</font>";
             result.setText(Html.fromHtml(resultstyledText), TextView.BufferType.SPANNABLE);
 
-            String sizestyledText = "Size: <font color='#249023'>"+ Cm_Size[maxPosSize] +"</font>";
+            String sizestyledText = "Size: <font color='#249023'>"+ Ma_Size[maxPosSize] +"</font>";
             size.setText(Html.fromHtml(sizestyledText), TextView.BufferType.SPANNABLE);*/
 
-            if (Cm_Ripeness[maxPosRipeness].equals("Ripe")){
-                ripenesslevelCM.setCurrentStateNumber(StateProgressBar.StateNumber.FOUR);
+            if (Ma_Ripeness[maxPosRipeness].equals("Ripe")){
+                ripenesslevelAM.setCurrentStateNumber(StateProgressBar.StateNumber.FOUR);
             }
-            if (Cm_Ripeness[maxPosRipeness].equals("RipeW/Def")){
-                ripenesslevelCM.setCurrentStateNumber(StateProgressBar.StateNumber.THREE);
+            if (Ma_Ripeness[maxPosRipeness].equals("RipeW/Def")){
+                ripenesslevelAM.setCurrentStateNumber(StateProgressBar.StateNumber.THREE);
             }
-            if (Cm_Ripeness[maxPosRipeness].equals("Rot")){
-                ripenesslevelCM.setCurrentStateNumber(StateProgressBar.StateNumber.TWO);
+            if (Ma_Ripeness[maxPosRipeness].equals("Rot")){
+                ripenesslevelAM.setCurrentStateNumber(StateProgressBar.StateNumber.TWO);
             }
-            if (Cm_Ripeness[maxPosRipeness].equals("Unripe")){
-                ripenesslevelCM.setCurrentStateNumber(StateProgressBar.StateNumber.ONE);
+            if (Ma_Ripeness[maxPosRipeness].equals("Unripe")){
+                ripenesslevelAM.setCurrentStateNumber(StateProgressBar.StateNumber.ONE);
             }
 
-            if (Cm_Size[maxPosSize].equals("Small")){
-                sizelevelCM.setCurrentStateNumber(StateProgressBar.StateNumber.ONE);
+            if (Ma_Size[maxPosSize].equals("Small")){
+                sizelevelAM.setCurrentStateNumber(StateProgressBar.StateNumber.ONE);
             }
-            if (Cm_Size[maxPosSize].equals("Medium")){
-                sizelevelCM.setCurrentStateNumber(StateProgressBar.StateNumber.TWO);
+            if (Ma_Size[maxPosSize].equals("Medium")){
+                sizelevelAM.setCurrentStateNumber(StateProgressBar.StateNumber.TWO);
             }
-            if (Cm_Size[maxPosSize].equals("Large")){
-                sizelevelCM.setCurrentStateNumber(StateProgressBar.StateNumber.THREE);
+            if (Ma_Size[maxPosSize].equals("Large")){
+                sizelevelAM.setCurrentStateNumber(StateProgressBar.StateNumber.THREE);
             }
+
 
             DecimalFormat df = new DecimalFormat();
             df.setMaximumFractionDigits(0);
@@ -330,13 +301,13 @@ public class CarabaoMangoActivity extends AppCompatActivity {
             sizebar.setProgress(Math.round(confidencessize[maxPosSize] * 100));
 
             // Releases model resources if no longer used.
-            CmRipeness.close();
-            CmSize.close();
+            MaSize.close();
+            MaRipeness.close();
+
         } catch (IOException e) {
             Log.d("Error: ","Error: "+e);
-            Toast.makeText(this, "Error Occured!. Please Try Again Later!", Toast.LENGTH_LONG).show();
+            Toast.makeText(getContext(), "Error Occured!. Please Try Again Later!" + e, Toast.LENGTH_LONG).show();
         }
-
     }
 
     @Override
@@ -350,13 +321,12 @@ public class CarabaoMangoActivity extends AppCompatActivity {
                 image = Bitmap.createScaledBitmap(image, imageSize, imageSize, false);
                 classifyImage(image);
             } catch (Exception e){
-                Toast.makeText(this, "Error: "+e, Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "Error: "+e, Toast.LENGTH_SHORT).show();
             }
-
         }
         if (requestCode == 2 && resultCode == RESULT_OK) {
             Bitmap bitmap = null;
-            ContentResolver contentResolver = getContentResolver();
+            ContentResolver contentResolver = getActivity().getApplicationContext().getContentResolver();
             try {
                 if(Build.VERSION.SDK_INT < 28) {
                     Uri selectedImage = data.getData();
@@ -378,10 +348,10 @@ public class CarabaoMangoActivity extends AppCompatActivity {
                     classifyImage(softwareBitmap);
                 }
             } catch (Exception e) {
-                Toast.makeText(this, "Error: "+e, Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "Error: "+e, Toast.LENGTH_SHORT).show();
             }
         }
         super.onActivityResult(requestCode, resultCode, data);
-
     }
+
 }

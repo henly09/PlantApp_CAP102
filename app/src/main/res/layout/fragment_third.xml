@@ -1,79 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:fadeScrollbars="false"
-    android:scrollbars="vertical"
-    android:scrollbarAlwaysDrawVerticalTrack="true">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:screenOrientation="portrait"
+    tools:context=".ThirdFragment">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/ViewPager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:screenOrientation="portrait"
-        tools:context=".ThirdFragment">
+        android:layout_below="@id/TabLayout" />
 
-        <Button
-            android:id="@+id/applemangobutton"
-            android:layout_width="345dp"
-            android:layout_height="205dp"
-            android:layout_marginTop="25dp"
-            android:backgroundTint="#e43d35"
-            android:text="Apple Mango"
-            android:textColor="#FFFFFFFF"
-            android:textColorLink="#FFFFFF"
-            android:textSize="24sp"
-            app:layout_constraintBottom_toTopOf="@+id/indianmangobutton"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.533"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/TabLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginEnd="0dp"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-        <Button
-            android:id="@+id/carabaomangobutton"
-            android:layout_width="345dp"
-            android:layout_height="205dp"
-            android:backgroundTint="#fae03b"
-            android:text="Carabao Mango"
-            android:textColor="#FFFFFFFF"
-            android:textSize="24sp"
-            app:layout_constraintBottom_toTopOf="@+id/picomangobutton"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.484"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/indianmangobutton" />
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Handbook" />
 
-        <Button
-            android:id="@+id/picomangobutton"
-            android:layout_width="345dp"
-            android:layout_height="205dp"
-            android:layout_marginBottom="25dp"
-            android:backgroundTint="#FF8400"
-            android:text="Pico Mango"
-            android:textColor="#FFFFFFFF"
-            android:textSize="24sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.515"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/carabaomangobutton" />
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Apple Mango" />
 
-        <Button
-            android:id="@+id/indianmangobutton"
-            android:layout_width="345dp"
-            android:layout_height="205dp"
-            android:backgroundTint="#9fd21e"
-            android:text="Indian Mango"
-            android:textColor="#FFFFFFFF"
-            android:textSize="24sp"
-            app:layout_constraintBottom_toTopOf="@+id/carabaomangobutton"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.533"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/applemangobutton" />
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Carabao Mango" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Indian Mango" />
 
-</ScrollView>
+    </com.google.android.material.tabs.TabLayout>
+
+</RelativeLayout>
