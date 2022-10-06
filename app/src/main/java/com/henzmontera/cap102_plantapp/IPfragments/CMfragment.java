@@ -104,8 +104,13 @@ public class CMfragment extends Fragment {
         ripdialogCM.setOnClickListener(view-> {
             AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
             builder.setTitle("Ripeness Level");
-            builder.setMessage(Html.fromHtml("\nChecking the <span style='color:#249023;'>\uD835\uDE4D\uD835\uDE5E\uD835\uDE65\uD835\uDE5A\uD835\uDE63\uD835\uDE5A\uD835\uDE68\uD835\uDE68</span> of the <span style='color:#fcc603;'>\uD835\uDE48\uD835\uDE56\uD835\uDE63\uD835\uDE5C\uD835\uDE64 \uD835\uDE41\uD835\uDE67\uD835\uDE6A\uD835\uDE5E\uD835\uDE69<span/> whether it is unripe, rot, ripe, ripe with defect."));
-            builder.setIcon(getActivity().getDrawable(R.drawable.info2));
+            builder.setMessage(Html.fromHtml("Checking the " +
+                    "<span style='color:#249023;'>\uD835\uDE4D\uD835\uDE5E\uD835\uDE65\uD835\uDE5A\uD835\uDE63\uD835\uDE5A\uD835\uDE68\uD835\uDE68</span> of the <span style='color:#fcc603;'>\uD835\uDE48\uD835\uDE56\uD835\uDE63\uD835\uDE5C\uD835\uDE64 \uD835\uDE41\uD835\uDE67\uD835\uDE6A\uD835\uDE5E\uD835\uDE69<span/> whether " +
+                    "it is unripe, rot, ripe, ripe with defect." +
+                    "<br><br> <span style='color:#ec941c;'> 1 = \uD835\uDE50\uD835\uDE63\uD835\uDE67\uD835\uDE5E\uD835\uDE65\uD835\uDE5A</span>" +
+                    "<br> <span style='color:#ec941c;'> 2 = \uD835\uDE4D\uD835\uDE64\uD835\uDE69</span>" +
+                    "<br> <span style='color:#ec941c;'> 3 = \uD835\uDE4D\uD835\uDE5E\uD835\uDE65\uD835\uDE5A \uD835\uDE6C\uD835\uDE5E\uD835\uDE69\uD835\uDE5D \uD835\uDE3F\uD835\uDE5A\uD835\uDE5B\uD835\uDE5A\uD835\uDE58\uD835\uDE69</span>" +
+                    "<br> <span style='color:#ec941c;'> 4 = \uD835\uDE4D\uD835\uDE5E\uD835\uDE65\uD835\uDE5A</span>"));            builder.setIcon(getActivity().getDrawable(R.drawable.info2));
             builder.setPositiveButton("OK", (dialog, which) -> dialog.dismiss());
             builder.show();
         });
@@ -113,8 +118,11 @@ public class CMfragment extends Fragment {
         confidialogCM.setOnClickListener(view-> {
             AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
             builder.setTitle("Analyzer Confidence Level");
-            builder.setMessage(Html.fromHtml("\nThe output tells on how <span style='color:#249023;'>\uD835\uDE56\uD835\uDE58\uD835\uDE58\uD835\uDE6A\uD835\uDE67\uD835\uDE56\uD835\uDE69\uD835\uDE5A</span> the analyzer of the results given after the image undergo in process."));
-            builder.setIcon(getActivity().getDrawable(R.drawable.info2));
+            builder.setMessage(Html.fromHtml("The output tells on how <span style='color:#249023;'>\uD835\uDE56\uD835\uDE58\uD835\uDE58\uD835\uDE6A\uD835\uDE67\uD835\uDE56\uD835\uDE69\uD835\uDE5A</span> " +
+                    "the analyzer of the results given after the image undergo in process." +
+                    "<br><br> <span style='color:#ec941c;'> \uD835\uDE42\uD835\uDE67\uD835\uDE5A\uD835\uDE56\uD835\uDE69\uD835\uDE5A\uD835\uDE67 \uD835\uDE69\uD835\uDE5D\uD835\uDE56\uD835\uDE63 85% = \uD835\uDE3C\uD835\uDE58\uD835\uDE58\uD835\uDE5A\uD835\uDE65\uD835\uDE69\uD835\uDE56\uD835\uDE57\uD835\uDE61\uD835\uDE5A </span>" +
+                    "<br> <span style='color:#ec941c;'> \uD835\uDE3D\uD835\uDE5A\uD835\uDE69\uD835\uDE6C\uD835\uDE5A\uD835\uDE5A\uD835\uDE63 30% \uD835\uDE69\uD835\uDE64 84% = \uD835\uDE42\uD835\uDE64\uD835\uDE64\uD835\uDE59 \uD835\uDE40\uD835\uDE63\uD835\uDE64\uD835\uDE6A\uD835\uDE5C\uD835\uDE5D </span>" +
+                    "<br> <span style='color:#ec941c;'> \uD835\uDE3D\uD835\uDE5A\uD835\uDE61\uD835\uDE64\uD835\uDE6C 29% = \uD835\uDE49\uD835\uDE64\uD835\uDE69 \uD835\uDE3C\uD835\uDE58\uD835\uDE58\uD835\uDE5A\uD835\uDE65\uD835\uDE69\uD835\uDE56\uD835\uDE57\uD835\uDE61\uD835\uDE5A </span>"));            builder.setIcon(getActivity().getDrawable(R.drawable.info2));
             builder.setPositiveButton("OK", (dialog, which) -> dialog.dismiss());
             builder.show();
         });
@@ -122,7 +130,10 @@ public class CMfragment extends Fragment {
         sizedialogCM.setOnClickListener(view-> {
             AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
             builder.setTitle("Size Level");
-            builder.setMessage(Html.fromHtml("\nChecking the size of the <span style='color:#fcc603;'>\uD835\uDE48\uD835\uDE56\uD835\uDE63\uD835\uDE5C\uD835\uDE64 \uD835\uDE41\uD835\uDE67\uD835\uDE6A\uD835\uDE5E\uD835\uDE69<span/> whether it is Large, Medium, or Small"));
+            builder.setMessage(Html.fromHtml("Checking the size of the <span style='color:#fcc603;'>\uD835\uDE48\uD835\uDE56\uD835\uDE63\uD835\uDE5C\uD835\uDE64 \uD835\uDE41\uD835\uDE67\uD835\uDE6A\uD835\uDE5E\uD835\uDE69<span/> whether it is Large, Medium, or Small" +
+                    "<br><br> <span style='color:#ec941c;'> \uD835\uDFED = \uD835\uDDE6\uD835\uDDFA\uD835\uDDEE\uD835\uDDF9\uD835\uDDF9 , <br>Ave.Length: 5.2cm ; <br>Ave.Diameter: 3.2cm ; <br>Ave.Circumference: 10.1cm ;<br></span>" +
+                    "<br> <span style='color:#ec941c;'> \uD835\uDFEE = \uD835\uDDE0\uD835\uDDF2\uD835\uDDF1\uD835\uDDF6\uD835\uDE02\uD835\uDDFA , <br>Ave. Length: 8.5cm ; <br>Ave. Diameter: 4.6cm ; <br>Ave.Circumference: 14.4cm ;<br></span>" +
+                    "<br> <span style='color:#ec941c;'> \uD835\uDFEF = \uD835\uDDDF\uD835\uDDEE\uD835\uDDFF\uD835\uDDF4\uD835\uDDF2 , <br>Ave. Length: 10.9cm ; <br>Ave. Diameter: 6.8cm ; <br>Ave.Circumference: 21.36cm ;<br></span>"));
             builder.setIcon(getActivity().getDrawable(R.drawable.info2));
             builder.setPositiveButton("OK", (dialog, which) -> dialog.dismiss());
             builder.show();
@@ -131,7 +142,12 @@ public class CMfragment extends Fragment {
         brixdialogCM.setOnClickListener(view-> {
             AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
             builder.setTitle("Brix Level");
-            builder.setMessage(Html.fromHtml("\nChecking the <span style='color:#249023;'>\uD835\uDE4E\uD835\uDE6C\uD835\uDE5A\uD835\uDE5A\uD835\uDE69\uD835\uDE63\uD835\uDE5A\uD835\uDE68\uD835\uDE68</span> of the <span style='color:#fcc603;'>\uD835\uDE48\uD835\uDE56\uD835\uDE63\uD835\uDE5C\uD835\uDE64 \uD835\uDE41\uD835\uDE67\uD835\uDE6A\uD835\uDE5E\uD835\uDE69<span/> by putting the result percentage from the refractometer. \n\nInstructions: Place a small amount (usually 2–5 drops) of liquid (The Mango Juice) on the prism, and secure the cover plate. This will evenly distribute the liquid on the prism. Point the prism end of the refractometer toward a light source and focus the eyepiece until the scale is clearly visible."));
+            builder.setMessage(Html.fromHtml("Checking the <span style='color:#249023;'>\uD835\uDE4E\uD835\uDE6C\uD835\uDE5A\uD835\uDE5A\uD835\uDE69\uD835\uDE63\uD835\uDE5A\uD835\uDE68\uD835\uDE68</span> of the <span style='color:#fcc603;'>\uD835\uDE48\uD835\uDE56\uD835\uDE63\uD835\uDE5C\uD835\uDE64 \uD835\uDE41\uD835\uDE67\uD835\uDE6A\uD835\uDE5E\uD835\uDE69<span/> by putting the result percentage from the refractometer." +
+                    "<br><br> <span style='color:#ec941c;'> 1 / \uD835\uDE4E\uD835\uDE64\uD835\uDE6A\uD835\uDE67 = \uD835\uDE4E\uD835\uDE64\uD835\uDE6A\uD835\uDE67 </span>" +
+                    "<br> <span style='color:#ec941c;'> 2 / \uD835\uDE3D \uD835\uDE4E\uD835\uDE6C\uD835\uDE5A\uD835\uDE5A\uD835\uDE69 = \uD835\uDDD5\uD835\uDDEE\uD835\uDDFF\uD835\uDDF2\uD835\uDDF9\uD835\uDE06 \uD835\uDDE6\uD835\uDE04\uD835\uDDF2\uD835\uDDF2\uD835\uDE01</span>" +
+                    "<br> <span style='color:#ec941c;'> 3 / \uD835\uDE4E\uD835\uDE6C\uD835\uDE5A\uD835\uDE5A\uD835\uDE69 = \uD835\uDDE6\uD835\uDE04\uD835\uDDF2\uD835\uDDF2\uD835\uDE01</span>" +
+                    "<br> <span style='color:#ec941c;'> 4 / \uD835\uDE4B \uD835\uDE4E\uD835\uDE6C\uD835\uDE5A\uD835\uDE5A\uD835\uDE69 = \uD835\uDDE3\uD835\uDDF2\uD835\uDDFF\uD835\uDDF3\uD835\uDDF2\uD835\uDDF0\uD835\uDE01 \uD835\uDDE6\uD835\uDE04\uD835\uDDF2\uD835\uDDF2\uD835\uDE01</span>" +
+                    "<br> <span style='color:#ec941c;'> 5 / \uD835\uDE51 \uD835\uDE4E\uD835\uDE6C\uD835\uDE5A\uD835\uDE5A\uD835\uDE69 = \uD835\uDDE9\uD835\uDDF2\uD835\uDDFF\uD835\uDE06 \uD835\uDDE6\uD835\uDE04\uD835\uDDF2\uD835\uDDF2\uD835\uDE01</span>"));
             builder.setIcon(getActivity().getDrawable(R.drawable.info2));
             builder.setPositiveButton("OK", (dialog, which) -> dialog.dismiss());
             builder.show();
@@ -309,7 +325,7 @@ public class CMfragment extends Fragment {
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        if (requestCode == 1 && resultCode == RESULT_OK) {
+        if (requestCode == 1 && resultCode == RESULT_OK && null != data) {
             try {
                 Bitmap image = (Bitmap) data.getExtras().get("data");
                 int dimension = Math.min(image.getWidth(), image.getHeight());
@@ -322,7 +338,7 @@ public class CMfragment extends Fragment {
             }
 
         }
-        if (requestCode == 2 && resultCode == RESULT_OK) {
+        if (requestCode == 2 && resultCode == RESULT_OK && null != data) {
             Bitmap bitmap = null;
             ContentResolver contentResolver = getActivity().getApplicationContext().getContentResolver();
             try {
