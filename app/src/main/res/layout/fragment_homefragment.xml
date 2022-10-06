@@ -41,27 +41,27 @@
             android:id="@+id/imguide"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="28dp"
+            android:layout_marginBottom="20dp"
             android:layout_marginEnd="20dp"
             android:backgroundTint="#2da71b"
             android:fontFamily="@font/opensans_bold"
             android:text="IM Guide ➤"
             android:textColor="#F6F6F6"
-            app:layout_constraintBottom_toTopOf="@+id/textView7"
+            app:layout_constraintBottom_toTopOf="@+id/imageView28"
             app:layout_constraintEnd_toEndOf="parent" />
 
         <Button
             android:id="@+id/rmguide"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="32dp"
+            android:layout_marginBottom="10dp"
             android:layout_marginEnd="20dp"
             android:layout_marginTop="24dp"
             android:backgroundTint="#3F403E"
             android:fontFamily="@font/opensans_bold"
             android:text="RM Guide ➤"
             android:textColor="#FFFFFF"
-            app:layout_constraintBottom_toTopOf="@+id/textView9"
+            app:layout_constraintBottom_toTopOf="@+id/imageView29"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/youTubePlayerView" />
 
@@ -84,8 +84,8 @@
             android:id="@+id/logo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="32dp"
-            app:layout_constraintBottom_toTopOf="@+id/textView2"
+            android:layout_marginBottom="10dp"
+            app:layout_constraintBottom_toTopOf="@+id/imageView27"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.496"
             app:layout_constraintStart_toStartOf="parent"
@@ -200,12 +200,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginBottom="40dp"
+            android:layout_marginBottom="30dp"
             android:text="Indian Mango Guide: "
             android:textColor="#4d4f4c"
             android:textSize="20sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/textView7"
+            app:layout_constraintBottom_toTopOf="@+id/imageView28"
             app:layout_constraintEnd_toStartOf="@+id/imguide"
             app:layout_constraintHorizontal_bias="0.369"
             app:layout_constraintStart_toStartOf="parent" />
@@ -215,13 +215,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginBottom="40dp"
+            android:layout_marginBottom="20dp"
             android:layout_marginStart="24dp"
             android:text="Refractometer Guide: "
             android:textColor="#4d4f4c"
             android:textSize="20sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/textView9"
+            app:layout_constraintBottom_toTopOf="@+id/imageView29"
             app:layout_constraintEnd_toStartOf="@+id/rmguide"
             app:layout_constraintHorizontal_bias="0.06"
             app:layout_constraintStart_toStartOf="parent" />
@@ -251,6 +251,38 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:videoId="37V8aBrst20" />
+
+        <ImageView
+            android:id="@+id/imageView27"
+            android:layout_width="370dp"
+            android:layout_height="29dp"
+            android:layout_marginBottom="10dp"
+            app:layout_constraintBottom_toTopOf="@+id/textView2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:srcCompat="@drawable/divider" />
+
+        <ImageView
+            android:id="@+id/imageView28"
+            android:layout_width="370dp"
+            android:layout_height="29dp"
+            android:layout_marginBottom="10dp"
+            app:layout_constraintBottom_toTopOf="@+id/textView7"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.478"
+            app:layout_constraintStart_toStartOf="parent"
+            app:srcCompat="@drawable/divider" />
+
+        <ImageView
+            android:id="@+id/imageView29"
+            android:layout_width="370dp"
+            android:layout_height="29dp"
+            android:layout_marginBottom="20dp"
+            app:layout_constraintBottom_toTopOf="@+id/textView9"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.478"
+            app:layout_constraintStart_toStartOf="parent"
+            app:srcCompat="@drawable/divider" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
