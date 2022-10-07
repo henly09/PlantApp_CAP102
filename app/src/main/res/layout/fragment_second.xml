@@ -23,6 +23,7 @@
         android:textStyle="bold"
         android:fontFamily="@font/roboto_black"
         android:layout_gravity="center"
+        android:layout_marginBottom="15dp"
         />
 
     <ImageView
@@ -30,7 +31,8 @@
         android:layout_height="150dp"
         android:layout_gravity="center"
         android:scaleType="fitCenter"
-        android:src="@drawable/picture1" />
+        android:src="@drawable/picture1"
+        android:layout_marginBottom="10dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -39,7 +41,8 @@
         android:textColor="@color/black"
         android:justificationMode="inter_word"
         android:fontFamily="@font/roboto_medium"
-        android:textSize="20sp" />
+        android:textSize="20sp"
+        android:layout_marginBottom="20dp"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -48,7 +51,8 @@
         android:textColor="@color/black"
         android:fontFamily="@font/roboto_black"
         android:textSize="25sp"
-        android:textStyle="bold"/>
+        android:textStyle="bold"
+        android:layout_marginBottom="10dp"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -57,7 +61,8 @@
         android:textColor="@color/black"
         android:justificationMode="inter_word"
         android:fontFamily="@font/roboto_medium"
-        android:textSize="20sp" />
+        android:textSize="20sp"
+        android:layout_marginBottom="20dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -67,7 +72,8 @@
         android:justificationMode="inter_word"
         android:fontFamily="@font/roboto_medium"
         android:textSize="20sp"
-        android:textStyle="bold"/>
+        android:textStyle="bold"
+        android:layout_marginBottom="20dp"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -76,7 +82,8 @@
         android:textColor="@color/black"
         android:justificationMode="inter_word"
         android:fontFamily="@font/roboto_medium"
-        android:textSize="20sp" />
+        android:textSize="20sp"
+        android:layout_marginBottom="10dp"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -85,14 +92,16 @@
         android:textColor="@color/black"
         android:fontFamily="@font/roboto_black"
         android:textSize="25sp"
-        android:textStyle="bold"/>
+        android:textStyle="bold"
+        android:layout_marginBottom="10dp"/>
 
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="150dp"
         android:layout_gravity="center"
         android:scaleType="fitCenter"
-        android:src="@drawable/picture2" />
+        android:src="@drawable/picture2"
+        android:layout_marginBottom="10dp" />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -100,7 +109,8 @@
         android:textColor="@color/black"
         android:justificationMode="inter_word"
         android:fontFamily="@font/roboto_medium"
-        android:textSize="20sp" />
+        android:textSize="20sp"
+        android:layout_marginBottom="20dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -109,13 +119,15 @@
         android:textColor="@color/black"
         android:fontFamily="@font/roboto_black"
         android:textSize="25sp"
-        android:textStyle="bold"/>
+        android:textStyle="bold"
+        android:layout_marginBottom="10dp"/>
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="150dp"
         android:layout_gravity="center"
         android:scaleType="fitCenter"
-        android:src="@drawable/picture3" />
+        android:src="@drawable/picture3"
+        android:layout_marginBottom="10dp" />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -123,7 +135,8 @@
         android:textColor="@color/black"
         android:justificationMode="inter_word"
         android:fontFamily="@font/roboto_medium"
-        android:textSize="20sp" />
+        android:textSize="20sp"
+        android:layout_marginBottom="20dp"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -132,7 +145,8 @@
         android:textColor="@color/black"
         android:fontFamily="@font/roboto_black"
         android:textSize="25sp"
-        android:textStyle="bold"/>
+        android:textStyle="bold"
+        android:layout_marginBottom="10dp"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -140,7 +154,8 @@
         android:textColor="@color/black"
         android:justificationMode="inter_word"
         android:fontFamily="@font/roboto_medium"
-        android:textSize="20sp" />
+        android:textSize="20sp"
+        android:layout_marginBottom="20dp"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -149,13 +164,15 @@
         android:textColor="@color/black"
         android:fontFamily="@font/roboto_black"
         android:textSize="25sp"
-        android:textStyle="bold"/>
+        android:textStyle="bold"
+        android:layout_marginBottom="10dp"/>
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="150dp"
         android:layout_gravity="center"
         android:scaleType="fitCenter"
-        android:src="@drawable/picture3" />
+        android:src="@drawable/picture3"
+        android:layout_marginBottom="10dp"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -163,7 +180,8 @@
         android:textColor="@color/black"
         android:justificationMode="inter_word"
         android:fontFamily="@font/roboto_medium"
-        android:textSize="20sp" />
+        android:textSize="20sp"
+        android:layout_marginBottom="20dp"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -172,7 +190,8 @@
         android:textColor="@color/black"
         android:fontFamily="@font/roboto_black"
         android:textSize="25sp"
-        android:textStyle="bold"/>
+        android:textStyle="bold"
+        android:layout_marginBottom="10dp"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -180,20 +199,23 @@
         android:textColor="@color/black"
         android:justificationMode="inter_word"
         android:fontFamily="@font/roboto_medium"
-        android:textSize="20sp" />
+        android:textSize="20sp"
+        android:layout_marginBottom="10dp" />
 
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="150dp"
         android:layout_gravity="center"
         android:scaleType="fitCenter"
-        android:src="@drawable/picture4_1" />
+        android:src="@drawable/picture4_1"
+        android:layout_marginBottom="10dp"/>
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="150dp"
         android:layout_gravity="center"
         android:scaleType="fitCenter"
-        android:src="@drawable/picture4_2" />
+        android:src="@drawable/picture4_2"
+        android:layout_marginBottom="10dp"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -201,19 +223,22 @@
         android:textColor="@color/black"
         android:justificationMode="inter_word"
         android:fontFamily="@font/roboto_medium"
-        android:textSize="20sp" />
+        android:textSize="20sp"
+        android:layout_marginBottom="10dp"/>
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="150dp"
         android:layout_gravity="center"
         android:scaleType="fitCenter"
-        android:src="@drawable/picture5" />
+        android:src="@drawable/picture5"
+        android:layout_marginBottom="10dp" />
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="150dp"
         android:layout_gravity="center"
         android:scaleType="fitCenter"
-        android:src="@drawable/picture6" />
+        android:src="@drawable/picture6"
+        android:layout_marginBottom="10dp"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -221,19 +246,22 @@
         android:textColor="@color/black"
         android:justificationMode="inter_word"
         android:fontFamily="@font/roboto_medium"
-        android:textSize="20sp" />
+        android:textSize="20sp"
+        android:layout_marginBottom="10dp"/>
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="150dp"
         android:layout_gravity="center"
         android:scaleType="fitCenter"
-        android:src="@drawable/picture7" />
+        android:src="@drawable/picture7"
+        android:layout_marginBottom="10dp"/>
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="150dp"
         android:layout_gravity="center"
         android:scaleType="fitCenter"
-        android:src="@drawable/picture8" />
+        android:src="@drawable/picture8"
+        android:layout_marginBottom="10dp"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -241,19 +269,22 @@
         android:textColor="@color/black"
         android:justificationMode="inter_word"
         android:fontFamily="@font/roboto_medium"
-        android:textSize="20sp" />
+        android:textSize="20sp"
+        android:layout_marginBottom="10dp"/>
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="150dp"
         android:layout_gravity="center"
         android:scaleType="fitCenter"
-        android:src="@drawable/picture9" />
+        android:src="@drawable/picture9"
+        android:layout_marginBottom="10dp"/>
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="150dp"
         android:layout_gravity="center"
         android:scaleType="fitCenter"
-        android:src="@drawable/picture10" />
+        android:src="@drawable/picture10"
+        android:layout_marginBottom="20dp"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -262,7 +293,8 @@
         android:textColor="@color/black"
         android:fontFamily="@font/roboto_black"
         android:textSize="25sp"
-        android:textStyle="bold"/>
+        android:textStyle="bold"
+        android:layout_marginBottom="20dp"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -270,13 +302,15 @@
         android:textColor="@color/black"
         android:fontFamily="@font/roboto_black"
         android:textSize="25sp"
-        android:textStyle="bold"/>
+        android:textStyle="bold"
+        android:layout_marginBottom="10dp"/>
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="150dp"
         android:layout_gravity="center"
         android:scaleType="fitCenter"
-        android:src="@drawable/picture11" />
+        android:src="@drawable/picture11"
+        android:layout_marginBottom="10dp"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -284,7 +318,8 @@
         android:textColor="@color/black"
         android:justificationMode="inter_word"
         android:fontFamily="@font/roboto_medium"
-        android:textSize="20sp"/>
+        android:textSize="20sp"
+        android:layout_marginBottom="20dp"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -293,13 +328,15 @@
         android:textColor="@color/black"
         android:fontFamily="@font/roboto_black"
         android:textSize="25sp"
-        android:textStyle="bold"/>
+        android:textStyle="bold"
+        android:layout_marginBottom="10dp"/>
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="150dp"
         android:layout_gravity="center"
         android:scaleType="fitCenter"
-        android:src="@drawable/picture12" />
+        android:src="@drawable/picture12"
+        android:layout_marginBottom="10dp"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -307,7 +344,8 @@
         android:textColor="@color/black"
         android:justificationMode="inter_word"
         android:fontFamily="@font/roboto_medium"
-        android:textSize="20sp"/>
+        android:textSize="20sp"
+        android:layout_marginBottom="20dp"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -316,13 +354,15 @@
         android:textColor="@color/black"
         android:fontFamily="@font/roboto_black"
         android:textSize="25sp"
-        android:textStyle="bold"/>
+        android:textStyle="bold"
+        android:layout_marginBottom="10dp"/>
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="150dp"
         android:layout_gravity="center"
         android:scaleType="fitCenter"
-        android:src="@drawable/picture13" />
+        android:src="@drawable/picture13"
+        android:layout_marginBottom="10dp" />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -330,7 +370,8 @@
         android:textColor="@color/black"
         android:justificationMode="inter_word"
         android:fontFamily="@font/roboto_medium"
-        android:textSize="20sp" />
+        android:textSize="20sp"
+        android:layout_marginBottom="20dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -339,20 +380,23 @@
         android:textColor="@color/black"
         android:fontFamily="@font/roboto_black"
         android:textSize="25sp"
-        android:textStyle="bold"/>
+        android:textStyle="bold"
+        android:layout_marginBottom="10dp"/>
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="150dp"
         android:layout_gravity="center"
         android:scaleType="fitCenter"
-        android:src="@drawable/picture14" />
+        android:src="@drawable/picture14"
+        android:layout_marginBottom="10dp"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/pruning1"
         android:textColor="@color/black"
         android:fontFamily="@font/roboto_medium"
-        android:textSize="20sp"/>
+        android:textSize="20sp"
+        android:layout_marginBottom="20dp"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -361,13 +405,15 @@
         android:textColor="@color/black"
         android:fontFamily="@font/roboto_black"
         android:textSize="25sp"
-        android:textStyle="bold"/>
+        android:textStyle="bold"
+        android:layout_marginBottom="10dp"/>
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="150dp"
         android:layout_gravity="center"
         android:scaleType="fitCenter"
-        android:src="@drawable/picture15" />
+        android:src="@drawable/picture15"
+        android:layout_marginBottom="10dp" />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -375,7 +421,8 @@
         android:textColor="@color/black"
         android:justificationMode="inter_word"
         android:fontFamily="@font/roboto_medium"
-        android:textSize="20sp"/>
+        android:textSize="20sp"
+        android:layout_marginBottom="20dp"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -384,13 +431,15 @@
         android:textColor="@color/black"
         android:fontFamily="@font/roboto_black"
         android:textSize="25sp"
-        android:textStyle="bold"/>
+        android:textStyle="bold"
+        android:layout_marginBottom="10dp"/>
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="150dp"
         android:layout_gravity="center"
         android:scaleType="fitCenter"
-        android:src="@drawable/picture16" />
+        android:src="@drawable/picture16"
+        android:layout_marginBottom="10dp" />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -398,7 +447,8 @@
         android:textColor="@color/black"
         android:justificationMode="inter_word"
         android:fontFamily="@font/roboto_medium"
-        android:textSize="20sp"/>
+        android:textSize="20sp"
+        android:layout_marginBottom="20dp"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -407,13 +457,15 @@
         android:textColor="@color/black"
         android:fontFamily="@font/roboto_black"
         android:textSize="25sp"
-        android:textStyle="bold"/>
+        android:textStyle="bold"
+        android:layout_marginBottom="10dp"/>
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="150dp"
         android:layout_gravity="center"
         android:scaleType="fitCenter"
-        android:src="@drawable/picture17" />
+        android:src="@drawable/picture17"
+        android:layout_marginBottom="10dp" />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -421,7 +473,8 @@
         android:textColor="@color/black"
         android:justificationMode="inter_word"
         android:fontFamily="@font/roboto_medium"
-        android:textSize="20sp"/>
+        android:textSize="20sp"
+        android:layout_marginBottom="20dp"/>
 
 
     <LinearLayout
