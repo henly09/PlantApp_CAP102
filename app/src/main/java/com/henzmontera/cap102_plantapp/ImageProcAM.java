@@ -35,7 +35,7 @@ public class ImageProcAM extends AppIntro {
 
         addSlide(AppIntroFragment.createInstance(
                 "Capturing Image",
-                "Capture the image within a focus and with high quality image in order for the app to have accurate output.",
+                "Capture the image within a focus and with high quality image in order for the app to have accurate output. Set the camera ratio into 4:3",
                 R.drawable.am1slide,
                 R.color.colorforAMslide,
                 R.color.white,

@@ -3,8 +3,6 @@ package com.henzmontera.cap102_plantapp;
 // BSIT-4th-Year
 // Cap102-Project
 
-import android.content.ContentValues;
-import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 
@@ -36,7 +34,7 @@ public class ImageProcIM extends AppIntro {
 
         addSlide(AppIntroFragment.createInstance(
                 "Capturing Image",
-                "Capture the image within a focus and with high quality image in order for the app to have accurate output.",
+                "Capture the image within a focus and with high quality image in order for the app to have accurate output. Set the camera ratio into 4:3",
                 R.drawable.im1slide,
                 R.color.thirdiconcolor,
                 R.color.darkgray,
