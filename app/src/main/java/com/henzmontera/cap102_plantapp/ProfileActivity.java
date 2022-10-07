@@ -1,5 +1,7 @@
 package com.henzmontera.cap102_plantapp;
 
+import static java.sql.Types.NULL;
+
 import android.content.ContentResolver;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -9,6 +11,7 @@ import android.media.ThumbnailUtils;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Base64;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -141,24 +144,32 @@ public class ProfileActivity extends AppCompatActivity {
                         JSONObject oh = new JSONObject(response);
                         JSONArray userpost = oh.getJSONArray("UserPosts");
 
-                        for (int i = 0; i < userpost.length(); i++) {
-                            JSONObject al = userpost.getJSONObject(i);
+                        if (userpost.length() == NULL) {
+                            emptyView.setVisibility(View.VISIBLE);
+                            recyclerview.setVisibility(View.GONE);
+                        } else {
+                            emptyView.setVisibility(View.GONE);
+                            recyclerview.setVisibility(View.VISIBLE);
+                            listposts.clear();
+                            for (int i = 0; i < userpost.length(); i++) {
+                                JSONObject al = userpost.getJSONObject(i);
 
-                            ListPost post = new ListPost(
-                                    al.optString("postUserId"),
-                                    al.optString("postId"),
-                                    al.optString("username"),
-                                    al.optString("postDescriptions"),
-                                    al.optString("postTime"),
-                                    al.optString("commentsCount"),
-                                    al.optString("likeCount"),
-                                    al.optString("userprofilepicture"),
-                                    al.optString("postImages")
-                            );
-                            listposts.add(post);
-                            useradapt = new PostAdapter(ProfileActivity.this, listposts);
-                            recyclerview.setAdapter(useradapt);
-                            useradapt.notifyDataSetChanged();
+                                ListPost post = new ListPost(
+                                        al.optString("postId"),
+                                        al.optString("postUserId"),
+                                        al.optString("username"),
+                                        al.optString("userprofilepicture"),
+                                        al.optString("postDescriptions"),
+                                        al.optString("postImages"),
+                                        al.optString("postTime"),
+                                        al.optString("commentCount"),
+                                        al.optString("likeCount")
+                                );
+                                listposts.add(post);
+                                useradapt = new PostAdapter(ProfileActivity.this, listposts);
+                                recyclerview.setAdapter(useradapt);
+                                useradapt.notifyDataSetChanged();
+                            }
                         }
                     } catch (Exception e) {
                     }

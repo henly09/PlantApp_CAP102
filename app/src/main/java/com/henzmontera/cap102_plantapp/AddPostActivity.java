@@ -12,6 +12,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Base64;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -73,7 +74,7 @@ public class AddPostActivity extends AppCompatActivity {
         }
 
         PostText.setOnClickListener(view ->{
-            if(bitmap != null){ // Description and Picture
+            if(bitmap != null && !EditTextDescriptionWriteMessage.getText().toString().isEmpty()){ // Description and Picture
                 String id = user.get(sessionManager.UID);//Retrieve User's Id
                 String description = EditTextDescriptionWriteMessage.getText().toString();//Get Description
                 String imageString = imageToString(bitmap); // Get Image
@@ -82,12 +83,12 @@ public class AddPostActivity extends AppCompatActivity {
             if(bitmap == null){ //Only Description
                 String id = user.get(sessionManager.UID);
                 String description = EditTextDescriptionWriteMessage.getText().toString();
-                String imageString = "NULL";
+                String imageString = "";
                 Posting(id, description, imageString);
             }
             if(EditTextDescriptionWriteMessage.getText().toString().isEmpty()){ // Only Picture
                 String id = user.get(sessionManager.UID);//Retrieve User's Id
-                String description = "NULL";
+                String description = "";
                 String imageString = imageToString(bitmap);
                 Posting(id, description, imageString);
             }
@@ -127,6 +128,7 @@ public class AddPostActivity extends AppCompatActivity {
                 int dimension = Math.min(bitmap.getWidth(), bitmap.getHeight());
                 bitmap = ThumbnailUtils.extractThumbnail(bitmap, dimension, dimension);
                 SelectedImages.setImageBitmap(bitmap);
+                Log.d("ImageString", imageToString(bitmap));
             } catch (Exception e){
 
             }

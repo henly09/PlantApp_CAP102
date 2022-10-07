@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/dp_8"
+    android:layout_marginTop="@dimen/dp_8"
+    android:id="@+id/more_option_linear"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/more_option_tv_bottom_dialog_heading"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/dp_56"
+        android:layout_marginEnd="@dimen/dp_16"
+        android:layout_marginStart="@dimen/dp_16"
+        android:gravity="center"
+        android:text="Post Options"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/moreoption_tv_btn_delete_post"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginEnd="@dimen/dp_16"
+        android:layout_marginStart="@dimen/dp_16"
+        android:backgroundTint="@android:color/white"
+        android:drawablePadding="@dimen/dp_32"
+        android:drawableStart="@drawable/ic_delete"
+        android:drawableTint="@color/black"
+        android:gravity="start|center_vertical"
+        android:text="Delete Your Post"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/moreoption_tv_btn_report_post"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginEnd="@dimen/dp_16"
+        android:layout_marginStart="@dimen/dp_16"
+        android:backgroundTint="@android:color/white"
+        android:drawablePadding="@dimen/dp_32"
+        android:drawableStart="@drawable/ic_report_flag"
+        android:drawableTint="@color/black"
+        android:gravity="start|center_vertical"
+        android:text="Report Post"
+        android:textSize="16sp" />
+
+</LinearLayout>

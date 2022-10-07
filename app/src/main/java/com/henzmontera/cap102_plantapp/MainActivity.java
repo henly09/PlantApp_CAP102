@@ -48,6 +48,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             String Gid = "69142";
             sessionManager.createGuestSession(Gname,Gid);
         }
+
         //Menu Items Visible(Guest/User)
         HashMap<String, String> guest = sessionManager.getGuestDetails();
         if(guest.get(sessionManager.GNAME).equals("UserGuest000")){

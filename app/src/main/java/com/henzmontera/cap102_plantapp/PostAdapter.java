@@ -4,23 +4,37 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.os.Bundle;
 import android.util.Base64;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ListViewHolder>{
 
     private Context context;
     private List<ListPost> LISTPOSTS;
+
 
     public PostAdapter(Context context, List<ListPost> LISTPOSTS) {
         this.context = context;
@@ -29,13 +43,19 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ListViewHolder
 
     public class ListViewHolder extends RecyclerView.ViewHolder {
 
+
         private TextView UPostNameTV, UPostTimeTV, UPostDesc, UPostLikeC, UPostCommentC, UPostID, UPostUserId;
         private ImageView UPostProfPic;
         private ImageView UPostImage;
+        private ImageButton UMoreOption;
         private Button ULikeButton, UCommentButton;
+        private PostAdapter postAdapter;
+        private SessionManager sessionManager;
 
         public ListViewHolder(@NonNull View itemView) {
             super(itemView);
+            sessionManager = new SessionManager(context);
+
             //textView
             UPostNameTV = itemView.findViewById(R.id.unametv);  //username of user posted
             UPostTimeTV = itemView.findViewById(R.id.utimetv);  // timestamp posted
@@ -51,15 +71,119 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ListViewHolder
             ULikeButton = itemView.findViewById(R.id.like);
             UCommentButton = itemView.findViewById(R.id.comment);
 
+            //Image Button
+            UMoreOption = itemView.findViewById(R.id.upostoption);
+
             //Identification
             UPostID = itemView.findViewById(R.id.upostid);
             UPostUserId = itemView.findViewById(R.id.uuserId);
+
+            HashMap<String, String> GuestPov = sessionManager.getGuestDetails();
+            String guestName = GuestPov.get(sessionManager.GNAME);
+            if(guestName.equals("UserGuest000")){
+                UMoreOption.setVisibility(View.GONE);
+            } else {
+                UMoreOption.setVisibility(View.VISIBLE);
+            }
 
             UCommentButton.setOnClickListener(view ->{
                 Intent intent = new Intent(context, ViewCommentPostActivity.class);
                 intent.putExtra("POSTID", UPostID.getText().toString());
                 context.startActivity(intent);
             });
+
+            ULikeButton.setOnClickListener(view ->{
+                HashMap<String, String> guest = sessionManager.getGuestDetails();
+                if(guest.get(sessionManager.GNAME).equals("UserGuest000")){
+                    Toast.makeText(context, "Please Login or Register to interact.", Toast.LENGTH_SHORT).show();
+                } else {
+                    HashMap<String, String> user = sessionManager.getUserDetail();
+                    String userid = user.get(sessionManager.UID); // Get Current User's ID
+                    String postid = UPostID.getText().toString(); // Get Poster's Post ID
+
+                    Like(userid, postid);
+                }
+            });
+
+            UMoreOption.setOnClickListener(view ->{
+                String userid = UPostUserId.getText().toString();
+                String postid = UPostID.getText().toString();
+                Bundle bundle = new Bundle();
+
+                bundle.putString("userid", userid);
+                bundle.putString("postid", postid);
+
+                MoreOptionBottomDialogFragment moreoptionBottomDialogFragment =
+                        MoreOptionBottomDialogFragment.newInstance();
+                moreoptionBottomDialogFragment.setArguments(bundle);
+                moreoptionBottomDialogFragment.show(((FragmentActivity)context).getSupportFragmentManager(),
+                        "more_option_dialog_fragment");
+            });
+        }
+
+        private void Like(String userid, String postid){
+            Log.d("userid:", userid+"");
+            Log.d("postid:", postid+"");
+
+                if (sessionManager.isLoggin()) {
+                    String StoreURL = "http://192.168.254.107/networkingbased/LikePost.php";
+                    RequestQueue q = Volley.newRequestQueue(context);
+                    StringRequest r = new StringRequest(
+                            Request.Method.POST,
+                            StoreURL,
+                            response -> {
+                                try {
+                                    if(response.equals("CANT ACCEPT EXISTING LIKE")){
+                                        Toast.makeText(context, "Unlike", Toast.LENGTH_SHORT).show();
+                                        Unlike(userid, postid);
+                                    } else {
+                                        Toast.makeText(context, "Liked!", Toast.LENGTH_SHORT).show();
+                                    }
+                                } catch (Exception e) {
+                                    Toast.makeText(context, e + "", Toast.LENGTH_SHORT).show();
+                                }
+                            }, error -> {
+                        Toast.makeText(context, error + "", Toast.LENGTH_SHORT).show();
+                    }) {
+                        @Nullable
+                        @Override
+                        protected Map<String, String> getParams() {
+                            Map<String, String> param = new HashMap<>();
+                            param.put("userid", userid);
+                            param.put("postid", postid);
+                            return param;
+                        }
+                    };
+                    q.add(r);
+                }
+            }
+
+        private void Unlike(String userid, String postid){
+            if (sessionManager.isLoggin()) {
+                String StoreURL = "http://192.168.254.107/networkingbased/UnlikePost.php";
+                RequestQueue q = Volley.newRequestQueue(context);
+                StringRequest r = new StringRequest(
+                        Request.Method.POST,
+                        StoreURL,
+                        response -> {
+                            try {
+                            } catch (Exception e) {
+                                Toast.makeText(context, e + "", Toast.LENGTH_SHORT).show();
+                            }
+                        }, error -> {
+                    Toast.makeText(context, error + "", Toast.LENGTH_SHORT).show();
+                }) {
+                    @Nullable
+                    @Override
+                    protected Map<String, String> getParams() {
+                        Map<String, String> param = new HashMap<>();
+                        param.put("userid", userid);
+                        param.put("postid", postid);
+                        return param;
+                    }
+                };
+                q.add(r);
+            }
         }
     }
 
@@ -73,19 +197,35 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ListViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull PostAdapter.ListViewHolder holder, int position) {
-        holder.UPostNameTV.setText(LISTPOSTS.get(position).getUSERNAME());
-        holder.UPostDesc.setText(LISTPOSTS.get(position).getPOSTDESC());
-        holder.UPostTimeTV.setText(LISTPOSTS.get(position).getPOSTTIME());
-        holder.UPostCommentC.setText(LISTPOSTS.get(position).getCOMMENTC());
-        holder.UPostLikeC.setText(LISTPOSTS.get(position).getLIKEC());
-        if(LISTPOSTS.get(position).getPROFILEPIC().isEmpty()){
+        holder.UPostNameTV.setText(LISTPOSTS.get(position).getUSERNAME());  //Username
+        holder.UPostDesc.setText(LISTPOSTS.get(position).getPOSTDESCRIPTION()); // Description
+
+        holder.UPostTimeTV.setText(LISTPOSTS.get(position).getPOSTTIME());  // Time Stamp
+
+        if(LISTPOSTS.get(position).getCOMMENTCOUNT().isEmpty()){ // If Empty, set 0
+            holder.UPostCommentC.setText("0 Comment");
+        } else if(LISTPOSTS.get(position).getCOMMENTCOUNT().equals("1")){
+            holder.UPostCommentC.setText(LISTPOSTS.get(position).getCOMMENTCOUNT() + " Comment");
+        } else { // Else , display result
+            holder.UPostCommentC.setText(LISTPOSTS.get(position).getCOMMENTCOUNT() + " Comments"); // Comment Count
+        }
+
+        if(LISTPOSTS.get(position).getLIKECOUNT().isEmpty()){ // If Empty set 0
+            holder.UPostLikeC.setText("0 Like");
+        } else if(LISTPOSTS.get(position).getLIKECOUNT().equals("1")){
+            holder.UPostLikeC.setText(LISTPOSTS.get(position).getLIKECOUNT() + " Like");
+        }  else { // Else , display result
+            holder.UPostLikeC.setText(LISTPOSTS.get(position).getLIKECOUNT() + " Likes");  //Like Count
+        }
+
+        if(LISTPOSTS.get(position).getPROFILEPIC().isEmpty()){  // If Empty, default profile image
             holder.UPostProfPic.setBackgroundResource(R.mipmap.ic_nature_foreground);
         }
         else{
             holder.UPostProfPic.setImageBitmap(StringtoImage(LISTPOSTS.get(position).getPROFILEPIC()));
         }
 
-        if(LISTPOSTS.get(position).getPOSTIMAGES().isEmpty()){
+        if(LISTPOSTS.get(position).getPOSTIMAGES().isEmpty()){  // If empty, Set ImageView to 0
             ViewGroup.LayoutParams layoutParams = holder.UPostImage.getLayoutParams();
             layoutParams.width = 0;
             holder.UPostImage.setLayoutParams(layoutParams);
@@ -97,8 +237,8 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ListViewHolder
             layoutParams.height = 1100;
             holder.UPostImage.setLayoutParams(layoutParams);
         }
-        holder.UPostID.setText(LISTPOSTS.get(position).getPOSTID());
-        holder.UPostUserId.setText(LISTPOSTS.get(position).getUSERID());
+        holder.UPostID.setText(LISTPOSTS.get(position).getPOSTID());    // Post Id
+        holder.UPostUserId.setText(LISTPOSTS.get(position).getPOSTUSERID());    // Poster's User Id
     }
 
     @Override

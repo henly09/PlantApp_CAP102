@@ -67,14 +67,15 @@ public class FirstFragment extends Fragment {
 
         swiperefresh = rootview.findViewById(R.id.swipeRefreshLayout);
         swiperefresh.setOnRefreshListener(() -> {
-            useradapt.notifyDataSetChanged();
+            listposts.clear();
+            GetLatestPost();
             swiperefresh.setRefreshing(false); //False to Animation
             Toast.makeText(getActivity(), "Refreshed", Toast.LENGTH_SHORT).show();
         });
         return rootview;
     }
 
-    private void GetLatestPost(){
+    public void GetLatestPost(){
         String url = "http://192.168.254.107/networkingbased/DisplayLatestPost.php";
         RequestQueue q = Volley.newRequestQueue(getActivity());
         StringRequest r = new StringRequest( //Request String type
@@ -96,15 +97,15 @@ public class FirstFragment extends Fragment {
                                 JSONObject al = latestpost.getJSONObject(i);
 
                                 ListPost post = new ListPost(
-                                        al.optString("postUserId"),
                                         al.optString("postId"),
+                                        al.optString("postUserId"),
                                         al.optString("username"),
-                                        al.optString("postDescriptions"),
-                                        al.optString("postTime"),
-                                        al.optString("commentsCount"),
-                                        al.optString("likeCount"),
                                         al.optString("userprofilepicture"),
-                                        al.optString("postImages")
+                                        al.optString("postDescriptions"),
+                                        al.optString("postImages"),
+                                        al.optString("postTime"),
+                                        al.optString("commentCount"),
+                                        al.optString("likeCount")
                                 );
                                 listposts.add(post);
                                 useradapt = new PostAdapter(getActivity(), listposts);

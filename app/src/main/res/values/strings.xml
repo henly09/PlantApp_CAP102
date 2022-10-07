@@ -170,5 +170,7 @@
     <string name="bottom_sheet_background_option_select">Select background picture</string>
     <string name="bottom_sheet_background_option_view">View background picture</string>
     <string name="bottom_sheet_background_option_heading">Background Picture</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

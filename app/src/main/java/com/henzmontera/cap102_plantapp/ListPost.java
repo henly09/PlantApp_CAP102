@@ -2,63 +2,63 @@ package com.henzmontera.cap102_plantapp;
 
 public class ListPost {
 
-    private String USERID;
     private String POSTID;
+    private String POSTUSERID;
 
     private String USERNAME;
-    private String POSTDESC;
-    private String POSTTIME;
-    private String COMMENTC;
-    private String LIKEC;
-
     private String PROFILEPIC;
+    private String POSTDESCRIPTION;
     private String POSTIMAGES;
+    private String POSTTIME;
 
-    public ListPost(String USERID, String POSTID, String USERNAME, String POSTDESC, String POSTTIME, String COMMENTC, String LIKEC, String PROFILEPIC, String POSTIMAGES) {
-        this.USERID = USERID;
+    private String COMMENTCOUNT;
+    private String LIKECOUNT;
+
+    public ListPost(String POSTID, String POSTUSERID, String USERNAME, String PROFILEPIC, String POSTDESCRIPTION, String POSTIMAGES, String POSTTIME, String COMMENTCOUNT, String LIKECOUNT) {
         this.POSTID = POSTID;
+        this.POSTUSERID = POSTUSERID;
         this.USERNAME = USERNAME;
-        this.POSTDESC = POSTDESC;
-        this.POSTTIME = POSTTIME;
-        this.COMMENTC = COMMENTC;
-        this.LIKEC = LIKEC;
         this.PROFILEPIC = PROFILEPIC;
+        this.POSTDESCRIPTION = POSTDESCRIPTION;
         this.POSTIMAGES = POSTIMAGES;
-    }
-
-    public String getUSERID() {
-        return USERID;
+        this.POSTTIME = POSTTIME;
+        this.COMMENTCOUNT = COMMENTCOUNT;
+        this.LIKECOUNT = LIKECOUNT;
     }
 
     public String getPOSTID() {
         return POSTID;
     }
 
+    public String getPOSTUSERID() {
+        return POSTUSERID;
+    }
+
     public String getUSERNAME() {
         return USERNAME;
-    }
-
-    public String getPOSTDESC() {
-        return POSTDESC;
-    }
-
-    public String getPOSTTIME() {
-        return POSTTIME;
-    }
-
-    public String getCOMMENTC() {
-        return COMMENTC;
-    }
-
-    public String getLIKEC() {
-        return LIKEC;
     }
 
     public String getPROFILEPIC() {
         return PROFILEPIC;
     }
 
+    public String getPOSTDESCRIPTION() {
+        return POSTDESCRIPTION;
+    }
+
     public String getPOSTIMAGES() {
         return POSTIMAGES;
+    }
+
+    public String getPOSTTIME() {
+        return POSTTIME;
+    }
+
+    public String getCOMMENTCOUNT() {
+        return COMMENTCOUNT;
+    }
+
+    public String getLIKECOUNT() {
+        return LIKECOUNT;
     }
 }

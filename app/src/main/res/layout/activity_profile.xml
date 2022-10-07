@@ -5,9 +5,9 @@
     android:id="@+id/WholeProfileConstrainLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:backgroundTint="#EFEAEA"
+    android:backgroundTint="#FFFF"
     tools:context=".ProfileActivity"
-    tools:ignore="HardcodedText">
+    android:screenOrientation="portrait">
 
     <TextView
         android:id="@+id/TextviewEmpty"
@@ -87,7 +87,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/UpperProfileConstraintLayout">
+        app:layout_constraintTop_toBottomOf="@+id/UpperProfileConstraintLayout"
+        app:layout_constraintVertical_bias="0.0">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerVV"

@@ -49,9 +49,27 @@
                     android:layout_marginStart="7dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="0 min" />
+                    android:text="0 min"
+                    android:textColor="@color/gray"/>
+
 
             </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <ImageButton
+                    android:id="@+id/upostoption"
+                    android:layout_width="29dp"
+                    android:layout_height="30dp"
+                    android:layout_marginStart="20dp"
+                    android:background="@drawable/ic_moreoption"/>
+
+            </LinearLayout>
+
+
 
             <TextView
                 android:id="@+id/uuserId"
@@ -81,31 +99,33 @@
         <ImageView
             android:id="@+id/pimagetv"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:scaleType="fitCenter"
             android:background="@color/white" />
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="20dp"
             android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/plikeb"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="20dp"
                 android:layout_weight="1"
-                android:text="0 Likes"
-                android:textColor="@color/colorPrimary" />
+                android:text="0 Like"
+                android:textColor="@color/colorPrimary"
+                android:textSize="15dp"/>
 
             <TextView
                 android:id="@+id/pcommentco"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="20dp"
                 android:layout_weight="1"
-                android:text="0 Comments"
+                android:text="0 Comment"
                 android:textAlignment="textEnd"
-                android:textColor="@color/colorPrimary" />
+                android:textColor="@color/colorPrimary"
+                android:textSize="15dp"/>
         </LinearLayout>
 
         <View
@@ -122,12 +142,12 @@
             <Button
                 android:id="@+id/like"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="39dp"
                 android:layout_weight="1"
                 android:autoLink="all"
                 android:background="@color/white"
-                android:drawableStart="@drawable/ic_thumbs_up"
-                android:drawableLeft="@drawable/ic_thumbs_up"
+                android:drawableStart="@drawable/ic_thumbs_up_trans"
+                android:drawableLeft="@drawable/ic_thumbs_up_trans"
                 android:drawablePadding="@dimen/about_icon_padding"
                 android:padding="5dp"
                 android:text="Like"
@@ -136,12 +156,13 @@
             <Button
                 android:id="@+id/comment"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="39dp"
                 android:layout_weight="1"
                 android:autoLink="all"
                 android:background="@color/white"
                 android:drawableStart="@drawable/ic_add_comment"
                 android:drawableLeft="@drawable/ic_add_comment"
+                android:drawablePadding="@dimen/about_icon_padding"
                 android:padding="5dp"
                 android:text="COMMENT"
                 android:textColor="#4479D0" />

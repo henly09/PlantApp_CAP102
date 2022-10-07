@@ -8,7 +8,6 @@ import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
@@ -21,7 +20,6 @@ public class AddPhotoBottomDialogFragment extends BottomSheetDialogFragment {
 
     private TextView SelectTV;
     private TextView ViewTV;
-    private ImageView profileImage;
 
     private Intent profileintent;
 
@@ -40,7 +38,6 @@ public class AddPhotoBottomDialogFragment extends BottomSheetDialogFragment {
         // Here to get views and attach the listener
         SelectTV = view.findViewById(R.id.tv_btn_select_photo_gallery);
         ViewTV = view.findViewById(R.id.tv_btn_view_photo);
-        profileImage = view.findViewById(R.id.ImageProfilePost);
 
         SelectTV.setOnClickListener(view1 -> {
             if(ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.READ_EXTERNAL_STORAGE) !=

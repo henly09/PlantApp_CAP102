@@ -87,14 +87,27 @@
             android:visibility="gone"/>
 
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_comment"
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/viewcomment_swiperefreshlayout"
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="20dp"
             app:layout_constraintBottom_toTopOf="@+id/post_detail_comment"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/post_detail_desc" />
+            app:layout_constraintTop_toBottomOf="@+id/post_detail_desc">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_comment"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toTopOf="@+id/viewcomment_swiperefreshlayout"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/viewcomment_swiperefreshlayout" />
+
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/post_detail_currentuser_img"
