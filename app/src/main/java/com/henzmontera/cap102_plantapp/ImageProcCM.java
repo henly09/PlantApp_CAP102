@@ -3,7 +3,6 @@ package com.henzmontera.cap102_plantapp;
 // BSIT-4th-Year
 // Cap102-Project
 
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 
 import com.github.appintro.AppIntro;
@@ -14,8 +13,6 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 public class ImageProcCM extends AppIntro {
-
-    SQLiteDatabase myDB;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
