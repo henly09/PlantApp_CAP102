@@ -303,7 +303,7 @@ public class CMfragment extends Fragment {
             }
 
             DecimalFormat df = new DecimalFormat();
-            df.setMaximumFractionDigits(0);
+            df.setMaximumFractionDigits(2);
 
             String a = df.format(confidencesripeness[maxPosRipeness] * 100);
             String b = df.format(confidencessize[maxPosSize] * 100);

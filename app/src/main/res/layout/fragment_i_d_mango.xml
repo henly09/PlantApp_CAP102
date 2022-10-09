@@ -1,0 +1,397 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#F9fff4"
+    tools:context=".IPfragments.IDMangoFragment">
+
+    <com.kofigyan.stateprogressbar.StateProgressBar
+        android:id="@+id/levelfruitMI"
+        android:layout_width="348dp"
+        android:layout_height="8dp"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="12dp"
+        app:layout_constraintBottom_toTopOf="@+id/imageView33"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.488"
+        app:layout_constraintStart_toStartOf="parent"
+        app:spb_animateToCurrentProgressState="true"
+        app:spb_currentStateDescriptionColor="#9c9c9c"
+        app:spb_currentStateNumber="one"
+        app:spb_maxStateNumber="three"
+        app:spb_stateBackgroundColor="#BDBDBD"
+        app:spb_stateDescriptionColor="#808080"
+        app:spb_stateForegroundColor="#9c9c9c"
+        app:spb_stateNumberBackgroundColor="#808080"
+        app:spb_stateNumberForegroundColor="#eeeeee" />
+
+    <ImageView
+        android:id="@+id/imageView34"
+        android:layout_width="272dp"
+        android:layout_height="290dp"
+        android:layout_marginEnd="232dp"
+        android:layout_marginTop="-150dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/cm_overlay" />
+
+    <ImageView
+        android:id="@+id/imageView35"
+        android:layout_width="273dp"
+        android:layout_height="249dp"
+        android:layout_marginBottom="488dp"
+        android:layout_marginEnd="228dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/im_overlay" />
+
+    <ImageView
+        android:id="@+id/imageView36"
+        android:layout_width="272dp"
+        android:layout_height="290dp"
+        android:layout_marginStart="300dp"
+        android:layout_marginTop="90dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/am_overlay_2" />
+
+    <TextView
+        android:id="@+id/confidencesTextCM2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/classifiedCM"
+        android:layout_marginBottom="10dp"
+        android:layout_marginStart="20dp"
+        android:fontFamily="@font/montserratalternates_bolditalic"
+        android:text="Identify As:"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/levelfruitMI"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/highPercMI"
+        android:layout_width="30dp"
+        android:layout_height="25dp"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/highPercNameMI"
+        app:layout_constraintStart_toEndOf="@+id/confidencesTextCM5"
+        app:srcCompat="@drawable/info2" />
+
+    <TextView
+        android:id="@+id/highPercNameMI"
+        android:layout_width="76dp"
+        android:layout_height="25dp"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/confidencesTextAM"
+        android:layout_marginBottom="12dp"
+        android:layout_marginEnd="3dp"
+        android:layout_marginStart="32dp"
+        android:gravity="center|center_horizontal|center_vertical"
+        android:text="EMPTY%:"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/imageView31"
+        app:layout_constraintEnd_toStartOf="@+id/highpercbarMI"
+        app:layout_constraintHorizontal_bias="0.25"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/confidencesTextCM5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/classifiedCM"
+        android:layout_marginBottom="10dp"
+        android:layout_marginStart="20dp"
+        android:fontFamily="@font/montserratalternates_bolditalic"
+        android:text="Highest Percentage:"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/highPercNameMI"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/idAsMI"
+        android:layout_width="30dp"
+        android:layout_height="25dp"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/levelfruitMI"
+        app:layout_constraintStart_toEndOf="@+id/confidencesTextCM2"
+        app:srcCompat="@drawable/info2" />
+
+    <ProgressBar
+        android:id="@+id/AMpercProgBarMI"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="254dp"
+        android:layout_height="25dp"
+        android:layout_marginBottom="12dp"
+        android:layout_marginEnd="24dp"
+        android:progressDrawable="@drawable/custom_progress_bg"
+        app:layout_constraintBottom_toTopOf="@+id/imageView32"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/AMpercNoMI"
+        android:layout_width="76dp"
+        android:layout_height="25dp"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/confidencesTextAM"
+        android:layout_marginBottom="12dp"
+        android:gravity="center|center_vertical"
+        android:text="0%"
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/imageView32"
+        app:layout_constraintEnd_toEndOf="@+id/AMpercProgBarMI"
+        app:layout_constraintHorizontal_bias="0.488"
+        app:layout_constraintStart_toStartOf="@+id/AMpercProgBarMI" />
+
+    <TextView
+        android:id="@+id/sizesAM11"
+        android:layout_width="76dp"
+        android:layout_height="25dp"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/confidencesTextAM"
+        android:layout_marginBottom="12dp"
+        android:layout_marginStart="32dp"
+        android:gravity="center|center_vertical"
+        android:text="AMC%:"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/imageView32"
+        app:layout_constraintEnd_toStartOf="@+id/AMpercProgBarMI"
+        app:layout_constraintHorizontal_bias="0.142"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ProgressBar
+        android:id="@+id/IMpercProgBarMI"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="254dp"
+        android:layout_height="25dp"
+        android:layout_marginBottom="12dp"
+        android:layout_marginEnd="24dp"
+        android:progressDrawable="@drawable/custom_progress_bar_2"
+        app:layout_constraintBottom_toTopOf="@+id/AMpercProgBarMI"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/IMpercNoMI"
+        android:layout_width="76dp"
+        android:layout_height="25dp"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/confidencesTextAM"
+        android:layout_marginBottom="12dp"
+        android:gravity="center|center_vertical"
+        android:text="0%"
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/AMpercNoMI"
+        app:layout_constraintEnd_toEndOf="@+id/IMpercProgBarMI"
+        app:layout_constraintHorizontal_bias="0.488"
+        app:layout_constraintStart_toStartOf="@+id/IMpercProgBarMI" />
+
+    <TextView
+        android:id="@+id/sizesAM10"
+        android:layout_width="76dp"
+        android:layout_height="25dp"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/confidencesTextAM"
+        android:layout_marginBottom="12dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginStart="32dp"
+        android:gravity="center|center_vertical"
+        android:text="IMC%:"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/sizesAM11"
+        app:layout_constraintEnd_toStartOf="@+id/IMpercProgBarMI"
+        app:layout_constraintHorizontal_bias="0.428"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ProgressBar
+        android:id="@+id/CMpercProgBarMI"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="254dp"
+        android:layout_height="25dp"
+        android:layout_marginBottom="12dp"
+        android:layout_marginEnd="24dp"
+        android:progressDrawable="@drawable/custom_progress_bar_3"
+        app:layout_constraintBottom_toTopOf="@+id/IMpercProgBarMI"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <ProgressBar
+        android:id="@+id/highpercbarMI"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="254dp"
+        android:layout_height="25dp"
+        android:layout_marginBottom="12dp"
+        android:layout_marginEnd="24dp"
+        android:progressDrawable="@drawable/custom_progress_bar_id"
+        app:layout_constraintBottom_toTopOf="@+id/imageView31"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/sizesAM7"
+        android:layout_width="76dp"
+        android:layout_height="25dp"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/confidencesTextAM"
+        android:layout_marginBottom="12dp"
+        android:layout_marginStart="32dp"
+        android:gravity="center|center_horizontal|center_vertical"
+        android:text="CMC%:"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/sizesAM10"
+        app:layout_constraintEnd_toStartOf="@+id/CMpercProgBarMI"
+        app:layout_constraintHorizontal_bias="0.142"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/CMpercNoMI"
+        android:layout_width="76dp"
+        android:layout_height="25dp"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/confidencesTextAM"
+        android:layout_marginBottom="12dp"
+        android:gravity="center|center_vertical"
+        android:text="0%"
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/IMpercProgBarMI"
+        app:layout_constraintEnd_toEndOf="@+id/CMpercProgBarMI"
+        app:layout_constraintHorizontal_bias="0.477"
+        app:layout_constraintStart_toStartOf="@+id/CMpercProgBarMI" />
+
+    <TextView
+        android:id="@+id/highPercNoMI"
+        android:layout_width="76dp"
+        android:layout_height="25dp"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/confidencesTextAM"
+        android:layout_marginBottom="12dp"
+        android:gravity="center|center_vertical"
+        android:text="0%"
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/imageView31"
+        app:layout_constraintEnd_toEndOf="@+id/highpercbarMI"
+        app:layout_constraintHorizontal_bias="0.477"
+        app:layout_constraintStart_toStartOf="@+id/highpercbarMI" />
+
+    <TextView
+        android:id="@+id/confidencesTextCM4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/classifiedCM"
+        android:layout_marginBottom="10dp"
+        android:layout_marginStart="20dp"
+        android:fontFamily="@font/montserratalternates_bolditalic"
+        android:text="Confidences:"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/CMpercProgBarMI"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/confidialogMI"
+        android:layout_width="30dp"
+        android:layout_height="25dp"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/CMpercProgBarMI"
+        app:layout_constraintStart_toEndOf="@+id/confidencesTextCM4"
+        app:srcCompat="@drawable/info2" />
+
+    <ImageView
+        android:id="@+id/imageView31"
+        android:layout_width="360dp"
+        android:layout_height="28dp"
+        android:layout_marginBottom="12dp"
+        android:src="@drawable/divider"
+        app:layout_constraintBottom_toTopOf="@+id/confidencesTextCM4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.484"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView33"
+        android:layout_width="360dp"
+        android:layout_height="28dp"
+        android:layout_marginBottom="12dp"
+        android:src="@drawable/divider"
+        app:layout_constraintBottom_toTopOf="@+id/confidencesTextCM5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.484"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView30"
+        android:layout_width="360dp"
+        android:layout_height="28dp"
+        android:layout_marginBottom="12dp"
+        android:src="@drawable/divider"
+        app:layout_constraintBottom_toTopOf="@+id/confidencesTextCM2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.484"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView32"
+        android:layout_width="360dp"
+        android:layout_height="28dp"
+        android:layout_marginBottom="40dp"
+        android:src="@drawable/divider"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.484"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/buttonMI"
+        android:layout_width="160dp"
+        android:layout_height="45dp"
+        android:layout_below="@+id/imageViewCM"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="20dp"
+        android:backgroundTint="@android:color/holo_orange_dark"
+        android:text="Take Picture"
+        android:textAllCaps="false"
+        android:textColor="#FFFFFFFF"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/imageView30"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="TouchTargetSizeCheck" />
+
+    <ImageView
+        android:id="@+id/imageViewMI"
+        android:layout_width="330dp"
+        android:layout_height="330dp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/imageviewborderforid"
+        android:src="@drawable/cameraicon"
+        app:layout_constraintBottom_toTopOf="@+id/buttonMI"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.492"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

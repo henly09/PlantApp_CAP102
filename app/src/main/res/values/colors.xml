@@ -31,4 +31,7 @@
     <color name="darkgray">#404241</color>
     <color name="testgreen">#086019</color>
     <color name="colororangesemiyellow">#ee941e</color>
+    <color name="AM">#cf1a1c</color>
+    <color name="CM">#ee941e</color>
+    <color name="IM">#2da71b</color>
 </resources>
