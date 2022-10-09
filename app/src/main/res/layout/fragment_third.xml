@@ -35,27 +35,27 @@
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Handbook" />
+            android:text="➤ Handbook" />
 
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Mango Identifier" />
+            android:text="➤ Mango Identifier" />
 
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Apple Mango" />
+            android:text="➤ Apple Mango" />
 
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Carabao Mango" />
+            android:text="➤ Carabao Mango" />
 
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Indian Mango" />
+            android:text="➤ Indian Mango" />
 
     </com.google.android.material.tabs.TabLayout>
 
