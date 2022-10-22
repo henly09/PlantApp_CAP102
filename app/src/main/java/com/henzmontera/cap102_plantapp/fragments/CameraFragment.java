@@ -49,6 +49,7 @@ public class CameraFragment extends Fragment implements ImageClassifierHelper.Cl
     private ImageAnalysis imageAnalyzer;
     private ProcessCameraProvider cameraProvider;
     private final Object task = new Object();
+    private Preview preview;
 
     /**
      * Blocking camera operations are performed using this executor
@@ -237,37 +238,38 @@ public class CameraFragment extends Fragment implements ImageClassifierHelper.Cl
         }
 
         CameraSelector cameraSelector = cameraSelectorBuilder.requireLensFacing(Selected_Cam).build();
-
-
         // Preview. Only using the 4:3 ratio because this is the closest to
         // our model
 
-        Preview preview = new Preview.Builder()
-                .setTargetAspectRatio(AspectRatio.RATIO_4_3)
-                .setTargetRotation(
-                        fragmentCameraBinding.viewFinder.getDisplay().getRotation()
-                )
-                .build();
+        try {
+            preview = new Preview.Builder()
+                    .setTargetAspectRatio(AspectRatio.RATIO_4_3)
+                    .setTargetRotation(
+                            fragmentCameraBinding.viewFinder.getDisplay().getRotation()
+                    )
+                    .build();
+            // ImageAnalysis. Using RGBA 8888 to match how our models work
+            imageAnalyzer = new ImageAnalysis.Builder()
+                    .setTargetAspectRatio(AspectRatio.RATIO_4_3)
+                    .setTargetRotation(fragmentCameraBinding.viewFinder.getDisplay().getRotation())
+                    .setBackpressureStrategy(ImageAnalysis.STRATEGY_KEEP_ONLY_LATEST)
+                    .setOutputImageFormat(ImageAnalysis.OUTPUT_IMAGE_FORMAT_RGBA_8888)
+                    .build();
 
+            // The analyzer can then be assigned to the instance
+            imageAnalyzer.setAnalyzer(cameraExecutor, image -> {
+                if (bitmapBuffer == null) {
+                    bitmapBuffer = Bitmap.createBitmap(
+                            image.getWidth(),
+                            image.getHeight(),
+                            Bitmap.Config.ARGB_8888);
+                }
+                classifyImage(image);
+            });
 
-        // ImageAnalysis. Using RGBA 8888 to match how our models work
-        imageAnalyzer = new ImageAnalysis.Builder()
-                .setTargetAspectRatio(AspectRatio.RATIO_4_3)
-                .setTargetRotation(fragmentCameraBinding.viewFinder.getDisplay().getRotation())
-                .setBackpressureStrategy(ImageAnalysis.STRATEGY_KEEP_ONLY_LATEST)
-                .setOutputImageFormat(ImageAnalysis.OUTPUT_IMAGE_FORMAT_RGBA_8888)
-                .build();
-
-        // The analyzer can then be assigned to the instance
-        imageAnalyzer.setAnalyzer(cameraExecutor, image -> {
-            if (bitmapBuffer == null) {
-                bitmapBuffer = Bitmap.createBitmap(
-                        image.getWidth(),
-                        image.getHeight(),
-                        Bitmap.Config.ARGB_8888);
-            }
-            classifyImage(image);
-        });
+        } catch (Exception e) {
+            Toast.makeText(getContext(), "There's no Camera Available. Try Again Later!", Toast.LENGTH_SHORT).show();
+        }
 
         // Must unbind the use-cases before rebinding them
         cameraProvider.unbindAll();
