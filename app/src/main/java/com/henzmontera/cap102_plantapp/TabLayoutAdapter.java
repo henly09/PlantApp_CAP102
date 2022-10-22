@@ -25,9 +25,9 @@ public class TabLayoutAdapter extends FragmentStateAdapter {
             case 0:
                 return new Homefragment();
             case 1:
-                return new IDMangoFragment();
-            case 2:
                 return new RealTimeFragment();
+            case 2:
+                return new IDMangoFragment();
             case 3:
                 return new AMfragment();
             case 4:

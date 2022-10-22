@@ -1,7 +1,5 @@
 package com.henzmontera.cap102_plantapp.fragments;
 
-
-
 import android.annotation.SuppressLint;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
@@ -91,8 +89,8 @@ public class ClassificationResultAdapter
                         name = "Apple Mango";
                         break;
                 }
-                tvLabel.setText(name);
-                tvScore.setText(String.format(Locale.US, "%.2f", category.getScore() * 100) + "%");
+                tvLabel.setText("ID: "+name);
+                tvScore.setText("Confidence: "+String.format(Locale.US, "%.2f", category.getScore() * 100) + "%");
             } else {
                 tvLabel.setText(NO_VALUE);
                 tvScore.setText(NO_VALUE);
