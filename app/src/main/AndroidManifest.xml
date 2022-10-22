@@ -2,12 +2,17 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.henzmontera.cap102_plantapp" >
+    xmlns:dist="http://schemas.android.com/apk/distribution"
+    package="com.henzmontera.cap102_plantapp">
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.CAMERA"/>
     <uses-permission android:name="android.permission.INTERNET" />
 
+    <!-- Enable instant app support -->
+    <dist:module dist:instant="true" />
+
+    <!-- Declare features -->
     <uses-feature android:name="android.hardware.camera" />
     <uses-feature android:name="android.hardware.camera.autofocus" />
 
@@ -97,6 +102,11 @@
             android:exported="true">
 
         </activity>
+
+        <!-- Declare notch support -->
+        <meta-data
+            android:name="android.notch_support"
+            android:value="true" />
     </application>
 
 </manifest>

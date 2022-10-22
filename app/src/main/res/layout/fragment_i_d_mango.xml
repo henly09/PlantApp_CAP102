@@ -92,7 +92,7 @@
         android:layout_alignParentStart="true"
         android:layout_below="@+id/confidencesTextAM"
         android:layout_marginBottom="12dp"
-        android:layout_marginEnd="3dp"
+        android:layout_marginEnd="5dp"
         android:layout_marginStart="32dp"
         android:gravity="center|center_horizontal|center_vertical"
         android:text="EMPTY%:"
@@ -100,7 +100,7 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/imageView31"
         app:layout_constraintEnd_toStartOf="@+id/highpercbarMI"
-        app:layout_constraintHorizontal_bias="0.25"
+        app:layout_constraintHorizontal_bias="0.550"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
@@ -152,7 +152,7 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/imageView32"
         app:layout_constraintEnd_toEndOf="@+id/AMpercProgBarMI"
-        app:layout_constraintHorizontal_bias="0.488"
+        app:layout_constraintStart_toEndOf="@+id/sizesAM11"
         app:layout_constraintStart_toStartOf="@+id/AMpercProgBarMI" />
 
     <TextView
@@ -162,6 +162,7 @@
         android:layout_alignParentStart="true"
         android:layout_below="@+id/confidencesTextAM"
         android:layout_marginBottom="12dp"
+        android:layout_marginEnd="5dp"
         android:layout_marginStart="32dp"
         android:gravity="center|center_vertical"
         android:text="AMC%:"
@@ -169,7 +170,7 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/imageView32"
         app:layout_constraintEnd_toStartOf="@+id/AMpercProgBarMI"
-        app:layout_constraintHorizontal_bias="0.142"
+        app:layout_constraintHorizontal_bias="0.428"
         app:layout_constraintStart_toStartOf="parent" />
 
     <ProgressBar
@@ -187,17 +188,14 @@
         android:id="@+id/IMpercNoMI"
         android:layout_width="76dp"
         android:layout_height="25dp"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/confidencesTextAM"
         android:layout_marginBottom="12dp"
-        android:gravity="center|center_vertical"
+        android:gravity="center"
         android:text="0%"
         android:textColor="@color/black"
         android:textSize="14sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/AMpercNoMI"
+        app:layout_constraintBottom_toTopOf="@+id/AMpercProgBarMI"
         app:layout_constraintEnd_toEndOf="@+id/IMpercProgBarMI"
-        app:layout_constraintHorizontal_bias="0.488"
         app:layout_constraintStart_toStartOf="@+id/IMpercProgBarMI" />
 
     <TextView
@@ -207,7 +205,7 @@
         android:layout_alignParentStart="true"
         android:layout_below="@+id/confidencesTextAM"
         android:layout_marginBottom="12dp"
-        android:layout_marginEnd="4dp"
+        android:layout_marginEnd="5dp"
         android:layout_marginStart="32dp"
         android:gravity="center|center_vertical"
         android:text="IMC%:"
@@ -247,6 +245,7 @@
         android:layout_alignParentStart="true"
         android:layout_below="@+id/confidencesTextAM"
         android:layout_marginBottom="12dp"
+        android:layout_marginEnd="5dp"
         android:layout_marginStart="32dp"
         android:gravity="center|center_horizontal|center_vertical"
         android:text="CMC%:"
@@ -254,41 +253,38 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/sizesAM10"
         app:layout_constraintEnd_toStartOf="@+id/CMpercProgBarMI"
-        app:layout_constraintHorizontal_bias="0.142"
+        app:layout_constraintHorizontal_bias="0.428"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/CMpercNoMI"
         android:layout_width="76dp"
         android:layout_height="25dp"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/confidencesTextAM"
         android:layout_marginBottom="12dp"
-        android:gravity="center|center_vertical"
+        android:layout_marginEnd="89dp"
+        android:layout_marginStart="89dp"
+        android:gravity="center"
         android:text="0%"
         android:textColor="@color/black"
         android:textSize="14sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/IMpercProgBarMI"
         app:layout_constraintEnd_toEndOf="@+id/CMpercProgBarMI"
-        app:layout_constraintHorizontal_bias="0.477"
         app:layout_constraintStart_toStartOf="@+id/CMpercProgBarMI" />
 
     <TextView
         android:id="@+id/highPercNoMI"
         android:layout_width="76dp"
         android:layout_height="25dp"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/confidencesTextAM"
-        android:layout_marginBottom="12dp"
-        android:gravity="center|center_vertical"
+        android:layout_marginBottom="13dp"
+        android:gravity="center"
         android:text="0%"
         android:textColor="@color/black"
         android:textSize="14sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/imageView31"
         app:layout_constraintEnd_toEndOf="@+id/highpercbarMI"
-        app:layout_constraintHorizontal_bias="0.477"
+        app:layout_constraintStart_toEndOf="@+id/highPercNameMI"
         app:layout_constraintStart_toStartOf="@+id/highpercbarMI" />
 
     <TextView

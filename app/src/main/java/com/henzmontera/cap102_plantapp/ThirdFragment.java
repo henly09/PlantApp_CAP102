@@ -32,8 +32,6 @@ public class ThirdFragment extends Fragment {
         tabLayoutAdapter = new TabLayoutAdapter(getActivity());
         viewPager2.setAdapter(tabLayoutAdapter);
 
-
-
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {

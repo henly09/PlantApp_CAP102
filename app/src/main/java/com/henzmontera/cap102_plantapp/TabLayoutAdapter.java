@@ -5,6 +5,7 @@ import com.henzmontera.cap102_plantapp.IPfragments.CMfragment;
 import com.henzmontera.cap102_plantapp.IPfragments.Homefragment;
 import com.henzmontera.cap102_plantapp.IPfragments.IDMangoFragment;
 import com.henzmontera.cap102_plantapp.IPfragments.IMfragment;
+import com.henzmontera.cap102_plantapp.IPfragments.RealTimeFragment;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -26,10 +27,12 @@ public class TabLayoutAdapter extends FragmentStateAdapter {
             case 1:
                 return new IDMangoFragment();
             case 2:
-                return new AMfragment();
+                return new RealTimeFragment();
             case 3:
-                return new CMfragment();
+                return new AMfragment();
             case 4:
+                return new CMfragment();
+            case 5:
                 return new IMfragment();
             default:
                 return new Homefragment();
@@ -38,7 +41,7 @@ public class TabLayoutAdapter extends FragmentStateAdapter {
 
     @Override
     public int getItemCount() {
-        return 5;
+        return 6;
     }
 
 }
