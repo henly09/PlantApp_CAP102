@@ -45,7 +45,7 @@ public class AboutAuthor extends AppCompatActivity {
                 .addGitHub("alvinbula24", "John Alvin Bula")
                 .addGitHub("henly09", "John Henly A. Montera")
                 .addGroup("App's Source Code")
-                .addGitHub("henly09/tensorflow-lite-tester", "Source Code")
+                .addGitHub("henly09/PlantApp_CAP102", "Source Code")
                 .addItem(createCopyright())
                 .create();
 
