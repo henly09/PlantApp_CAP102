@@ -3,6 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/comment_box"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="#f4f4f4"
@@ -66,4 +67,41 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/comment_username"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:textSize="0sp"
+        android:id="@+id/comment_commentid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#969595"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <TextView
+        android:textSize="0sp"
+        android:id="@+id/comment_postid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#969595"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <TextView
+        android:textSize="0sp"
+        android:id="@+id/comment_commenter_userid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#969595"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -29,12 +29,12 @@ import com.android.volley.toolbox.Volley;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.StringTokenizer;
 
 public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ListViewHolder>{
 
     private Context context;
     private List<ListPost> LISTPOSTS;
-
 
     public PostAdapter(Context context, List<ListPost> LISTPOSTS) {
         this.context = context;
@@ -42,14 +42,11 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ListViewHolder
     }
 
     public class ListViewHolder extends RecyclerView.ViewHolder {
-
-
         private TextView UPostNameTV, UPostTimeTV, UPostDesc, UPostLikeC, UPostCommentC, UPostID, UPostUserId;
         private ImageView UPostProfPic;
         private ImageView UPostImage;
         private ImageButton UMoreOption;
         private Button ULikeButton, UCommentButton;
-        private PostAdapter postAdapter;
         private SessionManager sessionManager;
 
         public ListViewHolder(@NonNull View itemView) {
@@ -113,12 +110,37 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ListViewHolder
                 bundle.putString("userid", userid);
                 bundle.putString("postid", postid);
 
-                MoreOptionBottomDialogFragment moreoptionBottomDialogFragment =
-                        MoreOptionBottomDialogFragment.newInstance();
+                MoreOptionBottomDialogFragment moreoptionBottomDialogFragment = MoreOptionBottomDialogFragment.newInstance();
                 moreoptionBottomDialogFragment.setArguments(bundle);
                 moreoptionBottomDialogFragment.show(((FragmentActivity)context).getSupportFragmentManager(),
                         "more_option_dialog_fragment");
             });
+        }
+
+        private void UpdateLike(){  // Update object
+            String likeC = UPostLikeC.getText().toString();
+            StringTokenizer tokens = new StringTokenizer(likeC);
+            String count = tokens.nextToken();
+            int totallike = Integer.parseInt(count) + 1;
+            String likeCount = String.valueOf(totallike);
+            if(totallike<=1){
+                UPostLikeC.setText(likeCount + " Like");
+            } else {
+                UPostLikeC.setText(likeCount + " Likes");
+            }
+        }
+
+        private void UpdateUnLike(){ //Update object
+            String likeC = UPostLikeC.getText().toString();
+            StringTokenizer tokens = new StringTokenizer(likeC);
+            String count = tokens.nextToken();
+            int totallike = Integer.parseInt(count) - 1;
+            String likeCount = String.valueOf(totallike);
+            if(totallike<=1){
+                UPostLikeC.setText(likeCount + " Like");
+            } else {
+                UPostLikeC.setText(likeCount + " Likes");
+            }
         }
 
         private void Like(String userid, String postid){
@@ -126,18 +148,19 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ListViewHolder
             Log.d("postid:", postid+"");
 
                 if (sessionManager.isLoggin()) {
-                    String StoreURL = "http://192.168.254.107/networkingbased/LikePost.php";
+                    String StoreURL = context.getString(R.string.Like);
                     RequestQueue q = Volley.newRequestQueue(context);
                     StringRequest r = new StringRequest(
                             Request.Method.POST,
                             StoreURL,
                             response -> {
                                 try {
-                                    if(response.equals("CANT ACCEPT EXISTING LIKE")){
+                                    if(response.equals("CANT ACCEPT EXISTING LIKE") || response.equals("Subquery returns more than 1 row")){
                                         Toast.makeText(context, "Unlike", Toast.LENGTH_SHORT).show();
                                         Unlike(userid, postid);
                                     } else {
                                         Toast.makeText(context, "Liked!", Toast.LENGTH_SHORT).show();
+                                        UpdateLike();
                                     }
                                 } catch (Exception e) {
                                     Toast.makeText(context, e + "", Toast.LENGTH_SHORT).show();
@@ -160,13 +183,14 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ListViewHolder
 
         private void Unlike(String userid, String postid){
             if (sessionManager.isLoggin()) {
-                String StoreURL = "http://192.168.254.107/networkingbased/UnlikePost.php";
+                String StoreURL = context.getString(R.string.Unlike);
                 RequestQueue q = Volley.newRequestQueue(context);
                 StringRequest r = new StringRequest(
                         Request.Method.POST,
                         StoreURL,
                         response -> {
                             try {
+                                UpdateUnLike();
                             } catch (Exception e) {
                                 Toast.makeText(context, e + "", Toast.LENGTH_SHORT).show();
                             }
@@ -202,7 +226,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ListViewHolder
 
         holder.UPostTimeTV.setText(LISTPOSTS.get(position).getPOSTTIME());  // Time Stamp
 
-        if(LISTPOSTS.get(position).getCOMMENTCOUNT().isEmpty()){ // If Empty, set 0
+        if(LISTPOSTS.get(position).getCOMMENTCOUNT().isEmpty() || LISTPOSTS.get(position).getCOMMENTCOUNT().equals("0")){ // If Empty, set 0
             holder.UPostCommentC.setText("0 Comment");
         } else if(LISTPOSTS.get(position).getCOMMENTCOUNT().equals("1")){
             holder.UPostCommentC.setText(LISTPOSTS.get(position).getCOMMENTCOUNT() + " Comment");
@@ -210,7 +234,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ListViewHolder
             holder.UPostCommentC.setText(LISTPOSTS.get(position).getCOMMENTCOUNT() + " Comments"); // Comment Count
         }
 
-        if(LISTPOSTS.get(position).getLIKECOUNT().isEmpty()){ // If Empty set 0
+        if(LISTPOSTS.get(position).getLIKECOUNT().isEmpty() || LISTPOSTS.get(position).getLIKECOUNT().equals("0")){ // If Empty set 0
             holder.UPostLikeC.setText("0 Like");
         } else if(LISTPOSTS.get(position).getLIKECOUNT().equals("1")){
             holder.UPostLikeC.setText(LISTPOSTS.get(position).getLIKECOUNT() + " Like");
@@ -247,7 +271,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ListViewHolder
     }
 
     //Convert from String to Bitmap Image
-    private Bitmap StringtoImage(String string){
+    private Bitmap StringtoImage(String string) {
         byte[] decodedString = Base64.decode(string, Base64.DEFAULT);
         Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
         return decodedByte;

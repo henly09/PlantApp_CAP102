@@ -74,7 +74,7 @@ public class MoreOptionBottomDialogFragment extends BottomSheetDialogFragment {
     }
 
     private void DeletePost(String userid, String postid){
-        String url = "http://192.168.254.107/networkingbased/DeletePost.php";
+        String url = getString(R.string.DeletePost);
 
         RequestQueue q = Volley.newRequestQueue(getActivity());
 

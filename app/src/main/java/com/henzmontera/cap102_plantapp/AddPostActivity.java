@@ -136,7 +136,7 @@ public class AddPostActivity extends AppCompatActivity {
     }
 
     private void Posting(String id , String desc, String image){
-        String url = "http://192.168.254.107/networkingbased/AddPost.php";
+        String url = getString(R.string.AddPost);
         RequestQueue q = Volley.newRequestQueue(AddPostActivity.this);
         StringRequest r = new StringRequest( //Request String type
                 Request.Method.POST, //Get or Retrieve only Method of request

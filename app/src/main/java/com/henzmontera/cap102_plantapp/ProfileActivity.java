@@ -132,7 +132,7 @@ public class ProfileActivity extends AppCompatActivity {
     }
 
     private void DisplayPost(String id){ // Display the Results of loaded datasets
-        String url = "http://192.168.254.107/networkingbased/DisplayUserProfile.php";
+        String url = getString(R.string.DisplayProfilePost);
 
         RequestQueue q = Volley.newRequestQueue(ProfileActivity.this);
 
@@ -207,7 +207,7 @@ public class ProfileActivity extends AppCompatActivity {
     }
 
     private void saveProfilePicture(String Userid){
-        String StoreURL = "http://192.168.254.107/networkingbased/ChangeProfilePicture.php";
+        String StoreURL = getString(R.string.SaveProfilePicture);
         RequestQueue q = Volley.newRequestQueue(ProfileActivity.this);
         StringRequest r = new StringRequest(
                 Request.Method.POST,

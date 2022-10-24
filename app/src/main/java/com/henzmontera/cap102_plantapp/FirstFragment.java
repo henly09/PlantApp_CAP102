@@ -76,7 +76,7 @@ public class FirstFragment extends Fragment {
     }
 
     public void GetLatestPost(){
-        String url = "http://192.168.254.107/networkingbased/DisplayLatestPost.php";
+        String url = getString(R.string.GetLatestPost);
         RequestQueue q = Volley.newRequestQueue(getActivity());
         StringRequest r = new StringRequest( //Request String type
                 Request.Method.GET, //Get or Retrieve only Method of request

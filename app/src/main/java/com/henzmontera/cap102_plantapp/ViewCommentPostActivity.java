@@ -101,7 +101,7 @@ public class ViewCommentPostActivity extends AppCompatActivity {
             currentUserPicture.setBackgroundResource(R.mipmap.ic_nature_foreground);
             currentUserCommentTextView.setFocusable(false);
             currentUserCommentTextView.setText("Comment is disable");
-            currentUserCommentTextView.setTextColor( Color.parseColor("#B2BEB5"));
+            currentUserCommentTextView.setTextColor(Color.parseColor("#B2BEB5"));
         } else {    // Else, User's profile picture
             String imageString = user.get(sessionManager.UIMAGE);
             currentUserPicture.setImageBitmap(StringtoImage(imageString));
@@ -117,7 +117,7 @@ public class ViewCommentPostActivity extends AppCompatActivity {
     }
 
     private void GetUserPost(String id){
-        String StoreURL = "http://192.168.254.107/networkingbased/DisplayCurrentUserPost.php";
+        String StoreURL = getString(R.string.GetUserPost);
         RequestQueue q = Volley.newRequestQueue(ViewCommentPostActivity.this);
         StringRequest r = new StringRequest(
                 Request.Method.POST,
@@ -164,8 +164,8 @@ public class ViewCommentPostActivity extends AppCompatActivity {
         q.add(r);
     }
 
-    private void GetLatestComments(String postid){
-        String StoreURL = "http://192.168.254.107/networkingbased/DisplayLatestComment.php";
+    public void GetLatestComments(String postid){
+        String StoreURL = getString(R.string.GetLatestComments);
         RequestQueue q = Volley.newRequestQueue(ViewCommentPostActivity.this);
         StringRequest r = new StringRequest(
                 Request.Method.POST,
@@ -212,7 +212,7 @@ public class ViewCommentPostActivity extends AppCompatActivity {
         if(guest.get(sessionManager.GNAME).equals("UserGuest000")){
             Toast.makeText(this, "Please login or register to comment", Toast.LENGTH_SHORT).show();
         } else {
-            String StoreURL = "http://192.168.254.107/networkingbased/AddComment.php";
+            String StoreURL = getString(R.string.AddComment);
             RequestQueue q = Volley.newRequestQueue(ViewCommentPostActivity.this);
             StringRequest r = new StringRequest(
                     Request.Method.POST,

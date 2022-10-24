@@ -132,7 +132,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private void LoginAuthenticate(String User, String Pass){
         try{
-            String url = "http://192.168.254.107/networkingbased/LoginUser.php";
+            String url = getString(R.string.Login);
 
             RequestQueue q = Volley.newRequestQueue(LoginActivity.this);
 

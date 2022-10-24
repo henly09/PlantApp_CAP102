@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/dp_8"
+    android:layout_marginTop="@dimen/dp_8"
+    android:id="@+id/more_option_linear"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/more_option_comment_Report"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginEnd="@dimen/dp_16"
+        android:layout_marginStart="@dimen/dp_16"
+        android:backgroundTint="@android:color/white"
+        android:drawablePadding="@dimen/dp_32"
+        android:drawableStart="@drawable/ic_report_flag"
+        android:drawableTint="@color/black"
+        android:gravity="start|center_vertical"
+        android:text="Report"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/more_option_comment_Copy"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginEnd="@dimen/dp_16"
+        android:layout_marginStart="@dimen/dp_16"
+        android:backgroundTint="@android:color/white"
+        android:drawablePadding="@dimen/dp_32"
+        android:drawableStart="@drawable/ic_copy_paste"
+        android:drawableTint="@color/black"
+        android:gravity="start|center_vertical"
+        android:text="Copy"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/more_option_comment_Delete"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginEnd="@dimen/dp_16"
+        android:layout_marginStart="@dimen/dp_16"
+        android:backgroundTint="@android:color/white"
+        android:drawablePadding="@dimen/dp_32"
+        android:drawableStart="@drawable/ic_delete"
+        android:drawableTint="@color/black"
+        android:gravity="start|center_vertical"
+        android:text="Delete"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/more_option_comment_Edit"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginEnd="@dimen/dp_16"
+        android:layout_marginStart="@dimen/dp_16"
+        android:backgroundTint="@android:color/white"
+        android:drawablePadding="@dimen/dp_32"
+        android:drawableStart="@drawable/ic_edit"
+        android:drawableTint="@color/black"
+        android:gravity="start|center_vertical"
+        android:text="Edit"
+        android:textSize="16sp" />
+</LinearLayout>

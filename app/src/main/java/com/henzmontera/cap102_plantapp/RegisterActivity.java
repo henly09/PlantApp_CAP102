@@ -53,7 +53,7 @@ public class RegisterActivity extends AppCompatActivity {
         //Register New User
         RegisterButton.setOnClickListener(view -> {
             if(EditPass.getText().toString().equals(EditConfirmPass.getText().toString())){
-                String url = "http://192.168.254.107/networkingbased/RegisterUser.php";
+                String url = getString(R.string.Register);
                 RequestQueue request = Volley.newRequestQueue(RegisterActivity.this);
                 StringRequest RRequest = new StringRequest(
                         Request.Method.POST,

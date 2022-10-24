@@ -20,7 +20,21 @@
     <string name="menu_home">Home</string>
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
-
+<!--   DOMAIN   -->
+    <string name="GetLatestPost">http://192.168.254.100/networkingbased/DisplayLatestPost.php</string>
+    <string name="DeleteComment">http://192.168.254.100/networkingbased/DeleteComment.php</string>
+    <string name="Login">http://192.168.254.100/networkingbased/LoginUser.php</string>
+    <string name="Register">http://192.168.254.100/networkingbased/RegisterUser.php</string>
+    <string name="DeletePost">http://192.168.254.100/networkingbased/DeletePost.php</string>
+    <string name="Like">http://192.168.254.100/networkingbased/LikePost.php</string>
+    <string name="Unlike">http://192.168.254.100/networkingbased/UnlikePost.php</string>
+    <string name="DisplayProfilePost">http://192.168.254.100/networkingbased/DisplayUserProfile.php</string>
+    <string name="SaveProfilePicture">http://192.168.254.100/networkingbased/ChangeProfilePicture.php</string>
+    <string name="AddPost">http://192.168.254.100/networkingbased/AddPost.php</string>
+    <string name="GetUserPost">http://192.168.254.100/networkingbased/DisplayCurrentUserPost.php</string>
+    <string name="GetLatestComments">http://192.168.254.100/networkingbased/DisplayLatestComment.php</string>
+    <string name="AddComment">http://192.168.254.100/networkingbased/AddComment.php</string>
+<!--   DOMAIN   -->
     <string name="intro">In an agricultural system, trees provide a variety of purposes in general.
         Through the production of fruits, vegetables, starch, and fodder, trees directly support the
         nutritional needs of families, communities, and livestock. In terms of the environment, trees
