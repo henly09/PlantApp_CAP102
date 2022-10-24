@@ -1,5 +1,9 @@
 package com.henzmontera.cap102_plantapp.IPfragments;
 
+// Developed by: John Henly A. Montera
+// BSIT-4th-Year
+// Cap102-Project
+
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;

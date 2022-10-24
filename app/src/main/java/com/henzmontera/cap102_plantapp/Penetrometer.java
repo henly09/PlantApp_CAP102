@@ -1,5 +1,9 @@
 package com.henzmontera.cap102_plantapp;
 
+// Developed by: John Henly A. Montera
+// BSIT-4th-Year
+// Cap102-Project
+
 import android.os.Bundle;
 
 import com.github.appintro.AppIntro;

@@ -1,5 +1,9 @@
 package com.henzmontera.cap102_plantapp;
 
+// Developed by: John Henly A. Montera
+// BSIT-4th-Year
+// Cap102-Project
+
 import com.henzmontera.cap102_plantapp.IPfragments.AMfragment;
 import com.henzmontera.cap102_plantapp.IPfragments.CMfragment;
 import com.henzmontera.cap102_plantapp.IPfragments.Homefragment;

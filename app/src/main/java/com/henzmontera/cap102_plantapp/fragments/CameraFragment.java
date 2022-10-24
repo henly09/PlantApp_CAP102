@@ -1,5 +1,9 @@
 package com.henzmontera.cap102_plantapp.fragments;
 
+// Developed by: John Henly A. Montera
+// BSIT-4th-Year
+// Cap102-Project
+
 import android.content.res.Configuration;
 import android.graphics.Bitmap;
 import android.os.Bundle;
