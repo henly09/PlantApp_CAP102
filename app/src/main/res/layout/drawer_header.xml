@@ -3,7 +3,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="192dp"
-    android:background="@drawable/headerdrawer"
     android:padding="16dp"
     android:screenOrientation="portrait">
 
@@ -12,5 +11,5 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        app:srcCompat="@drawable/highresheaderlogo" />
+        app:srcCompat="@drawable/intrologo2" />
 </LinearLayout>
