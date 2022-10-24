@@ -21,22 +21,25 @@
 
             <androidx.constraintlayout.utils.widget.ImageFilterButton
                 android:id="@+id/backbuttonpost"
-                android:layout_width="29dp"
+                android:layout_width="30dp"
                 android:layout_height="29dp"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="10dp"
                 android:adjustViewBounds="true"
                 android:background="@drawable/ic_blackbackarrow"
                 android:scaleType="center" />
 
-            <TextView
+            <Button
                 android:id="@+id/ButtonPostText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentEnd="true"
                 android:layout_marginTop="0dp"
-                android:layout_marginEnd="30dp"
+                android:layout_marginEnd="10dp"
+                android:backgroundTint="#99d799"
                 android:text="Post"
-                android:textColor="#000"
+                android:textColor="#9DC868"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
@@ -46,17 +49,17 @@
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/ImageProfilePost"
-        android:layout_width="109dp"
-        android:layout_height="109dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:layout_below="@+id/uploadToolbar"
         android:layout_alignParentStart="true"
         android:layout_marginStart="16dp"
         android:layout_marginTop="22dp"
+        android:src="@mipmap/ic_nature_foreground"
         android:translationZ="@dimen/activity_horizontal_margin"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        android:src="@mipmap/ic_nature_foreground" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/EditTextDescriptionMessagesInput"
@@ -103,12 +106,13 @@
 
     <TextView
         android:id="@+id/userPostTextView"
-        android:layout_width="249dp"
-        android:layout_height="104dp"
+        android:layout_width="307dp"
+        android:layout_height="50dp"
         android:layout_below="@+id/uploadToolbar"
         android:layout_alignParentEnd="true"
         android:layout_marginTop="22dp"
         android:layout_marginEnd="7dp"
-        android:text="TextView" />
+        android:text="TextView"
+        android:textSize="18dp" />
 
 </RelativeLayout>

@@ -11,6 +11,8 @@ import android.media.ThumbnailUtils;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Base64;
 import android.util.Log;
 import android.widget.Button;
@@ -38,7 +40,7 @@ public class AddPostActivity extends AppCompatActivity {
 
     private ImageView ProfilePicThread;
     private MultiImageView SelectedImages;
-    private TextView PostText;
+    private Button PostButton;
     private TextView UserTextView;
     private EditText EditTextDescriptionWriteMessage;
     private Button AddImageButtonThread;
@@ -55,7 +57,7 @@ public class AddPostActivity extends AppCompatActivity {
         ProfilePicThread = findViewById(R.id.ImageProfilePost);
         SelectedImages = findViewById(R.id.pimagetv);
         UserTextView = findViewById(R.id.userPostTextView);
-        PostText = findViewById(R.id.ButtonPostText);
+        PostButton = findViewById(R.id.ButtonPostText);
         EditTextDescriptionWriteMessage = findViewById(R.id.EditTextDescriptionMessagesInput);
         AddImageButtonThread = findViewById(R.id.AddImageButton);
         backButtonPost = findViewById(R.id.backbuttonpost);
@@ -73,27 +75,45 @@ public class AddPostActivity extends AppCompatActivity {
             ProfilePicThread.setImageBitmap(StringtoImage(img));
         }
 
-        PostText.setOnClickListener(view ->{
-            if(bitmap != null && !EditTextDescriptionWriteMessage.getText().toString().isEmpty()){ // Description and Picture
-                String id = user.get(sessionManager.UID);//Retrieve User's Id
-                String description = EditTextDescriptionWriteMessage.getText().toString();//Get Description
-                String imageString = imageToString(bitmap); // Get Image
-                Posting(id, description, imageString);
+        if(EditTextDescriptionWriteMessage.getText().toString().isEmpty() || bitmap.equals(null)){
+            PostButton.setEnabled(false);
+        }
+        EditTextDescriptionWriteMessage.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
             }
-            if(bitmap == null){ //Only Description
-                String id = user.get(sessionManager.UID);
-                String description = EditTextDescriptionWriteMessage.getText().toString();
-                String imageString = "";
-                Posting(id, description, imageString);
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) { // On/When Changed
+                PostButton.setEnabled(true);
+                PostButton.setTextColor(getColor(R.color.black));
+                PostButton.setBackgroundColor(getColor(R.color.IfHasValue));
             }
-            if(EditTextDescriptionWriteMessage.getText().toString().isEmpty()){ // Only Picture
-                String id = user.get(sessionManager.UID);//Retrieve User's Id
-                String description = "";
-                String imageString = imageToString(bitmap);
-                Posting(id, description, imageString);
-            }
-            if(bitmap == null && EditTextDescriptionWriteMessage.getText().toString().isEmpty()){
-                Toast.makeText(AddPostActivity.this, "Its empty, please write message or picture", Toast.LENGTH_SHORT).show();
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                if (PostButton.isEnabled()){ // If Enabled
+                    PostButton.setOnClickListener(view ->{
+                        if(bitmap != null && !EditTextDescriptionWriteMessage.getText().toString().isEmpty()){ // Description and Picture
+                            String id = user.get(sessionManager.UID);//Retrieve User's Id
+                            String description = EditTextDescriptionWriteMessage.getText().toString();//Get Description
+                            String imageString = imageToString(bitmap); // Get Image
+                            Posting(id, description, imageString);
+                        }
+                        if(bitmap == null){ //Only Description
+                            String id = user.get(sessionManager.UID);
+                            String description = EditTextDescriptionWriteMessage.getText().toString();
+                            String imageString = "";
+                            Posting(id, description, imageString);
+                        }
+                        if(EditTextDescriptionWriteMessage.getText().toString().isEmpty()){ // Only Picture
+                            String id = user.get(sessionManager.UID);//Retrieve User's Id
+                            String description = "";
+                            String imageString = imageToString(bitmap);
+                            Posting(id, description, imageString);
+                        }
+                    });
+                }
             }
         });
 
