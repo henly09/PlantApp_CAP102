@@ -348,7 +348,7 @@
         android:id="@+id/imageView32"
         android:layout_width="360dp"
         android:layout_height="28dp"
-        android:layout_marginBottom="40dp"
+        android:layout_marginBottom="50dp"
         android:src="@drawable/divider"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
