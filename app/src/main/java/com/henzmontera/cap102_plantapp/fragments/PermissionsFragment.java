@@ -54,7 +54,12 @@ public class PermissionsFragment extends Fragment {
     }
 
     private void navigateToCamera() {
-        Navigation.findNavController(requireActivity(), R.id.fragment_container)
-                .navigate(com.henzmontera.cap102_plantapp.fragments.PermissionsFragmentDirections.actionPermissionsToCamera());
-    }
+        try {
+            Navigation.findNavController(requireActivity(), R.id.fragment_container)
+                    .navigate(com.henzmontera.cap102_plantapp.fragments.PermissionsFragmentDirections.actionPermissionsToCamera());
+
+        } catch (Exception e){
+            Toast.makeText(getContext(), "Error Occurred. Please Restart the App", Toast.LENGTH_SHORT).show();
+        }
+      }
 }
