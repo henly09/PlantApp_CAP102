@@ -478,20 +478,21 @@
 
 
     <LinearLayout
+        android:id="@+id/linear1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:id="@+id/linear1">
+        android:layout_marginBottom="40dp"
+        android:orientation="horizontal">
 
         <ImageButton
             android:id="@+id/ib_carabao"
             android:layout_width="wrap_content"
             android:layout_height="100dp"
-            android:src="@drawable/picture18"
+            android:layout_margin="5dp"
             android:adjustViewBounds="true"
-            android:scaleType="fitCenter"
             android:padding="0dp"
-            android:layout_margin="5dp" />
+            android:scaleType="fitCenter"
+            android:src="@drawable/picture18" />
 
         <ImageButton
             android:id="@+id/ib_indian"
