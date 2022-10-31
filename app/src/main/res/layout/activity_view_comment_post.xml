@@ -18,34 +18,46 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/EditComment_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_gravity="center_vertical"
+            android:minHeight="?attr/actionBarSize"
+            android:background="@color/white"
+            app:title="">
 
-        <ImageView
-            android:id="@+id/post_detail_img"
-            android:layout_width="0dp"
-            android:layout_height="300dp"
-            android:maxWidth="400dp"
-            android:maxHeight="400dp"
-            android:minWidth="400dp"
-            android:minHeight="300dp"
-            android:scaleType="fitCenter"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:background="@color/black"/>
+            <RelativeLayout
+                android:id="@+id/toolbarrelative"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <androidx.constraintlayout.utils.widget.ImageFilterButton
+                    android:id="@+id/ViewCommentPost_BackButton"
+                    android:layout_alignStart="@id/toolbarrelative"
+                    android:layout_marginStart="13dp"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:adjustViewBounds="true"
+                    android:background="@drawable/ic_backbutton_2"
+                    android:scaleType="center"
+                    tools:ignore="NotSibling" />
+
+            </RelativeLayout>
+
+        </androidx.appcompat.widget.Toolbar>
 
         <View
             android:id="@+id/view"
             android:layout_width="0dp"
             android:layout_height="1dp"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="11dp"
             android:layout_marginEnd="16dp"
             android:background="#2e2e2e"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/post_detail_img" />
+            app:layout_constraintTop_toBottomOf="@+id/EditComment_toolbar" />
 
         <TextView
             android:id="@+id/post_detail_date_name"

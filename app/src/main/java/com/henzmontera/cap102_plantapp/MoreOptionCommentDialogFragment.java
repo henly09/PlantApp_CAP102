@@ -2,6 +2,7 @@ package com.henzmontera.cap102_plantapp;
 
 import android.content.ClipData;
 import android.content.ClipboardManager;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -101,7 +102,7 @@ public class MoreOptionCommentDialogFragment extends BottomSheetDialogFragment {
         });
 
         EditTv.setOnClickListener(view2 -> {
-            Toast.makeText(getContext(), "This is Edit", Toast.LENGTH_SHORT).show();
+            Edit(commentid, postid, commenter_userid, comment_text);
             dismiss();
         });
 
@@ -151,7 +152,12 @@ public class MoreOptionCommentDialogFragment extends BottomSheetDialogFragment {
         q.add(r);
     }
 
-    private void Edit(){
-
+    private void Edit(String commentid, String postid, String commenter_userid, String comment){
+        Intent intent = new Intent(getContext(), EditComment.class);
+        intent.putExtra("commentid", commentid);
+        intent.putExtra("postid", postid);
+        intent.putExtra("commenter_userid", commenter_userid);
+        intent.putExtra("comment_text", comment);
+        getContext().startActivity(intent);
     }
 }

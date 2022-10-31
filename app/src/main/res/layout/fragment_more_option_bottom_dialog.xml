@@ -19,6 +19,20 @@
         android:textSize="16sp" />
 
     <TextView
+        android:id="@+id/more_option_tv_btn_edit_post"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginEnd="@dimen/dp_16"
+        android:layout_marginStart="@dimen/dp_16"
+        android:backgroundTint="@android:color/white"
+        android:drawablePadding="@dimen/dp_32"
+        android:drawableStart="@drawable/ic_edit"
+        android:drawableTint="@color/black"
+        android:gravity="start|center_vertical"
+        android:text="Edit"
+        android:textSize="16sp" />
+
+    <TextView
         android:id="@+id/moreoption_tv_btn_delete_post"
         android:layout_width="match_parent"
         android:layout_height="48dp"

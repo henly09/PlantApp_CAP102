@@ -26,21 +26,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Cap102_PlantApp"
         android:usesCleartextTraffic="true"
-        tools:targetApi="31">
+        tools:targetApi="32">
         <activity
             android:name=".EditComment"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
+            android:exported="true"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name=".EditPost"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
+            android:exported="true"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name=".ViewCommentPostActivity"
             android:exported="true"

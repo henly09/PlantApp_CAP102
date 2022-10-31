@@ -10,6 +10,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -26,13 +28,19 @@ import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.StringTokenizer;
+import java.util.TimeZone;
 
 public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ListViewHolder>{
-
+    private final int limit = 10;
     private Context context;
     private List<ListPost> LISTPOSTS;
 
@@ -44,15 +52,12 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ListViewHolder
     public class ListViewHolder extends RecyclerView.ViewHolder {
         private TextView UPostNameTV, UPostTimeTV, UPostDesc, UPostLikeC, UPostCommentC, UPostID, UPostUserId;
         private ImageView UPostProfPic;
-        private ImageView UPostImage;
         private ImageButton UMoreOption;
         private Button ULikeButton, UCommentButton;
-        private SessionManager sessionManager;
+        private SessionManager sessionManager = new SessionManager(context);
 
         public ListViewHolder(@NonNull View itemView) {
             super(itemView);
-            sessionManager = new SessionManager(context);
-
             //textView
             UPostNameTV = itemView.findViewById(R.id.unametv);  //username of user posted
             UPostTimeTV = itemView.findViewById(R.id.utimetv);  // timestamp posted
@@ -62,7 +67,6 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ListViewHolder
 
             //Image
             UPostProfPic = itemView.findViewById(R.id.picturetv); //user's profile picture
-            UPostImage = itemView.findViewById(R.id.pimagetv);  //user's posted picture
 
             //Button
             ULikeButton = itemView.findViewById(R.id.like);
@@ -105,10 +109,13 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ListViewHolder
             UMoreOption.setOnClickListener(view ->{
                 String userid = UPostUserId.getText().toString();
                 String postid = UPostID.getText().toString();
+                String descrip = UPostDesc.getText().toString();
+
                 Bundle bundle = new Bundle();
 
                 bundle.putString("userid", userid);
                 bundle.putString("postid", postid);
+                bundle.putString("description", descrip);
 
                 MoreOptionBottomDialogFragment moreoptionBottomDialogFragment = MoreOptionBottomDialogFragment.newInstance();
                 moreoptionBottomDialogFragment.setArguments(bundle);
@@ -118,6 +125,9 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ListViewHolder
         }
 
         private void UpdateLike(){  // Update object
+            Animation shake = AnimationUtils.loadAnimation(context, R.anim.shake);
+            ULikeButton.startAnimation(shake);
+            ULikeButton.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_thumbs_up, 0, 0, 0);
             String likeC = UPostLikeC.getText().toString();
             StringTokenizer tokens = new StringTokenizer(likeC);
             String count = tokens.nextToken();
@@ -131,6 +141,9 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ListViewHolder
         }
 
         private void UpdateUnLike(){ //Update object
+            Animation shake = AnimationUtils.loadAnimation(context, R.anim.shake);
+            ULikeButton.startAnimation(shake);
+            ULikeButton.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_thumbs_up_trans, 0, 0, 0);
             String likeC = UPostLikeC.getText().toString();
             StringTokenizer tokens = new StringTokenizer(likeC);
             String count = tokens.nextToken();
@@ -140,6 +153,40 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ListViewHolder
                 UPostLikeC.setText(likeCount + " Like");
             } else {
                 UPostLikeC.setText(likeCount + " Likes");
+            }
+        }
+
+        private void CheckingIfLiked(String userid, String postid){
+            Log.d("userid:", userid+"");
+            Log.d("postid:", postid+"");
+
+            if (sessionManager.isLoggin()) {
+                String StoreURL = context.getString(R.string.Like);
+                RequestQueue q = Volley.newRequestQueue(context);
+                StringRequest r = new StringRequest(
+                        Request.Method.POST,
+                        StoreURL,
+                        response -> {
+                            try {
+                                if(response.equals("CANT ACCEPT EXISTING LIKE") || response.equals("Subquery returns more than 1 row")){
+                                    ULikeButton.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_thumbs_up, 0, 0, 0);
+                                }
+                            } catch (Exception e) {
+                                Toast.makeText(context, e + "", Toast.LENGTH_SHORT).show();
+                            }
+                        }, error -> {
+                    Toast.makeText(context, error + "", Toast.LENGTH_SHORT).show();
+                }) {
+                    @Nullable
+                    @Override
+                    protected Map<String, String> getParams() {
+                        Map<String, String> param = new HashMap<>();
+                        param.put("userid", userid);
+                        param.put("postid", postid);
+                        return param;
+                    }
+                };
+                q.add(r);
             }
         }
 
@@ -224,7 +271,17 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ListViewHolder
         holder.UPostNameTV.setText(LISTPOSTS.get(position).getUSERNAME());  //Username
         holder.UPostDesc.setText(LISTPOSTS.get(position).getPOSTDESCRIPTION()); // Description
 
-        holder.UPostTimeTV.setText(LISTPOSTS.get(position).getPOSTTIME());  // Time Stamp
+        try {
+            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.ENGLISH);
+            format.setTimeZone(TimeZone.getTimeZone("GMT+8"));
+            format.setLenient(true);
+            Date date = format.parse(LISTPOSTS.get(position).getPOSTTIME());
+
+            Log.d("PostedDate:", date+"");
+            holder.UPostTimeTV.setText(getDate2(date.getTime()));  // Time Stamp
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
 
         if(LISTPOSTS.get(position).getCOMMENTCOUNT().isEmpty() || LISTPOSTS.get(position).getCOMMENTCOUNT().equals("0")){ // If Empty, set 0
             holder.UPostCommentC.setText("0 Comment");
@@ -249,25 +306,24 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ListViewHolder
             holder.UPostProfPic.setImageBitmap(StringtoImage(LISTPOSTS.get(position).getPROFILEPIC()));
         }
 
-        if(LISTPOSTS.get(position).getPOSTIMAGES().isEmpty()){  // If empty, Set ImageView to 0
-            ViewGroup.LayoutParams layoutParams = holder.UPostImage.getLayoutParams();
-            layoutParams.width = 0;
-            holder.UPostImage.setLayoutParams(layoutParams);
-        }
-        else{
-            holder.UPostImage.setImageBitmap(StringtoImage(LISTPOSTS.get(position).getPOSTIMAGES()));
-            ViewGroup.LayoutParams layoutParams = holder.UPostImage.getLayoutParams();
-            layoutParams.width = 1100;
-            layoutParams.height = 1100;
-            holder.UPostImage.setLayoutParams(layoutParams);
-        }
         holder.UPostID.setText(LISTPOSTS.get(position).getPOSTID());    // Post Id
+        HashMap<String, String> user = holder.sessionManager.getUserDetail();
+        String userid = user.get(holder.sessionManager.UID); // Get Current User's ID
+        holder.CheckingIfLiked(userid, LISTPOSTS.get(position).getPOSTID());
+
         holder.UPostUserId.setText(LISTPOSTS.get(position).getPOSTUSERID());    // Poster's User Id
     }
 
     @Override
     public int getItemCount() {
         return LISTPOSTS.size();
+//        if(LISTPOSTS.size() > limit){
+//            return limit;
+//        }
+//        else
+//        {
+//            return Math.min(LISTPOSTS.size(), limit);
+//        }
     }
 
     //Convert from String to Bitmap Image
@@ -275,5 +331,120 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ListViewHolder
         byte[] decodedString = Base64.decode(string, Base64.DEFAULT);
         Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
         return decodedByte;
+    }
+
+    private String getDate2(long timeAtMiliseconds){
+            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            SimpleDateFormat formatterYear = new SimpleDateFormat("MM/dd/yyyy");
+
+            if (timeAtMiliseconds == 0) {
+                return "";
+            }
+
+            String result = "now";
+            String dataSot = formatter.format(new Date());
+            Calendar calendar = Calendar.getInstance();
+
+            long dayagolong = timeAtMiliseconds;
+            calendar.setTimeInMillis(dayagolong);
+            String agoformater = formatter.format(calendar.getTime());
+
+            Date CurrentDate = null;
+            Date CreateDate = null;
+
+            try {
+                CurrentDate = formatter.parse(dataSot);
+                CreateDate = formatter.parse(agoformater);
+
+                long different = Math.abs(CurrentDate.getTime() - CreateDate.getTime());
+
+                long secondsInMilli = 1000;
+                long minutesInMilli = secondsInMilli * 60;
+                long hoursInMilli = minutesInMilli * 60;
+                long daysInMilli = hoursInMilli * 24;
+
+                long elapsedDays = different / daysInMilli;
+                different = different % daysInMilli;
+
+                long elapsedHours = different / hoursInMilli;
+                different = different % hoursInMilli;
+
+                long elapsedMinutes = different / minutesInMilli;
+                different = different % minutesInMilli;
+
+                long elapsedSeconds = different / secondsInMilli;
+
+                if (elapsedDays == 0) {
+                    if (elapsedHours == 0) {
+                        if (elapsedMinutes == 0) {
+                            if (elapsedSeconds < 0) {
+                                return "0" + " s";
+                            } else {
+                                if (elapsedSeconds > 0 && elapsedSeconds < 59) {
+                                    return "now";
+                                }
+                            }
+                        } else {
+                            return String.valueOf(elapsedMinutes) + "m ago";
+                        }
+                    } else {
+                        return String.valueOf(elapsedHours) + "h ago";
+                    }
+
+                } else {
+                    if (elapsedDays <= 29) {
+                        return String.valueOf(elapsedDays) + "d ago";
+                    }
+                    if (elapsedDays > 29 && elapsedDays <= 58) {
+                        return "1Mth ago";
+                    }
+                    if (elapsedDays > 58 && elapsedDays <= 87) {
+                        return "2Mth ago";
+                    }
+                    if (elapsedDays > 87 && elapsedDays <= 116) {
+                        return "3Mth ago";
+                    }
+                    if (elapsedDays > 116 && elapsedDays <= 145) {
+                        return "4Mth ago";
+                    }
+                    if (elapsedDays > 145 && elapsedDays <= 174) {
+                        return "5Mth ago";
+                    }
+                    if (elapsedDays > 174 && elapsedDays <= 203) {
+                        return "6Mth ago";
+                    }
+                    if (elapsedDays > 203 && elapsedDays <= 232) {
+                        return "7Mth ago";
+                    }
+                    if (elapsedDays > 232 && elapsedDays <= 261) {
+                        return "8Mth ago";
+                    }
+                    if (elapsedDays > 261 && elapsedDays <= 290) {
+                        return "9Mth ago";
+                    }
+                    if (elapsedDays > 290 && elapsedDays <= 319) {
+                        return "10Mth ago";
+                    }
+                    if (elapsedDays > 319 && elapsedDays <= 348) {
+                        return "11Mth ago";
+                    }
+                    if (elapsedDays > 348 && elapsedDays <= 360) {
+                        return "12Mth ago";
+                    }
+
+                    if (elapsedDays > 360 && elapsedDays <= 720) {
+                        return "1 year ago";
+                    }
+
+                    if (elapsedDays > 720) {
+                        Calendar calendarYear = Calendar.getInstance();
+                        calendarYear.setTimeInMillis(dayagolong);
+                        return formatterYear.format(calendarYear.getTime()) + "";
+                    }
+                }
+            } catch (java.text.ParseException e) {
+                e.printStackTrace();
+            }
+            return result;
     }
 }

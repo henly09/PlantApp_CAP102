@@ -12,6 +12,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.util.Base64;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -59,6 +60,8 @@ public class ProfileActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN); //FullScreen
+        overridePendingTransition(R.anim.slide_in_left, androidx.navigation.ui.R.anim.nav_default_pop_exit_anim); // Transition during Opening this Activity
         sessionManager = new SessionManager(this);
         sessionManager.checkLogin(); //Check if Logged in
 
@@ -102,11 +105,8 @@ public class ProfileActivity extends AppCompatActivity {
         //SwipeRefresh function
         swiperefresh = findViewById(R.id.LowerProfileConstraintLayout);
         swiperefresh.setOnRefreshListener(() -> {
-            Toast.makeText(this, "Refreshed", Toast.LENGTH_SHORT).show();
-            finish();
-            overridePendingTransition(0, 0);
-            startActivity(getIntent());
-            overridePendingTransition(0, 0);
+            listposts.clear();
+            DisplayPost(id);
             swiperefresh.setRefreshing(false); //False to Animation
         });
 
@@ -246,5 +246,11 @@ public class ProfileActivity extends AppCompatActivity {
         byte[] decodedString = Base64.decode(string, Base64.DEFAULT);
         Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
         return decodedByte;
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        overridePendingTransition(androidx.navigation.ui.R.anim.nav_default_pop_enter_anim, R.anim.slide_out_left);
     }
 }

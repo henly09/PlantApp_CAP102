@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.util.Base64;
 import android.util.Log;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -16,6 +15,7 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.utils.widget.ImageFilterButton;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
@@ -43,10 +43,10 @@ public class ViewCommentPostActivity extends AppCompatActivity {
 
     //THE POSTER
     private ImageView posterUserProfilePicture;
-    private ImageView posterImagePostPicture;
     private TextView posterdateAndUsername;
     private TextView posterDescription;
     private TextView posterid;
+    private ImageFilterButton backButton;
     private View ViewLine;
 
     //THE USER
@@ -59,7 +59,7 @@ public class ViewCommentPostActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_comment_post);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN); //FullScreen
-        overridePendingTransition(R.anim.slide_up, R.anim.slide_down); // Transition during Opening this Activity
+        overridePendingTransition(R.anim.slide_up, androidx.navigation.ui.R.anim.nav_default_pop_exit_anim); // Transition during Opening this Activity
         sessionManager = new SessionManager(ViewCommentPostActivity.this);
         sessionManager.checkLogin(); //Check if Logged In
         HashMap<String, String> user = sessionManager.getUserDetail(); // Initialize User Details
@@ -67,6 +67,7 @@ public class ViewCommentPostActivity extends AppCompatActivity {
         listComments = new ArrayList<>();
 
         ViewLine = findViewById(R.id.view); //Just a view line can be seen above the poster's description
+        backButton = findViewById(R.id.ViewCommentPost_BackButton); //back button above the poster's description
 
         currentUserPicture = findViewById(R.id.post_detail_currentuser_img);    // Current User's Profile Picture
         currentUserCommentTextView = findViewById(R.id.post_detail_comment);    // Current User's Comment Box
@@ -76,7 +77,6 @@ public class ViewCommentPostActivity extends AppCompatActivity {
 
         posterdateAndUsername = findViewById(R.id.post_detail_date_name);   //Poster's Date and Username
         posterDescription = findViewById(R.id.post_detail_desc);    // Poster's Description
-        posterImagePostPicture = findViewById(R.id.post_detail_img);    //Poster's POST Image
         posterUserProfilePicture = findViewById(R.id.post_detail_user_img); // Poster's User Profile Picture
         posterid = findViewById(R.id.post_posterid);    // Poster's User id
 
@@ -114,6 +114,11 @@ public class ViewCommentPostActivity extends AppCompatActivity {
             AddComment(postid,commenteruserid,commenttext);
             currentUserCommentTextView.setText("");
         });
+
+        backButton.setOnClickListener(view -> {
+            onBackPressed();
+            finish();
+        });
     }
 
     private void GetUserPost(String id){
@@ -140,14 +145,6 @@ public class ViewCommentPostActivity extends AppCompatActivity {
                         posterdateAndUsername.setText(al.optString("postTime") + " | " + " by " + al.optString("username"));
                         posterDescription.setText(al.optString("postDescriptions"));
                         posterUserProfilePicture.setImageBitmap(StringtoImage(userprofileString));
-                        if(postImagesString.isEmpty()){ //If Empty, set imageview to 0
-                            ViewGroup.LayoutParams layoutParams = posterImagePostPicture.getLayoutParams();
-                            layoutParams.width = 0;
-                            layoutParams.height = 0;
-                            posterImagePostPicture.setLayoutParams(layoutParams);
-                        } else {
-                            posterImagePostPicture.setImageBitmap(StringtoImage(postImagesString));
-                        }
                     } catch (Exception e) {
                     }
                 }, error -> {
@@ -249,4 +246,9 @@ public class ViewCommentPostActivity extends AppCompatActivity {
         return decodedByte;
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        overridePendingTransition(androidx.navigation.ui.R.anim.nav_default_pop_enter_anim, R.anim.slide_down);
+    }
 }

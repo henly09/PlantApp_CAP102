@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AddPostActivity">
+    tools:context=".EditPost">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/EditComment_toolbar"
@@ -12,37 +12,47 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
         android:minHeight="?attr/actionBarSize"
-        android:background="@color/colorPrimary"
+        android:background="@color/white"
         app:title="">
 
         <RelativeLayout
+            android:id="@+id/EditPost_Toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
             <androidx.constraintlayout.utils.widget.ImageFilterButton
-                android:id="@+id/backbuttonpost"
+                android:id="@+id/EditComment_BackButton"
+                android:layout_marginStart="10dp"
                 android:layout_width="29dp"
                 android:layout_height="29dp"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentTop="true"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="8dp"
                 android:adjustViewBounds="true"
                 android:background="@drawable/ic_backbutton_2"
                 android:scaleType="center" />
 
-            <Button
-                android:id="@+id/ButtonPostText"
+            <TextView
+                android:id="@+id/EditPostTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="0dp"
+                android:layout_toEndOf="@+id/EditComment_BackButton"
+                android:text="Edit Post"
+                android:textColor="#000"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/EditPost_SaveTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentEnd="true"
                 android:layout_marginTop="0dp"
-                android:layout_marginEnd="10dp"
-                android:backgroundTint="#99d799"
-                android:text="Post"
-                android:textColor="#9DC868"
-                android:textSize="18sp"
+                android:layout_marginEnd="30dp"
+                android:text="Save"
+                android:textColor="@color/gray"
+                android:textSize="20sp"
                 android:textStyle="bold" />
 
         </RelativeLayout>
@@ -50,7 +60,7 @@
     </androidx.appcompat.widget.Toolbar>
 
     <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/ImageProfilePost"
+        android:id="@+id/EditComment_ImageProfilePost"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_below="@+id/EditComment_toolbar"
@@ -63,8 +73,26 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent" />
 
+    <EditText
+        android:id="@+id/EditComment_EditTextDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/EditComment_ImageProfilePost"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginStart="11dp"
+        android:layout_marginTop="9dp"
+        android:layout_marginEnd="11dp"
+        android:backgroundTint="@color/colorPrimary"
+        android:ems="10"
+        android:hint="@string/write_message"
+        android:imeOptions="actionDone"
+        android:inputType="textMultiLine"
+        android:textColorHint="@color/gray" />
+
     <TextView
-        android:id="@+id/userPostTextView"
+        android:id="@+id/EditPost_UserNickname"
         android:layout_width="307dp"
         android:layout_height="50dp"
         android:layout_below="@+id/EditComment_toolbar"
@@ -72,43 +100,8 @@
         android:layout_marginStart="13dp"
         android:layout_marginTop="22dp"
         android:layout_marginEnd="7dp"
-        android:layout_toEndOf="@+id/ImageProfilePost"
+        android:layout_toEndOf="@+id/EditComment_ImageProfilePost"
         android:text="TextView"
-        android:textSize="18dp" />
-
-    <RelativeLayout
-        android:id="@+id/EditText_ConstraintLayout"
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:layout_below="@+id/userPostTextView"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="0dp"
-        android:layout_marginTop="0dp"
-        android:layout_marginEnd="0dp">
-
-        <EditText
-            android:id="@+id/EditTextDescriptionMessagesInput"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentEnd="true"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginStart="11dp"
-            android:layout_marginTop="9dp"
-            android:layout_marginEnd="11dp"
-            android:backgroundTint="@color/colorPrimary"
-            android:ems="10"
-            android:hint="@string/write_message"
-            android:imeOptions="actionDone"
-            android:inputType="textMultiLine"
-            android:scrollbars="horizontal"
-            android:textColorHint="@color/gray"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-    </RelativeLayout>
-
+        android:textSize="18sp" />
 
 </RelativeLayout>

@@ -1,6 +1,9 @@
 package com.henzmontera.cap102_plantapp;
 
+import android.app.AlertDialog;
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,6 +25,7 @@ public class MoreOptionBottomDialogFragment extends BottomSheetDialogFragment {
 
     private TextView DeleteTV;
     private TextView ReportTV;
+    private TextView EditTV;
     private PostAdapter postAdapter;
 
     private SessionManager sessionManager;
@@ -43,30 +47,51 @@ public class MoreOptionBottomDialogFragment extends BottomSheetDialogFragment {
         Bundle bundle = this.getArguments();
         String userid = bundle.getString("userid");
         String postid = bundle.getString("postid");
+        String description = bundle.getString("description");
 
         DeleteTV = view.findViewById(R.id.moreoption_tv_btn_delete_post);
         ReportTV = view.findViewById(R.id.moreoption_tv_btn_report_post);
-
+        EditTV = view.findViewById(R.id.more_option_tv_btn_edit_post);
 
         if(guest.get(sessionManager.GNAME).equals("UserGuest000")){
             DeleteTV.setVisibility(View.GONE);
             ReportTV.setVisibility(View.GONE);
+            EditTV.setVisibility(View.GONE);
         }
 
         if (!user.get(sessionManager.UID).equals(userid)){
             DeleteTV.setVisibility(View.GONE);
             ReportTV.setVisibility(View.VISIBLE);
+            EditTV.setVisibility(View.GONE);
         }
 
         if (user.get(sessionManager.UID).equals(userid)){
             DeleteTV.setVisibility(View.VISIBLE);
             ReportTV.setVisibility(View.GONE);
+            EditTV.setVisibility(View.VISIBLE);
         }
 
         DeleteTV.setOnClickListener(view1 ->{
-            String uid = user.get(sessionManager.UID);
-            String poist = postid;
-            DeletePost(uid, poist);
+            AlertDialog.Builder builder = new AlertDialog.Builder(getContext()); //Confirm Dialog
+            builder.setCancelable(true);
+            builder.setTitle("Deleting your post");
+            builder.setMessage("Are you sure to delete your post?");
+            builder.setPositiveButton("Confirm",
+                    (dialog, which) -> {
+                        String uid = user.get(sessionManager.UID);
+                        String poist = postid;
+                        DeletePost(uid, poist);
+                        dismiss();
+                    });
+            builder.setNegativeButton(android.R.string.cancel, (dialog, which) -> {
+                dismiss();
+            });
+            AlertDialog dialog = builder.create();
+            dialog.show();
+        });
+
+        EditTV.setOnClickListener(view1 -> {
+            EditPost(postid, description);
             dismiss();
         });
 
@@ -84,7 +109,7 @@ public class MoreOptionBottomDialogFragment extends BottomSheetDialogFragment {
                 response -> {
                     try {
                         Toast.makeText(getActivity(), "Delete Successfully", Toast.LENGTH_SHORT).show();
-                            postAdapter.notifyDataSetChanged();
+                        postAdapter.notifyDataSetChanged();
                     } catch (Exception e) {
                     }
                 }, error -> {
@@ -99,5 +124,13 @@ public class MoreOptionBottomDialogFragment extends BottomSheetDialogFragment {
             }
         };
         q.add(r);
+    }
+
+    private void EditPost(String postid, String description){
+        Intent intent = new Intent(getActivity(), EditPost.class);
+        intent.putExtra("postid", postid);
+        intent.putExtra("description", description);
+        Log.d("postid: ", postid+"");
+        startActivity(intent);
     }
 }

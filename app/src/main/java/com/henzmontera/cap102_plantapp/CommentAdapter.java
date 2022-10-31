@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.util.Base64;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,7 +17,13 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
+import java.util.TimeZone;
 
 public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ViewHolder> {
 
@@ -87,7 +94,15 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ViewHold
         holder.COMMENTER_USERNAME.setText(LISTCOMMENTS.get(position).getCOMMENTER_USERNAME());
         holder.COMMENTER_TEXT.setText(LISTCOMMENTS.get(position).getTEXT());
         holder.COMMENTER_PROFILEPICTURE.setImageBitmap(StringtoImage(LISTCOMMENTS.get(position).getCOMMENTER_USERPROFILE()));
-        holder.COMMENTER_DATE.setText(LISTCOMMENTS.get(position).getCREATED_AT());
+        try {
+            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.ENGLISH);
+            format.setTimeZone(TimeZone.getTimeZone("GMT+8"));
+            format.setLenient(true);
+            Date date = format.parse(LISTCOMMENTS.get(position).getCREATED_AT());
+            holder.COMMENTER_DATE.setText(getDate2(date.getTime()));  // Time Stamp
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -100,5 +115,120 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ViewHold
         byte[] decodedString = Base64.decode(string, Base64.DEFAULT);
         Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
         return decodedByte;
+    }
+
+    private String getDate2(long timeAtMiliseconds){
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        SimpleDateFormat formatterYear = new SimpleDateFormat("MM/dd/yyyy");
+
+        if (timeAtMiliseconds == 0) {
+            return "";
+        }
+
+        String result = "now";
+        String dataSot = formatter.format(new Date());
+        Calendar calendar = Calendar.getInstance();
+
+        long dayagolong = timeAtMiliseconds;
+        calendar.setTimeInMillis(dayagolong);
+        String agoformater = formatter.format(calendar.getTime());
+
+        Date CurrentDate = null;
+        Date CreateDate = null;
+
+        try {
+            CurrentDate = formatter.parse(dataSot);
+            CreateDate = formatter.parse(agoformater);
+
+            long different = Math.abs(CurrentDate.getTime() - CreateDate.getTime());
+
+            long secondsInMilli = 1000;
+            long minutesInMilli = secondsInMilli * 60;
+            long hoursInMilli = minutesInMilli * 60;
+            long daysInMilli = hoursInMilli * 24;
+
+            long elapsedDays = different / daysInMilli;
+            different = different % daysInMilli;
+
+            long elapsedHours = different / hoursInMilli;
+            different = different % hoursInMilli;
+
+            long elapsedMinutes = different / minutesInMilli;
+            different = different % minutesInMilli;
+
+            long elapsedSeconds = different / secondsInMilli;
+
+            if (elapsedDays == 0) {
+                if (elapsedHours == 0) {
+                    if (elapsedMinutes == 0) {
+                        if (elapsedSeconds < 0) {
+                            return "0" + " s";
+                        } else {
+                            if (elapsedSeconds > 0 && elapsedSeconds < 59) {
+                                return "now";
+                            }
+                        }
+                    } else {
+                        return String.valueOf(elapsedMinutes) + "m ago";
+                    }
+                } else {
+                    return String.valueOf(elapsedHours) + "h ago";
+                }
+
+            } else {
+                if (elapsedDays <= 29) {
+                    return String.valueOf(elapsedDays) + "d ago";
+                }
+                if (elapsedDays > 29 && elapsedDays <= 58) {
+                    return "1Mth ago";
+                }
+                if (elapsedDays > 58 && elapsedDays <= 87) {
+                    return "2Mth ago";
+                }
+                if (elapsedDays > 87 && elapsedDays <= 116) {
+                    return "3Mth ago";
+                }
+                if (elapsedDays > 116 && elapsedDays <= 145) {
+                    return "4Mth ago";
+                }
+                if (elapsedDays > 145 && elapsedDays <= 174) {
+                    return "5Mth ago";
+                }
+                if (elapsedDays > 174 && elapsedDays <= 203) {
+                    return "6Mth ago";
+                }
+                if (elapsedDays > 203 && elapsedDays <= 232) {
+                    return "7Mth ago";
+                }
+                if (elapsedDays > 232 && elapsedDays <= 261) {
+                    return "8Mth ago";
+                }
+                if (elapsedDays > 261 && elapsedDays <= 290) {
+                    return "9Mth ago";
+                }
+                if (elapsedDays > 290 && elapsedDays <= 319) {
+                    return "10Mth ago";
+                }
+                if (elapsedDays > 319 && elapsedDays <= 348) {
+                    return "11Mth ago";
+                }
+                if (elapsedDays > 348 && elapsedDays <= 360) {
+                    return "12Mth ago";
+                }
+
+                if (elapsedDays > 360 && elapsedDays <= 720) {
+                    return "1 year ago";
+                }
+
+                if (elapsedDays > 720) {
+                    Calendar calendarYear = Calendar.getInstance();
+                    calendarYear.setTimeInMillis(dayagolong);
+                    return formatterYear.format(calendarYear.getTime()) + "";
+                }
+            }
+        } catch (java.text.ParseException e) {
+            e.printStackTrace();
+        }
+        return result;
     }
 }

@@ -43,4 +43,9 @@
     <color name="icFocused">#DDFFFFFF</color>
     <color name="icPressed">#AAFFFFFF</color>
     <color name="IfHasValue">#417741</color>
+    <color name="IfNoValue">#99d799</color>
+    <color name="TextInactive">#9DC868</color>
+    <color name="grayed1_color">#8B8888</color>
+    <color name="grayed2_color">#B2B2B2</color>
+    <color name="InActiveAAAFB4">#AAAFB4</color>
 </resources>
