@@ -35,6 +35,15 @@
                 android:value="" />
         </activity>
         <activity
+            android:name=".SecManagePlanting"
+            android:exported="true" />
+        <activity
+            android:name=".SecPlantingMangoSeedling"
+            android:exported="true" />
+        <activity
+            android:name=".SecManualMango"
+            android:exported="true" />
+        <activity
             android:name=".EditPost"
             android:exported="false">
             <meta-data
