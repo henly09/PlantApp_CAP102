@@ -3,517 +3,124 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="fill_parent"
+    android:minHeight="70dp"
     tools:context=".SecondFragment"
     android:padding="20dp"
     android:layout_margin="10dp"
+    android:background="@color/sixthlogocolor"
     android:screenOrientation="portrait" >
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
 
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/title_intro"
-        android:textColor="@color/black"
-        android:textSize="30sp"
-        android:textStyle="bold"
-        android:fontFamily="@font/roboto_black"
-        android:layout_gravity="center"
-        android:layout_marginBottom="15dp"
-        />
-
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="150dp"
-        android:layout_gravity="center"
-        android:scaleType="fitCenter"
-        android:src="@drawable/picture1"
-        android:layout_marginBottom="10dp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:text="@string/intro"
-        android:textColor="@color/black"
-        android:justificationMode="inter_word"
-        android:fontFamily="@font/roboto_medium"
-        android:textSize="20sp"
-        android:layout_marginBottom="20dp"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:text="@string/title_seed"
-        android:textColor="@color/black"
-        android:fontFamily="@font/roboto_black"
-        android:textSize="25sp"
-        android:textStyle="bold"
-        android:layout_marginBottom="10dp"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/seed"
-        android:textColor="@color/black"
-        android:justificationMode="inter_word"
-        android:fontFamily="@font/roboto_medium"
-        android:textSize="20sp"
-        android:layout_marginBottom="20dp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/title_step"
-        android:textColor="@color/black"
-        android:justificationMode="inter_word"
-        android:fontFamily="@font/roboto_medium"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:layout_marginBottom="20dp"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/step"
-        android:textColor="@color/black"
-        android:justificationMode="inter_word"
-        android:fontFamily="@font/roboto_medium"
-        android:textSize="20sp"
-        android:layout_marginBottom="10dp"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/title_step1"
-        android:textColor="@color/black"
-        android:fontFamily="@font/roboto_black"
-        android:textSize="25sp"
-        android:textStyle="bold"
-        android:layout_marginBottom="10dp"/>
-
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="150dp"
-        android:layout_gravity="center"
-        android:scaleType="fitCenter"
-        android:src="@drawable/picture2"
-        android:layout_marginBottom="10dp" />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/step1"
-        android:textColor="@color/black"
-        android:justificationMode="inter_word"
-        android:fontFamily="@font/roboto_medium"
-        android:textSize="20sp"
-        android:layout_marginBottom="20dp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/title_step2"
-        android:textColor="@color/black"
-        android:fontFamily="@font/roboto_black"
-        android:textSize="25sp"
-        android:textStyle="bold"
-        android:layout_marginBottom="10dp"/>
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="150dp"
-        android:layout_gravity="center"
-        android:scaleType="fitCenter"
-        android:src="@drawable/picture3"
-        android:layout_marginBottom="10dp" />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/step2"
-        android:textColor="@color/black"
-        android:justificationMode="inter_word"
-        android:fontFamily="@font/roboto_medium"
-        android:textSize="20sp"
-        android:layout_marginBottom="20dp"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/title_step3"
-        android:textColor="@color/black"
-        android:fontFamily="@font/roboto_black"
-        android:textSize="25sp"
-        android:textStyle="bold"
-        android:layout_marginBottom="10dp"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/step3"
-        android:textColor="@color/black"
-        android:justificationMode="inter_word"
-        android:fontFamily="@font/roboto_medium"
-        android:textSize="20sp"
-        android:layout_marginBottom="20dp"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/title_step4"
-        android:textColor="@color/black"
-        android:fontFamily="@font/roboto_black"
-        android:textSize="25sp"
-        android:textStyle="bold"
-        android:layout_marginBottom="10dp"/>
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="150dp"
-        android:layout_gravity="center"
-        android:scaleType="fitCenter"
-        android:src="@drawable/picture3"
-        android:layout_marginBottom="10dp"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/step4"
-        android:textColor="@color/black"
-        android:justificationMode="inter_word"
-        android:fontFamily="@font/roboto_medium"
-        android:textSize="20sp"
-        android:layout_marginBottom="20dp"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/title_step5"
-        android:textColor="@color/black"
-        android:fontFamily="@font/roboto_black"
-        android:textSize="25sp"
-        android:textStyle="bold"
-        android:layout_marginBottom="10dp"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/step5_1"
-        android:textColor="@color/black"
-        android:justificationMode="inter_word"
-        android:fontFamily="@font/roboto_medium"
-        android:textSize="20sp"
-        android:layout_marginBottom="10dp" />
-
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="150dp"
-        android:layout_gravity="center"
-        android:scaleType="fitCenter"
-        android:src="@drawable/picture4_1"
-        android:layout_marginBottom="10dp"/>
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="150dp"
-        android:layout_gravity="center"
-        android:scaleType="fitCenter"
-        android:src="@drawable/picture4_2"
-        android:layout_marginBottom="10dp"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/step5_2"
-        android:textColor="@color/black"
-        android:justificationMode="inter_word"
-        android:fontFamily="@font/roboto_medium"
-        android:textSize="20sp"
-        android:layout_marginBottom="10dp"/>
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="150dp"
-        android:layout_gravity="center"
-        android:scaleType="fitCenter"
-        android:src="@drawable/picture5"
-        android:layout_marginBottom="10dp" />
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="150dp"
-        android:layout_gravity="center"
-        android:scaleType="fitCenter"
-        android:src="@drawable/picture6"
-        android:layout_marginBottom="10dp"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/step5_3"
-        android:textColor="@color/black"
-        android:justificationMode="inter_word"
-        android:fontFamily="@font/roboto_medium"
-        android:textSize="20sp"
-        android:layout_marginBottom="10dp"/>
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="150dp"
-        android:layout_gravity="center"
-        android:scaleType="fitCenter"
-        android:src="@drawable/picture7"
-        android:layout_marginBottom="10dp"/>
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="150dp"
-        android:layout_gravity="center"
-        android:scaleType="fitCenter"
-        android:src="@drawable/picture8"
-        android:layout_marginBottom="10dp"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/step5_4"
-        android:textColor="@color/black"
-        android:justificationMode="inter_word"
-        android:fontFamily="@font/roboto_medium"
-        android:textSize="20sp"
-        android:layout_marginBottom="10dp"/>
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="150dp"
-        android:layout_gravity="center"
-        android:scaleType="fitCenter"
-        android:src="@drawable/picture9"
-        android:layout_marginBottom="10dp"/>
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="150dp"
-        android:layout_gravity="center"
-        android:scaleType="fitCenter"
-        android:src="@drawable/picture10"
-        android:layout_marginBottom="20dp"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/title_manage"
-        android:textColor="@color/black"
-        android:fontFamily="@font/roboto_black"
-        android:textSize="25sp"
-        android:textStyle="bold"
-        android:layout_marginBottom="20dp"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/irrigation"
-        android:textColor="@color/black"
-        android:fontFamily="@font/roboto_black"
-        android:textSize="25sp"
-        android:textStyle="bold"
-        android:layout_marginBottom="10dp"/>
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="150dp"
-        android:layout_gravity="center"
-        android:scaleType="fitCenter"
-        android:src="@drawable/picture11"
-        android:layout_marginBottom="10dp"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/irrigation1"
-        android:textColor="@color/black"
-        android:justificationMode="inter_word"
-        android:fontFamily="@font/roboto_medium"
-        android:textSize="20sp"
-        android:layout_marginBottom="20dp"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/protection"
-        android:textColor="@color/black"
-        android:fontFamily="@font/roboto_black"
-        android:textSize="25sp"
-        android:textStyle="bold"
-        android:layout_marginBottom="10dp"/>
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="150dp"
-        android:layout_gravity="center"
-        android:scaleType="fitCenter"
-        android:src="@drawable/picture12"
-        android:layout_marginBottom="10dp"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/protection1"
-        android:textColor="@color/black"
-        android:justificationMode="inter_word"
-        android:fontFamily="@font/roboto_medium"
-        android:textSize="20sp"
-        android:layout_marginBottom="20dp"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/manure"
-        android:textColor="@color/black"
-        android:fontFamily="@font/roboto_black"
-        android:textSize="25sp"
-        android:textStyle="bold"
-        android:layout_marginBottom="10dp"/>
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="150dp"
-        android:layout_gravity="center"
-        android:scaleType="fitCenter"
-        android:src="@drawable/picture13"
-        android:layout_marginBottom="10dp" />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/manure1"
-        android:textColor="@color/black"
-        android:justificationMode="inter_word"
-        android:fontFamily="@font/roboto_medium"
-        android:textSize="20sp"
-        android:layout_marginBottom="20dp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/pruning"
-        android:textColor="@color/black"
-        android:fontFamily="@font/roboto_black"
-        android:textSize="25sp"
-        android:textStyle="bold"
-        android:layout_marginBottom="10dp"/>
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="150dp"
-        android:layout_gravity="center"
-        android:scaleType="fitCenter"
-        android:src="@drawable/picture14"
-        android:layout_marginBottom="10dp"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/pruning1"
-        android:textColor="@color/black"
-        android:fontFamily="@font/roboto_medium"
-        android:textSize="20sp"
-        android:layout_marginBottom="20dp"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/flowering"
-        android:textColor="@color/black"
-        android:fontFamily="@font/roboto_black"
-        android:textSize="25sp"
-        android:textStyle="bold"
-        android:layout_marginBottom="10dp"/>
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="150dp"
-        android:layout_gravity="center"
-        android:scaleType="fitCenter"
-        android:src="@drawable/picture15"
-        android:layout_marginBottom="10dp" />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/flowering1"
-        android:textColor="@color/black"
-        android:justificationMode="inter_word"
-        android:fontFamily="@font/roboto_medium"
-        android:textSize="20sp"
-        android:layout_marginBottom="20dp"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/pests"
-        android:textColor="@color/black"
-        android:fontFamily="@font/roboto_black"
-        android:textSize="25sp"
-        android:textStyle="bold"
-        android:layout_marginBottom="10dp"/>
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="150dp"
-        android:layout_gravity="center"
-        android:scaleType="fitCenter"
-        android:src="@drawable/picture16"
-        android:layout_marginBottom="10dp" />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/pests1"
-        android:textColor="@color/black"
-        android:justificationMode="inter_word"
-        android:fontFamily="@font/roboto_medium"
-        android:textSize="20sp"
-        android:layout_marginBottom="20dp"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/maturity"
-        android:textColor="@color/black"
-        android:fontFamily="@font/roboto_black"
-        android:textSize="25sp"
-        android:textStyle="bold"
-        android:layout_marginBottom="10dp"/>
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="150dp"
-        android:layout_gravity="center"
-        android:scaleType="fitCenter"
-        android:src="@drawable/picture17"
-        android:layout_marginBottom="10dp" />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/maturity1"
-        android:textColor="@color/black"
-        android:justificationMode="inter_word"
-        android:fontFamily="@font/roboto_medium"
-        android:textSize="20sp"
-        android:layout_marginBottom="20dp"/>
-
-
-    <LinearLayout
-        android:id="@+id/linear1"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="40dp"
-        android:orientation="horizontal">
+        android:layout_height="match_parent"
+        android:background="#F9fff4"
+        android:backgroundTint="#F9fff4"
+        android:screenOrientation="portrait"
+        tools:context=".SecPlantingMangoSeedling">
 
-        <ImageButton
-            android:id="@+id/ib_carabao"
-            android:layout_width="wrap_content"
-            android:layout_height="100dp"
-            android:layout_margin="5dp"
-            android:adjustViewBounds="true"
-            android:padding="0dp"
-            android:scaleType="fitCenter"
-            android:src="@drawable/picture18" />
+        <LinearLayout
+            android:id="@+id/linear_layout1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_weight="2"
+            android:background="@color/bounding_box_color"
+            tools:ignore="MissingConstraints">
 
-        <ImageButton
-            android:id="@+id/ib_indian"
-            android:layout_width="wrap_content"
-            android:layout_height="100dp"
-            android:layout_margin="5dp"
-            android:adjustViewBounds="true"
-            android:padding="0dp"
-            android:scaleType="fitCenter"
-            android:src="@drawable/picture19" />
 
-        <ImageButton
-            android:id="@+id/ib_apple"
-            android:layout_width="wrap_content"
-            android:layout_height="100dp"
-            android:layout_margin="5dp"
-            android:adjustViewBounds="true"
-            android:padding="0dp"
-            android:scaleType="fitCenter"
-            android:src="@drawable/picture20" />
-    </LinearLayout>
-</LinearLayout>
+            <TextView
+                android:id="@+id/textView45"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_marginBottom="20dp"
+                android:fontFamily="@font/roboto_black"
+                android:text="@string/title_intro"
+                android:textColor="@color/black"
+                android:textSize="30sp"
+                android:textStyle="bold"
+                android:layout_marginTop="15dp"
+                app:layout_constraintBottom_toTopOf="@+id/textView46"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.498"
+                app:layout_constraintStart_toStartOf="parent"
+                />
 
+            <TextView
+                android:id="@+id/textView46"
+                android:layout_width="255dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="10dp"
+                android:background="@color/fifthlogocolor"
+                android:fontFamily="@font/roboto_black"
+                android:gravity="center"
+                android:text="Table of Content"
+                android:textColor="@color/black"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/listview"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.498"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView45"/>
+
+
+        <ListView
+            android:id="@+id/listview"
+            android:layout_width="255dp"
+            android:layout_height="190dp"
+            android:padding="20dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:background="@color/fifthlogocolor"
+            android:fontFamily="@font/roboto_black"
+            android:textColor="@color/black"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView46" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:id="@+id/linear1">
+
+            <ImageButton
+                android:id="@+id/ib_carabao"
+                android:layout_width="wrap_content"
+                android:layout_height="100dp"
+                android:src="@drawable/picture18"
+                android:adjustViewBounds="true"
+                android:scaleType="fitCenter"
+                android:padding="0dp"
+                android:layout_margin="5dp" />
+
+            <ImageButton
+                android:id="@+id/ib_indian"
+                android:layout_width="wrap_content"
+                android:layout_height="100dp"
+                android:layout_margin="5dp"
+                android:adjustViewBounds="true"
+                android:padding="0dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/picture19" />
+
+            <ImageButton
+                android:id="@+id/ib_apple"
+                android:layout_width="wrap_content"
+                android:layout_height="100dp"
+                android:layout_margin="5dp"
+                android:adjustViewBounds="true"
+                android:padding="0dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/picture20" />
+        </LinearLayout>
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

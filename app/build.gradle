@@ -19,7 +19,6 @@ android {
         buildConfigField "String", "BUILD_DATE", "\"" + new Date().getTime() + "\""
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
-
     buildTypes {
         release {
             minifyEnabled false
@@ -58,6 +57,11 @@ dependencies {
     implementation 'com.github.kibotu:TimeBomb:-SNAPSHOT' // Firebase Data Test
     implementation 'com.kofigyan.stateprogressbar:stateprogressbar:1.0.0' // State Progress Bar
     implementation 'com.pierfrancescosoffritti.androidyoutubeplayer:core:11.1.0' // Youtube Video Player
+    implementation 'com.ms-square:expandableTextView:0.1.4'    // expandableTextView
+    implementation 'androidx.cardview:cardview:1.0.0'
+    implementation 'com.jakewharton:butterknife:10.2.3'
+    implementation 'com.github.Shashank02051997:FancyGifDialog-Android:1.5' //dialogbox
+
 
     //TensorFlow
     implementation 'org.tensorflow:tensorflow-lite-support:0.4.1'

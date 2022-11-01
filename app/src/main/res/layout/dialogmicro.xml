@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    android:background="#F9fff4"
+    android:backgroundTint="#F9fff4"
+    android:id="@+id/linear_dialog"
+    >
+
+    <ImageView
+        android:id="@+id/dialogdesc"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:src="@drawable/logo_mangos_small_reso"
+        android:layout_marginTop="20dp"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:fontFamily="@font/roboto_black"
+        android:text="Microclimate"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_margin="10dp"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:fontFamily="@font/roboto_medium"
+        android:text="A microclimate is a unique localized set of atmospheric conditions that are different from those in the immediate vicinity, often just slightly. The phrase can be used to describe regions of any size, from a few square meters or square feet to several square kilometers or square miles."
+        android:justificationMode="inter_word"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        android:layout_marginStart="30dp"
+        android:padding="10dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="10dp"
+        />
+
+    <Button
+        android:id="@+id/okbutton"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/roboto_black"
+        android:text="OK"
+        app:backgroundTint="@color/bounding_box_color"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_marginBottom="10dp"/>
+
+
+</LinearLayout>

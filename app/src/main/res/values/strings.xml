@@ -40,23 +40,23 @@
     <string name="intro">In an agricultural system, trees provide a variety of purposes in general.
         Through the production of fruits, vegetables, starch, and fodder, trees directly support the
         nutritional needs of families, communities, and livestock. In terms of the environment, trees
-        help improve the soils and microclimates in the area, which increases food production and is
+        help improve the soils and <a href="google.com">microclimates</a> in the area, which increases food production and is
         especially beneficial for ecosystems that are fragile. In addition to supplying readily available
         building materials, trees are a significant source of fuel wood for farmers and rural communities
-        as it is sometimes the sole source of energy in these places.Fruit trees, however, are more directly useful to humans in terms of nutrition and food because
+        as it is sometimes the sole source of energy in these places. Fruit trees, however, are more directly useful to humans in terms of nutrition and food because
         they produce fruits that are high in vitamins, proteins, vital fatty acids, and energy. As a result,
         fruit trees, both in rural and urban areas, play a significant part in the nutrition of children,
         women, and men. For instance, mango fruit is a great source of vitamins A, C, and B6, which are
         essential elements that primarily support healthy vision and a robust immune system for bodies that
-        work normally.Farmers do not have a lot of experience with fruit trees, especially when it comes to planting them.
-        Most of these farmers lack the fundamental knowledge necessary to establish fruit trees, such as
-        timing considerations, technical details, and maintenance strategies. Its crucial to remember that
+        work normally. Farmers do not have a lot of experience with fruit trees, especially when it comes to planting them.
+        Most of these farmers lack the <a href="">fundamental knowledge</a> necessary to establish fruit trees, such as
+        <a href="">timing considerations</a>, <a href="">technical details</a>, and <a href="">maintenance strategies</a>. Its crucial to remember that
         planting fruit trees involves planning and preparation in order to ensure their health and productivity.
     </string>
 
     <string name="title_seed">Planting Mango Seedling</string>
 
-    <string name="seed">African nations widely cultivate mango trees (Mangifera indica L.). Mangoes are both a
+    <string name="seed">African nations widely cultivate mango trees <a href="">Mangifera indica</a> <a href="">L.</a>. Mangoes are both a
         revenue crop and a food source for farmer families. For its sweet and aromatic fruits, which may be
         consumed fresh or made into juice, jam, fruit leather, chutney, or dried fruits, Kenyans grow both
         indigenous and alien species that have been naturalized there. The demand for high-quality mango fruits
@@ -64,33 +64,31 @@
     </string>
 
     <string name="title_step">Things to think about before planting a grafted mango seedling;</string>
-    <string name="step">that there is sufficient land available for planting the seedling, ideally away
+    <string name="step">That there is sufficient land available for planting the seedling, ideally away
         from buildings and other structures or installations like telephone or power poles, water pipelines, or
-        power lines,
-        . that the topography, fertility, and soil characteristics of the chosen place are suitable for planting
-        the mango type, and
-        . the planted mango sapling has access to enough sunshine.</string>
+        power lines, that the topography, fertility, and <a href="">soil characteristics</a> of the chosen place are suitable for planting
+        the mango type, and the planted mango sapling has access to enough sunshine.</string>
 
     <string name="title_step1">Step1: Assemble all necessary components.</string>
     <string name="step1">Gather all the tools and supplies required, including the grafted mango seedlings,
-        manure and/or fertilizer, a watering container, a shovel, and a hoe (jembe).</string>
+        <a href="">manure</a> and/or fertilizer, a watering container, a shovel, and a hoe (jembe).</string>
 
     <string name="title_step2">Step2: Choosing which seedlings to place</string>
     <string name="step2">A healthy seedling that is large enough to plant should be sought out since they
         have a better chance of surviving. For an excellent production/high yields, quality planting material
-        (grafted) is essential. Seedlings should be chosen if they dont exhibit illness or pest symptoms.</string>
+        (grafted) is essential. Seedlings should be chosen if they do not exhibit illness or <a href="">pest symptoms</a>.</string>
 
     <string name="title_step3">Step3: Seedlings are transported for planting.</string>
     <string name="step3">Depending on how far it is from the nursery to the designated planting location,
-        several methods of conveyance are employed for seedlings. Take care while transporting seedlings to
+        several <a href="">methods of conveyance</a> are employed for seedlings. Take care while transporting seedlings to
         avoid stacking them on top of one another, since this might harm the young trees. As this will lessen
         the possibility of harming them, it is advised that the seedlings be transported upright in boxes, plastic
         crates, or bags.
-        Before moving them from the nursery to the planting location, water the seedlings youve chosen. To prevent
+        Before moving them from the nursery to the planting location, water the seedlings you have chosen. To prevent
         the seedling from drying out while being transported, watering is done.</string>
 
     <string name="title_step4">Step4: Preparing the ground and planting</string>
-    <string name="step4">Mango trees grow best in humid tropical and semi-arid subtropical climates, as long
+    <string name="step4">Mango trees grow best in humid tropical and <a href="">semi-arid subtropical climates</a>, as long
         as there is a dry interval of at least three to four months and there is enough light to trigger blooming.
 
         Mango tree spacing varies depending on the kind and growth conditions (dry and wet zone). The optimum
@@ -117,19 +115,19 @@
         hole with water and let it drain. Make cautious to accomplish this without disturbing the dirt surrounding
         the roots or damaging them by bending them.</string>
     <string name="step5_4">By gently pushing down the earth surrounding the seedling, you may create a basin around
-        the trees base.After watering, the basin will aid in holding the water. Make sure the seedling is positioned upright,
-        just how it was on the polythene tube at the nursery.
-        Under young trees, spread a layer of mulch. Mulch prevents moisture loss and weed competition while providing
+        the trees base. After watering, the basin will aid in holding the water. Make sure the seedling is positioned upright,
+        just how it was on the <a href="">polythene tube</a> at the nursery.
+        Under young trees, spread a layer of <a href="">mulch</a>. <a href="">Mulch</a> prevents moisture loss and weed competition while providing
         organic matter, a key source of tree nutrients and food for beneficial soil microorganisms.</string>
 
-    <string name="title_manage">Management of fruit tree after planting</string>
+    <string name="title_manage">Management of Fruit Tree after Planting</string>
     <string name="irrigation">Irrigation:</string>
     <string name="irrigation1">To encourage healthy establishment, water should be applied as soon as a plant is
         planted in the ground.
         If you want to increase your mango trees yields, water it every 8 to 12 days from the time the fruit
         begins to blossom until it reaches maturity.
         Two to three months before to flowering, watering is not advised as it will promote greater branching
-        and leaf growth.:</string>
+        and leaf growth.</string>
 
     <string name="protection">Protection:</string>
     <string name="protection1">It is necessary to construct a fence made of sticks or net around the fruit
@@ -137,9 +135,9 @@
         open field, especially in cases when animals are also grazing there.</string>
 
     <string name="manure">Application of fertilizer and manure:</string>
-    <string name="manure1">Start putting nitrogenous fertilizers on the ground after around 3 to 6 months
+    <string name="manure1">Start putting <a href="">nitrogenous fertilizers</a> on the ground after around 3 to 6 months
         (in the case of fruit trees e.g. mango, pawpaw, oranges). In order to prevent leaching out, use
-        nitrogenous fertilizers at intervals (downward movement of useful minerals or nutrients in water).
+        <a href="">nitrogenous fertilizers</a> at intervals (downward movement of useful minerals or nutrients in water).
         Fertilizers can also be replaced by mulching, correctly prepared compost or manure from the farmyard,
         and ash from the kitchen (leftover from cooking).</string>
 
@@ -161,9 +159,9 @@
     <string name="pests1">The most frequent pest for mangoes and other fruits is the fruit fly, which
         typically results in significant damage to and substantial losses of these crops. Among other
         techniques, the usage of fruit fly traps is a well-liked approach to managing fruit flies. Additionally,
-        scale insects and gall midges are pests. The most prevalent mango diseases, powdery mildew and anthracnose,
+        scale insects and gall midges are pests. The most prevalent mango diseases, <a href="">powdery mildew</a> and <a href="">anthracnose</a>,
         primarily attack the blooms and sensitive foliage and cause the formation of black blemishes on mango fruits.
-        While anthracnose may be managed using copper fungicides, powdery mildew can be sprayed with Sulphur or
+        While <a href="">anthracnose</a> may be managed using <a href="">copper fungicides</a>, <a href="">powdery mildew</a> can be sprayed with Sulphur or
         Bayleton.</string>
 
     <string name="maturity">Development and harvesting:</string>
@@ -175,7 +173,7 @@
         to change, for example, in certain cultivars, from deep green to light green. Fruit should be hand-picked
         or clipped off using a long stock (the portion of the fruit that connects it to the branch), which should
         be approximately 2 to 3 cm long, and then it should be stacked in a box or container with the stalks facing
-        down for market transportation. In order to prevent bruising, proper postharvest treatment calls for storing
+        down for market transportation. In order to prevent bruising, proper post harvest treatment calls for storing
         in boxes or crates rather than sacks.</string>
 
     <string name="bottom_sheet_option_view">View profile picture</string>

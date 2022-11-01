@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:padding="20dp"
+    android:layout_margin="10dp"
+    android:background="#F9fff4"
+    android:backgroundTint="#F9fff4"
+    android:screenOrientation="portrait"
+    android:fadeScrollbars="false"
+    android:scrollbars="vertical"
+    android:scrollbarAlwaysDrawVerticalTrack="true">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/conslayout1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#F9fff4"
+        android:backgroundTint="#F9fff4"
+        android:screenOrientation="portrait"
+        tools:context=".MainActivity">
+
+        <TextView
+            android:id="@+id/textView12"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:fontFamily="@font/roboto_black"
+            android:text="@string/title_intro"
+            android:textColor="@color/black"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/imageView37"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.195" />
+
+        <ImageView
+            android:id="@+id/imageView37"
+            android:layout_width="wrap_content"
+            android:layout_height="150dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="13dp"
+            android:layout_marginBottom="20dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/picture1"
+            app:layout_constraintBottom_toTopOf="@+id/textView11"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView12" />
+
+        <TextView
+            android:id="@+id/textView11"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginStart="137dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="138dp"
+            android:text="In an agricultural system, trees provide a variety of purposes in general. Through the production of fruits, vegetables, starch, and fodder, trees directly support the nutritional needs of families, communities, and livestock. In terms of the environment, trees help improve the soils and microclimates in the area, which increases food production and is especially beneficial for ecosystems that are fragile. In addition to supplying readily available building materials, trees are a significant source of fuel wood for farmers and rural communities as it is sometimes the sole source of energy in these places. Fruit trees, however, are more directly useful to humans in terms of nutrition and food because they produce fruits that are high in vitamins, proteins, vital fatty acids, and energy. As a result, fruit trees, both in rural and urban areas, play a significant part in the nutrition of children, women, and men. For instance, mango fruit is a great source of vitamins A, C, and B6, which are essential elements that primarily support healthy vision and a robust immune system for bodies that work normally. Farmers do not have a lot of experience with fruit trees, especially when it comes to planting them. Most of these farmers lack the fundamental knowledge necessary to establish fruit trees, such as timing considerations, technical details, and maintenance strategies. Its crucial to remember that planting fruit trees involves planning and preparation in order to ensure their health and productivity."
+            android:justificationMode="inter_word"
+            android:fontFamily="@font/roboto_medium"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView37" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
