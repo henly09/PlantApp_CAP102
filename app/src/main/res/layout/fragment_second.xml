@@ -34,19 +34,18 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:gravity="center"
                 android:layout_marginBottom="20dp"
-                android:fontFamily="@font/roboto_black"
+                android:layout_marginTop="15dp"
+                android:fontFamily="@font/ubuntu_bl"
+                android:gravity="center"
                 android:text="@string/title_intro"
                 android:textColor="@color/black"
-                android:textSize="30sp"
+                android:textSize="28sp"
                 android:textStyle="bold"
-                android:layout_marginTop="15dp"
                 app:layout_constraintBottom_toTopOf="@+id/textView46"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.498"
-                app:layout_constraintStart_toStartOf="parent"
-                />
+                app:layout_constraintStart_toStartOf="parent" />
 
             <TextView
                 android:id="@+id/textView46"
@@ -55,8 +54,8 @@
                 android:layout_gravity="center"
                 android:layout_marginBottom="10dp"
                 android:background="@color/fifthlogocolor"
-                android:fontFamily="@font/roboto_black"
-                android:gravity="center"
+                android:fontFamily="@font/ubuntu_bl"
+                android:gravity="center|center_horizontal|center_vertical"
                 android:text="Table of Content"
                 android:textColor="@color/black"
                 android:textSize="25sp"
@@ -65,7 +64,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.498"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView45"/>
+                app:layout_constraintTop_toBottomOf="@+id/textView45" />
 
 
         <ListView
