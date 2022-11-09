@@ -81,6 +81,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ListViewHolder
             UPostUserId = itemView.findViewById(R.id.uuserId);
 
             HashMap<String, String> GuestPov = sessionManager.getGuestDetails();
+            HashMap<String, String> UserPov = sessionManager.getUserDetail();
             String guestName = GuestPov.get(sessionManager.GNAME);
             if(guestName.equals("UserGuest000")){
                 UMoreOption.setVisibility(View.GONE);
@@ -304,13 +305,21 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ListViewHolder
         else{
             holder.UPostProfPic.setImageBitmap(StringtoImage(LISTPOSTS.get(position).getPROFILEPIC()));
         }
+        HashMap<String, String> user = holder.sessionManager.getUserDetail();
 
         holder.UPostID.setText(LISTPOSTS.get(position).getPOSTID());    // Post Id
-        HashMap<String, String> user = holder.sessionManager.getUserDetail();
+
         String userid = user.get(holder.sessionManager.UID); // Get Current User's ID
         holder.CheckingIfLiked(userid, LISTPOSTS.get(position).getPOSTID());
 
         holder.UPostUserId.setText(LISTPOSTS.get(position).getPOSTUSERID());    // Poster's User Id
+
+        if(user.get(holder.sessionManager.UID).equals(holder.UPostUserId.getText().toString())){
+            holder.UMoreOption.setVisibility(ViewGroup.VISIBLE);
+        }
+        if(!user.get(holder.sessionManager.UID).equals(holder.UPostUserId.getText().toString())){
+            holder.UMoreOption.setVisibility(ViewGroup.GONE);
+        }
     }
 
     @Override
