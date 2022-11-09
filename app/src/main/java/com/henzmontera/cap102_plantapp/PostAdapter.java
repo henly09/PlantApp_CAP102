@@ -112,6 +112,8 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ListViewHolder
                 String descrip = UPostDesc.getText().toString();
 
                 Bundle bundle = new Bundle();
+                Log.d("userid:", userid+"");
+                Log.d("postid:", postid+"");
 
                 bundle.putString("userid", userid);
                 bundle.putString("postid", postid);
@@ -157,18 +159,15 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ListViewHolder
         }
 
         private void CheckingIfLiked(String userid, String postid){
-            Log.d("userid:", userid+"");
-            Log.d("postid:", postid+"");
-
             if (sessionManager.isLoggin()) {
-                String StoreURL = context.getString(R.string.Like);
+                String StoreURL = context.getString(R.string.CheckIfLike);
                 RequestQueue q = Volley.newRequestQueue(context);
                 StringRequest r = new StringRequest(
                         Request.Method.POST,
                         StoreURL,
                         response -> {
                             try {
-                                if(response.equals("CANT ACCEPT EXISTING LIKE") || response.equals("Subquery returns more than 1 row")){
+                                if(response.equals("Liked Match Found")){
                                     ULikeButton.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_thumbs_up, 0, 0, 0);
                                 }
                             } catch (Exception e) {
@@ -191,9 +190,6 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ListViewHolder
         }
 
         private void Like(String userid, String postid){
-            Log.d("userid:", userid+"");
-            Log.d("postid:", postid+"");
-
                 if (sessionManager.isLoggin()) {
                     String StoreURL = context.getString(R.string.Like);
                     RequestQueue q = Volley.newRequestQueue(context);
@@ -205,7 +201,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ListViewHolder
                                     if(response.equals("CANT ACCEPT EXISTING LIKE") || response.equals("Subquery returns more than 1 row")){
                                         Toast.makeText(context, "Unlike", Toast.LENGTH_SHORT).show();
                                         Unlike(userid, postid);
-                                    } else {
+                                    } else if(response.equals("Like successfully")) {
                                         Toast.makeText(context, "Liked!", Toast.LENGTH_SHORT).show();
                                         UpdateLike();
                                     }
@@ -237,7 +233,9 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ListViewHolder
                         StoreURL,
                         response -> {
                             try {
-                                UpdateUnLike();
+                                if (response.equals("Unlike successfully")) {
+                                    UpdateUnLike();
+                                }
                             } catch (Exception e) {
                                 Toast.makeText(context, e + "", Toast.LENGTH_SHORT).show();
                             }

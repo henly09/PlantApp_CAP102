@@ -36,6 +36,7 @@
     <string name="AddComment">http://192.168.254.103/networkingbased/AddComment.php</string>
     <string name="EditPost">http://192.168.254.103/networkingbased/EditPost.php</string>
     <string name="EditComment">http://192.168.254.103/networkingbased/EditComment.php</string>
+    <string name="CheckIfLike">http://192.168.254.103/networkingbased/CheckIfLike.php</string>
     <!--   DOMAIN   -->
     <string name="intro">In an agricultural system, trees provide a variety of purposes in general.
         Through the production of fruits, vegetables, starch, and fodder, trees directly support the
