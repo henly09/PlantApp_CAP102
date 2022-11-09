@@ -221,23 +221,28 @@ public class IMfragment extends Fragment {
             builder.setView(input);
             // Set up the buttons
             builder.setPositiveButton("OK", (dialog, which) -> {
-                m_Text = input.getText().toString();
-                int a = Integer.parseInt(m_Text);
-                // https://www.healthy-vegetable-gardening.com/brix-scale.html
-                if (a < 4){
-                    brixlevelIM.setCurrentStateNumber(StateProgressBar.StateNumber.ONE);
-                }
-                else if (a >= 4 && a < 6){
-                    brixlevelIM.setCurrentStateNumber(StateProgressBar.StateNumber.TWO);
-                }
-                else if (a >= 6 && a < 10){
-                    brixlevelIM.setCurrentStateNumber(StateProgressBar.StateNumber.THREE);
-                }
-                else if (a >= 10 && a < 14){
-                    brixlevelIM.setCurrentStateNumber(StateProgressBar.StateNumber.FOUR);
-                }
-                else if (a >= 14){
-                    brixlevelIM.setCurrentStateNumber(StateProgressBar.StateNumber.FIVE);
+                try {
+                    m_Text = input.getText().toString();
+                    int a = Integer.parseInt(m_Text);
+                    // https://www.healthy-vegetable-gardening.com/brix-scale.html
+                    if (a < 4){
+                        brixlevelIM.setCurrentStateNumber(StateProgressBar.StateNumber.ONE);
+                    }
+                    else if (a >= 4 && a < 6){
+                        brixlevelIM.setCurrentStateNumber(StateProgressBar.StateNumber.TWO);
+                    }
+                    else if (a >= 6 && a < 10){
+                        brixlevelIM.setCurrentStateNumber(StateProgressBar.StateNumber.THREE);
+                    }
+                    else if (a >= 10 && a < 14){
+                        brixlevelIM.setCurrentStateNumber(StateProgressBar.StateNumber.FOUR);
+                    }
+                    else if (a >= 14){
+                        brixlevelIM.setCurrentStateNumber(StateProgressBar.StateNumber.FIVE);
+                    }
+                } catch (Exception e){
+                    dialog.cancel();
+                    Toast.makeText(getContext(), "Missing Input, fill the required field.", Toast.LENGTH_SHORT).show();
                 }
             });
             builder.setNegativeButton("Cancel", (dialog, which) -> dialog.cancel());
@@ -256,29 +261,33 @@ public class IMfragment extends Fragment {
             builder.setView(input);
             // Set up the buttons
             builder.setPositiveButton("OK", (dialog, which) -> {
-                m_Text = input.getText().toString();
-                int a = Integer.parseInt(m_Text);
-                // https://www.mango.org/wp-content/uploads/2017/10/Mango_Maturity_And_Ripeness_Guide.pdf
-                if (a > 20){
-                    penelevelIM.setCurrentStateNumber(StateProgressBar.StateNumber.ONE);
-                }
-                else if (a <= 20 && a >= 16){
-                    penelevelIM.setCurrentStateNumber(StateProgressBar.StateNumber.TWO);
-                }
-                else if (a <= 15 && a >= 11){
-                    penelevelIM.setCurrentStateNumber(StateProgressBar.StateNumber.THREE);
-                }
-                else if (a <= 10 && a >= 6){
-                    penelevelIM.setCurrentStateNumber(StateProgressBar.StateNumber.FOUR);
-                }
-                else if (a <= 5 && a >= 1){
-                    penelevelIM.setCurrentStateNumber(StateProgressBar.StateNumber.FIVE);
+                try {
+                    m_Text = input.getText().toString();
+                    int a = Integer.parseInt(m_Text);
+                    // https://www.mango.org/wp-content/uploads/2017/10/Mango_Maturity_And_Ripeness_Guide.pdf
+                    if (a > 20){
+                        penelevelIM.setCurrentStateNumber(StateProgressBar.StateNumber.ONE);
+                    }
+                    else if (a <= 20 && a >= 16){
+                        penelevelIM.setCurrentStateNumber(StateProgressBar.StateNumber.TWO);
+                    }
+                    else if (a <= 15 && a >= 11){
+                        penelevelIM.setCurrentStateNumber(StateProgressBar.StateNumber.THREE);
+                    }
+                    else if (a <= 10 && a >= 6){
+                        penelevelIM.setCurrentStateNumber(StateProgressBar.StateNumber.FOUR);
+                    }
+                    else if (a <= 5 && a >= 1){
+                        penelevelIM.setCurrentStateNumber(StateProgressBar.StateNumber.FIVE);
+                    }
+                } catch (Exception e){
+                    dialog.cancel();
+                    Toast.makeText(getContext(), "Missing Input, fill the required field.", Toast.LENGTH_SHORT).show();
                 }
             });
             builder.setNegativeButton("Cancel", (dialog, which) -> dialog.cancel());
             builder.show();
         });
-
         // Inflate the layout for this fragment
         return rootview;
     }

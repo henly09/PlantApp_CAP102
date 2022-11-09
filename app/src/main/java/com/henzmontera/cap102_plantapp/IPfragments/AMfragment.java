@@ -196,26 +196,29 @@ public class AMfragment extends Fragment {
             builder.setView(input);
             // Set up the buttons
             builder.setPositiveButton("OK", (dialog, which) -> {
-
-                m_Text = input.getText().toString();
-                int a = Integer.parseInt(m_Text);
-                // https://www.healthy-vegetable-gardening.com/brix-scale.html
-                if (a < 4){
-                    brixlevelAM.setCurrentStateNumber(StateProgressBar.StateNumber.ONE);
+                try {
+                    m_Text = input.getText().toString();
+                    int a = Integer.parseInt(m_Text);
+                    // https://www.healthy-vegetable-gardening.com/brix-scale.html
+                    if (a < 4){
+                        brixlevelAM.setCurrentStateNumber(StateProgressBar.StateNumber.ONE);
+                    }
+                    else if (a >= 4 && a < 6){
+                        brixlevelAM.setCurrentStateNumber(StateProgressBar.StateNumber.TWO);
+                    }
+                    else if (a >= 6 && a < 10){
+                        brixlevelAM.setCurrentStateNumber(StateProgressBar.StateNumber.THREE);
+                    }
+                    else if (a >= 10 && a < 14){
+                        brixlevelAM.setCurrentStateNumber(StateProgressBar.StateNumber.FOUR);
+                    }
+                    else if (a >= 14){
+                        brixlevelAM.setCurrentStateNumber(StateProgressBar.StateNumber.FIVE);
+                    }
+                } catch (Exception e){
+                    dialog.cancel();
+                    Toast.makeText(getContext(), "Missing Input, fill the required field.", Toast.LENGTH_SHORT).show();
                 }
-                else if (a >= 4 && a < 6){
-                    brixlevelAM.setCurrentStateNumber(StateProgressBar.StateNumber.TWO);
-                }
-                else if (a >= 6 && a < 10){
-                    brixlevelAM.setCurrentStateNumber(StateProgressBar.StateNumber.THREE);
-                }
-                else if (a >= 10 && a < 14){
-                    brixlevelAM.setCurrentStateNumber(StateProgressBar.StateNumber.FOUR);
-                }
-                else if (a >= 14){
-                    brixlevelAM.setCurrentStateNumber(StateProgressBar.StateNumber.FIVE);
-                }
-
             });
             builder.setNegativeButton("Cancel", (dialog, which) -> dialog.cancel());
             builder.show();

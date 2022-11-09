@@ -272,7 +272,7 @@ public class CameraFragment extends Fragment implements ImageClassifierHelper.Cl
             });
 
         } catch (Exception e) {
-            Toast.makeText(getContext(), "There's no Camera Available. Try Again Later!", Toast.LENGTH_SHORT).show();
+           // Toast.makeText(getActivity(), "There's no Camera Available. Try Again Later!", Toast.LENGTH_SHORT).show();
         }
 
         // Must unbind the use-cases before rebinding them
