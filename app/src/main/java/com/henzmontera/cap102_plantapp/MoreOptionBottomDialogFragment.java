@@ -50,24 +50,20 @@ public class MoreOptionBottomDialogFragment extends BottomSheetDialogFragment {
         String description = bundle.getString("description");
 
         DeleteTV = view.findViewById(R.id.moreoption_tv_btn_delete_post);
-        ReportTV = view.findViewById(R.id.moreoption_tv_btn_report_post);
         EditTV = view.findViewById(R.id.more_option_tv_btn_edit_post);
 
         if(guest.get(sessionManager.GNAME).equals("UserGuest000")){
             DeleteTV.setVisibility(View.GONE);
-            ReportTV.setVisibility(View.GONE);
             EditTV.setVisibility(View.GONE);
         }
 
         if (!user.get(sessionManager.UID).equals(userid)){
             DeleteTV.setVisibility(View.GONE);
-            ReportTV.setVisibility(View.VISIBLE);
             EditTV.setVisibility(View.GONE);
         }
 
         if (user.get(sessionManager.UID).equals(userid)){
             DeleteTV.setVisibility(View.VISIBLE);
-            ReportTV.setVisibility(View.GONE);
             EditTV.setVisibility(View.VISIBLE);
         }
 

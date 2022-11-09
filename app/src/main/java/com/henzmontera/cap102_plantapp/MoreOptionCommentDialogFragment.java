@@ -27,7 +27,6 @@ import java.util.Map;
 
 public class MoreOptionCommentDialogFragment extends BottomSheetDialogFragment {
 
-    private TextView ReportTV;
     private TextView CopyTv;
     private TextView DeleteTV;
     private TextView EditTv;
@@ -62,34 +61,25 @@ public class MoreOptionCommentDialogFragment extends BottomSheetDialogFragment {
         Log.d("Commenter User ID: ", commenter_userid+"");
         Log.d("Text : ", comment_text+"");
 
-        ReportTV = view.findViewById(R.id.more_option_comment_Report);
         CopyTv = view.findViewById(R.id.more_option_comment_Copy);
         DeleteTV = view.findViewById(R.id.more_option_comment_Delete);
         EditTv = view.findViewById(R.id.more_option_comment_Edit);
 
         if(guest.get(sessionManager.GNAME).equals("UserGuest000")){
-            ReportTV.setVisibility(View.GONE);
             CopyTv.setVisibility(View.VISIBLE);
             DeleteTV.setVisibility(View.GONE);
             EditTv.setVisibility(View.GONE);
         }
         if(user.get(sessionManager.UID).equals(commenter_userid)){
-            ReportTV.setVisibility(View.GONE);
             CopyTv.setVisibility(View.VISIBLE);
             DeleteTV.setVisibility(View.VISIBLE);
             EditTv.setVisibility(View.VISIBLE);
         }
         if(!user.get(sessionManager.UID).equals(commenter_userid)){
-            ReportTV.setVisibility(View.VISIBLE);
             CopyTv.setVisibility(View.VISIBLE);
             DeleteTV.setVisibility(View.GONE);
             EditTv.setVisibility(View.GONE);
         }
-
-        ReportTV.setOnClickListener(view2 -> {
-            Toast.makeText(getContext(), "This is Report", Toast.LENGTH_SHORT).show();
-            dismiss();
-        });
 
         CopyTv.setOnClickListener(view2 -> {
             CopyComment(comment_text);

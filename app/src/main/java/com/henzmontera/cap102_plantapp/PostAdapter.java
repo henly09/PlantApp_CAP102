@@ -40,6 +40,7 @@ import java.util.StringTokenizer;
 import java.util.TimeZone;
 
 public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ListViewHolder>{
+
     private final int limit = 10;
     private Context context;
     private List<ListPost> LISTPOSTS;
