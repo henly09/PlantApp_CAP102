@@ -11,6 +11,20 @@
         android:background="#F9fff4"
         tools:context=".IPfragments.Homefragment">
 
+        <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
+            android:id="@+id/youTubePlayerView5"
+            android:layout_width="356dp"
+            android:layout_height="222dp"
+            android:layout_marginBottom="90dp"
+            android:background="#555050"
+            android:backgroundTint="#555050"
+            app:autoPlay="false"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.513"
+            app:layout_constraintStart_toStartOf="parent"
+            app:videoId="5GgJBBo1rF8" />
+
         <Button
             android:id="@+id/cmguide"
             android:layout_width="wrap_content"
@@ -75,7 +89,7 @@
             android:fontFamily="@font/opensans_bold"
             android:text="PM Guide ➤"
             android:textColor="#FFFFFF"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/imageView41"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/youTubePlayerView2"
             app:layout_constraintVertical_bias="0.0" />
@@ -96,13 +110,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginBottom="97dp"
+            android:layout_marginBottom="20dp"
             android:layout_marginStart="28dp"
             android:text="Penetrometer Guide: "
             android:textColor="#4d4f4c"
             android:textSize="20sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/imageView41"
             app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
@@ -164,6 +178,21 @@
             app:layout_constraintBottom_toTopOf="@+id/youTubePlayerView2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.476"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/textView47"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="32dp"
+            android:text="App's Demonstration"
+            android:textColor="#4d4f4c"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/youTubePlayerView5"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.496"
             app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
@@ -279,6 +308,17 @@
             android:layout_height="29dp"
             android:layout_marginBottom="20dp"
             app:layout_constraintBottom_toTopOf="@+id/textView9"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.478"
+            app:layout_constraintStart_toStartOf="parent"
+            app:srcCompat="@drawable/divider" />
+
+        <ImageView
+            android:id="@+id/imageView41"
+            android:layout_width="370dp"
+            android:layout_height="29dp"
+            android:layout_marginBottom="20dp"
+            app:layout_constraintBottom_toTopOf="@+id/textView47"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.478"
             app:layout_constraintStart_toStartOf="parent"
