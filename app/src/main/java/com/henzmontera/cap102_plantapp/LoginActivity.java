@@ -97,11 +97,19 @@ public class LoginActivity extends AppCompatActivity {
 
         LoginButton.setOnClickListener(view -> {
              if(UserEditText.getText().toString().isEmpty() || PasswordEditText.getText().toString().isEmpty()){
-                Toast.makeText(this, "One of your field is empty, please Enter", Toast.LENGTH_SHORT).show();
+                 if(UserEditText.getText().toString().isEmpty()){
+                     UserEditText.setError("Field is empty");
+                 }
+                 if(PasswordEditText.getText().toString().isEmpty()){
+                     PasswordEditText.setError("Field is empty");
+                 }
+                 Toast.makeText(this, "One of your field is empty, please Enter", Toast.LENGTH_SHORT).show();
             } else if(UserEditText.getText().toString().isEmpty() && PasswordEditText.getText().toString().isEmpty()){
-                Toast.makeText(this, "All of your field is empty, please Enter", Toast.LENGTH_SHORT).show();
+                 UserEditText.setError("Field is empty");
+                 PasswordEditText.setError("Field is empty");
+                 Toast.makeText(this, "All of your field is empty, please Enter", Toast.LENGTH_SHORT).show();
             } else {
-                LoginAuthenticate(UserEditText.getText().toString(), PasswordEditText.getText().toString());
+                 LoginAuthenticate(UserEditText.getText().toString(), PasswordEditText.getText().toString());
             }
         });
 
@@ -147,7 +155,7 @@ public class LoginActivity extends AppCompatActivity {
                             JSONObject auth = authenUser.getJSONObject(0);
 
                             if(UserEditText.getText().toString().equals(auth.optString("username").trim()) &&
-                                    PasswordEditText.getText().toString().equals(auth.optString("userpassword").trim())){
+                                PasswordEditText.getText().toString().equals(auth.optString("userpassword").trim())){
 
                                 String name = auth.optString("username").trim();
                                 String email = auth.optString("email").trim();

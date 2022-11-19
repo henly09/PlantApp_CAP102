@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.WindowManager;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
@@ -127,14 +126,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 Intent intentLogin = new Intent(MainActivity.this, LoginActivity.class);
                 startActivity(intentLogin);
                 drawer.closeDrawers();
-                Toast.makeText(this, "Login", Toast.LENGTH_SHORT).show();
                 finish();
                 break;
             case R.id.Register:
                 Intent intentRegister = new Intent(MainActivity.this, RegisterActivity.class);
                 startActivity(intentRegister);
                 drawer.closeDrawers();
-                Toast.makeText(this, "Register", Toast.LENGTH_SHORT).show();
                 finish();
                 break;
             case R.id.AcProfile:
@@ -146,25 +143,21 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 Intent intentIntro = new Intent(MainActivity.this, Guide.class);
                 startActivity(intentIntro);
                 drawer.closeDrawers();
-                Toast.makeText(this, "Introduction", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.RefractometerGuide:
                 Intent intentRefractometer = new Intent(MainActivity.this, Refractometer.class);
                 startActivity(intentRefractometer);
                 drawer.closeDrawers();
-                Toast.makeText(this, "Refractometer Guide", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.PenetrometerGuide:
                 Intent intentPenetrometer = new Intent(MainActivity.this, Penetrometer.class);
                 startActivity(intentPenetrometer);
                 drawer.closeDrawers();
-                Toast.makeText(this, "Refractometer Guide", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.AboutUs:
                 Intent intentAboutUs = new Intent(MainActivity.this, AboutAuthor.class);
                 startActivity(intentAboutUs);
                 drawer.closeDrawers();
-                Toast.makeText(this, "Authors", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.Logout:
                 sessionManager.logout();
