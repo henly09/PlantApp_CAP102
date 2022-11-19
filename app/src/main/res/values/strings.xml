@@ -21,22 +21,22 @@
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
     <!--   DOMAIN   -->
-    <string name="GetLatestPost">http://192.168.254.102/networkingbased/DisplayLatestPost.php</string>
-    <string name="DeleteComment">http://192.168.254.102/networkingbased/DeleteComment.php</string>
-    <string name="Login">http://192.168.254.102/networkingbased/LoginUser.php</string>
-    <string name="Register">http://192.168.254.102/networkingbased/RegisterUser.php</string>
-    <string name="DeletePost">http://192.168.254.102/networkingbased/DeletePost.php</string>
-    <string name="Like">http://192.168.254.102/networkingbased/LikePost.php</string>
-    <string name="Unlike">http://192.168.254.102/networkingbased/UnlikePost.php</string>
-    <string name="DisplayProfilePost">http://192.168.254.102/networkingbased/DisplayUserProfile.php</string>
-    <string name="SaveProfilePicture">http://192.168.254.102/networkingbased/ChangeProfilePicture.php</string>
-    <string name="AddPost">http://192.168.254.102/networkingbased/AddPost.php</string>
-    <string name="GetUserPost">http://192.168.254.102/networkingbased/DisplayCurrentUserPost.php</string>
-    <string name="GetLatestComments">http://192.168.254.102/networkingbased/DisplayLatestComment.php</string>
-    <string name="AddComment">http://192.168.254.102/networkingbased/AddComment.php</string>
-    <string name="EditPost">http://192.168.254.102/networkingbased/EditPost.php</string>
-    <string name="EditComment">http://192.168.254.102/networkingbased/EditComment.php</string>
-    <string name="CheckIfLike">http://192.168.254.102/networkingbased/CheckIfLike.php</string>
+    <string name="GetLatestPost">http://mangocap102.online/DisplayLatestPost.php</string>
+    <string name="DeleteComment">http://mangocap102.online/DeleteComment.php</string>
+    <string name="Login">http://mangocap102.online/LoginUser.php</string>
+    <string name="Register">http://mangocap102.online/RegisterUser.php</string>
+    <string name="DeletePost">http://mangocap102.online/DeletePost.php</string>
+    <string name="Like">http://mangocap102.online/LikePost.php</string>
+    <string name="Unlike">http://mangocap102.online/UnlikePost.php</string>
+    <string name="DisplayProfilePost">http://mangocap102.online/DisplayUserProfile.php</string>
+    <string name="SaveProfilePicture">http://mangocap102.online/ChangeProfilePicture.php</string>
+    <string name="AddPost">http://mangocap102.online/AddPost.php</string>
+    <string name="GetUserPost">http://mangocap102.online/DisplayCurrentUserPost.php</string>
+    <string name="GetLatestComments">http://mangocap102.online/DisplayLatestComment.php</string>
+    <string name="AddComment">http://mangocap102.online/AddComment.php</string>
+    <string name="EditPost">http://mangocap102.online/EditPost.php</string>
+    <string name="EditComment">http://mangocap102.online/EditComment.php</string>
+    <string name="CheckIfLike">http://mangocap102.online/CheckIfLike.php</string>
     <!--   DOMAIN   -->
     <string name="intro">In an agricultural system, trees provide a variety of purposes in general.
         Through the production of fruits, vegetables, starch, and fodder, trees directly support the

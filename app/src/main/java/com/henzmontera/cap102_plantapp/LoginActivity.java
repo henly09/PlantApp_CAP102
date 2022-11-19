@@ -186,7 +186,7 @@ public class LoginActivity extends AppCompatActivity {
                             }
                         }
                         catch(Exception e){
-                            Toast.makeText(this, "Username and Password incorrect", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(this, "Username and Password incorrect" + e.getMessage(), Toast.LENGTH_SHORT).show();
 
                         }
                     }, error -> Toast.makeText(LoginActivity.this, "Volley Error Response! \n\n" + error.getMessage(), Toast.LENGTH_SHORT).show()
