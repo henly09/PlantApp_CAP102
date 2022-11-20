@@ -2,6 +2,7 @@ package com.henzmontera.cap102_plantapp;
 
 import static java.sql.Types.NULL;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,6 +20,7 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -44,6 +46,7 @@ public class FirstFragment extends Fragment {
     private RecyclerView recyclerview;
     private List<ListPost> listposts;
     private TextView DataErrorTextView;
+    private FloatingActionButton AddButton;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -62,8 +65,16 @@ public class FirstFragment extends Fragment {
         recyclerview.setLayoutManager(new LinearLayoutManager(getActivity()));
         listposts = new ArrayList<>();
 
+        //Button
+        AddButton = rootview.findViewById(R.id.FirstFrag_addAddButton);
+
         //Call Method
         GetLatestPost();
+
+        AddButton.setOnClickListener(view -> {
+            Intent intent = new Intent(FirstFragment.this.getContext(), AddPostActivity.class);
+            startActivity(intent);
+        });
 
         swiperefresh = rootview.findViewById(R.id.swipeRefreshLayout);
         swiperefresh.setOnRefreshListener(() -> {

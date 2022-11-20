@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Base64;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -36,6 +37,8 @@ public class AddPostActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_post);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN); //FullScreen
+        overridePendingTransition(R.anim.slide_in_left, androidx.navigation.ui.R.anim.nav_default_pop_exit_anim); // Transition during Opening this Activity
         ProfilePicThread = findViewById(R.id.ImageProfilePost);
         UserTextView = findViewById(R.id.userPostTextView);
         PostButton = findViewById(R.id.ButtonPostText);
@@ -133,5 +136,11 @@ public class AddPostActivity extends AppCompatActivity {
         byte[] decodedString = Base64.decode(string, Base64.DEFAULT);
         Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
         return decodedByte;
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        overridePendingTransition(androidx.navigation.ui.R.anim.nav_default_pop_enter_anim, R.anim.slide_out_left);
     }
 }

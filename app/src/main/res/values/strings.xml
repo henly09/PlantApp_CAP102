@@ -20,7 +20,7 @@
     <string name="menu_home">Home</string>
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
-    <!--   DOMAIN   -->
+    <!--   URL   -->
     <string name="GetLatestPost">https://mangocap102.online/DisplayLatestPost.php</string>
     <string name="DeleteComment">https://mangocap102.online/DeleteComment.php</string>
     <string name="Login">https://mangocap102.online/LoginUser.php</string>
@@ -37,7 +37,7 @@
     <string name="EditPost">https://mangocap102.online/EditPost.php</string>
     <string name="EditComment">https://mangocap102.online/EditComment.php</string>
     <string name="CheckIfLike">https://mangocap102.online/CheckIfLike.php</string>
-    <!--   DOMAIN   -->
+    <!--   URL   -->
     <string name="intro">In an agricultural system, trees provide a variety of purposes in general.
         Through the production of fruits, vegetables, starch, and fodder, trees directly support the
         nutritional needs of families, communities, and livestock. In terms of the environment, trees

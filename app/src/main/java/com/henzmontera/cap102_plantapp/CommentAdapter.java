@@ -5,7 +5,6 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.util.Base64;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -121,7 +120,7 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ViewHold
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         SimpleDateFormat formatterYear = new SimpleDateFormat("MM/dd/yyyy");
 
-        if (timeAtMiliseconds == 0) {
+        if (timeAtMiliseconds == 0 ) {
             return "";
         }
 
@@ -139,8 +138,7 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ViewHold
         try {
             CurrentDate = formatter.parse(dataSot);
             CreateDate = formatter.parse(agoformater);
-
-            long different = Math.abs(CurrentDate.getTime() - CreateDate.getTime());
+            long different = Math.abs(CreateDate.getTime() - CurrentDate.getTime());
 
             long secondsInMilli = 1000;
             long minutesInMilli = secondsInMilli * 60;
@@ -161,7 +159,7 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ViewHold
             if (elapsedDays == 0) {
                 if (elapsedHours == 0) {
                     if (elapsedMinutes == 0) {
-                        if (elapsedSeconds < 0) {
+                        if (elapsedSeconds == 0) {
                             return "0" + " s";
                         } else {
                             if (elapsedSeconds > 0 && elapsedSeconds < 59) {
@@ -169,51 +167,63 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ViewHold
                             }
                         }
                     } else {
-                        return String.valueOf(elapsedMinutes) + "m ago";
+                        if(elapsedMinutes == 1){
+                            return elapsedMinutes + " minute ago";
+                        } else {
+                            return elapsedMinutes + " minutes ago";
+                        }
                     }
                 } else {
-                    return String.valueOf(elapsedHours) + "h ago";
+                    if(elapsedHours == 1){
+                        return elapsedHours + " hour ago";
+                    } else {
+                        return elapsedHours + " hours ago";
+                    }
                 }
 
             } else {
                 if (elapsedDays <= 29) {
-                    return String.valueOf(elapsedDays) + "d ago";
+                    if(elapsedDays == 1){
+                        return elapsedDays + " day ago";
+                    } else {
+                        return elapsedDays + " days ago";
+                    }
                 }
                 if (elapsedDays > 29 && elapsedDays <= 58) {
-                    return "1Mth ago";
+                    return "1 Month ago";
                 }
                 if (elapsedDays > 58 && elapsedDays <= 87) {
-                    return "2Mth ago";
+                    return "2 Months ago";
                 }
                 if (elapsedDays > 87 && elapsedDays <= 116) {
-                    return "3Mth ago";
+                    return "3 Months ago";
                 }
                 if (elapsedDays > 116 && elapsedDays <= 145) {
-                    return "4Mth ago";
+                    return "4 Months ago";
                 }
                 if (elapsedDays > 145 && elapsedDays <= 174) {
-                    return "5Mth ago";
+                    return "5 Months ago";
                 }
                 if (elapsedDays > 174 && elapsedDays <= 203) {
-                    return "6Mth ago";
+                    return "6 Months ago";
                 }
                 if (elapsedDays > 203 && elapsedDays <= 232) {
-                    return "7Mth ago";
+                    return "7 Months ago";
                 }
                 if (elapsedDays > 232 && elapsedDays <= 261) {
-                    return "8Mth ago";
+                    return "8 Months ago";
                 }
                 if (elapsedDays > 261 && elapsedDays <= 290) {
-                    return "9Mth ago";
+                    return "9 Months ago";
                 }
                 if (elapsedDays > 290 && elapsedDays <= 319) {
-                    return "10Mth ago";
+                    return "10 Months ago";
                 }
                 if (elapsedDays > 319 && elapsedDays <= 348) {
-                    return "11Mth ago";
+                    return "11 Months ago";
                 }
                 if (elapsedDays > 348 && elapsedDays <= 360) {
-                    return "12Mth ago";
+                    return "12 Months ago";
                 }
 
                 if (elapsedDays > 360 && elapsedDays <= 720) {
