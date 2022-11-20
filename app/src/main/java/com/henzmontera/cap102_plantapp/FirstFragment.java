@@ -1,7 +1,5 @@
 package com.henzmontera.cap102_plantapp;
 
-import static java.sql.Types.NULL;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -9,12 +7,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -28,6 +20,14 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
+
+import static java.sql.Types.NULL;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -97,7 +97,10 @@ public class FirstFragment extends Fragment {
         swiperefresh = rootview.findViewById(R.id.swipeRefreshLayout);
         swiperefresh.setOnRefreshListener(() -> {
             listposts.clear();
+            recyclerview.getRecycledViewPool().clear();
+            useradapt.notifyDataSetChanged();
             GetLatestPost();
+            useradapt.notifyDataSetChanged();
             swiperefresh.setRefreshing(false); //False to Animation
             Toast.makeText(getActivity(), "Refreshed", Toast.LENGTH_SHORT).show();
         });
