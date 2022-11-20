@@ -96,13 +96,16 @@ public class FirstFragment extends Fragment {
 
         swiperefresh = rootview.findViewById(R.id.swipeRefreshLayout);
         swiperefresh.setOnRefreshListener(() -> {
+            Toast.makeText(getActivity(), "Refreshing.. Please Wait..", Toast.LENGTH_SHORT).show();
             listposts.clear();
             recyclerview.getRecycledViewPool().clear();
+            recyclerview.setAdapter(null);
             useradapt.notifyDataSetChanged();
-            GetLatestPost();
-            useradapt.notifyDataSetChanged();
+            if(listposts.isEmpty() && useradapt.getItemCount() == 0){
+                GetLatestPost();
+            }
             swiperefresh.setRefreshing(false); //False to Animation
-            Toast.makeText(getActivity(), "Refreshed", Toast.LENGTH_SHORT).show();
+
         });
         return rootview;
     }
