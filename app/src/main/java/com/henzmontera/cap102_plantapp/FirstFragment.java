@@ -26,6 +26,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -47,13 +48,15 @@ public class FirstFragment extends Fragment {
     private List<ListPost> listposts;
     private TextView DataErrorTextView;
     private FloatingActionButton AddButton;
+    private SessionManager sessionManager;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootview = inflater.inflate(R.layout.fragment_first, container, false);
         ((AppCompatActivity)getActivity()).getSupportActionBar().setBackgroundDrawable(getActivity().getDrawable(R.drawable.actionbartheme));
-
+        //Initialize the session manager
+        sessionManager = new SessionManager(getContext());
         //TextView
         DataErrorTextView = rootview.findViewById(R.id.TextViewError);
 
@@ -67,6 +70,14 @@ public class FirstFragment extends Fragment {
 
         //Button
         AddButton = rootview.findViewById(R.id.FirstFrag_addAddButton);
+
+        HashMap<String, String> GuestPov = sessionManager.getGuestDetails();
+        String guestName = GuestPov.get(sessionManager.GNAME);
+        if(guestName.equals("UserGuest000")){
+            AddButton.setVisibility(View.GONE);
+        } else {
+            AddButton.setVisibility(View.VISIBLE);
+        }
 
         //Call Method
         GetLatestPost();
