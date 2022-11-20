@@ -57,6 +57,14 @@ public class FirstFragment extends Fragment {
         ((AppCompatActivity)getActivity()).getSupportActionBar().setBackgroundDrawable(getActivity().getDrawable(R.drawable.actionbartheme));
         //Initialize the session manager
         sessionManager = new SessionManager(getContext());
+        sessionManager.checkLogin(); //Check if Logged In
+
+        if(!sessionManager.isLoggin()){
+            String Gname = "UserGuest000";
+            String Gid = "69142";
+            sessionManager.createGuestSession(Gname,Gid);
+        }
+
         //TextView
         DataErrorTextView = rootview.findViewById(R.id.TextViewError);
 
@@ -72,8 +80,7 @@ public class FirstFragment extends Fragment {
         AddButton = rootview.findViewById(R.id.FirstFrag_addAddButton);
 
         HashMap<String, String> GuestPov = sessionManager.getGuestDetails();
-        String guestName = GuestPov.get(sessionManager.GNAME);
-        if(guestName.equals("UserGuest000")){
+        if(GuestPov.get(sessionManager.GNAME).equals("UserGuest000")){
             AddButton.setVisibility(View.GONE);
         } else {
             AddButton.setVisibility(View.VISIBLE);
