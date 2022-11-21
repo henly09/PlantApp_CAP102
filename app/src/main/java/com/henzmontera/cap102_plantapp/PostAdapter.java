@@ -331,6 +331,13 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ListViewHolder
         if(!user.get(holder.sessionManager.UID).equals(holder.UPostUserId.getText().toString())){
             holder.UMoreOption.setVisibility(ViewGroup.GONE);
         }
+
+        holder.UPostImage.setOnClickListener(view -> {
+            Intent intent = new Intent(context, ViewingPostImageActivity.class);
+            intent.putExtra("postid", holder.UPostID.getText().toString());
+            context.startActivity(intent);
+        });
+
     }
 
     @Override

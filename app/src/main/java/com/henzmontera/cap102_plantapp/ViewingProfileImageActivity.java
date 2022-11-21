@@ -24,7 +24,7 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
-public class ViewingImageActivity extends AppCompatActivity {
+public class ViewingProfileImageActivity extends AppCompatActivity {
 
     private ImageFilterButton BackButton;
     private TouchImageView ImageSelected;
@@ -32,7 +32,7 @@ public class ViewingImageActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_viewing_image);
+        setContentView(R.layout.activity_viewing_profile_image);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN); //FullScreen
         overridePendingTransition(androidx.navigation.ui.R.anim.nav_default_pop_enter_anim, androidx.navigation.ui.R.anim.nav_default_pop_exit_anim); // Transition during Opening this Activity
         ImageSelected = findViewById(R.id.ViewImage_ImageSelected);
@@ -50,7 +50,7 @@ public class ViewingImageActivity extends AppCompatActivity {
     private void GetImage(String userid){
         String url = getString(R.string.DisplayProfilePost);
 
-        RequestQueue q = Volley.newRequestQueue(ViewingImageActivity.this);
+        RequestQueue q = Volley.newRequestQueue(ViewingProfileImageActivity.this);
 
         StringRequest r = new StringRequest( //Request String type
                 Request.Method.POST, //Get or Retrieve only Method of request
@@ -64,7 +64,7 @@ public class ViewingImageActivity extends AppCompatActivity {
                     } catch (Exception e) {
                     }
                 }, error -> {
-            Toast.makeText(ViewingImageActivity.this, "Fetching Data From Database Failed. Please Try Again Later..", Toast.LENGTH_SHORT).show();
+            Toast.makeText(ViewingProfileImageActivity.this, "Fetching Data From Database Failed. Please Try Again Later..", Toast.LENGTH_SHORT).show();
         }) {
             @Nullable
             @Override

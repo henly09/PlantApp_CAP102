@@ -28,7 +28,14 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".ViewingImageActivity"
+            android:name=".ViewingPostImageActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".ViewingProfileImageActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"

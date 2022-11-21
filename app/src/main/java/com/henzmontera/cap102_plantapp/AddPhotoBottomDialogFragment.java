@@ -56,7 +56,7 @@ public class AddPhotoBottomDialogFragment extends BottomSheetDialogFragment {
         String userId = bundle.getString("userId");
 
         ViewTV.setOnClickListener(view1 -> {
-            Intent intent = new Intent(getContext(), ViewingImageActivity.class);
+            Intent intent = new Intent(getContext(), ViewingProfileImageActivity.class);
             intent.putExtra("userId", userId);
             startActivity(intent);
         });

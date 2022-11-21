@@ -195,7 +195,7 @@ public class AddPostActivity extends AppCompatActivity {
     //Convert image into String
     private String imageToString(Bitmap bitmap){
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.JPEG,60,byteArrayOutputStream);
+        bitmap.compress(Bitmap.CompressFormat.JPEG,70,byteArrayOutputStream);
         byte[] imgBytes = byteArrayOutputStream.toByteArray();
         return Base64.encodeToString(imgBytes, Base64.DEFAULT);
     }

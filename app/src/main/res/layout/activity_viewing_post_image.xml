@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ViewingPostImageActivity">
+
+    <RelativeLayout
+        android:id="@+id/ViewPostImage_Tool"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.utils.widget.ImageFilterButton
+            android:id="@+id/ViewPostImage_BackButton"
+            android:layout_width="40sp"
+            android:layout_height="40sp"
+            android:layout_marginTop="5sp"
+            android:layout_marginBottom="5sp"
+            android:layout_alignStart="@id/ViewPostImage_Tool"
+            android:layout_marginStart="13dp"
+            android:adjustViewBounds="true"
+            android:background="@drawable/ic_backbutton_2"
+            android:scaleType="center"
+            tools:ignore="NotSibling" />
+
+    </RelativeLayout>
+
+    <com.ortiz.touchview.TouchImageView
+        android:id="@+id/ViewPostImage_ImageSelected"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:translationZ="@dimen/activity_horizontal_margin"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ViewPostImage_Tool" />
+
+    <TextView
+        android:id="@+id/ViewPostImage_LoadingTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Image Loading"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
