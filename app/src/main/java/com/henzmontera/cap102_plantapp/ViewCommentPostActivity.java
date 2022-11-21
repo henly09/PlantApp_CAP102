@@ -115,7 +115,6 @@ public class ViewCommentPostActivity extends AppCompatActivity {
             String commenteruserid = user.get(sessionManager.UID);
             String commenttext = currentUserCommentTextView.getText().toString();
             AddComment(postid,commenteruserid,commenttext);
-            currentUserCommentTextView.setText("");
         });
 
         backButton.setOnClickListener(view -> {
@@ -232,6 +231,7 @@ public class ViewCommentPostActivity extends AppCompatActivity {
                             listComments.clear();
                             GetLatestComments(postid);
                             commentAdapter.notifyDataSetChanged();
+                            currentUserCommentTextView.setText("");
                             Toast.makeText(ViewCommentPostActivity.this, "Comment Added!", Toast.LENGTH_SHORT).show();
                         } catch (Exception e) {
                         }
