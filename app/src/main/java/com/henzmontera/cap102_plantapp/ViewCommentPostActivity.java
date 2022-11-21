@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.util.Base64;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -45,6 +46,7 @@ public class ViewCommentPostActivity extends AppCompatActivity {
     private ImageView posterUserProfilePicture;
     private TextView posterdateAndUsername;
     private TextView posterDescription;
+    private ImageView posterImagePostPicture;
     private TextView posterid;
     private ImageFilterButton backButton;
     private View ViewLine;
@@ -78,6 +80,7 @@ public class ViewCommentPostActivity extends AppCompatActivity {
         posterdateAndUsername = findViewById(R.id.post_detail_date_name);   //Poster's Date and Username
         posterDescription = findViewById(R.id.post_detail_desc);    // Poster's Description
         posterUserProfilePicture = findViewById(R.id.post_detail_user_img); // Poster's User Profile Picture
+        posterImagePostPicture = findViewById(R.id.post_detail_img);    //Poster's POST Image
         posterid = findViewById(R.id.post_posterid);    // Poster's User id
 
         //RecyclerView Layout
@@ -139,12 +142,22 @@ public class ViewCommentPostActivity extends AppCompatActivity {
 
                         //Get ImageStrings
                         String userprofileString = al.optString("userprofilepicture");
-                        String postImagesString = al.optString("postImages");
+                        String postImagesString = al.optString("postImage");
 
                         //Set Text and Set ImageBitmap
                         posterdateAndUsername.setText(al.optString("postTime") + " | " + " by " + al.optString("username"));
                         posterDescription.setText(al.optString("postDescriptions"));
                         posterUserProfilePicture.setImageBitmap(StringtoImage(userprofileString));
+                        if(postImagesString.isEmpty() || postImagesString.equals("")){ //If Empty, set imageview to 0
+                            ViewGroup.LayoutParams layoutParams = posterImagePostPicture.getLayoutParams();
+                            layoutParams.width = 0;
+                            layoutParams.height = 0;
+                            posterImagePostPicture.setLayoutParams(layoutParams);
+                        } else {
+                            ViewGroup.LayoutParams layoutParams = posterImagePostPicture.getLayoutParams();
+                            layoutParams.height = 562;
+                            posterImagePostPicture.setImageBitmap(StringtoImage(postImagesString));
+                        }
                     } catch (Exception e) {
                     }
                 }, error -> {

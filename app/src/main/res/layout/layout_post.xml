@@ -97,7 +97,7 @@
             android:textColor="@color/black" />
 
         <ImageView
-            android:id="@+id/EditPost_AddPost_RecyclerView"
+            android:id="@+id/pimagetv"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:scaleType="fitCenter"

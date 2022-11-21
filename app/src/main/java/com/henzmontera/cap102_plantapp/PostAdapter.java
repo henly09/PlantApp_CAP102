@@ -52,6 +52,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ListViewHolder
     public class ListViewHolder extends RecyclerView.ViewHolder {
         private TextView UPostNameTV, UPostTimeTV, UPostDesc, UPostLikeC, UPostCommentC, UPostID, UPostUserId;
         private ImageView UPostProfPic;
+        private ImageView UPostImage;
         private ImageButton UMoreOption;
         private Button ULikeButton, UCommentButton;
         private SessionManager sessionManager = new SessionManager(context);
@@ -67,6 +68,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ListViewHolder
 
             //Image
             UPostProfPic = itemView.findViewById(R.id.picturetv); //user's profile picture
+            UPostImage = itemView.findViewById(R.id.pimagetv);  //user's posted picture
 
             //Button
             ULikeButton = itemView.findViewById(R.id.like);
@@ -80,7 +82,6 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ListViewHolder
             UPostUserId = itemView.findViewById(R.id.uuserId);
 
             HashMap<String, String> GuestPov = sessionManager.getGuestDetails();
-            HashMap<String, String> UserPov = sessionManager.getUserDetail();
             String guestName = GuestPov.get(sessionManager.GNAME);
             if(guestName.equals("UserGuest000")){
                 UMoreOption.setVisibility(View.GONE);
@@ -301,6 +302,20 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ListViewHolder
         else{
             holder.UPostProfPic.setImageBitmap(StringtoImage(LISTPOSTS.get(position).getPROFILEPIC()));
         }
+
+        if(LISTPOSTS.get(position).getPOSTIMAGES().isEmpty() || LISTPOSTS.get(position).getPOSTIMAGES().equals("")){  // If empty, Set ImageView to 0
+            ViewGroup.LayoutParams layoutParams = holder.UPostImage.getLayoutParams();
+            layoutParams.width = 0;
+            holder.UPostImage.setLayoutParams(layoutParams);
+        }
+        else{
+            holder.UPostImage.setImageBitmap(StringtoImage(LISTPOSTS.get(position).getPOSTIMAGES()));
+            ViewGroup.LayoutParams layoutParams = holder.UPostImage.getLayoutParams();
+            layoutParams.width = 1100;
+            layoutParams.height = 1100;
+            holder.UPostImage.setLayoutParams(layoutParams);
+        }
+
         HashMap<String, String> user = holder.sessionManager.getUserDetail();
 
         holder.UPostID.setText(LISTPOSTS.get(position).getPOSTID());    // Post Id
@@ -321,13 +336,6 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ListViewHolder
     @Override
     public int getItemCount() {
         return LISTPOSTS.size();
-//        if(LISTPOSTS.size() > limit){
-//            return limit;
-//        }
-//        else
-//        {
-//            return Math.min(LISTPOSTS.size(), limit);
-//        }
     }
 
     //Convert from String to Bitmap Image

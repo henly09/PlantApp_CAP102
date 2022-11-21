@@ -122,10 +122,15 @@ public class ProfileActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
+
+
         //Select Profile Picture
         UserPictureProfile.setOnClickListener(view -> {
-            AddPhotoBottomDialogFragment addPhotoBottomDialogFragment =
-                    AddPhotoBottomDialogFragment.newInstance();
+            Bundle bundle = new Bundle();
+            bundle.putString("userId", id);
+
+            AddPhotoBottomDialogFragment addPhotoBottomDialogFragment = AddPhotoBottomDialogFragment.newInstance();
+            addPhotoBottomDialogFragment.setArguments(bundle);
             addPhotoBottomDialogFragment.show(getSupportFragmentManager(),
                     "add_photo_dialog_fragment");
         });
@@ -160,7 +165,7 @@ public class ProfileActivity extends AppCompatActivity {
                                         al.optString("username"),
                                         al.optString("userprofilepicture"),
                                         al.optString("postDescriptions"),
-                                        al.optString("postImages"),
+                                        al.optString("postImage"),
                                         al.optString("postTime"),
                                         al.optString("commentCount"),
                                         al.optString("likeCount")

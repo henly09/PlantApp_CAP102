@@ -23,8 +23,9 @@
             android:layout_width="match_parent"
             android:layout_height="35dp"
             android:layout_gravity="center_vertical"
-            android:minHeight="?attr/actionBarSize"
             android:background="@color/white"
+            android:minHeight="?attr/actionBarSize"
+            app:layout_constraintTop_toTopOf="parent"
             app:title="">
 
             <RelativeLayout
@@ -34,10 +35,10 @@
 
                 <androidx.constraintlayout.utils.widget.ImageFilterButton
                     android:id="@+id/ViewCommentPost_BackButton"
-                    android:layout_alignStart="@id/toolbarrelative"
-                    android:layout_marginStart="13dp"
                     android:layout_width="24dp"
                     android:layout_height="24dp"
+                    android:layout_alignStart="@id/toolbarrelative"
+                    android:layout_marginStart="13dp"
                     android:adjustViewBounds="true"
                     android:background="@drawable/ic_backbutton_2"
                     android:scaleType="center"
@@ -59,6 +60,21 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/EditComment_toolbar" />
 
+        <ImageView
+            android:id="@+id/post_detail_img"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:maxWidth="400dp"
+            android:maxHeight="400dp"
+            android:minWidth="400dp"
+            android:minHeight="300dp"
+            android:scaleType="fitCenter"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/view"
+            android:background="@color/black"/>
+
         <TextView
             android:id="@+id/post_detail_date_name"
             android:layout_width="wrap_content"
@@ -74,7 +90,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/view"
+            app:layout_constraintTop_toBottomOf="@+id/post_detail_img"
             tools:text="18 jan 2018 | by Arun Larrson " />
 
         <TextView
