@@ -306,6 +306,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ListViewHolder
         if(LISTPOSTS.get(position).getPOSTIMAGES().isEmpty() || LISTPOSTS.get(position).getPOSTIMAGES().equals("")){  // If empty, Set ImageView to 0
             ViewGroup.LayoutParams layoutParams = holder.UPostImage.getLayoutParams();
             layoutParams.width = 0;
+            layoutParams.height = 0;
             holder.UPostImage.setLayoutParams(layoutParams);
         }
         else{
