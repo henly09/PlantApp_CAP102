@@ -1,7 +1,5 @@
 package com.henzmontera.cap102_plantapp;
 
-import static java.sql.Types.NULL;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -9,12 +7,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -28,6 +20,14 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
+
+import static java.sql.Types.NULL;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -89,8 +89,6 @@ public class FirstFragment extends Fragment {
         //Call Method
         GetLatestPost();
 
-        AddButton.setVisibility(View.GONE);
-
         AddButton.setOnClickListener(view -> {
             Intent intent = new Intent(FirstFragment.this.getContext(), AddPostActivity.class);
             startActivity(intent);
@@ -103,12 +101,10 @@ public class FirstFragment extends Fragment {
             recyclerview.getRecycledViewPool().clear();
             recyclerview.setAdapter(null);
             useradapt.notifyDataSetChanged();
-            AddButton.setVisibility(View.GONE);
             if(listposts.isEmpty() && useradapt.getItemCount() == 0){
                 GetLatestPost();
             }
             swiperefresh.setRefreshing(false); //False to Animation
-
         });
         return rootview;
     }
@@ -126,11 +122,9 @@ public class FirstFragment extends Fragment {
 
                         if (latestpost.length() == NULL) {
                             DataErrorTextView.setVisibility(View.VISIBLE);
-                            AddButton.setVisibility(View.GONE);
                             recyclerview.setVisibility(View.GONE);
                         } else {
                             DataErrorTextView.setVisibility(View.GONE);
-                            AddButton.setVisibility(View.VISIBLE);
                             recyclerview.setVisibility(View.VISIBLE);
 
                             for (int i = 0; i < latestpost.length(); i++) {
