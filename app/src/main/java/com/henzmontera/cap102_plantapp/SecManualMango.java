@@ -35,12 +35,15 @@ public class SecManualMango extends AppCompatActivity {
 
         SpannableString ss = new SpannableString(text);
 
+        //Clickable Span inside Text View
         ClickableSpan clickableSpan1= new ClickableSpan() {
+
+            //Set onClick to dialog
             @Override
             public void onClick(View widget) {
                 dialognutri();
             }
-
+        //Set color of the Clickable Span
             @Override
             public void updateDrawState(@NonNull TextPaint ds) {
                 super.updateDrawState(ds);
@@ -100,19 +103,18 @@ public class SecManualMango extends AppCompatActivity {
                 ds.setUnderlineText(false);
             }
         };
-
-        ss.setSpan(clickableSpan1, 168, 197, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-        ss.setSpan(clickableSpan2, 289, 303, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-        ss.setSpan(clickableSpan3, 1251, 1272, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-        ss.setSpan(clickableSpan4, 1317, 1338, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-        ss.setSpan(clickableSpan5, 1363, 1385, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-
+        //Initialize TextView
+        ss.setSpan(clickableSpan1, 168, 197, Spanned.SPAN_INCLUSIVE_INCLUSIVE);
+        ss.setSpan(clickableSpan2, 289, 303, Spanned.SPAN_INCLUSIVE_INCLUSIVE);
+        ss.setSpan(clickableSpan3, 1251, 1272, Spanned.SPAN_INCLUSIVE_INCLUSIVE);
+        ss.setSpan(clickableSpan4, 1317, 1338, Spanned.SPAN_INCLUSIVE_INCLUSIVE);
+        ss.setSpan(clickableSpan5, 1363, 1385, Spanned.SPAN_INCLUSIVE_INCLUSIVE);
         textView.setText(ss);
         textView.setMovementMethod(LinkMovementMethod.getInstance());
     }
 
 
-
+    //Dialog inside Clickable Span
     void dialognutri(){
         AlertDialog.Builder builder = new AlertDialog.Builder(SecManualMango.this, R.style.AlertDialogTheme);
         View view = LayoutInflater.from(SecManualMango.this).inflate(

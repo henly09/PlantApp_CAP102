@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -38,6 +39,7 @@
                 android:layout_marginTop="15dp"
                 android:fontFamily="@font/ubuntu_bl"
                 android:gravity="center"
+                android:background="@color/fifthlogocolor"
                 android:text="@string/title_intro"
                 android:textColor="@color/black"
                 android:textSize="28sp"
@@ -93,7 +95,7 @@
             <ImageButton
                 android:id="@+id/ib_carabao"
                 android:layout_width="wrap_content"
-                android:layout_height="100dp"
+                android:layout_height="89dp"
                 android:src="@drawable/picture18"
                 android:adjustViewBounds="true"
                 android:scaleType="fitCenter"
@@ -103,7 +105,7 @@
             <ImageButton
                 android:id="@+id/ib_indian"
                 android:layout_width="wrap_content"
-                android:layout_height="100dp"
+                android:layout_height="89dp"
                 android:layout_margin="5dp"
                 android:adjustViewBounds="true"
                 android:padding="0dp"
@@ -113,7 +115,7 @@
             <ImageButton
                 android:id="@+id/ib_apple"
                 android:layout_width="wrap_content"
-                android:layout_height="100dp"
+                android:layout_height="89dp"
                 android:layout_margin="5dp"
                 android:adjustViewBounds="true"
                 android:padding="0dp"
