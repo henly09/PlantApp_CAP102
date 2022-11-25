@@ -89,6 +89,8 @@ public class FirstFragment extends Fragment {
         //Call Method
         GetLatestPost();
 
+        AddButton.setVisibility(View.GONE);
+
         AddButton.setOnClickListener(view -> {
             Intent intent = new Intent(FirstFragment.this.getContext(), AddPostActivity.class);
             startActivity(intent);
@@ -101,6 +103,7 @@ public class FirstFragment extends Fragment {
             recyclerview.getRecycledViewPool().clear();
             recyclerview.setAdapter(null);
             useradapt.notifyDataSetChanged();
+            AddButton.setVisibility(View.GONE);
             if(listposts.isEmpty() && useradapt.getItemCount() == 0){
                 GetLatestPost();
             }
@@ -123,9 +126,11 @@ public class FirstFragment extends Fragment {
 
                         if (latestpost.length() == NULL) {
                             DataErrorTextView.setVisibility(View.VISIBLE);
+                            AddButton.setVisibility(View.GONE);
                             recyclerview.setVisibility(View.GONE);
                         } else {
                             DataErrorTextView.setVisibility(View.GONE);
+                            AddButton.setVisibility(View.VISIBLE);
                             recyclerview.setVisibility(View.VISIBLE);
 
                             for (int i = 0; i < latestpost.length(); i++) {
