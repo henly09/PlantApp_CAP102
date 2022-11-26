@@ -101,11 +101,13 @@ public class ProfileActivity extends AppCompatActivity {
 
         //Call Display Post Method
         DisplayPost(id);
+        AddButtonThread.setVisibility(View.GONE);
 
         //SwipeRefresh function
         swiperefresh = findViewById(R.id.LowerProfileConstraintLayout);
         swiperefresh.setOnRefreshListener(() -> {
             listposts.clear();
+            AddButtonThread.setVisibility(View.GONE);
             DisplayPost(id);
             swiperefresh.setRefreshing(false); //False to Animation
         });
@@ -152,8 +154,10 @@ public class ProfileActivity extends AppCompatActivity {
                         if (userpost.length() == NULL) {
                             emptyView.setVisibility(View.VISIBLE);
                             recyclerview.setVisibility(View.GONE);
+                            AddButtonThread.setVisibility(View.GONE);
                         } else {
                             emptyView.setVisibility(View.GONE);
+                            AddButtonThread.setVisibility(View.VISIBLE);
                             recyclerview.setVisibility(View.VISIBLE);
                             listposts.clear();
                             for (int i = 0; i < userpost.length(); i++) {

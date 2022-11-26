@@ -84,7 +84,7 @@ public class EditPost extends AppCompatActivity {
                     SaveButton.setTextColor(getColor(R.color.gray));
                 } else {
                     SaveButton.setTextIsSelectable(true);
-                    SaveButton.setTextColor(getColor(R.color.paleblue));
+                    SaveButton.setTextColor(getColor(R.color.teal_700));
                 }
             }
         });
