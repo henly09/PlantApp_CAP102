@@ -22,11 +22,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
-
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.StringRequest;
@@ -36,6 +31,11 @@ import com.stfalcon.multiimageview.MultiImageView;
 import java.io.ByteArrayOutputStream;
 import java.util.HashMap;
 import java.util.Map;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
 public class AddPostActivity extends AppCompatActivity {
 
@@ -108,13 +108,13 @@ public class AddPostActivity extends AppCompatActivity {
             public void afterTextChanged(Editable editable) {
                 if (PostButton.isEnabled()){ // If Enabled
                     PostButton.setOnClickListener(view ->{
-                        if(SelectedImages != null && !EditTextDescriptionWriteMessage.getText().toString().isEmpty()){ // Description and Picture
+                        if(bitmap != null && !EditTextDescriptionWriteMessage.getText().toString().isEmpty()){ // Description and Picture
                             String id = user.get(sessionManager.UID);//Retrieve User's Id
                             String description = EditTextDescriptionWriteMessage.getText().toString();//Get Description
                             String imageString = imageToString(bitmap); // Get Image
                             Posting(id, description, imageString);
                         }
-                        if(SelectedImages == null){ //Only Description
+                        if(bitmap == null){ //Only Description
                             String id = user.get(sessionManager.UID);
                             String description = EditTextDescriptionWriteMessage.getText().toString();
                             String imageString = "";
