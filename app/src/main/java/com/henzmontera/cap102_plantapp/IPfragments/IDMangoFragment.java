@@ -50,10 +50,10 @@ public class IDMangoFragment extends Fragment {
     ImageView imageViewMI,idAsMI,highPercMI,confidialogMI;
     Button buttonMI;
     StateProgressBar levelfruitMI;
-    TextView highPercNameMI,highPercNoMI,CMpercNoMI,IMpercNoMI,AMpercNoMI;
-    ProgressBar highpercbarMI,CMpercProgBarMI,IMpercProgBarMI,AMpercProgBarMI;
+    TextView highPercNameMI,highPercNoMI,CMpercNoMI,IMpercNoMI,AMpercNoMI,ROpercNo;
+    ProgressBar highpercbarMI,CMpercProgBarMI,IMpercProgBarMI,AMpercProgBarMI,ROpercProgBar;
     int imageSize = 224;
-    String[] MangoIdentifier = {"Carabao Mango","Indian Mango","Apple Mango"};
+    String[] MangoIdentifier = {"Carabao\nMango","Indian\nMango","Apple\nMango","No Mango\nDetected"};
     View rootview;
 
     @Override
@@ -79,12 +79,14 @@ public class IDMangoFragment extends Fragment {
         CMpercNoMI = rootview.findViewById(R.id.CMpercNoMI);
         IMpercNoMI = rootview.findViewById(R.id.IMpercNoMI);
         AMpercNoMI = rootview.findViewById(R.id.AMpercNoMI);
+        ROpercNo = rootview.findViewById(R.id.ROpercNo);
 
         // Initialization for ProgressBar
         highpercbarMI = rootview.findViewById(R.id.highpercbarMI);
         CMpercProgBarMI = rootview.findViewById(R.id.CMpercProgBarMI);
         IMpercProgBarMI = rootview.findViewById(R.id.IMpercProgBarMI);
         AMpercProgBarMI = rootview.findViewById(R.id.AMpercProgBarMI);
+        ROpercProgBar = rootview.findViewById(R.id.ROpercProgBar);
 
         // Set Gauge Meter
         levelfruitMI.setStateDescriptionData(MangoIdentifier);
@@ -124,7 +126,8 @@ public class IDMangoFragment extends Fragment {
                     "it is Apple Mango, Carabao Mango, or Indian Mango." +
                     "<br><br> <span style='color:#ee941e;'> 1 = \uD835\uDE3E\uD835\uDE56\uD835\uDE67\uD835\uDE56\uD835\uDE57\uD835\uDE56\uD835\uDE64 \uD835\uDE48\uD835\uDE56\uD835\uDE63\uD835\uDE5C\uD835\uDE64</span>" +
                     "<br> <span style='color:#2da71b;'> 2 = \uD835\uDE44\uD835\uDE63\uD835\uDE59\uD835\uDE5E\uD835\uDE56\uD835\uDE63 \uD835\uDE48\uD835\uDE56\uD835\uDE63\uD835\uDE5C\uD835\uDE64</span>" +
-                    "<br> <span style='color:#cf1a1c;'> 3 = \uD835\uDE3C\uD835\uDE65\uD835\uDE65\uD835\uDE61\uD835\uDE5A \uD835\uDE48\uD835\uDE56\uD835\uDE63\uD835\uDE5C\uD835\uDE64</span>"));
+                    "<br> <span style='color:#cf1a1c;'> 3 = \uD835\uDE3C\uD835\uDE65\uD835\uDE65\uD835\uDE61\uD835\uDE5A \uD835\uDE48\uD835\uDE56\uD835\uDE63\uD835\uDE5C\uD835\uDE64</span>" +
+                    "<br> <span style='color:#054ab5;'> 4 = \uD835\uDE50\uD835\uDE63\uD835\uDE60\uD835\uDE63\uD835\uDE64\uD835\uDE6C\uD835\uDE63</span>"));
             builder.setIcon(getActivity().getDrawable(R.drawable.info2));
             builder.setPositiveButton("OK", (dialog, which) -> dialog.dismiss());
             builder.show();
@@ -132,7 +135,7 @@ public class IDMangoFragment extends Fragment {
 
         highPercMI.setOnClickListener(view -> {
             AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-            builder.setTitle("Analyzer Confidence Level");
+            builder.setTitle("Analyzer Accuracy Level");
             builder.setMessage(Html.fromHtml("The output tells on how <span style='color:#249023;'>\uD835\uDE56\uD835\uDE58\uD835\uDE58\uD835\uDE6A\uD835\uDE67\uD835\uDE56\uD835\uDE69\uD835\uDE5A</span> " +
                     "the analyzer of the results given after the image undergo in process." +
                     "<br><br> <span style='color:#ee941e;'> \uD835\uDE42\uD835\uDE67\uD835\uDE5A\uD835\uDE56\uD835\uDE69\uD835\uDE5A\uD835\uDE67 \uD835\uDE69\uD835\uDE5D\uD835\uDE56\uD835\uDE63 85% = \uD835\uDE3C\uD835\uDE58\uD835\uDE58\uD835\uDE5A\uD835\uDE65\uD835\uDE69\uD835\uDE56\uD835\uDE57\uD835\uDE61\uD835\uDE5A </span>" +
@@ -145,15 +148,16 @@ public class IDMangoFragment extends Fragment {
 
         confidialogMI.setOnClickListener(view -> {
             AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-            builder.setTitle("Confidence Level per Class");
+            builder.setTitle("Accuracy Level per Class");
             builder.setMessage(Html.fromHtml("The output tells on how <span style='color:#249023;'>\uD835\uDE56\uD835\uDE58\uD835\uDE58\uD835\uDE6A\uD835\uDE67\uD835\uDE56\uD835\uDE69\uD835\uDE5A</span> " +
                     "the analyzer of the results given after the image undergo in process." +
                     "<br><br> <span style='color:#ee941e;'> \uD835\uDE42\uD835\uDE67\uD835\uDE5A\uD835\uDE56\uD835\uDE69\uD835\uDE5A\uD835\uDE67 \uD835\uDE69\uD835\uDE5D\uD835\uDE56\uD835\uDE63 85% = \uD835\uDE3C\uD835\uDE58\uD835\uDE58\uD835\uDE5A\uD835\uDE65\uD835\uDE69\uD835\uDE56\uD835\uDE57\uD835\uDE61\uD835\uDE5A </span>" +
                     "<br> <span style='color:#2da71b;'> \uD835\uDE3D\uD835\uDE5A\uD835\uDE69\uD835\uDE6C\uD835\uDE5A\uD835\uDE5A\uD835\uDE63 30% \uD835\uDE69\uD835\uDE64 84% = \uD835\uDE42\uD835\uDE64\uD835\uDE64\uD835\uDE59 \uD835\uDE40\uD835\uDE63\uD835\uDE64\uD835\uDE6A\uD835\uDE5C\uD835\uDE5D </span>" +
                     "<br> <span style='color:#cf1a1c;'> \uD835\uDE3D\uD835\uDE5A\uD835\uDE61\uD835\uDE64\uD835\uDE6C 29% = \uD835\uDE49\uD835\uDE64\uD835\uDE69 \uD835\uDE3C\uD835\uDE58\uD835\uDE58\uD835\uDE5A\uD835\uDE65\uD835\uDE69\uD835\uDE56\uD835\uDE57\uD835\uDE61\uD835\uDE5A </span>" +
-                    "<br><br> <span style='color:#ee941e;'> \uD835\uDE3E\uD835\uDE48\uD835\uDE3E% = \uD835\uDE3E\uD835\uDE56\uD835\uDE67\uD835\uDE56\uD835\uDE57\uD835\uDE56\uD835\uDE64 \uD835\uDE48\uD835\uDE56\uD835\uDE63\uD835\uDE5C\uD835\uDE64 \uD835\uDE3E\uD835\uDE64\uD835\uDE63\uD835\uDE5B\uD835\uDE5E\uD835\uDE59\uD835\uDE5A\uD835\uDE63\uD835\uDE58\uD835\uDE5A% </span>" +
-                    "<br> <span style='color:#2da71b;'> \uD835\uDE44\uD835\uDE48\uD835\uDE3E% = \uD835\uDE44\uD835\uDE63\uD835\uDE59\uD835\uDE5E\uD835\uDE56\uD835\uDE63 \uD835\uDE48\uD835\uDE56\uD835\uDE63\uD835\uDE5C\uD835\uDE64 \uD835\uDE3E\uD835\uDE64\uD835\uDE63\uD835\uDE5B\uD835\uDE5E\uD835\uDE59\uD835\uDE5A\uD835\uDE63\uD835\uDE58\uD835\uDE5A% </span>" +
-                    "<br> <span style='color:#cf1a1c;'> \uD835\uDE3C\uD835\uDE48\uD835\uDE3E% = \uD835\uDE3C\uD835\uDE65\uD835\uDE65\uD835\uDE61\uD835\uDE5A \uD835\uDE48\uD835\uDE56\uD835\uDE63\uD835\uDE5C\uD835\uDE64 \uD835\uDE3E\uD835\uDE64\uD835\uDE63\uD835\uDE5B\uD835\uDE5E\uD835\uDE59\uD835\uDE5A\uD835\uDE63\uD835\uDE58\uD835\uDE5A% </span>"));
+                    "<br><br> <span style='color:#ee941e;'> \uD835\uDE3E\uD835\uDE48\uD835\uDE3E% = \uD835\uDE3E\uD835\uDE56\uD835\uDE67\uD835\uDE56\uD835\uDE57\uD835\uDE56\uD835\uDE64 \uD835\uDE48\uD835\uDE56\uD835\uDE63\uD835\uDE5C\uD835\uDE64 \uD835\uDE3C\uD835\uDE58\uD835\uDE58\uD835\uDE6A\uD835\uDE67\uD835\uDE56\uD835\uDE58\uD835\uDE6E% </span>" +
+                    "<br> <span style='color:#2da71b;'> \uD835\uDE44\uD835\uDE48\uD835\uDE3E% = \uD835\uDE44\uD835\uDE63\uD835\uDE59\uD835\uDE5E\uD835\uDE56\uD835\uDE63 \uD835\uDE48\uD835\uDE56\uD835\uDE63\uD835\uDE5C\uD835\uDE64 \uD835\uDE3C\uD835\uDE58\uD835\uDE58\uD835\uDE6A\uD835\uDE67\uD835\uDE56\uD835\uDE58\uD835\uDE6E% </span>" +
+                    "<br> <span style='color:#cf1a1c;'> \uD835\uDE3C\uD835\uDE48\uD835\uDE3E% = \uD835\uDE3C\uD835\uDE65\uD835\uDE65\uD835\uDE61\uD835\uDE5A \uD835\uDE48\uD835\uDE56\uD835\uDE63\uD835\uDE5C\uD835\uDE64 \uD835\uDE3C\uD835\uDE58\uD835\uDE58\uD835\uDE6A\uD835\uDE67\uD835\uDE56\uD835\uDE58\uD835\uDE6E% </span>" +
+                    "<br> <span style='color:#054ab5;'> \uD835\uDE50\uD835\uDE4A\uD835\uDE3C% \uD835\uDE50\uD835\uDE63\uD835\uDE60\uD835\uDE64\uD835\uDE6C\uD835\uDE63 \uD835\uDE4A\uD835\uDE57\uD835\uDE5F\uD835\uDE5A\uD835\uDE58\uD835\uDE69 \uD835\uDE3C\uD835\uDE58\uD835\uDE58\uD835\uDE6A\uD835\uDE67\uD835\uDE56\uD835\uDE58\uD835\uDE6E% </span>"));
             builder.setIcon(getActivity().getDrawable(R.drawable.info2));
             builder.setPositiveButton("OK", (dialog, which) -> dialog.dismiss());
             builder.show();
@@ -210,35 +214,46 @@ public class IDMangoFragment extends Fragment {
             CMpercNoMI.setText(df.format(confidences[0] * 100) +"%");
             IMpercNoMI.setText(df.format(confidences[1] * 100) +"%");
             AMpercNoMI.setText(df.format(confidences[2] * 100) +"%");
+            ROpercNo.setText(df.format(confidences[3] * 100) +"%");
 
             CMpercProgBarMI.setProgress(Math.round(confidences[0] * 100));
             IMpercProgBarMI.setProgress(Math.round(confidences[1] * 100));
             AMpercProgBarMI.setProgress(Math.round(confidences[2] * 100));
+            ROpercProgBar.setProgress(Math.round(confidences[3] * 100));
 
-            if (MangoIdentifier[maxPos].equals("Carabao Mango")){
+            if (MangoIdentifier[maxPos].equals("Carabao\nMango")){
                 levelfruitMI.setCurrentStateDescriptionColor(getResources().getColor(R.color.CM));
                 levelfruitMI.setForegroundColor(getResources().getColor(R.color.CM));
                 levelfruitMI.setCurrentStateNumber(StateProgressBar.StateNumber.ONE);
-                highPercNameMI.setText("CMC%");
+                highPercNameMI.setText("CMA%");
                 highpercbarMI.setProgressDrawable(getResources().getDrawable(R.drawable.custom_progress_bar_3));
                 highpercbarMI.setProgress(Math.round(confidences[maxPos] * 100));
                 highPercNoMI.setText(df.format(confidences[maxPos] * 100) +"%");
             }
-            if (MangoIdentifier[maxPos].equals("Indian Mango")){
+            if (MangoIdentifier[maxPos].equals("Indian\nMango")){
                 levelfruitMI.setCurrentStateDescriptionColor(getResources().getColor(R.color.IM));
                 levelfruitMI.setForegroundColor(getResources().getColor(R.color.IM));
                 levelfruitMI.setCurrentStateNumber(StateProgressBar.StateNumber.TWO);
-                highPercNameMI.setText("IMC%");
+                highPercNameMI.setText("IMA%");
                 highpercbarMI.setProgressDrawable(getResources().getDrawable(R.drawable.custom_progress_bar_2));
                 highpercbarMI.setProgress(Math.round(confidences[maxPos] * 100));
                 highPercNoMI.setText(df.format(confidences[maxPos] * 100) +"%");
             }
-            if (MangoIdentifier[maxPos].equals("Apple Mango")){
+            if (MangoIdentifier[maxPos].equals("Apple\nMango")){
                 levelfruitMI.setCurrentStateDescriptionColor(getResources().getColor(R.color.AM));
                 levelfruitMI.setForegroundColor(getResources().getColor(R.color.AM));
                 levelfruitMI.setCurrentStateNumber(StateProgressBar.StateNumber.THREE);
-                highPercNameMI.setText("AMC%");
+                highPercNameMI.setText("AMA%");
                 highpercbarMI.setProgressDrawable(getResources().getDrawable(R.drawable.custom_progress_bg));
+                highpercbarMI.setProgress(Math.round(confidences[maxPos] * 100));
+                highPercNoMI.setText(df.format(confidences[maxPos] * 100) +"%");
+            }
+            if (MangoIdentifier[maxPos].equals("No Mango\nDetected")){
+                levelfruitMI.setCurrentStateDescriptionColor(getResources().getColor(R.color.RO));
+                levelfruitMI.setForegroundColor(getResources().getColor(R.color.RO));
+                levelfruitMI.setCurrentStateNumber(StateProgressBar.StateNumber.FOUR);
+                highPercNameMI.setText("UOA%");
+                highpercbarMI.setProgressDrawable(getResources().getDrawable(R.drawable.idclassification_prog_bar));
                 highpercbarMI.setProgress(Math.round(confidences[maxPos] * 100));
                 highPercNoMI.setText(df.format(confidences[maxPos] * 100) +"%");
             }

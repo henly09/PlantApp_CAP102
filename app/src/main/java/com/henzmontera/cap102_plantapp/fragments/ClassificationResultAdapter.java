@@ -92,9 +92,12 @@ public class ClassificationResultAdapter
                     case "2":
                         name = "Apple Mango";
                         break;
+                    case "3":
+                        name = "No Mango Detected";
+                        break;
                 }
                 tvLabel.setText("ID: "+name);
-                tvScore.setText("Confidence: "+String.format(Locale.US, "%.2f", category.getScore() * 100) + "%");
+                tvScore.setText("Accuracy: "+String.format(Locale.US, "%.2f", category.getScore() * 100) + "%");
             } else {
                 tvLabel.setText(NO_VALUE);
                 tvScore.setText(NO_VALUE);

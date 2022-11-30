@@ -11,6 +11,52 @@
     android:background="#F9fff4"
     tools:context=".IPfragments.IDMangoFragment">
 
+    <ProgressBar
+        android:id="@+id/ROpercProgBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="254dp"
+        android:layout_height="25dp"
+        android:layout_marginBottom="12dp"
+        android:layout_marginEnd="24dp"
+        android:progressDrawable="@drawable/idclassification_prog_bar"
+        app:layout_constraintBottom_toTopOf="@+id/imageView32"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/ROpercNo"
+        android:layout_width="76dp"
+        android:layout_height="25dp"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/confidencesTextAM"
+        android:layout_marginBottom="12dp"
+        android:gravity="center|center_vertical"
+        android:text="0%"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/imageView32"
+        app:layout_constraintEnd_toEndOf="@+id/ROpercProgBar"
+        app:layout_constraintStart_toEndOf="@+id/sizesAM11"
+        app:layout_constraintStart_toStartOf="@+id/ROpercProgBar" />
+
+    <TextView
+        android:id="@+id/RO"
+        android:layout_width="76dp"
+        android:layout_height="25dp"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/confidencesTextAM"
+        android:layout_marginBottom="12dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginStart="32dp"
+        android:gravity="center|center_vertical"
+        android:text="UOA%:"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/imageView32"
+        app:layout_constraintEnd_toStartOf="@+id/AMpercProgBarMI"
+        app:layout_constraintHorizontal_bias="0.428"
+        app:layout_constraintStart_toStartOf="parent" />
+
     <com.kofigyan.stateprogressbar.StateProgressBar
         android:id="@+id/levelfruitMI"
         android:layout_width="348dp"
@@ -24,7 +70,7 @@
         app:spb_animateToCurrentProgressState="true"
         app:spb_currentStateDescriptionColor="#9c9c9c"
         app:spb_currentStateNumber="one"
-        app:spb_maxStateNumber="three"
+        app:spb_maxStateNumber="four"
         app:spb_stateBackgroundColor="#BDBDBD"
         app:spb_stateDescriptionColor="#808080"
         app:spb_stateForegroundColor="#9c9c9c"
@@ -135,7 +181,7 @@
         android:layout_marginBottom="12dp"
         android:layout_marginEnd="24dp"
         android:progressDrawable="@drawable/custom_progress_bg"
-        app:layout_constraintBottom_toTopOf="@+id/imageView32"
+        app:layout_constraintBottom_toTopOf="@+id/ROpercProgBar"
         app:layout_constraintEnd_toEndOf="parent" />
 
     <TextView
@@ -150,7 +196,7 @@
         android:textColor="@color/black"
         android:textSize="14sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/imageView32"
+        app:layout_constraintBottom_toTopOf="@+id/ROpercProgBar"
         app:layout_constraintEnd_toEndOf="@+id/AMpercProgBarMI"
         app:layout_constraintStart_toEndOf="@+id/sizesAM11"
         app:layout_constraintStart_toStartOf="@+id/AMpercProgBarMI" />
@@ -165,10 +211,10 @@
         android:layout_marginEnd="5dp"
         android:layout_marginStart="32dp"
         android:gravity="center|center_vertical"
-        android:text="AMC%:"
+        android:text="AMA%:"
         android:textSize="14sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/imageView32"
+        app:layout_constraintBottom_toTopOf="@+id/RO"
         app:layout_constraintEnd_toStartOf="@+id/AMpercProgBarMI"
         app:layout_constraintHorizontal_bias="0.428"
         app:layout_constraintStart_toStartOf="parent" />
@@ -208,7 +254,7 @@
         android:layout_marginEnd="5dp"
         android:layout_marginStart="32dp"
         android:gravity="center|center_vertical"
-        android:text="IMC%:"
+        android:text="IMA%:"
         android:textSize="14sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/sizesAM11"
@@ -248,7 +294,7 @@
         android:layout_marginEnd="5dp"
         android:layout_marginStart="32dp"
         android:gravity="center|center_horizontal|center_vertical"
-        android:text="CMC%:"
+        android:text="CMA%:"
         android:textSize="14sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/sizesAM10"
@@ -296,7 +342,7 @@
         android:layout_marginBottom="10dp"
         android:layout_marginStart="20dp"
         android:fontFamily="@font/montserratalternates_bolditalic"
-        android:text="Confidences:"
+        android:text="Accuracy"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/CMpercProgBarMI"

@@ -126,7 +126,7 @@ public class ImageClassifierHelper {
             imageClassifier =
                     ImageClassifier.createFromFileAndOptions(
                             context,
-                            "realtimemangoID.tflite",
+                            "realtimemangoID.tflite", // Model file
                             optionsBuilder.build());
         } catch (IOException e) {
             imageClassifierListener.onError("Image classifier failed to "

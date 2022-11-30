@@ -233,7 +233,7 @@
         android:layout_marginBottom="12dp"
         android:layout_marginStart="20dp"
         android:fontFamily="@font/montserratalternates_bolditalic"
-        android:text="Confidences:"
+        android:text="Accuracy:"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/sizesCM"
