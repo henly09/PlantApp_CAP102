@@ -23,7 +23,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.513"
             app:layout_constraintStart_toStartOf="parent"
-            app:videoId="5GgJBBo1rF8" />
+            app:videoId="GCT_Hs-N5F8" />
 
         <Button
             android:id="@+id/cmguide"
