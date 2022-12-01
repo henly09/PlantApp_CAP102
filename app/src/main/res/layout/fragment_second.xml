@@ -8,7 +8,7 @@
     android:minHeight="70dp"
     tools:context=".SecondFragment"
     android:padding="20dp"
-    android:layout_margin="10dp"
+    android:layout_margin="0dp"
     android:background="@color/sixthlogocolor"
     android:screenOrientation="portrait" >
 
@@ -90,6 +90,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
+            android:layout_margin="27dp"
             android:id="@+id/linear1">
 
             <ImageButton
