@@ -22,6 +22,8 @@ import com.henzmontera.cap102_plantapp.R;
 import com.henzmontera.cap102_plantapp.Refractometer;
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView;
 
+import java.util.Calendar;
+
 import androidx.fragment.app.Fragment;
 
 public class Homefragment extends Fragment {
@@ -51,7 +53,7 @@ public class Homefragment extends Fragment {
 
 
         logo.setOnClickListener(view -> {
-            Toast.makeText(getActivity(), "ManGo© Copyright 2022", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity(), "ManGo© "+ Calendar.getInstance().get(Calendar.YEAR), Toast.LENGTH_SHORT).show();
         });
 
         amguide.setOnClickListener(view -> {
