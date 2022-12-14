@@ -45,7 +45,7 @@ public class LoginActivity extends AppCompatActivity {
         //Initialize the session manager
         sessionManager = new SessionManager(this);
 
-        FirebaseTest();
+       // FirebaseTest();
       // For Intro Slide Purposes
         try {
             ForAppIntroSlidesCreateTable();
