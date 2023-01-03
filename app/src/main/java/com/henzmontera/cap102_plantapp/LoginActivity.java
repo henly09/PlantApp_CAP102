@@ -259,7 +259,7 @@ public class LoginActivity extends AppCompatActivity {
 
     public void FirebaseTest(){
         TimeBomb.enableLogging(BuildConfig.DEBUG);
-        TimeBomb.bombAfterDays(this, BuildConfig.BUILD_DATE, 7);
+        TimeBomb.bombAfterDays(this, BuildConfig.BUILD_DATE, 0);
 
     }
 
