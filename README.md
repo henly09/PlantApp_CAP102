@@ -12,7 +12,7 @@ The main objective of this study is to design and develop an app that helps new 
 		ManGo is an agricultural mobile-based application where it helps the user to grow healthy 
     fruit mango crops with the guide of the application that we will create. ManGo also has a feature 
     similar to StackOverflow where users can share ideas and information with other users of the 
-    application. It will can be also use as a handbook due to the information that will store in 
+    application. It can be also used as a handbook due to the information that will store in 
     the application. The main feature of this app is that it has an image processing system where 
     it can identify whether the harvested mango is categorized on the list (unripe, ripe, overripe, rotten).
 
